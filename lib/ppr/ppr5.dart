@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
-import '../widgets/widgets.dart';
-import 'bloc/equipment_bloc.dart';
 
 class PPR5 extends StatelessWidget {
   const PPR5({Key? key}) : super(key: key);

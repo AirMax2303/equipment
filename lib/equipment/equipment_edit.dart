@@ -11,10 +11,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 
 import '../widgets/appbar.dart';
-import '../widgets/input_text.dart';
 import 'bloc/equipment_bloc.dart';
 import '../widgets/navigator.dart';
 import '../widgets/widgets.dart';
+import 'equipment_dialog.dart';
 import 'models/equipment.dart';
 import 'models/name.dart';
 import 'name_list.dart';
@@ -291,7 +291,7 @@ class EquipmentEdit extends StatelessWidget {
 
 /*
                             if (formKey.currentState?.saveAndValidate() ?? false) {
-                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.addEquipment(EquipmentModel(
+                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.EditEquipment(EquipmentModel(
                                 name1: formKey.currentState?.fields['name1']?.value,
                                 name2: formKey.currentState?.fields['name2']?.value,
                                 view: formKey.currentState?.fields['view']?.value,
@@ -302,6 +302,15 @@ class EquipmentEdit extends StatelessWidget {
 
  */
                           }),
+                          AppButton.textButton('Удалить', onPressed: () {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return dialogDeleteConfirm(context);
+                                }).then((value) {
+                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.deleteEquipment(equipment));
+                            });
+                          })
                         ],
                       ),
                     ),
@@ -313,3 +322,4 @@ class EquipmentEdit extends StatelessWidget {
     );
   }
 }
+

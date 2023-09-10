@@ -1,11 +1,9 @@
 import 'package:equipment/pofile/bloc/profile_bloc.dart';
 import 'package:equipment/route/route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
 import 'package:toast/toast.dart';
 import 'equipment/bloc/equipment_bloc.dart';
 import 'bloc/observer.dart';

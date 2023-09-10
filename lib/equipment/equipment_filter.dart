@@ -16,6 +16,7 @@ Dialog selectTypeEq(BuildContext context, List<NameModel> viewWorks, List<NameMo
   list.addAll(viewWorks);
   double width = (MediaQuery.of(context).size.width - 80) / 2 + 2;
   return Dialog(
+    backgroundColor: Colors.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),
