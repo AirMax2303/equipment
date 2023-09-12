@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:get_it/get_it.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../pofile/service/profile_service.dart';
+import '../../profile/service/profile_service.dart';
 import '../models/equipment.dart';
 import '../models/info.dart';
 import '../models/name.dart';

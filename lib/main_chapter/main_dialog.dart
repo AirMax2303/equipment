@@ -252,40 +252,5 @@ Dialog dialogOrder(BuildContext context, WorkModel data) {
 }
 
 
-Dialog dialogCalendar(BuildContext context, WorkModel data) {
-  DateTime date = DateTime.now();
-  return Dialog(
-    backgroundColor: Colors.white,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    insetPadding: const EdgeInsets.all(20),
-    child: Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AppSixeBox.size20,
-            CalendarApp(
-              onChangeDate: (value) {
-                date = value;
-              },
-            ),
-            AppButton.filledBlackButton('Сохранить', onPressed: () {
-              Navigator.pop(context, date);
-            }),
-            TextButton(
-                onPressed: () {
-                  Navigator.pop(context, 'back');
-                },
-                child: AppText.blackText12('Отменить')),
-            AppSixeBox.size16,
-          ],
-        ),
-      ),
-    ),
-  );
-}
+
 

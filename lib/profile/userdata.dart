@@ -1,7 +1,7 @@
 import 'package:equipment/widgets/appbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equipment/pofile/service/profile_service.dart';
-import 'package:equipment/pofile/tarif.dart';
+import 'package:equipment/profile/service/profile_service.dart';
+import 'package:equipment/profile/tarif.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';

@@ -224,7 +224,7 @@ class _$_EquipmentModel implements _EquipmentModel {
       this.name1 = '',
       this.name2 = '',
       this.image = '',
-      this.status = '0',
+      this.status = '1',
       this.proftype = false,
       this.valueproftype = ''});
 

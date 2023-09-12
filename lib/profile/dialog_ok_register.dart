@@ -2,7 +2,7 @@ import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Dialog dialogOkRegister(BuildContext context, String info) {
+Dialog dialogOkRegister(BuildContext context, String info, String error) {
   return Dialog(
     backgroundColor: const Color(0xFF2F2E41),
     insetPadding: const EdgeInsets.all(20),
@@ -20,6 +20,7 @@ Dialog dialogOkRegister(BuildContext context, String info) {
           AppSixeBox.size20,
           AppText.whiteText16(info),
           AppSixeBox.size20,
+          AppText.whiteText16(error),
           AppSixeBox.size20,
           AppButton.filledInputButton('Продолжить', onPressed: () {
             Navigator.pop(context, 'Ok');

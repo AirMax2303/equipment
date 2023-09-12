@@ -15,7 +15,7 @@ _$_EquipmentModel _$$_EquipmentModelFromJson(Map<String, dynamic> json) =>
       name1: json['name1'] as String? ?? '',
       name2: json['name2'] as String? ?? '',
       image: json['image'] as String? ?? '',
-      status: json['status'] as String? ?? '0',
+      status: json['status'] as String? ?? '1',
       proftype: json['proftype'] as bool? ?? false,
       valueproftype: json['valueproftype'] as String? ?? '',
     );

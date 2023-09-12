@@ -2,6 +2,7 @@ import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:equipment/other/other.dart';
 
 typedef ChangeDateCallback = void Function(DateTime date);
 
@@ -20,11 +21,12 @@ class CalendarApp extends StatelessWidget {
     'Август',
     'Сертябрь',
     'Октябрь',
+    'Ноябрь',
     'Декбрь'
   ];
   ValueNotifier<DateTime> selectedDate =
-  ValueNotifier<DateTime>(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
-  ValueNotifier<DateTime> workDate = ValueNotifier<DateTime>(DateTime.now());
+      ValueNotifier<DateTime>(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
+  ValueNotifier<DateTime> workDate = ValueNotifier<DateTime>(DateTime.now().nextDay());
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,14 @@ class CalendarApp extends StatelessWidget {
     void make(DateTime date) {
       DateTime newDate;
       list = List<List<DateTime>>.empty(growable: true);
-      newDate = date;
-      newDate = DateTime(newDate.year, newDate.month, newDate.day - (newDate.weekday - 1));
+//      newDate = date;
+      newDate = DateTime(date.year, date.month, date.day - (date.weekday - 1));
       for (int j = 0; j < 6; j++) {
         list.add(List<DateTime>.empty(growable: true));
         for (int i = 0; i < 7; i++) {
           list[j].add(newDate);
-          newDate = DateTime(newDate.year, newDate.month, newDate.day + 1);
+          newDate = newDate.nextDay();
+//          newDate = DateTime(newDate.year, newDate.month, newDate.day + 1);
         }
       }
     }
@@ -56,7 +59,7 @@ class CalendarApp extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      workDate.value = DateTime(workDate.value.year, workDate.value.month - 1, workDate.value.day);
+                      workDate.value = workDate.value.prevMonth();
                     },
                     icon: SvgPicture.asset('assets/prev_month.svg'),
                   ),
@@ -66,7 +69,7 @@ class CalendarApp extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      workDate.value = DateTime(workDate.value.year, workDate.value.month + 1, workDate.value.day);
+                      workDate.value = workDate.value.nextMonth();
                     },
                     icon: SvgPicture.asset('assets/next_month.svg'),
                   ),
@@ -83,8 +86,8 @@ class CalendarApp extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List<Widget>.generate(7, (index) {
-                  return Container(
-                      width: 46,
+                  return SizedBox(
+                      width: MediaQuery.of(context).size.width/10,
                       height: 40,
                       child: Text(
                         dayweek[index],
@@ -99,45 +102,45 @@ class CalendarApp extends StatelessWidget {
                 builder: (BuildContext context, DateTime value, Widget? child) {
                   return Column(
                       children: List<Widget>.generate(5, (indexCol) {
-                        return Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: List<Widget>.generate(7, (index) {
-                              Color color =
+                    return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: List<Widget>.generate(7, (index) {
+                          Color color =
                               selectedDate.value.compareTo(list[indexCol][index]) == 0 ? AppColor.blueColor : Colors.transparent;
-                              Color textcolor =
+                          Color textcolor =
                               selectedDate.value.compareTo(list[indexCol][index]) == 0 ? Colors.white : Colors.black;
-                              return InkWell(
-                                customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-                                onTap: () {
-                                  if (list[indexCol][index].compareTo(DateTime.now()) > 0) {
-                                    selectedDate.value = list[indexCol][index];
-                                    onChangeDate!(list[indexCol][index]);
-                                  }
-                                },
-                                child: Container(
-                                  width: 46,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                    color: color,
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      list[indexCol][index].day.toString(),
-                                      style: list[indexCol][index].weekday < 6
-                                          ? GoogleFonts.poppins(
-                                          textStyle: TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w400))
-                                          : GoogleFonts.poppins(
-                                          textStyle: TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w700)),
-                                    ),
-                                  ),
+                          return InkWell(
+                            customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                            onTap: () {
+                              if (list[indexCol][index].compareTo(DateTime.now()) > 0) {
+                                selectedDate.value = list[indexCol][index];
+                                onChangeDate!(list[indexCol][index]);
+                              }
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width/10,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: color,
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(10),
                                 ),
-                              );
-                            }));
-                      }));
+                              ),
+                              child: Center(
+                                child: Text(
+                                  list[indexCol][index].day.toString(),
+                                  style: list[indexCol][index].weekday < 6
+                                      ? GoogleFonts.poppins(
+                                          textStyle: TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w400))
+                                      : GoogleFonts.poppins(
+                                          textStyle: TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w700)),
+                                ),
+                              ),
+                            ),
+                          );
+                        }));
+                  }));
                 },
               ),
             ],

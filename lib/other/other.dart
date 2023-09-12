@@ -15,6 +15,16 @@ String dateFormat(DateTime date) {
   return '${date.day}.${date.month}.${date.year}';
 }
 
+extension MyDateTime on DateTime {
+  DateTime nextDay() => add(const Duration(days: 1));
+
+  DateTime prevDay() => add(const Duration(days: -1));
+
+  DateTime nextMonth() => month != 11 ? add(const Duration(days: 30)) : DateTime(year + 1, 1, day);
+
+  DateTime prevMonth() => month == 1 ? DateTime(year - 1, 12, day) : add(const Duration(days: -30));
+}
+
 String spKey = 'profile';
 
 String username = 'eq092023@mail.ru';

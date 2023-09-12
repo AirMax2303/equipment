@@ -2,8 +2,8 @@
 import 'package:go_router/go_router.dart';
 
 import '../equipment/equipment_page.dart';
-import '../pofile/bloc/profile_bloc.dart';
-import '../pofile/profile_page.dart';
+import '../profile/bloc/profile_bloc.dart';
+import '../profile/profile_page.dart';
 
 final router = GoRouter(
     initialLocation: '/',

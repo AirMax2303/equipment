@@ -11,6 +11,7 @@ abstract final class AppColor {
 //  static Color lightBlueColor = Colors.lightBlue.shade50;
   static Color lightBlueColor = const Color(0x1A3F60EE);
   static const Color blueColor = Color(0xFF3F60EE);
+
 }
 
 abstract final class AppTextStyle {
@@ -32,7 +33,7 @@ abstract final class AppTextStyle {
   static TextStyle blackTextStyle14_500 = const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500);
   static TextStyle blackTextStyle14 = const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w700);
   static TextStyle blackTextStyle16 = const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700);
-  static TextStyle blackTextStyle18 = const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400);
+  static TextStyle blackTextStyle18 = const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w700);
   static TextStyle blackTextStyle20 = const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700);
   static TextStyle blackTextStyle25 = const TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w700);
   static TextStyle blackTextStyle29 = const TextStyle(color: Colors.black, fontSize: 29, fontWeight: FontWeight.w700);
@@ -88,6 +89,13 @@ abstract final class AppText {
     return Text(data,
         style: GoogleFonts.poppins(
           textStyle: AppTextStyle.blackTextStyle16,
+        ));
+  }
+
+  static blackText18(String data) {
+    return Text(data,
+        style: GoogleFonts.poppins(
+          textStyle: AppTextStyle.blackTextStyle18,
         ));
   }
 
@@ -399,6 +407,36 @@ abstract final class AppSixeBox {
 }
 
 abstract final class AppDecoration {
+
+  static InputDecoration inputCustom(String labelText, {Color? fillColor, Widget? prefixIcon, Widget? suffixIcon}) {
+    return InputDecoration(
+      filled: true,
+      fillColor: fillColor ?? const Color(0xFFF8F8F8),
+      labelStyle: AppTextStyle.blackTextStyle13,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      errorStyle: AppTextStyle.blackTextStyle13,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      errorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      labelText: labelText,
+    );
+  }
+
   static InputDecoration input(String labelText, String prefixIcon) {
     return InputDecoration(
       filled: true,
@@ -517,4 +555,33 @@ abstract final class AppDecoration {
       labelText: labelText,
     );
   }
+
+  static InputDecoration inputIcon(String labelText) {
+    return InputDecoration(
+      filled: true,
+      fillColor: const Color(0xFFF8F8F8),
+      labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      errorStyle: AppTextStyle.blackTextStyle12,
+//      suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
+      errorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(width: 3, color: Colors.transparent),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      labelText: labelText,
+    );
+  }
+
 }

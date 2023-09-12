@@ -1,6 +1,6 @@
-import 'package:equipment/pofile/profile_login.dart';
-import 'package:equipment/pofile/profile_register.dart';
-import 'package:equipment/pofile/userdata.dart';
+import 'package:equipment/profile/profile_login.dart';
+import 'package:equipment/profile/profile_register.dart';
+import 'package:equipment/profile/userdata.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

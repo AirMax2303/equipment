@@ -1,4 +1,4 @@
-import 'package:equipment/pofile/service/profile_service.dart';
+import 'package:equipment/profile/service/profile_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,7 +33,6 @@ class ProfileRegister extends StatelessWidget {
                   IconButton(
                       onPressed: () {
                         BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.gotoLoginScreen());
-//                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileLogin()));
                       },
                       icon: SvgPicture.asset('assets/back-arrow.svg')),
                 ],
@@ -110,7 +109,7 @@ class ProfileRegister extends StatelessWidget {
                             showDialog<String>(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return dialogOkRegister(context, 'Вы успешно зарегистрировались');
+                                  return dialogOkRegister(context, 'Вы успешно зарегистрировались', service.errorMail);
                                 });
                             BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.gotoLoginScreen());
                           }

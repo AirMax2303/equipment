@@ -10,6 +10,7 @@ import '../model/profile.dart';
 class ProfileService {
   ProfileModel profile = const ProfileModel();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  String errorMail = '';
 
   Future<ProfileModel?> getProfile(String key) async {
     final SharedPreferences prefs = await _prefs;
@@ -84,7 +85,9 @@ class ProfileService {
       print('Message sent: $sendReport');
     } on MailerException catch (e) {
       print('Message not sent.$e');
+      errorMail = 'Message not sent. ';
       for (var p in e.problems) {
+        errorMail = '$errorMail${p.msg} ';
         print('Problem: ${p.code}: ${p.msg}');
       }
     }

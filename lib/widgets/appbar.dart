@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../main_chapter/main_page.dart';
-import '../pofile/userdata.dart';
+import '../profile/userdata.dart';
 
 enum AppBarButton { home, profile }
 

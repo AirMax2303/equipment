@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 
-import '../pofile/service/profile_service.dart';
+import '../profile/service/profile_service.dart';
 import 'other.dart';
 
 class SendMessage extends StatelessWidget {

@@ -1,11 +1,13 @@
+import 'package:equipment/ppr/ppr_9.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
 
-class PPR5 extends StatelessWidget {
-  const PPR5({Key? key}) : super(key: key);
+class Ppr5Screen extends StatelessWidget {
+  Ppr5Screen({Key? key, required this.equipmentid}) : super(key: key);
+  String equipmentid;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class PPR5 extends StatelessWidget {
               color: Colors.white,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const Icon(
                     Icons.add,
@@ -34,6 +36,7 @@ class PPR5 extends StatelessWidget {
                           textStyle: const TextStyle(color: Color(0xFF8F9BB3), fontSize: 14, fontWeight: FontWeight.w700),
                         )),
                     onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Ppr9Screen()));
 //                      BlocProvider.of<EquipmentBloc>(context).add(const EquipmentEvent.gotoAddScreen());
                     },
                   ),
@@ -53,4 +56,7 @@ class PPR5 extends StatelessWidget {
       ),
     );
   }
+}
+
+class PPR9 {
 }

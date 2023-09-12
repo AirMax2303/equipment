@@ -1,4 +1,4 @@
-import 'package:equipment/pofile/bloc/profile_bloc.dart';
+import 'package:equipment/profile/bloc/profile_bloc.dart';
 import 'package:equipment/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -8,7 +8,7 @@ import 'package:toast/toast.dart';
 import 'equipment/bloc/equipment_bloc.dart';
 import 'bloc/observer.dart';
 import 'equipment/service/equipment_service.dart';
-import 'package:equipment/pofile/service/profile_service.dart';
+import 'package:equipment/profile/service/profile_service.dart';
 
 import 'main_chapter/service/work_service.dart';
 
@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
 //        useMaterial3: true,
         fontFamily: GoogleFonts.poppins().fontFamily,
         dialogBackgroundColor: Colors.white,
+        primaryColor: const Color(0xFF3F60EE),
       ),
       routerConfig: router,
     );

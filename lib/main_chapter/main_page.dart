@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 
-import '../pofile/bloc/profile_bloc.dart';
-import '../pofile/profile_page.dart';
-import '../ppr/ppr5.dart';
+import '../profile/bloc/profile_bloc.dart';
+import '../profile/profile_page.dart';
+import '../ppr/ppr_5.dart';
 import '../widgets/navigator.dart';
 import '../widgets/widgets.dart';
 import '../works_day/works_day_01.dart';
@@ -28,7 +28,7 @@ class MainPage extends StatelessWidget {
       create: (context) => WorkBloc(GetIt.instance.get<WorkService>())..add(const WorksEvent.initial()),
       child: BlocConsumer<WorkBloc, WorksState>(listener: (context, state) {
         state.mapOrNull(
-            gotoPPR5: (_) => Navigator.push(context, MaterialPageRoute(builder: (context) => const PPR5())),
+            gotoPPR5: (_) => Navigator.push(context, MaterialPageRoute(builder: (context) => const Ppr5Screen())),
             gotoWorkDay01: (_) => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorksDay01())));
       }, builder: (context, state) {
         return state.maybeMap(

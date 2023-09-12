@@ -1,5 +1,5 @@
-import 'package:equipment/pofile/profile_register.dart';
-import 'package:equipment/pofile/service/profile_service.dart';
+import 'package:equipment/profile/profile_register.dart';
+import 'package:equipment/profile/service/profile_service.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
