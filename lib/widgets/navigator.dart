@@ -1,11 +1,15 @@
+import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../calendar/calendar_page.dart';
 import '../equipment/equipment_page.dart';
+import '../order/order_page.dart';
+import '../works_day/works_day_01.dart';
 
-enum Nav { none, calendar, works, equip, history }
+enum Nav { none, calendar, works, equip, history, add }
 
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar(
@@ -29,19 +33,24 @@ class AppNavigationBar extends StatelessWidget {
     );
   }
 
-  Widget iconAdd() {
-    return Container(
-      width: 68,
-      height: 53,
-      decoration: const BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
+  Widget iconAdd(BuildContext context, bool current) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const OrderPage()));
+      },
+      child: Container(
+        width: 68,
+        height: 53,
+        decoration: BoxDecoration(
+          color: current ? AppColor.blueColor : Colors.black,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(10),
+          ),
         ),
-      ),
-      child: const Icon(
-        Icons.add,
-        color: Colors.white,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -62,6 +71,13 @@ class AppNavigationBar extends StatelessWidget {
                     ? null
                     : () {
                         print('Календарь');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CalendarPage(
+                                      date: DateTime.now(),
+                                      nav: Nav.calendar,
+                                    )));
                       }),
             element(
                 nav == Nav.works ? 'assets/works_sel.svg' : 'assets/works.svg',
@@ -70,6 +86,7 @@ class AppNavigationBar extends StatelessWidget {
                     ? null
                     : () {
                         print('Работы');
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => WorkDayPage(date: DateTime.now())));
                       }),
             element(
                 nav == Nav.equip ? 'assets/equip_sel.svg' : 'assets/equip.svg',
@@ -78,7 +95,7 @@ class AppNavigationBar extends StatelessWidget {
                     ? null
                     : () {
                         print('Оборудование');
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const EquipmentManagement()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => EquipmentPage()));
                       }),
             element(
                 nav == Nav.history ? 'assets/history_sel.svg' : 'assets/history.svg',
@@ -87,8 +104,10 @@ class AppNavigationBar extends StatelessWidget {
                     ? null
                     : () {
                         print('История');
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => CalendarPage(date: DateTime.now(), nav: Nav.history)));
                       }),
-            iconAdd()
+            iconAdd(context, nav == Nav.add)
           ],
         ));
   }

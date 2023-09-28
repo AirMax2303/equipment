@@ -15,11 +15,20 @@ class EquipmentModel with _$EquipmentModel {
     @Default('') String? name1,
     @Default('') String? name2,
     @Default('') String? image,
-    @Default('1') String? status,
+    @Default(1) int? status,
     @Default(false) bool? proftype,
-    @Default('') String? valueproftype
+    @Default(0) int? valueproftype
   }) = _EquipmentModel;
 
   factory EquipmentModel.fromJson(Map<String, Object?> json) => _$EquipmentModelFromJson(json);
+}
+
+@freezed
+class EquipmentList with _$EquipmentList {
+  const factory EquipmentList({
+    List<EquipmentModel>? list,
+  }) = _EquipmentList;
+
+  factory EquipmentList.fromJson(Map<String, dynamic> json) => _$EquipmentListFromJson(json);
 }
 

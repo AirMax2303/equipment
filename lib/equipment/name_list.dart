@@ -3,11 +3,9 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../other/other.dart';
 import '../widgets/widgets.dart';
 import 'models/name.dart';
-
-typedef ItemCallback = void Function(int index);
-
 //ignore: must_be_immutable
 class NameList extends StatelessWidget {
   NameList({Key? key, required this.list, required this.oniItemPressed, this.onAddTap}) : super(key: key);

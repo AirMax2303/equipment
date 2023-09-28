@@ -338,19 +338,50 @@ abstract final class AppButtonStyle {
   }
 }
 
-abstract final class AppTextBox {
-  static Widget textBox(String data) {
+class Box extends StatelessWidget {
+  Box({Key? key, this.child, this.height, this.color, this.radius, this.padding}) : super(key: key);
+  Widget? child;
+  double? height;
+  Color? color;
+  double? radius;
+  double? padding;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      height: 46,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        color: AppColor.backgroundColor,
+      height: height ?? 46,
+      decoration: BoxDecoration(
+        color: color ?? AppColor.backgroundColor,
         borderRadius: BorderRadius.all(
-          Radius.circular(10),
+          Radius.circular(radius ?? 6),
+        ),
+      ),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.only(left: padding ?? 8.0, right: padding ?? 8.0),
+          child: child,
+        ),
+      ),
+    );;
+  }
+}
+
+
+abstract final class AppTextBox {
+
+  static Widget textBox(String data, {Widget? child, double? width, double? height, Color? color, double? radius, double?
+  padding}) {
+    return Container(
+      height: height ?? 46,
+      width: width ?? double.infinity,
+      decoration: BoxDecoration(
+        color: color ?? AppColor.backgroundColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(radius ?? 10),
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(13.0),
+        padding: EdgeInsets.all(padding ?? 13.0),
         child: AppText.blackText13(data),
       ),
     );
@@ -368,7 +399,7 @@ abstract final class AppTextBox {
       ),
       child: Padding(
         padding: const EdgeInsets.all(13.0),
-        child: selected ? AppText.blackText13_800(data) : AppText.blackText13(data),
+        child: AppText.blackText13(data),
       ),
     );
   }
@@ -423,15 +454,15 @@ abstract final class AppDecoration {
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
       ),
       labelText: labelText,
     );

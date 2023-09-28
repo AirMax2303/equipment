@@ -7,7 +7,6 @@ class PprService {
 
   Future<List<PprModel>> getList(String? id) async {
     equipmentid = id;
-    list.clear();
     return list;
   }
 

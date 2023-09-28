@@ -31,11 +31,10 @@ List<WorkModel> getlist() {
     WorkModel work = const WorkModel();
     int r = random.nextInt(3);
     work = work.copyWith(
-        type: typeWorks[r],
         name1: 'Станок ' + (random.nextInt(50) + 1).toString(),
         name2: stanWorks[random.nextInt(3)],
-        work: profWorks[i],
-        status: (r + 1).toString());
+        name: profWorks[i],
+        status: (r + 1));
     list.add(work);
   }
   return list;

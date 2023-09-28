@@ -6,29 +6,11 @@ import 'package:intl/intl.dart';
 
 import '../widgets/dialog.dart';
 import '../widgets/widgets.dart';
+import 'model/ppr.dart';
 
-class PprTimer {
-  PprTimer(
-      {this.name = '',
-      this.priority = false,
-      this.proftype = true,
-      this.repeat = 0,
-      this.interval = 1,
-      this.begindate,
-      this.beginint = 1});
-
-  String? name;
-  bool? priority;
-  bool? proftype;
-  int? repeat;
-  int? interval;
-  DateTime? begindate;
-  int? beginint;
-}
-
-Dialog selectTimer(BuildContext context, PprTimer pprTimer) {
+Dialog selectTimer(BuildContext context, PprModel ppr) {
   final formKey = GlobalKey<FormBuilderState>();
-  final ValueNotifier<int> repeatTimer = ValueNotifier<int>(pprTimer.repeat!);
+  final ValueNotifier<int> repeatTimer = ValueNotifier<int>(ppr.repeat!);
   return Dialog(
     backgroundColor: Colors.white,
     shape: const RoundedRectangleBorder(
@@ -60,55 +42,60 @@ Dialog selectTimer(BuildContext context, PprTimer pprTimer) {
               ),
               AppSixeBox.size5,
               Visibility(
-                  visible: pprTimer.proftype!,
+                  visible: ppr.proftype!,
                   child: Row(
                     children: [
-                      WorkTimeButton(text: 'По работа/часам', type: pprTimer.proftype!),
-                      WorkTimeButton(text: 'По времени', type: !pprTimer.proftype!),
+                      WorkTimeButton(text: 'По работа/часам', type: ppr.proftype!),
+                      WorkTimeButton(text: 'По времени', type: !ppr.proftype!),
                     ],
                   )),
-              AppSixeBox.size16,
-              AppText.blackText16('Повторять каждый'),
-              AppSixeBox.size16,
               Visibility(
-                visible: pprTimer.proftype!,
+                visible: !ppr.proftype!,
                 child: ValueListenableBuilder(
                     valueListenable: repeatTimer,
                     builder: (BuildContext context, value, Widget? child) {
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TimerButton(
-                            text: 'День',
-                            fill: value == 0,
-                            onPressed: () {
-                              repeatTimer.value = 0;
-                              pprTimer.repeat = 0;
-                            },
-                          ),
-                          TimerButton(
-                            text: 'Неделя',
-                            fill: value == 1,
-                            onPressed: () {
-                              repeatTimer.value = 1;
-                              pprTimer.repeat = 1;
-                            },
-                          ),
-                          TimerButton(
-                            text: 'Месяц',
-                            fill: value == 2,
-                            onPressed: () {
-                              repeatTimer.value = 2;
-                              pprTimer.repeat = 2;
-                            },
+                          AppSixeBox.size16,
+                          AppText.blackText16('Повторять каждый'),
+                          AppSixeBox.size16,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TimerButton(
+                                text: 'День',
+                                fill: value == 0,
+                                onPressed: () {
+                                  repeatTimer.value = 0;
+                                  ppr = ppr.copyWith(repeat: 0);
+                                },
+                              ),
+                              TimerButton(
+                                text: 'Неделя',
+                                fill: value == 1,
+                                onPressed: () {
+                                  repeatTimer.value = 1;
+                                  ppr = ppr.copyWith(repeat: 1);
+                                },
+                              ),
+                              TimerButton(
+                                text: 'Месяц',
+                                fill: value == 2,
+                                onPressed: () {
+                                  repeatTimer.value = 2;
+                                  ppr = ppr.copyWith(repeat: 2);
+                                },
+                              ),
+                            ],
                           ),
                         ],
                       );
                     }),
               ),
               AppSixeBox.size16,
-              pprTimer.proftype! ? AppText.blackText16('Интервал/часы') : AppText.blackText16('Интервал'),
+              ppr.proftype! ? AppText.blackText16('Интервал/часы') : AppText.blackText16('Интервал'),
               AppSixeBox.size16,
               FormBuilder(
                 key: formKey,
@@ -116,30 +103,30 @@ Dialog selectTimer(BuildContext context, PprTimer pprTimer) {
                   children: [
                     FormBuilderTextField(
                       name: 'interval',
-                      initialValue: pprTimer.interval.toString(),
+                      initialValue: ppr.interval.toString(),
                       keyboardType: TextInputType.number,
                       style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                       decoration: AppDecoration.inputCustom('Интервал'),
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                         FormBuilderValidators.min(1, errorText: 'Минимальное значение = 1'),
-                        pprTimer.proftype!
+                        ppr.proftype!
                             ? FormBuilderValidators.max(99999, errorText: 'Максимальное значение = 99999')
                             : FormBuilderValidators.max(31, errorText: 'Максимальное значение = 31'),
                       ]),
                       onChanged: (value) {
-                        pprTimer.interval = int.parse(value!);
+                        ppr = ppr.copyWith(interval: int.parse(value!));
                       },
                     ),
                     AppSixeBox.size16,
-                    pprTimer.proftype!
+                    ppr.proftype!
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AppText.blackText16('Начиная с/часы'),
                               FormBuilderTextField(
                                 name: 'begin',
-                                initialValue: pprTimer.beginint.toString(),
+                                initialValue: ppr.beginint.toString(),
                                 keyboardType: TextInputType.number,
                                 style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                                 decoration: AppDecoration.inputCustom(
@@ -151,7 +138,7 @@ Dialog selectTimer(BuildContext context, PprTimer pprTimer) {
                                   FormBuilderValidators.max(99999),
                                 ]),
                                 onChanged: (value) {
-                                  pprTimer.beginint = int.parse(value!);
+                                  ppr = ppr.copyWith(beginint: int.parse(value!));
                                 },
                               ),
                             ],
@@ -159,7 +146,7 @@ Dialog selectTimer(BuildContext context, PprTimer pprTimer) {
                         : FormBuilderTextField(
                             name: 'begindate',
                             readOnly: true,
-                            initialValue: DateFormat('dd.MM.yyyy').format(pprTimer.begindate!),
+                            initialValue: DateFormat('dd.MM.yyyy').format(ppr.begindate!),
                             style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                             decoration: AppDecoration.inputCustom(
                               'Начать с',
@@ -177,9 +164,9 @@ Dialog selectTimer(BuildContext context, PprTimer pprTimer) {
                                   builder: (BuildContext context) {
                                     return dialogCalendar(context);
                                   }).then((value) {
-                                pprTimer.begindate = value!;
+                                ppr = ppr.copyWith(begindate: value!);
                                 formKey.currentState?.fields['begindate']
-                                    ?.didChange(DateFormat('dd.MM.yyyy').format(pprTimer.begindate!));
+                                    ?.didChange(DateFormat('dd.MM.yyyy').format(ppr.begindate!));
                               });
                             },
                           ),
@@ -189,7 +176,7 @@ Dialog selectTimer(BuildContext context, PprTimer pprTimer) {
               AppSixeBox.size16,
               AppButton.filledBlackButton('Сохранить', onPressed: () {
                 if (formKey.currentState?.saveAndValidate() ?? false) {
-                  Navigator.pop(context, pprTimer);
+                  Navigator.pop(context, ppr);
                 }
               }),
               AppSixeBox.size16,

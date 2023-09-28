@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:equipment/equipment/equipment_edit.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +63,7 @@ class EquipmentDetail extends StatelessWidget {
                   title: const Text('Работа/часы'),
                   name: 'proftype',
                   initialValue: equipment.proftype,
+                  enabled: false,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
@@ -82,7 +82,9 @@ class EquipmentDetail extends StatelessWidget {
                 AppSixeBox.size16,
                 AppText.text14('Информация'),
                 AppSixeBox.size16,
-                AppButton.filledLightBlueButton('ППР', onPressed: () {}),
+                AppButton.filledLightBlueButton('ППР', onPressed: () {
+                  BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoPprScreen(equipment!));
+                }),
                 AppSixeBox.size16,
                 AppButton.filledLightBlueButton('План работ', onPressed: () {}),
                 AppSixeBox.size16,

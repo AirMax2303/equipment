@@ -21,6 +21,7 @@ mixin _$PprEvent {
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) gotoAddPprScreen,
     required TResult Function(PprModel ppr) addPpr,
+    required TResult Function(LastState lastState) back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$PprEvent {
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? addPpr,
+    TResult? Function(LastState lastState)? back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$PprEvent {
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? addPpr,
+    TResult Function(LastState lastState)? back,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$PprEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoAddPprScreenEvent value) gotoAddPprScreen,
     required TResult Function(_AddPprEvent value) addPpr,
+    required TResult Function(_BackEvent value) back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$PprEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult? Function(_AddPprEvent value)? addPpr,
+    TResult? Function(_BackEvent value)? back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$PprEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult Function(_AddPprEvent value)? addPpr,
+    TResult Function(_BackEvent value)? back,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,6 +153,7 @@ class _$_InitialEvent implements _InitialEvent {
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) gotoAddPprScreen,
     required TResult Function(PprModel ppr) addPpr,
+    required TResult Function(LastState lastState) back,
   }) {
     return initial(equipmentid);
   }
@@ -157,6 +164,7 @@ class _$_InitialEvent implements _InitialEvent {
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? addPpr,
+    TResult? Function(LastState lastState)? back,
   }) {
     return initial?.call(equipmentid);
   }
@@ -167,6 +175,7 @@ class _$_InitialEvent implements _InitialEvent {
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? addPpr,
+    TResult Function(LastState lastState)? back,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,6 +190,7 @@ class _$_InitialEvent implements _InitialEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoAddPprScreenEvent value) gotoAddPprScreen,
     required TResult Function(_AddPprEvent value) addPpr,
+    required TResult Function(_BackEvent value) back,
   }) {
     return initial(this);
   }
@@ -191,6 +201,7 @@ class _$_InitialEvent implements _InitialEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult? Function(_AddPprEvent value)? addPpr,
+    TResult? Function(_BackEvent value)? back,
   }) {
     return initial?.call(this);
   }
@@ -201,6 +212,7 @@ class _$_InitialEvent implements _InitialEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult Function(_AddPprEvent value)? addPpr,
+    TResult Function(_BackEvent value)? back,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -288,6 +300,7 @@ class _$_GotoAddPprScreenEvent implements _GotoAddPprScreenEvent {
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) gotoAddPprScreen,
     required TResult Function(PprModel ppr) addPpr,
+    required TResult Function(LastState lastState) back,
   }) {
     return gotoAddPprScreen(equipmentid);
   }
@@ -298,6 +311,7 @@ class _$_GotoAddPprScreenEvent implements _GotoAddPprScreenEvent {
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? addPpr,
+    TResult? Function(LastState lastState)? back,
   }) {
     return gotoAddPprScreen?.call(equipmentid);
   }
@@ -308,6 +322,7 @@ class _$_GotoAddPprScreenEvent implements _GotoAddPprScreenEvent {
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? addPpr,
+    TResult Function(LastState lastState)? back,
     required TResult orElse(),
   }) {
     if (gotoAddPprScreen != null) {
@@ -322,6 +337,7 @@ class _$_GotoAddPprScreenEvent implements _GotoAddPprScreenEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoAddPprScreenEvent value) gotoAddPprScreen,
     required TResult Function(_AddPprEvent value) addPpr,
+    required TResult Function(_BackEvent value) back,
   }) {
     return gotoAddPprScreen(this);
   }
@@ -332,6 +348,7 @@ class _$_GotoAddPprScreenEvent implements _GotoAddPprScreenEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult? Function(_AddPprEvent value)? addPpr,
+    TResult? Function(_BackEvent value)? back,
   }) {
     return gotoAddPprScreen?.call(this);
   }
@@ -342,6 +359,7 @@ class _$_GotoAddPprScreenEvent implements _GotoAddPprScreenEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult Function(_AddPprEvent value)? addPpr,
+    TResult Function(_BackEvent value)? back,
     required TResult orElse(),
   }) {
     if (gotoAddPprScreen != null) {
@@ -438,6 +456,7 @@ class _$_AddPprEvent implements _AddPprEvent {
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) gotoAddPprScreen,
     required TResult Function(PprModel ppr) addPpr,
+    required TResult Function(LastState lastState) back,
   }) {
     return addPpr(ppr);
   }
@@ -448,6 +467,7 @@ class _$_AddPprEvent implements _AddPprEvent {
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? addPpr,
+    TResult? Function(LastState lastState)? back,
   }) {
     return addPpr?.call(ppr);
   }
@@ -458,6 +478,7 @@ class _$_AddPprEvent implements _AddPprEvent {
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? addPpr,
+    TResult Function(LastState lastState)? back,
     required TResult orElse(),
   }) {
     if (addPpr != null) {
@@ -472,6 +493,7 @@ class _$_AddPprEvent implements _AddPprEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoAddPprScreenEvent value) gotoAddPprScreen,
     required TResult Function(_AddPprEvent value) addPpr,
+    required TResult Function(_BackEvent value) back,
   }) {
     return addPpr(this);
   }
@@ -482,6 +504,7 @@ class _$_AddPprEvent implements _AddPprEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult? Function(_AddPprEvent value)? addPpr,
+    TResult? Function(_BackEvent value)? back,
   }) {
     return addPpr?.call(this);
   }
@@ -492,6 +515,7 @@ class _$_AddPprEvent implements _AddPprEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
     TResult Function(_AddPprEvent value)? addPpr,
+    TResult Function(_BackEvent value)? back,
     required TResult orElse(),
   }) {
     if (addPpr != null) {
@@ -511,11 +535,159 @@ abstract class _AddPprEvent implements PprEvent {
 }
 
 /// @nodoc
+abstract class _$$_BackEventCopyWith<$Res> {
+  factory _$$_BackEventCopyWith(
+          _$_BackEvent value, $Res Function(_$_BackEvent) then) =
+      __$$_BackEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LastState lastState});
+}
+
+/// @nodoc
+class __$$_BackEventCopyWithImpl<$Res>
+    extends _$PprEventCopyWithImpl<$Res, _$_BackEvent>
+    implements _$$_BackEventCopyWith<$Res> {
+  __$$_BackEventCopyWithImpl(
+      _$_BackEvent _value, $Res Function(_$_BackEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lastState = null,
+  }) {
+    return _then(_$_BackEvent(
+      null == lastState
+          ? _value.lastState
+          : lastState // ignore: cast_nullable_to_non_nullable
+              as LastState,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_BackEvent implements _BackEvent {
+  const _$_BackEvent(this.lastState);
+
+  @override
+  final LastState lastState;
+
+  @override
+  String toString() {
+    return 'PprEvent.back(lastState: $lastState)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BackEvent &&
+            (identical(other.lastState, lastState) ||
+                other.lastState == lastState));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, lastState);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_BackEventCopyWith<_$_BackEvent> get copyWith =>
+      __$$_BackEventCopyWithImpl<_$_BackEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String equipmentid) initial,
+    required TResult Function(String equipmentid) gotoAddPprScreen,
+    required TResult Function(PprModel ppr) addPpr,
+    required TResult Function(LastState lastState) back,
+  }) {
+    return back(lastState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String equipmentid)? initial,
+    TResult? Function(String equipmentid)? gotoAddPprScreen,
+    TResult? Function(PprModel ppr)? addPpr,
+    TResult? Function(LastState lastState)? back,
+  }) {
+    return back?.call(lastState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String equipmentid)? initial,
+    TResult Function(String equipmentid)? gotoAddPprScreen,
+    TResult Function(PprModel ppr)? addPpr,
+    TResult Function(LastState lastState)? back,
+    required TResult orElse(),
+  }) {
+    if (back != null) {
+      return back(lastState);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_GotoAddPprScreenEvent value) gotoAddPprScreen,
+    required TResult Function(_AddPprEvent value) addPpr,
+    required TResult Function(_BackEvent value) back,
+  }) {
+    return back(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
+    TResult? Function(_AddPprEvent value)? addPpr,
+    TResult? Function(_BackEvent value)? back,
+  }) {
+    return back?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_GotoAddPprScreenEvent value)? gotoAddPprScreen,
+    TResult Function(_AddPprEvent value)? addPpr,
+    TResult Function(_BackEvent value)? back,
+    required TResult orElse(),
+  }) {
+    if (back != null) {
+      return back(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BackEvent implements PprEvent {
+  const factory _BackEvent(final LastState lastState) = _$_BackEvent;
+
+  LastState get lastState;
+  @JsonKey(ignore: true)
+  _$$_BackEventCopyWith<_$_BackEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PprState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
     required TResult Function() loading,
     required TResult Function(String equipmentid) okAdd,
     required TResult Function(String? equipmentid, List<PprModel>? list) data,
@@ -525,6 +697,8 @@ mixin _$PprState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
     TResult? Function()? loading,
     TResult? Function(String equipmentid)? okAdd,
     TResult? Function(String? equipmentid, List<PprModel>? list)? data,
@@ -534,6 +708,8 @@ mixin _$PprState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
     TResult Function()? loading,
     TResult Function(String equipmentid)? okAdd,
     TResult Function(String? equipmentid, List<PprModel>? list)? data,
@@ -544,6 +720,8 @@ mixin _$PprState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_DataState value) data,
@@ -553,6 +731,8 @@ mixin _$PprState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_DataState value)? data,
@@ -562,6 +742,8 @@ mixin _$PprState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkAddState value)? okAdd,
     TResult Function(_DataState value)? data,
@@ -654,6 +836,8 @@ class _$_InitialState implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
     required TResult Function() loading,
     required TResult Function(String equipmentid) okAdd,
     required TResult Function(String? equipmentid, List<PprModel>? list) data,
@@ -666,6 +850,8 @@ class _$_InitialState implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
     TResult? Function()? loading,
     TResult? Function(String equipmentid)? okAdd,
     TResult? Function(String? equipmentid, List<PprModel>? list)? data,
@@ -678,6 +864,8 @@ class _$_InitialState implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
     TResult Function()? loading,
     TResult Function(String equipmentid)? okAdd,
     TResult Function(String? equipmentid, List<PprModel>? list)? data,
@@ -694,6 +882,8 @@ class _$_InitialState implements _InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_DataState value) data,
@@ -706,6 +896,8 @@ class _$_InitialState implements _InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_DataState value)? data,
@@ -718,6 +910,8 @@ class _$_InitialState implements _InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkAddState value)? okAdd,
     TResult Function(_DataState value)? data,
@@ -806,6 +1000,8 @@ class _$_AddScreenState implements _AddScreenState {
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
     required TResult Function() loading,
     required TResult Function(String equipmentid) okAdd,
     required TResult Function(String? equipmentid, List<PprModel>? list) data,
@@ -818,6 +1014,8 @@ class _$_AddScreenState implements _AddScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
     TResult? Function()? loading,
     TResult? Function(String equipmentid)? okAdd,
     TResult? Function(String? equipmentid, List<PprModel>? list)? data,
@@ -830,6 +1028,8 @@ class _$_AddScreenState implements _AddScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
     TResult Function()? loading,
     TResult Function(String equipmentid)? okAdd,
     TResult Function(String? equipmentid, List<PprModel>? list)? data,
@@ -846,6 +1046,8 @@ class _$_AddScreenState implements _AddScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_DataState value) data,
@@ -858,6 +1060,8 @@ class _$_AddScreenState implements _AddScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_DataState value)? data,
@@ -870,6 +1074,8 @@ class _$_AddScreenState implements _AddScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkAddState value)? okAdd,
     TResult Function(_DataState value)? data,
@@ -889,6 +1095,302 @@ abstract class _AddScreenState implements PprState {
   @JsonKey(ignore: true)
   _$$_AddScreenStateCopyWith<_$_AddScreenState> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_Ppr3ScreenStateCopyWith<$Res> {
+  factory _$$_Ppr3ScreenStateCopyWith(
+          _$_Ppr3ScreenState value, $Res Function(_$_Ppr3ScreenState) then) =
+      __$$_Ppr3ScreenStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String equipmentid});
+}
+
+/// @nodoc
+class __$$_Ppr3ScreenStateCopyWithImpl<$Res>
+    extends _$PprStateCopyWithImpl<$Res, _$_Ppr3ScreenState>
+    implements _$$_Ppr3ScreenStateCopyWith<$Res> {
+  __$$_Ppr3ScreenStateCopyWithImpl(
+      _$_Ppr3ScreenState _value, $Res Function(_$_Ppr3ScreenState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipmentid = null,
+  }) {
+    return _then(_$_Ppr3ScreenState(
+      null == equipmentid
+          ? _value.equipmentid
+          : equipmentid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Ppr3ScreenState implements _Ppr3ScreenState {
+  const _$_Ppr3ScreenState(this.equipmentid);
+
+  @override
+  final String equipmentid;
+
+  @override
+  String toString() {
+    return 'PprState.ppr3Screen(equipmentid: $equipmentid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Ppr3ScreenState &&
+            (identical(other.equipmentid, equipmentid) ||
+                other.equipmentid == equipmentid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, equipmentid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_Ppr3ScreenStateCopyWith<_$_Ppr3ScreenState> get copyWith =>
+      __$$_Ppr3ScreenStateCopyWithImpl<_$_Ppr3ScreenState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String equipmentid) initial,
+    required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
+    required TResult Function() loading,
+    required TResult Function(String equipmentid) okAdd,
+    required TResult Function(String? equipmentid, List<PprModel>? list) data,
+  }) {
+    return ppr3Screen(equipmentid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String equipmentid)? initial,
+    TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
+    TResult? Function()? loading,
+    TResult? Function(String equipmentid)? okAdd,
+    TResult? Function(String? equipmentid, List<PprModel>? list)? data,
+  }) {
+    return ppr3Screen?.call(equipmentid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String equipmentid)? initial,
+    TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
+    TResult Function()? loading,
+    TResult Function(String equipmentid)? okAdd,
+    TResult Function(String? equipmentid, List<PprModel>? list)? data,
+    required TResult orElse(),
+  }) {
+    if (ppr3Screen != null) {
+      return ppr3Screen(equipmentid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_OkAddState value) okAdd,
+    required TResult Function(_DataState value) data,
+  }) {
+    return ppr3Screen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_OkAddState value)? okAdd,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return ppr3Screen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_OkAddState value)? okAdd,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (ppr3Screen != null) {
+      return ppr3Screen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Ppr3ScreenState implements PprState {
+  const factory _Ppr3ScreenState(final String equipmentid) = _$_Ppr3ScreenState;
+
+  String get equipmentid;
+  @JsonKey(ignore: true)
+  _$$_Ppr3ScreenStateCopyWith<_$_Ppr3ScreenState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_BackStateCopyWith<$Res> {
+  factory _$$_BackStateCopyWith(
+          _$_BackState value, $Res Function(_$_BackState) then) =
+      __$$_BackStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_BackStateCopyWithImpl<$Res>
+    extends _$PprStateCopyWithImpl<$Res, _$_BackState>
+    implements _$$_BackStateCopyWith<$Res> {
+  __$$_BackStateCopyWithImpl(
+      _$_BackState _value, $Res Function(_$_BackState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_BackState implements _BackState {
+  const _$_BackState();
+
+  @override
+  String toString() {
+    return 'PprState.back()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_BackState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String equipmentid) initial,
+    required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
+    required TResult Function() loading,
+    required TResult Function(String equipmentid) okAdd,
+    required TResult Function(String? equipmentid, List<PprModel>? list) data,
+  }) {
+    return back();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String equipmentid)? initial,
+    TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
+    TResult? Function()? loading,
+    TResult? Function(String equipmentid)? okAdd,
+    TResult? Function(String? equipmentid, List<PprModel>? list)? data,
+  }) {
+    return back?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String equipmentid)? initial,
+    TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
+    TResult Function()? loading,
+    TResult Function(String equipmentid)? okAdd,
+    TResult Function(String? equipmentid, List<PprModel>? list)? data,
+    required TResult orElse(),
+  }) {
+    if (back != null) {
+      return back();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_OkAddState value) okAdd,
+    required TResult Function(_DataState value) data,
+  }) {
+    return back(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_OkAddState value)? okAdd,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return back?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_OkAddState value)? okAdd,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (back != null) {
+      return back(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BackState implements PprState {
+  const factory _BackState() = _$_BackState;
 }
 
 /// @nodoc
@@ -931,6 +1433,8 @@ class _$_LoadingState implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
     required TResult Function() loading,
     required TResult Function(String equipmentid) okAdd,
     required TResult Function(String? equipmentid, List<PprModel>? list) data,
@@ -943,6 +1447,8 @@ class _$_LoadingState implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
     TResult? Function()? loading,
     TResult? Function(String equipmentid)? okAdd,
     TResult? Function(String? equipmentid, List<PprModel>? list)? data,
@@ -955,6 +1461,8 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
     TResult Function()? loading,
     TResult Function(String equipmentid)? okAdd,
     TResult Function(String? equipmentid, List<PprModel>? list)? data,
@@ -971,6 +1479,8 @@ class _$_LoadingState implements _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_DataState value) data,
@@ -983,6 +1493,8 @@ class _$_LoadingState implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_DataState value)? data,
@@ -995,6 +1507,8 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkAddState value)? okAdd,
     TResult Function(_DataState value)? data,
@@ -1078,6 +1592,8 @@ class _$_OkAddState implements _OkAddState {
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
     required TResult Function() loading,
     required TResult Function(String equipmentid) okAdd,
     required TResult Function(String? equipmentid, List<PprModel>? list) data,
@@ -1090,6 +1606,8 @@ class _$_OkAddState implements _OkAddState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
     TResult? Function()? loading,
     TResult? Function(String equipmentid)? okAdd,
     TResult? Function(String? equipmentid, List<PprModel>? list)? data,
@@ -1102,6 +1620,8 @@ class _$_OkAddState implements _OkAddState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
     TResult Function()? loading,
     TResult Function(String equipmentid)? okAdd,
     TResult Function(String? equipmentid, List<PprModel>? list)? data,
@@ -1118,6 +1638,8 @@ class _$_OkAddState implements _OkAddState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_DataState value) data,
@@ -1130,6 +1652,8 @@ class _$_OkAddState implements _OkAddState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_DataState value)? data,
@@ -1142,6 +1666,8 @@ class _$_OkAddState implements _OkAddState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkAddState value)? okAdd,
     TResult Function(_DataState value)? data,
@@ -1248,6 +1774,8 @@ class _$_DataState implements _DataState {
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
     required TResult Function(String equipmentid) addScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
     required TResult Function() loading,
     required TResult Function(String equipmentid) okAdd,
     required TResult Function(String? equipmentid, List<PprModel>? list) data,
@@ -1260,6 +1788,8 @@ class _$_DataState implements _DataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
     TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
     TResult? Function()? loading,
     TResult? Function(String equipmentid)? okAdd,
     TResult? Function(String? equipmentid, List<PprModel>? list)? data,
@@ -1272,6 +1802,8 @@ class _$_DataState implements _DataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
     TResult Function(String equipmentid)? addScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
     TResult Function()? loading,
     TResult Function(String equipmentid)? okAdd,
     TResult Function(String? equipmentid, List<PprModel>? list)? data,
@@ -1288,6 +1820,8 @@ class _$_DataState implements _DataState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_DataState value) data,
@@ -1300,6 +1834,8 @@ class _$_DataState implements _DataState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_DataState value)? data,
@@ -1312,6 +1848,8 @@ class _$_DataState implements _DataState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkAddState value)? okAdd,
     TResult Function(_DataState value)? data,

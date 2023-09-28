@@ -1,3 +1,4 @@
+import 'package:equipment/main_chapter/service/work_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,7 +25,7 @@ Dialog dialogPrioritet(BuildContext context, WorkModel data) {
             children: [
               SvgPicture.asset('assets/type1.svg'),
               Text(
-                data.type!,
+                typeWorks[data.status!],
                 maxLines: 3,
                 style: const TextStyle(color: Color(0xFF666666), fontSize: 12, fontWeight: FontWeight.w700),
               ),
@@ -55,7 +56,7 @@ Dialog dialogPrioritet(BuildContext context, WorkModel data) {
               SvgPicture.asset('assets/oval1.svg'),
               const SizedBox(width: 5),
               Text(
-                data.work!,
+                typeWorks[data.status!],
                 maxLines: 3,
                 style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
               ),
@@ -143,7 +144,7 @@ Dialog dialogNapominanie(BuildContext context, WorkModel data) {
             children: [
               SvgPicture.asset('assets/type2.svg'),
               Text(
-                data.type!,
+                typeWorks[data.status!],
                 style: const TextStyle(color: Color(0xFF666666), fontSize: 12, fontWeight: FontWeight.w700),
               ),
               IconButton(
@@ -173,7 +174,7 @@ Dialog dialogNapominanie(BuildContext context, WorkModel data) {
               SvgPicture.asset('assets/oval1.svg'),
               const SizedBox(width: 5),
               Text(
-                data.work!,
+                typeWorks[data.status!],
                 maxLines: 2,
                 style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
               ),
@@ -205,7 +206,7 @@ Dialog dialogOrder(BuildContext context, WorkModel data) {
             children: [
               SvgPicture.asset('assets/type3.svg'),
               Text(
-                data.type!,
+                typeWorks[data.status!],
                 style: const TextStyle(color: Color(0xFF666666), fontSize: 12, fontWeight: FontWeight.w700),
               ),
               IconButton(
@@ -235,7 +236,7 @@ Dialog dialogOrder(BuildContext context, WorkModel data) {
               SvgPicture.asset('assets/oval1.svg'),
               const SizedBox(width: 5),
               Text(
-                data.work!,
+                typeWorks[data.status!],
                 maxLines: 2,
                 style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
               ),

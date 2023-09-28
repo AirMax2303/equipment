@@ -200,13 +200,12 @@ class EquipmentEdit extends StatelessWidget {
                               builder: (BuildContext context, bool value, Widget? child) {
                                 if (value) {
                                   return FormBuilderTextField(
-                                      name: 'valueproftype',
-                                      initialValue: equipment.valueproftype,
-                                      style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-                                      decoration: AppDecoration.inputEq('Текущее значение работа/часов'),
-                                      validator: FormBuilderValidators.compose([
-                                        FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
-                                      ]));
+                                    name: 'valueproftype',
+                                    readOnly: true,
+                                    initialValue: equipment.valueproftype.toString(),
+                                    style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+                                    decoration: AppDecoration.inputEq('Текущее значение работа/часов'),
+                                  );
                                 } else {
                                   return const SizedBox();
                                 }
@@ -322,4 +321,3 @@ class EquipmentEdit extends StatelessWidget {
     );
   }
 }
-

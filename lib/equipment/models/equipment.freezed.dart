@@ -27,9 +27,9 @@ mixin _$EquipmentModel {
   String? get name1 => throw _privateConstructorUsedError;
   String? get name2 => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  String? get status => throw _privateConstructorUsedError;
+  int? get status => throw _privateConstructorUsedError;
   bool? get proftype => throw _privateConstructorUsedError;
-  String? get valueproftype => throw _privateConstructorUsedError;
+  int? get valueproftype => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,9 +51,9 @@ abstract class $EquipmentModelCopyWith<$Res> {
       String? name1,
       String? name2,
       String? image,
-      String? status,
+      int? status,
       bool? proftype,
-      String? valueproftype});
+      int? valueproftype});
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class _$EquipmentModelCopyWithImpl<$Res, $Val extends EquipmentModel>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       proftype: freezed == proftype
           ? _value.proftype
           : proftype // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ class _$EquipmentModelCopyWithImpl<$Res, $Val extends EquipmentModel>
       valueproftype: freezed == valueproftype
           ? _value.valueproftype
           : valueproftype // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ) as $Val);
   }
 }
@@ -141,9 +141,9 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
       String? name1,
       String? name2,
       String? image,
-      String? status,
+      int? status,
       bool? proftype,
-      String? valueproftype});
+      int? valueproftype});
 }
 
 /// @nodoc
@@ -200,7 +200,7 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       proftype: freezed == proftype
           ? _value.proftype
           : proftype // ignore: cast_nullable_to_non_nullable
@@ -208,7 +208,7 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
       valueproftype: freezed == valueproftype
           ? _value.valueproftype
           : valueproftype // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ));
   }
 }
@@ -224,9 +224,9 @@ class _$_EquipmentModel implements _EquipmentModel {
       this.name1 = '',
       this.name2 = '',
       this.image = '',
-      this.status = '1',
+      this.status = 1,
       this.proftype = false,
-      this.valueproftype = ''});
+      this.valueproftype = 0});
 
   factory _$_EquipmentModel.fromJson(Map<String, dynamic> json) =>
       _$$_EquipmentModelFromJson(json);
@@ -254,13 +254,13 @@ class _$_EquipmentModel implements _EquipmentModel {
   final String? image;
   @override
   @JsonKey()
-  final String? status;
+  final int? status;
   @override
   @JsonKey()
   final bool? proftype;
   @override
   @JsonKey()
-  final String? valueproftype;
+  final int? valueproftype;
 
   @override
   String toString() {
@@ -315,9 +315,9 @@ abstract class _EquipmentModel implements EquipmentModel {
       final String? name1,
       final String? name2,
       final String? image,
-      final String? status,
+      final int? status,
       final bool? proftype,
-      final String? valueproftype}) = _$_EquipmentModel;
+      final int? valueproftype}) = _$_EquipmentModel;
 
   factory _EquipmentModel.fromJson(Map<String, dynamic> json) =
       _$_EquipmentModel.fromJson;
@@ -337,13 +337,158 @@ abstract class _EquipmentModel implements EquipmentModel {
   @override
   String? get image;
   @override
-  String? get status;
+  int? get status;
   @override
   bool? get proftype;
   @override
-  String? get valueproftype;
+  int? get valueproftype;
   @override
   @JsonKey(ignore: true)
   _$$_EquipmentModelCopyWith<_$_EquipmentModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+EquipmentList _$EquipmentListFromJson(Map<String, dynamic> json) {
+  return _EquipmentList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EquipmentList {
+  List<EquipmentModel>? get list => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EquipmentListCopyWith<EquipmentList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EquipmentListCopyWith<$Res> {
+  factory $EquipmentListCopyWith(
+          EquipmentList value, $Res Function(EquipmentList) then) =
+      _$EquipmentListCopyWithImpl<$Res, EquipmentList>;
+  @useResult
+  $Res call({List<EquipmentModel>? list});
+}
+
+/// @nodoc
+class _$EquipmentListCopyWithImpl<$Res, $Val extends EquipmentList>
+    implements $EquipmentListCopyWith<$Res> {
+  _$EquipmentListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_value.copyWith(
+      list: freezed == list
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<EquipmentModel>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_EquipmentListCopyWith<$Res>
+    implements $EquipmentListCopyWith<$Res> {
+  factory _$$_EquipmentListCopyWith(
+          _$_EquipmentList value, $Res Function(_$_EquipmentList) then) =
+      __$$_EquipmentListCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<EquipmentModel>? list});
+}
+
+/// @nodoc
+class __$$_EquipmentListCopyWithImpl<$Res>
+    extends _$EquipmentListCopyWithImpl<$Res, _$_EquipmentList>
+    implements _$$_EquipmentListCopyWith<$Res> {
+  __$$_EquipmentListCopyWithImpl(
+      _$_EquipmentList _value, $Res Function(_$_EquipmentList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_$_EquipmentList(
+      list: freezed == list
+          ? _value._list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<EquipmentModel>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_EquipmentList implements _EquipmentList {
+  const _$_EquipmentList({final List<EquipmentModel>? list}) : _list = list;
+
+  factory _$_EquipmentList.fromJson(Map<String, dynamic> json) =>
+      _$$_EquipmentListFromJson(json);
+
+  final List<EquipmentModel>? _list;
+  @override
+  List<EquipmentModel>? get list {
+    final value = _list;
+    if (value == null) return null;
+    if (_list is EqualUnmodifiableListView) return _list;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'EquipmentList(list: $list)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_EquipmentList &&
+            const DeepCollectionEquality().equals(other._list, _list));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EquipmentListCopyWith<_$_EquipmentList> get copyWith =>
+      __$$_EquipmentListCopyWithImpl<_$_EquipmentList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_EquipmentListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EquipmentList implements EquipmentList {
+  const factory _EquipmentList({final List<EquipmentModel>? list}) =
+      _$_EquipmentList;
+
+  factory _EquipmentList.fromJson(Map<String, dynamic> json) =
+      _$_EquipmentList.fromJson;
+
+  @override
+  List<EquipmentModel>? get list;
+  @override
+  @JsonKey(ignore: true)
+  _$$_EquipmentListCopyWith<_$_EquipmentList> get copyWith =>
       throw _privateConstructorUsedError;
 }

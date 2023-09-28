@@ -17,6 +17,7 @@ class PprBloc extends Bloc<PprEvent, PprState> {
     on<_InitialEvent>(_onInitialEvent);
     on<_GotoAddPprScreenEvent>(_onGotoAddPprScreenEvent);
     on<_AddPprEvent>(_onAddPprEvent);
+    on<_BackEvent>(_onBackEvent);
   }
 
   void _onInitialEvent(_InitialEvent event, Emitter<PprState> emit) async {
@@ -26,10 +27,13 @@ class PprBloc extends Bloc<PprEvent, PprState> {
   void _onGotoAddPprScreenEvent(_GotoAddPprScreenEvent event, Emitter<PprState> emit) async {
     emit(_AddScreenState(event.equipmentid));
   }
-  void _onAddPprEvent(_AddPprEvent event, Emitter<PprState> emit) async {
-    service.addPpr(event.ppr);
-    service.getList(event.ppr.equipmentid).then((value) => emit(_DataState(equipmentid: event.ppr.equipmentid, list: value)));
+
+  void _onBackEvent(_BackEvent event, Emitter<PprState> emit) async {
+    emit(const _BackState());
   }
 
-
+  void _onAddPprEvent(_AddPprEvent event, Emitter<PprState> emit) async {
+    service.addPpr(event.ppr);
+    service.getList(event.ppr.equipmentid).then((value) => emit(_Ppr3ScreenState(event.ppr.equipmentid!)));
+  }
 }

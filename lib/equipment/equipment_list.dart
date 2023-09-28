@@ -14,13 +14,11 @@ import '../other/other.dart';
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
 import '../widgets/widgets.dart';
-import 'equipment_detail.dart';
 import 'equipment_filter.dart';
 
 //ignore: must_be_immutable
-class EquipmentList extends StatelessWidget {
-  EquipmentList(BuildContext context, {Key? key, required this.list, required this.viewList, required this.plotList})
-      : super(key: key);
+class EquipmentListScreen extends StatelessWidget {
+  EquipmentListScreen({Key? key, required this.list, required this.viewList, required this.plotList}) : super(key: key);
   List<EquipmentModel> list;
   List<NameModel> viewList;
   List<NameModel> plotList;
@@ -124,14 +122,10 @@ class EquipmentList extends StatelessWidget {
                                       children: [
                                         Text(
                                           list[index].name1!,
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
-                                        ),
+                                        ).style14w700(),
                                         Text(
                                           list[index].name2!,
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
-                                        )
+                                        ).style12w400()
                                       ],
                                     ),
                                   ],
@@ -147,9 +141,7 @@ class EquipmentList extends StatelessWidget {
                                 const SizedBox(width: 5),
                                 Text(
                                   list[index].plot!,
-                                  style:
-                                      GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
-                                ),
+                                ).style14w700(),
                               ],
                             ),
                           ],

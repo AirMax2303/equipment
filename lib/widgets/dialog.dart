@@ -13,26 +13,29 @@ Dialog dialogCalendar(BuildContext context) {
     insetPadding: const EdgeInsets.all(20),
     child: Padding(
       padding: const EdgeInsets.all(16.0),
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AppSixeBox.size20,
-            CalendarApp(
-              onChangeDate: (value) {
-                date = value;
-              },
-            ),
-            AppButton.filledBlackButton('Сохранить', onPressed: () {
-              Navigator.pop(context, date);
-            }),
-            TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
+      child: SingleChildScrollView(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppSixeBox.size20,
+              CalendarApp(
+                onChangeDate: (value) {
+                  date = value;
                 },
-                child: AppText.blackText12('Отменить')),
-          ],
+              ),
+              AppSixeBox.size16,
+              AppButton.filledBlackButton('Сохранить', onPressed: () {
+                Navigator.pop(context, date);
+              }),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: AppText.blackText12('Отменить')),
+            ],
+          ),
         ),
       ),
     ),

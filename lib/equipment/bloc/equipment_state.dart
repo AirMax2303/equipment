@@ -29,6 +29,10 @@ class EquipmentState with _$EquipmentState {
     required EquipmentModel equipment,
   }) = _GotoDetailScreenState;
 
+  const factory EquipmentState.gotoPprScreen({
+    required EquipmentModel equipment,
+  }) = _GotoPprScreenState;
+
   const factory EquipmentState.data({
     required List<EquipmentModel> list,
     required List<NameModel> viewList,

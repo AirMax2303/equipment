@@ -13,7 +13,7 @@ final router = GoRouter(
         path: '/',
         builder: (context, state) {
           return ProfilePage(const ProfileEvent.initial('profile'));
-          return EquipmentManagement();
+//          return EquipmentManagement(equipmentid: '',);
         },
       ),
 ]

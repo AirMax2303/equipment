@@ -7,6 +7,10 @@ class PprState with _$PprState {
 
   const factory PprState.addScreen(String equipmentid) = _AddScreenState;
 
+  const factory PprState.ppr3Screen(String equipmentid) = _Ppr3ScreenState;
+
+  const factory PprState.back() = _BackState;
+
   const factory PprState.loading() = _LoadingState;
 
   const factory PprState.okAdd(String equipmentid) = _OkAddState;

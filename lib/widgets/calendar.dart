@@ -35,14 +35,12 @@ class CalendarApp extends StatelessWidget {
     void make(DateTime date) {
       DateTime newDate;
       list = List<List<DateTime>>.empty(growable: true);
-//      newDate = date;
       newDate = DateTime(date.year, date.month, date.day - (date.weekday - 1));
       for (int j = 0; j < 6; j++) {
         list.add(List<DateTime>.empty(growable: true));
         for (int i = 0; i < 7; i++) {
           list[j].add(newDate);
           newDate = newDate.nextDay();
-//          newDate = DateTime(newDate.year, newDate.month, newDate.day + 1);
         }
       }
     }

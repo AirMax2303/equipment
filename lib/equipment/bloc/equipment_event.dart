@@ -8,6 +8,7 @@ class EquipmentEvent with _$EquipmentEvent {
   const factory EquipmentEvent.gotoAddScreen() = _GotoAddScreenEvent;
   const factory EquipmentEvent.gotoDetailScreen(EquipmentModel equipment) = _GotoDetailScreenEvent;
   const factory EquipmentEvent.gotoEditScreen(EquipmentModel equipment) = _GotoEditScreenEvent;
+  const factory EquipmentEvent.gotoPprScreen(EquipmentModel equipment) = _GotoPprScreenEvent;
   const factory EquipmentEvent.addView(String view) = _AddViewEvent;
   const factory EquipmentEvent.addViewInEdit(EquipmentModel equipment, String view) = _AddViewInEditEvent;
   const factory EquipmentEvent.addPlot(String plot) = _AddPlotEvent;

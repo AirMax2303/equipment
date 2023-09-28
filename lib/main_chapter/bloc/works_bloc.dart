@@ -16,7 +16,7 @@ class WorkBloc extends Bloc<WorksEvent, WorksState> {
   WorkBloc(this.service) : super(const WorksState.initial()) {
     on<_InitialEvent>(_onInitialEvent);
     on<_GotoPPR5Event>(_onGotoPPR5Event);
-    on<_GotoWorkDay01Event>(_onGotoWorkDay01Event);
+    on<_GotoWorkDayEvent>(_onGotoWorkDayEvent);
   }
 
   void _onInitialEvent(_InitialEvent event,
@@ -24,6 +24,7 @@ class WorkBloc extends Bloc<WorksEvent, WorksState> {
     await service.geList().then((value) {
       emit(
         _DataState(
+          date: event.date,
           list: value,
         ),
       );
@@ -35,9 +36,9 @@ class WorkBloc extends Bloc<WorksEvent, WorksState> {
     emit(const _gotoPPR5State());
   }
 
-  void _onGotoWorkDay01Event(_GotoWorkDay01Event event,
+  void _onGotoWorkDayEvent(_GotoWorkDayEvent event,
       Emitter<WorksState> emit,) async{
-    emit(const _gotoWorkDay01State());
+    emit(_gotoWorkDayState(date: event.date));
   }
 }
 

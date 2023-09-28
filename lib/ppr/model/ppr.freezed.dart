@@ -29,6 +29,7 @@ mixin _$PprModel {
   int? get interval => throw _privateConstructorUsedError;
   DateTime? get begindate => throw _privateConstructorUsedError;
   int? get beginint => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +51,8 @@ abstract class $PprModelCopyWith<$Res> {
       int? repeat,
       int? interval,
       DateTime? begindate,
-      int? beginint});
+      int? beginint,
+      String? image});
 }
 
 /// @nodoc
@@ -75,6 +77,7 @@ class _$PprModelCopyWithImpl<$Res, $Val extends PprModel>
     Object? interval = freezed,
     Object? begindate = freezed,
     Object? beginint = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -113,6 +116,10 @@ class _$PprModelCopyWithImpl<$Res, $Val extends PprModel>
           ? _value.beginint
           : beginint // ignore: cast_nullable_to_non_nullable
               as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -133,7 +140,8 @@ abstract class _$$_PprModelCopyWith<$Res> implements $PprModelCopyWith<$Res> {
       int? repeat,
       int? interval,
       DateTime? begindate,
-      int? beginint});
+      int? beginint,
+      String? image});
 }
 
 /// @nodoc
@@ -156,6 +164,7 @@ class __$$_PprModelCopyWithImpl<$Res>
     Object? interval = freezed,
     Object? begindate = freezed,
     Object? beginint = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$_PprModel(
       id: freezed == id
@@ -194,6 +203,10 @@ class __$$_PprModelCopyWithImpl<$Res>
           ? _value.beginint
           : beginint // ignore: cast_nullable_to_non_nullable
               as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -207,10 +220,11 @@ class _$_PprModel implements _PprModel {
       this.name = '',
       this.priority = false,
       this.proftype = false,
-      this.repeat = 1,
+      this.repeat = 0,
       this.interval = 1,
       this.begindate,
-      this.beginint = 1});
+      this.beginint = 1,
+      this.image = ''});
 
   factory _$_PprModel.fromJson(Map<String, dynamic> json) =>
       _$$_PprModelFromJson(json);
@@ -241,10 +255,13 @@ class _$_PprModel implements _PprModel {
   @override
   @JsonKey()
   final int? beginint;
+  @override
+  @JsonKey()
+  final String? image;
 
   @override
   String toString() {
-    return 'PprModel(id: $id, equipmentid: $equipmentid, name: $name, priority: $priority, proftype: $proftype, repeat: $repeat, interval: $interval, begindate: $begindate, beginint: $beginint)';
+    return 'PprModel(id: $id, equipmentid: $equipmentid, name: $name, priority: $priority, proftype: $proftype, repeat: $repeat, interval: $interval, begindate: $begindate, beginint: $beginint, image: $image)';
   }
 
   @override
@@ -266,13 +283,14 @@ class _$_PprModel implements _PprModel {
             (identical(other.begindate, begindate) ||
                 other.begindate == begindate) &&
             (identical(other.beginint, beginint) ||
-                other.beginint == beginint));
+                other.beginint == beginint) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, equipmentid, name, priority,
-      proftype, repeat, interval, begindate, beginint);
+      proftype, repeat, interval, begindate, beginint, image);
 
   @JsonKey(ignore: true)
   @override
@@ -298,7 +316,8 @@ abstract class _PprModel implements PprModel {
       final int? repeat,
       final int? interval,
       final DateTime? begindate,
-      final int? beginint}) = _$_PprModel;
+      final int? beginint,
+      final String? image}) = _$_PprModel;
 
   factory _PprModel.fromJson(Map<String, dynamic> json) = _$_PprModel.fromJson;
 
@@ -321,7 +340,148 @@ abstract class _PprModel implements PprModel {
   @override
   int? get beginint;
   @override
+  String? get image;
+  @override
   @JsonKey(ignore: true)
   _$$_PprModelCopyWith<_$_PprModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PprList _$PprListFromJson(Map<String, dynamic> json) {
+  return _PprList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PprList {
+  List<PprModel>? get list => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PprListCopyWith<PprList> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PprListCopyWith<$Res> {
+  factory $PprListCopyWith(PprList value, $Res Function(PprList) then) =
+      _$PprListCopyWithImpl<$Res, PprList>;
+  @useResult
+  $Res call({List<PprModel>? list});
+}
+
+/// @nodoc
+class _$PprListCopyWithImpl<$Res, $Val extends PprList>
+    implements $PprListCopyWith<$Res> {
+  _$PprListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_value.copyWith(
+      list: freezed == list
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<PprModel>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PprListCopyWith<$Res> implements $PprListCopyWith<$Res> {
+  factory _$$_PprListCopyWith(
+          _$_PprList value, $Res Function(_$_PprList) then) =
+      __$$_PprListCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<PprModel>? list});
+}
+
+/// @nodoc
+class __$$_PprListCopyWithImpl<$Res>
+    extends _$PprListCopyWithImpl<$Res, _$_PprList>
+    implements _$$_PprListCopyWith<$Res> {
+  __$$_PprListCopyWithImpl(_$_PprList _value, $Res Function(_$_PprList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_$_PprList(
+      list: freezed == list
+          ? _value._list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<PprModel>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PprList implements _PprList {
+  const _$_PprList({final List<PprModel>? list}) : _list = list;
+
+  factory _$_PprList.fromJson(Map<String, dynamic> json) =>
+      _$$_PprListFromJson(json);
+
+  final List<PprModel>? _list;
+  @override
+  List<PprModel>? get list {
+    final value = _list;
+    if (value == null) return null;
+    if (_list is EqualUnmodifiableListView) return _list;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'PprList(list: $list)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PprList &&
+            const DeepCollectionEquality().equals(other._list, _list));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PprListCopyWith<_$_PprList> get copyWith =>
+      __$$_PprListCopyWithImpl<_$_PprList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PprListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PprList implements PprList {
+  const factory _PprList({final List<PprModel>? list}) = _$_PprList;
+
+  factory _PprList.fromJson(Map<String, dynamic> json) = _$_PprList.fromJson;
+
+  @override
+  List<PprModel>? get list;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PprListCopyWith<_$_PprList> get copyWith =>
       throw _privateConstructorUsedError;
 }

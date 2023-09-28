@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:get_it/get_it.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../order/model/order.dart';
 import '../../profile/service/profile_service.dart';
 import '../models/equipment.dart';
 import '../models/info.dart';
@@ -74,6 +75,14 @@ class EquipmentService {
 
   Future<List<EquipmentModel>> getEquipmentList() async {
     list = getlist();
+    final EquipmentModel equipment = EquipmentModel();
+    const OrderModel order = OrderModel();
+//    final json = equipment.toJson();
+    final json = order.toJson();
+    print('----------------------------------------------');
+    for (var s in json.keys) {
+      print("'" + s + "':" + " order." + s + ',');
+    }
     return list;
   }
 
@@ -200,10 +209,25 @@ class EquipmentService {
           plot: plotWorks[random.nextInt(4)].name,
           name1: 'Станок ' + (random.nextInt(50) + 1).toString(),
           name2: stanWorks[random.nextInt(9)],
-          status: (r + 1).toString());
+          valueproftype: 0,
+          status: r + 1);
       list.add(work);
       listInfo.add(List<InfoModel>.empty(growable: true));
     }
     return list;
   }
 }
+
+
+/*
+'id':equipment.id
+'clientid':equipment.clientid
+'view':equipment.view
+'plot':equipment.plot
+'name1':equipment.name1
+'name2':equipment.name2
+'image':equipment.image
+'status':equipment.status
+'proftype':equipment.proftype
+'valueproftype':equipment.valueproftype
+*/

@@ -176,8 +176,9 @@ class EquipmentAdd extends StatelessWidget {
                                 name2: formKey.currentState?.fields['name2']?.value,
                                 view: formKey.currentState?.fields['view']?.value,
                                 plot: formKey.currentState?.fields['plot']?.value,
+                                valueproftype: 0,
                                 image: file?.path ?? '',
-                                status: '1',
+                                status: 1,
                               )));
                             }
                           }),

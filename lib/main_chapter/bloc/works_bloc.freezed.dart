@@ -18,23 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WorksEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(DateTime date) initial,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
+    required TResult Function(DateTime date) gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(DateTime date)? initial,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
+    TResult? Function(DateTime date)? gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(DateTime date)? initial,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
+    TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +42,21 @@ mixin _$WorksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoPPR5Event value) gotoPPR5,
-    required TResult Function(_GotoWorkDay01Event value) gotoWorkDay01,
+    required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult? Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -85,6 +85,8 @@ abstract class _$$_InitialEventCopyWith<$Res> {
   factory _$$_InitialEventCopyWith(
           _$_InitialEvent value, $Res Function(_$_InitialEvent) then) =
       __$$_InitialEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime date});
 }
 
 /// @nodoc
@@ -94,57 +96,81 @@ class __$$_InitialEventCopyWithImpl<$Res>
   __$$_InitialEventCopyWithImpl(
       _$_InitialEvent _value, $Res Function(_$_InitialEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$_InitialEvent(
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_InitialEvent implements _InitialEvent {
-  const _$_InitialEvent();
+  const _$_InitialEvent(this.date);
+
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'WorksEvent.initial()';
+    return 'WorksEvent.initial(date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$_InitialEvent &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InitialEventCopyWith<_$_InitialEvent> get copyWith =>
+      __$$_InitialEventCopyWithImpl<_$_InitialEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(DateTime date) initial,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
+    required TResult Function(DateTime date) gotoWorkDay,
   }) {
-    return initial();
+    return initial(date);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(DateTime date)? initial,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
+    TResult? Function(DateTime date)? gotoWorkDay,
   }) {
-    return initial?.call();
+    return initial?.call(date);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(DateTime date)? initial,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
+    TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(date);
     }
     return orElse();
   }
@@ -154,7 +180,7 @@ class _$_InitialEvent implements _InitialEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoPPR5Event value) gotoPPR5,
-    required TResult Function(_GotoWorkDay01Event value) gotoWorkDay01,
+    required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) {
     return initial(this);
   }
@@ -164,7 +190,7 @@ class _$_InitialEvent implements _InitialEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult? Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) {
     return initial?.call(this);
   }
@@ -174,7 +200,7 @@ class _$_InitialEvent implements _InitialEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -185,7 +211,12 @@ class _$_InitialEvent implements _InitialEvent {
 }
 
 abstract class _InitialEvent implements WorksEvent {
-  const factory _InitialEvent() = _$_InitialEvent;
+  const factory _InitialEvent(final DateTime date) = _$_InitialEvent;
+
+  DateTime get date;
+  @JsonKey(ignore: true)
+  _$$_InitialEventCopyWith<_$_InitialEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -226,9 +257,9 @@ class _$_GotoPPR5Event implements _GotoPPR5Event {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(DateTime date) initial,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
+    required TResult Function(DateTime date) gotoWorkDay,
   }) {
     return gotoPPR5();
   }
@@ -236,9 +267,9 @@ class _$_GotoPPR5Event implements _GotoPPR5Event {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(DateTime date)? initial,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
+    TResult? Function(DateTime date)? gotoWorkDay,
   }) {
     return gotoPPR5?.call();
   }
@@ -246,9 +277,9 @@ class _$_GotoPPR5Event implements _GotoPPR5Event {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(DateTime date)? initial,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
+    TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) {
     if (gotoPPR5 != null) {
@@ -262,7 +293,7 @@ class _$_GotoPPR5Event implements _GotoPPR5Event {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoPPR5Event value) gotoPPR5,
-    required TResult Function(_GotoWorkDay01Event value) gotoWorkDay01,
+    required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) {
     return gotoPPR5(this);
   }
@@ -272,7 +303,7 @@ class _$_GotoPPR5Event implements _GotoPPR5Event {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult? Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) {
     return gotoPPR5?.call(this);
   }
@@ -282,7 +313,7 @@ class _$_GotoPPR5Event implements _GotoPPR5Event {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) {
     if (gotoPPR5 != null) {
@@ -297,70 +328,96 @@ abstract class _GotoPPR5Event implements WorksEvent {
 }
 
 /// @nodoc
-abstract class _$$_GotoWorkDay01EventCopyWith<$Res> {
-  factory _$$_GotoWorkDay01EventCopyWith(_$_GotoWorkDay01Event value,
-          $Res Function(_$_GotoWorkDay01Event) then) =
-      __$$_GotoWorkDay01EventCopyWithImpl<$Res>;
+abstract class _$$_GotoWorkDayEventCopyWith<$Res> {
+  factory _$$_GotoWorkDayEventCopyWith(
+          _$_GotoWorkDayEvent value, $Res Function(_$_GotoWorkDayEvent) then) =
+      __$$_GotoWorkDayEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime date});
 }
 
 /// @nodoc
-class __$$_GotoWorkDay01EventCopyWithImpl<$Res>
-    extends _$WorksEventCopyWithImpl<$Res, _$_GotoWorkDay01Event>
-    implements _$$_GotoWorkDay01EventCopyWith<$Res> {
-  __$$_GotoWorkDay01EventCopyWithImpl(
-      _$_GotoWorkDay01Event _value, $Res Function(_$_GotoWorkDay01Event) _then)
+class __$$_GotoWorkDayEventCopyWithImpl<$Res>
+    extends _$WorksEventCopyWithImpl<$Res, _$_GotoWorkDayEvent>
+    implements _$$_GotoWorkDayEventCopyWith<$Res> {
+  __$$_GotoWorkDayEventCopyWithImpl(
+      _$_GotoWorkDayEvent _value, $Res Function(_$_GotoWorkDayEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$_GotoWorkDayEvent(
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_GotoWorkDay01Event implements _GotoWorkDay01Event {
-  const _$_GotoWorkDay01Event();
+class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
+  const _$_GotoWorkDayEvent(this.date);
+
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'WorksEvent.gotoWorkDay01()';
+    return 'WorksEvent.gotoWorkDay(date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GotoWorkDay01Event);
+        (other.runtimeType == runtimeType &&
+            other is _$_GotoWorkDayEvent &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GotoWorkDayEventCopyWith<_$_GotoWorkDayEvent> get copyWith =>
+      __$$_GotoWorkDayEventCopyWithImpl<_$_GotoWorkDayEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(DateTime date) initial,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
+    required TResult Function(DateTime date) gotoWorkDay,
   }) {
-    return gotoWorkDay01();
+    return gotoWorkDay(date);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(DateTime date)? initial,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
+    TResult? Function(DateTime date)? gotoWorkDay,
   }) {
-    return gotoWorkDay01?.call();
+    return gotoWorkDay?.call(date);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(DateTime date)? initial,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
+    TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) {
-    if (gotoWorkDay01 != null) {
-      return gotoWorkDay01();
+    if (gotoWorkDay != null) {
+      return gotoWorkDay(date);
     }
     return orElse();
   }
@@ -370,9 +427,9 @@ class _$_GotoWorkDay01Event implements _GotoWorkDay01Event {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GotoPPR5Event value) gotoPPR5,
-    required TResult Function(_GotoWorkDay01Event value) gotoWorkDay01,
+    required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) {
-    return gotoWorkDay01(this);
+    return gotoWorkDay(this);
   }
 
   @override
@@ -380,9 +437,9 @@ class _$_GotoWorkDay01Event implements _GotoWorkDay01Event {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult? Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) {
-    return gotoWorkDay01?.call(this);
+    return gotoWorkDay?.call(this);
   }
 
   @override
@@ -390,18 +447,23 @@ class _$_GotoWorkDay01Event implements _GotoWorkDay01Event {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GotoPPR5Event value)? gotoPPR5,
-    TResult Function(_GotoWorkDay01Event value)? gotoWorkDay01,
+    TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) {
-    if (gotoWorkDay01 != null) {
-      return gotoWorkDay01(this);
+    if (gotoWorkDay != null) {
+      return gotoWorkDay(this);
     }
     return orElse();
   }
 }
 
-abstract class _GotoWorkDay01Event implements WorksEvent {
-  const factory _GotoWorkDay01Event() = _$_GotoWorkDay01Event;
+abstract class _GotoWorkDayEvent implements WorksEvent {
+  const factory _GotoWorkDayEvent(final DateTime date) = _$_GotoWorkDayEvent;
+
+  DateTime get date;
+  @JsonKey(ignore: true)
+  _$$_GotoWorkDayEventCopyWith<_$_GotoWorkDayEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -412,8 +474,8 @@ mixin _$WorksState {
     required TResult Function() loading,
     required TResult Function() noData,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
-    required TResult Function(List<WorkModel> list) data,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<WorkModel> list) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -422,8 +484,8 @@ mixin _$WorksState {
     TResult? Function()? loading,
     TResult? Function()? noData,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
-    TResult? Function(List<WorkModel> list)? data,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<WorkModel> list)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -432,8 +494,8 @@ mixin _$WorksState {
     TResult Function()? loading,
     TResult Function()? noData,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
-    TResult Function(List<WorkModel> list)? data,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<WorkModel> list)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -443,7 +505,7 @@ mixin _$WorksState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDay01State value) gotoWorkDay01,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) =>
       throw _privateConstructorUsedError;
@@ -453,7 +515,7 @@ mixin _$WorksState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) =>
       throw _privateConstructorUsedError;
@@ -463,7 +525,7 @@ mixin _$WorksState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
     TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) =>
@@ -530,8 +592,8 @@ class _$_InitialState implements _InitialState {
     required TResult Function() loading,
     required TResult Function() noData,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
-    required TResult Function(List<WorkModel> list) data,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<WorkModel> list) data,
   }) {
     return initial();
   }
@@ -543,8 +605,8 @@ class _$_InitialState implements _InitialState {
     TResult? Function()? loading,
     TResult? Function()? noData,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
-    TResult? Function(List<WorkModel> list)? data,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<WorkModel> list)? data,
   }) {
     return initial?.call();
   }
@@ -556,8 +618,8 @@ class _$_InitialState implements _InitialState {
     TResult Function()? loading,
     TResult Function()? noData,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
-    TResult Function(List<WorkModel> list)? data,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<WorkModel> list)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -573,7 +635,7 @@ class _$_InitialState implements _InitialState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDay01State value) gotoWorkDay01,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
     return initial(this);
@@ -586,7 +648,7 @@ class _$_InitialState implements _InitialState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
     return initial?.call(this);
@@ -599,7 +661,7 @@ class _$_InitialState implements _InitialState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
     TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -656,8 +718,8 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function() loading,
     required TResult Function() noData,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
-    required TResult Function(List<WorkModel> list) data,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<WorkModel> list) data,
   }) {
     return loading();
   }
@@ -669,8 +731,8 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function()? loading,
     TResult? Function()? noData,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
-    TResult? Function(List<WorkModel> list)? data,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<WorkModel> list)? data,
   }) {
     return loading?.call();
   }
@@ -682,8 +744,8 @@ class _$_LoadingState implements _LoadingState {
     TResult Function()? loading,
     TResult Function()? noData,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
-    TResult Function(List<WorkModel> list)? data,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<WorkModel> list)? data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -699,7 +761,7 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDay01State value) gotoWorkDay01,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
     return loading(this);
@@ -712,7 +774,7 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
     return loading?.call(this);
@@ -725,7 +787,7 @@ class _$_LoadingState implements _LoadingState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
     TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -782,8 +844,8 @@ class _$_noDataState implements _noDataState {
     required TResult Function() loading,
     required TResult Function() noData,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
-    required TResult Function(List<WorkModel> list) data,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<WorkModel> list) data,
   }) {
     return noData();
   }
@@ -795,8 +857,8 @@ class _$_noDataState implements _noDataState {
     TResult? Function()? loading,
     TResult? Function()? noData,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
-    TResult? Function(List<WorkModel> list)? data,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<WorkModel> list)? data,
   }) {
     return noData?.call();
   }
@@ -808,8 +870,8 @@ class _$_noDataState implements _noDataState {
     TResult Function()? loading,
     TResult Function()? noData,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
-    TResult Function(List<WorkModel> list)? data,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<WorkModel> list)? data,
     required TResult orElse(),
   }) {
     if (noData != null) {
@@ -825,7 +887,7 @@ class _$_noDataState implements _noDataState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDay01State value) gotoWorkDay01,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
     return noData(this);
@@ -838,7 +900,7 @@ class _$_noDataState implements _noDataState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
     return noData?.call(this);
@@ -851,7 +913,7 @@ class _$_noDataState implements _noDataState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
     TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -908,8 +970,8 @@ class _$_gotoPPR5State implements _gotoPPR5State {
     required TResult Function() loading,
     required TResult Function() noData,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
-    required TResult Function(List<WorkModel> list) data,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<WorkModel> list) data,
   }) {
     return gotoPPR5();
   }
@@ -921,8 +983,8 @@ class _$_gotoPPR5State implements _gotoPPR5State {
     TResult? Function()? loading,
     TResult? Function()? noData,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
-    TResult? Function(List<WorkModel> list)? data,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<WorkModel> list)? data,
   }) {
     return gotoPPR5?.call();
   }
@@ -934,8 +996,8 @@ class _$_gotoPPR5State implements _gotoPPR5State {
     TResult Function()? loading,
     TResult Function()? noData,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
-    TResult Function(List<WorkModel> list)? data,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<WorkModel> list)? data,
     required TResult orElse(),
   }) {
     if (gotoPPR5 != null) {
@@ -951,7 +1013,7 @@ class _$_gotoPPR5State implements _gotoPPR5State {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDay01State value) gotoWorkDay01,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
     return gotoPPR5(this);
@@ -964,7 +1026,7 @@ class _$_gotoPPR5State implements _gotoPPR5State {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
     return gotoPPR5?.call(this);
@@ -977,7 +1039,7 @@ class _$_gotoPPR5State implements _gotoPPR5State {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
     TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -993,39 +1055,65 @@ abstract class _gotoPPR5State implements WorksState {
 }
 
 /// @nodoc
-abstract class _$$_gotoWorkDay01StateCopyWith<$Res> {
-  factory _$$_gotoWorkDay01StateCopyWith(_$_gotoWorkDay01State value,
-          $Res Function(_$_gotoWorkDay01State) then) =
-      __$$_gotoWorkDay01StateCopyWithImpl<$Res>;
+abstract class _$$_gotoWorkDayStateCopyWith<$Res> {
+  factory _$$_gotoWorkDayStateCopyWith(
+          _$_gotoWorkDayState value, $Res Function(_$_gotoWorkDayState) then) =
+      __$$_gotoWorkDayStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime date});
 }
 
 /// @nodoc
-class __$$_gotoWorkDay01StateCopyWithImpl<$Res>
-    extends _$WorksStateCopyWithImpl<$Res, _$_gotoWorkDay01State>
-    implements _$$_gotoWorkDay01StateCopyWith<$Res> {
-  __$$_gotoWorkDay01StateCopyWithImpl(
-      _$_gotoWorkDay01State _value, $Res Function(_$_gotoWorkDay01State) _then)
+class __$$_gotoWorkDayStateCopyWithImpl<$Res>
+    extends _$WorksStateCopyWithImpl<$Res, _$_gotoWorkDayState>
+    implements _$$_gotoWorkDayStateCopyWith<$Res> {
+  __$$_gotoWorkDayStateCopyWithImpl(
+      _$_gotoWorkDayState _value, $Res Function(_$_gotoWorkDayState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$_gotoWorkDayState(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_gotoWorkDay01State implements _gotoWorkDay01State {
-  const _$_gotoWorkDay01State();
+class _$_gotoWorkDayState implements _gotoWorkDayState {
+  const _$_gotoWorkDayState({required this.date});
+
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'WorksState.gotoWorkDay01()';
+    return 'WorksState.gotoWorkDay(date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_gotoWorkDay01State);
+        (other.runtimeType == runtimeType &&
+            other is _$_gotoWorkDayState &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_gotoWorkDayStateCopyWith<_$_gotoWorkDayState> get copyWith =>
+      __$$_gotoWorkDayStateCopyWithImpl<_$_gotoWorkDayState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1034,10 +1122,10 @@ class _$_gotoWorkDay01State implements _gotoWorkDay01State {
     required TResult Function() loading,
     required TResult Function() noData,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
-    required TResult Function(List<WorkModel> list) data,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<WorkModel> list) data,
   }) {
-    return gotoWorkDay01();
+    return gotoWorkDay(date);
   }
 
   @override
@@ -1047,10 +1135,10 @@ class _$_gotoWorkDay01State implements _gotoWorkDay01State {
     TResult? Function()? loading,
     TResult? Function()? noData,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
-    TResult? Function(List<WorkModel> list)? data,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<WorkModel> list)? data,
   }) {
-    return gotoWorkDay01?.call();
+    return gotoWorkDay?.call(date);
   }
 
   @override
@@ -1060,12 +1148,12 @@ class _$_gotoWorkDay01State implements _gotoWorkDay01State {
     TResult Function()? loading,
     TResult Function()? noData,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
-    TResult Function(List<WorkModel> list)? data,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<WorkModel> list)? data,
     required TResult orElse(),
   }) {
-    if (gotoWorkDay01 != null) {
-      return gotoWorkDay01();
+    if (gotoWorkDay != null) {
+      return gotoWorkDay(date);
     }
     return orElse();
   }
@@ -1077,10 +1165,10 @@ class _$_gotoWorkDay01State implements _gotoWorkDay01State {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDay01State value) gotoWorkDay01,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
-    return gotoWorkDay01(this);
+    return gotoWorkDay(this);
   }
 
   @override
@@ -1090,10 +1178,10 @@ class _$_gotoWorkDay01State implements _gotoWorkDay01State {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
-    return gotoWorkDay01?.call(this);
+    return gotoWorkDay?.call(this);
   }
 
   @override
@@ -1103,19 +1191,25 @@ class _$_gotoWorkDay01State implements _gotoWorkDay01State {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
     TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
-    if (gotoWorkDay01 != null) {
-      return gotoWorkDay01(this);
+    if (gotoWorkDay != null) {
+      return gotoWorkDay(this);
     }
     return orElse();
   }
 }
 
-abstract class _gotoWorkDay01State implements WorksState {
-  const factory _gotoWorkDay01State() = _$_gotoWorkDay01State;
+abstract class _gotoWorkDayState implements WorksState {
+  const factory _gotoWorkDayState({required final DateTime date}) =
+      _$_gotoWorkDayState;
+
+  DateTime get date;
+  @JsonKey(ignore: true)
+  _$$_gotoWorkDayStateCopyWith<_$_gotoWorkDayState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1124,7 +1218,7 @@ abstract class _$$_DataStateCopyWith<$Res> {
           _$_DataState value, $Res Function(_$_DataState) then) =
       __$$_DataStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<WorkModel> list});
+  $Res call({DateTime date, List<WorkModel> list});
 }
 
 /// @nodoc
@@ -1138,9 +1232,14 @@ class __$$_DataStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? date = null,
     Object? list = null,
   }) {
     return _then(_$_DataState(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       list: null == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
@@ -1152,8 +1251,11 @@ class __$$_DataStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DataState implements _DataState {
-  const _$_DataState({required final List<WorkModel> list}) : _list = list;
+  const _$_DataState({required this.date, required final List<WorkModel> list})
+      : _list = list;
 
+  @override
+  final DateTime date;
   final List<WorkModel> _list;
   @override
   List<WorkModel> get list {
@@ -1164,7 +1266,7 @@ class _$_DataState implements _DataState {
 
   @override
   String toString() {
-    return 'WorksState.data(list: $list)';
+    return 'WorksState.data(date: $date, list: $list)';
   }
 
   @override
@@ -1172,12 +1274,13 @@ class _$_DataState implements _DataState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DataState &&
+            (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
+  int get hashCode => Object.hash(
+      runtimeType, date, const DeepCollectionEquality().hash(_list));
 
   @JsonKey(ignore: true)
   @override
@@ -1192,10 +1295,10 @@ class _$_DataState implements _DataState {
     required TResult Function() loading,
     required TResult Function() noData,
     required TResult Function() gotoPPR5,
-    required TResult Function() gotoWorkDay01,
-    required TResult Function(List<WorkModel> list) data,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<WorkModel> list) data,
   }) {
-    return data(list);
+    return data(date, list);
   }
 
   @override
@@ -1205,10 +1308,10 @@ class _$_DataState implements _DataState {
     TResult? Function()? loading,
     TResult? Function()? noData,
     TResult? Function()? gotoPPR5,
-    TResult? Function()? gotoWorkDay01,
-    TResult? Function(List<WorkModel> list)? data,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<WorkModel> list)? data,
   }) {
-    return data?.call(list);
+    return data?.call(date, list);
   }
 
   @override
@@ -1218,12 +1321,12 @@ class _$_DataState implements _DataState {
     TResult Function()? loading,
     TResult Function()? noData,
     TResult Function()? gotoPPR5,
-    TResult Function()? gotoWorkDay01,
-    TResult Function(List<WorkModel> list)? data,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<WorkModel> list)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(list);
+      return data(date, list);
     }
     return orElse();
   }
@@ -1235,7 +1338,7 @@ class _$_DataState implements _DataState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDay01State value) gotoWorkDay01,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
     return data(this);
@@ -1248,7 +1351,7 @@ class _$_DataState implements _DataState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
     return data?.call(this);
@@ -1261,7 +1364,7 @@ class _$_DataState implements _DataState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
     TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDay01State value)? gotoWorkDay01,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -1273,9 +1376,11 @@ class _$_DataState implements _DataState {
 }
 
 abstract class _DataState implements WorksState {
-  const factory _DataState({required final List<WorkModel> list}) =
-      _$_DataState;
+  const factory _DataState(
+      {required final DateTime date,
+      required final List<WorkModel> list}) = _$_DataState;
 
+  DateTime get date;
   List<WorkModel> get list;
   @JsonKey(ignore: true)
   _$$_DataStateCopyWith<_$_DataState> get copyWith =>
