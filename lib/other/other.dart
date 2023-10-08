@@ -3,7 +3,11 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-const String backendUrl = 'http://192.168.31.185:5000';
+import '../models/models.dart';
+
+//const String backendUrl = 'http://62.183.34.180:5000';
+//const String backendUrl = 'http://192.168.31.185:5000';
+const String backendUrl = 'http://192.168.46.16:5000';
 
 String utf8convert(String text) {
   List<int> bytes = text.toString().codeUnits;
@@ -39,6 +43,17 @@ extension MyDateTime on DateTime {
   DateTime prevMonth() => month == 1 ? DateTime(year - 1, 12, day) : add(const Duration(days: -30));
 }
 
+enum PprType {time, workTime, saveWorkTime}
+
+String typeWorks(WorkModel work) {
+  List<String> list = ['Заявка', 'По времени', 'По работа/часам', 'Запись работа/часы'];
+  if (work.priority!) {
+    return 'Приоритетная';
+  } else {
+    return list[work.worktype!];
+  }
+}
+
 String spKey = 'profile';
 
 String username = 'eq092023@mail.ru';
@@ -47,11 +62,23 @@ String password = 'uGXQH6Htf17jafpuxedA';
 extension TextExtension on Text {
   Text setStyle(TextStyle style) => copyWith(style: style);
 
+  Text style12w300({Color? color}) =>
+      copyWith(style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300, color: color ?? Colors.black));
+
   Text style12w400({Color? color}) =>
       copyWith(style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: color ?? Colors.black));
 
+  Text style12w500({Color? color}) =>
+      copyWith(style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: color ?? Colors.black));
+
   Text style12w700({Color? color}) =>
       copyWith(style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: color ?? Colors.black));
+
+  Text style13w500({Color? color}) =>
+      copyWith(style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: color ?? Colors.black));
+
+  Text style14w400({Color? color}) =>
+      copyWith(style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: color ?? Colors.black));
 
   Text style14w500({Color? color}) =>
       copyWith(style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: color ?? Colors.black));
@@ -61,6 +88,15 @@ extension TextExtension on Text {
 
   Text style16w400({Color? color}) =>
       copyWith(style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: color ?? Colors.black));
+
+  Text style16w500({Color? color}) =>
+      copyWith(style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: color ?? Colors.black));
+
+  Text style16w700({Color? color}) =>
+      copyWith(style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: color ?? Colors.black));
+
+  Text style18w700({Color? color}) =>
+      copyWith(style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: color ?? Colors.black));
 
   Text setFontFamily(String fontFamily) => copyWith(style: TextStyle(fontFamily: fontFamily));
 

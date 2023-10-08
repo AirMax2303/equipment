@@ -8,6 +8,7 @@ part 'name.g.dart';
 @freezed
 class NameModel with _$NameModel {
   const factory NameModel({
+    @Default('') String? id,
     @Default('') String? name,
   }) = _NameModel;
 

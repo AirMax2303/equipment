@@ -5,8 +5,8 @@ import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
 import '../widgets/widgets.dart';
 
-class Ppr10Screen extends StatelessWidget {
-  const Ppr10Screen({Key? key}) : super(key: key);
+class _Ppr10Screen extends StatelessWidget {
+  const _Ppr10Screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +27,11 @@ class Ppr10Screen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppSixeBox.size20,
+                  const SizedBox(height: 20),
                   SvgPicture.asset('assets/spare_logo.svg'),
-                  AppSixeBox.size20,
+                  const SizedBox(height: 20),
                   AppText.blackText18('Находится'),
-                  AppSixeBox.size5,
+                  const SizedBox(height: 5),
                   AppText.blackText18('в разработке'),
                 ],
               ),

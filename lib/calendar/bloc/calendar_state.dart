@@ -17,7 +17,7 @@ class CalendarState with _$CalendarState {
 
   const factory CalendarState.data({
     required DateTime date,
-    required List<CalendarView>? list
+    required List<CalendarData>? list
   }) = _DataState;
 
 }  

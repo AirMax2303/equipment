@@ -1,36 +1,21 @@
-import 'dart:math';
-import 'package:uuid/uuid.dart';
-
+import '../../models/models.dart';
+import '../../repository/repository.dart';
 import '../model/calendar_model.dart';
 
 class CalendarService {
-  List<CalendarModel> list = [];
-  List<CalendarView> viewList = [];
+  final AppRepository repo;
+  List<CalendarData> list = [];
 
-  get random => null;
+  CalendarService(this.repo);
 
-  Future<List<CalendarModel>> getCalendarList(DateTime date) async {
+  Future<List<CalendarData>> getCalendarList(bool histiry, DateTime date) async {
+    list.clear();
+    final List<IdModel> equipmentList = await repo.calendarGetEquipmentModelList(histiry, date);
+    for (var i = 0; i < equipmentList.length; ++i) {
+      final equipments = await repo.getEquipment(equipmentList[i].id!);
+      final workList = await repo.calendarGetWorkModelEquipmentList(histiry, date, equipmentList[i].id!);
+      equipments.isNotEmpty ? list.add(CalendarData(date, equipments[0], workList)) : null;
+    }
     return list;
-  }
-
-  Future<List<CalendarView>> getCalendarViewList(DateTime date) async {
-    var uuid = const Uuid();
-    Random random = Random();
-    int r = random.nextInt(3);
-    viewList = List<CalendarView>.generate(20, (index) {
-      r = random.nextInt(3);
-      return CalendarView(
-        calendar: CalendarModel(
-          name1: uuid.v1().substring(1, 30),
-          name2: uuid.v1().substring(1, 30),
-          plot: uuid.v1().substring(1, 30),
-        ),
-        list: List<WorkDayModel>.generate(r + 1, (index) {
-          r = random.nextInt(3);
-          return WorkDayModel(name: uuid.v1().substring(1, 30), state: r + 1, priority: index == 1 ? true : false);
-        }),
-      );
-    });
-    return viewList;
   }
 }

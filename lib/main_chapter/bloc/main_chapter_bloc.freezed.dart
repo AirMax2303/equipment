@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'works_bloc.dart';
+part of 'main_chapter_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,25 +15,25 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$WorksEvent {
+mixin _$MainChapterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime date) initial,
-    required TResult Function() gotoPPR5,
+    required TResult Function(WorkModel work, DateTime newDate) changeDate,
     required TResult Function(DateTime date) gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime date)? initial,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(WorkModel work, DateTime newDate)? changeDate,
     TResult? Function(DateTime date)? gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime date)? initial,
-    TResult Function()? gotoPPR5,
+    TResult Function(WorkModel work, DateTime newDate)? changeDate,
     TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) =>
@@ -41,21 +41,21 @@ mixin _$WorksEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_GotoPPR5Event value) gotoPPR5,
+    required TResult Function(_ChangeDateEvent value) changeDate,
     required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult? Function(_ChangeDateEvent value)? changeDate,
     TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult Function(_ChangeDateEvent value)? changeDate,
     TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) =>
@@ -63,16 +63,16 @@ mixin _$WorksEvent {
 }
 
 /// @nodoc
-abstract class $WorksEventCopyWith<$Res> {
-  factory $WorksEventCopyWith(
-          WorksEvent value, $Res Function(WorksEvent) then) =
-      _$WorksEventCopyWithImpl<$Res, WorksEvent>;
+abstract class $MainChapterEventCopyWith<$Res> {
+  factory $MainChapterEventCopyWith(
+          MainChapterEvent value, $Res Function(MainChapterEvent) then) =
+      _$MainChapterEventCopyWithImpl<$Res, MainChapterEvent>;
 }
 
 /// @nodoc
-class _$WorksEventCopyWithImpl<$Res, $Val extends WorksEvent>
-    implements $WorksEventCopyWith<$Res> {
-  _$WorksEventCopyWithImpl(this._value, this._then);
+class _$MainChapterEventCopyWithImpl<$Res, $Val extends MainChapterEvent>
+    implements $MainChapterEventCopyWith<$Res> {
+  _$MainChapterEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,20 +81,20 @@ class _$WorksEventCopyWithImpl<$Res, $Val extends WorksEvent>
 }
 
 /// @nodoc
-abstract class _$$_InitialEventCopyWith<$Res> {
-  factory _$$_InitialEventCopyWith(
-          _$_InitialEvent value, $Res Function(_$_InitialEvent) then) =
-      __$$_InitialEventCopyWithImpl<$Res>;
+abstract class _$$InitialEventImplCopyWith<$Res> {
+  factory _$$InitialEventImplCopyWith(
+          _$InitialEventImpl value, $Res Function(_$InitialEventImpl) then) =
+      __$$InitialEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime date});
 }
 
 /// @nodoc
-class __$$_InitialEventCopyWithImpl<$Res>
-    extends _$WorksEventCopyWithImpl<$Res, _$_InitialEvent>
-    implements _$$_InitialEventCopyWith<$Res> {
-  __$$_InitialEventCopyWithImpl(
-      _$_InitialEvent _value, $Res Function(_$_InitialEvent) _then)
+class __$$InitialEventImplCopyWithImpl<$Res>
+    extends _$MainChapterEventCopyWithImpl<$Res, _$InitialEventImpl>
+    implements _$$InitialEventImplCopyWith<$Res> {
+  __$$InitialEventImplCopyWithImpl(
+      _$InitialEventImpl _value, $Res Function(_$InitialEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$_InitialEventCopyWithImpl<$Res>
   $Res call({
     Object? date = null,
   }) {
-    return _then(_$_InitialEvent(
+    return _then(_$InitialEventImpl(
       null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -113,22 +113,22 @@ class __$$_InitialEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InitialEvent implements _InitialEvent {
-  const _$_InitialEvent(this.date);
+class _$InitialEventImpl implements _InitialEvent {
+  const _$InitialEventImpl(this.date);
 
   @override
   final DateTime date;
 
   @override
   String toString() {
-    return 'WorksEvent.initial(date: $date)';
+    return 'MainChapterEvent.initial(date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitialEvent &&
+            other is _$InitialEventImpl &&
             (identical(other.date, date) || other.date == date));
   }
 
@@ -138,14 +138,14 @@ class _$_InitialEvent implements _InitialEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialEventCopyWith<_$_InitialEvent> get copyWith =>
-      __$$_InitialEventCopyWithImpl<_$_InitialEvent>(this, _$identity);
+  _$$InitialEventImplCopyWith<_$InitialEventImpl> get copyWith =>
+      __$$InitialEventImplCopyWithImpl<_$InitialEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime date) initial,
-    required TResult Function() gotoPPR5,
+    required TResult Function(WorkModel work, DateTime newDate) changeDate,
     required TResult Function(DateTime date) gotoWorkDay,
   }) {
     return initial(date);
@@ -155,7 +155,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime date)? initial,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(WorkModel work, DateTime newDate)? changeDate,
     TResult? Function(DateTime date)? gotoWorkDay,
   }) {
     return initial?.call(date);
@@ -165,7 +165,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime date)? initial,
-    TResult Function()? gotoPPR5,
+    TResult Function(WorkModel work, DateTime newDate)? changeDate,
     TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) {
@@ -179,7 +179,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_GotoPPR5Event value) gotoPPR5,
+    required TResult Function(_ChangeDateEvent value) changeDate,
     required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) {
     return initial(this);
@@ -189,7 +189,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult? Function(_ChangeDateEvent value)? changeDate,
     TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) {
     return initial?.call(this);
@@ -199,7 +199,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult Function(_ChangeDateEvent value)? changeDate,
     TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) {
@@ -210,80 +210,125 @@ class _$_InitialEvent implements _InitialEvent {
   }
 }
 
-abstract class _InitialEvent implements WorksEvent {
-  const factory _InitialEvent(final DateTime date) = _$_InitialEvent;
+abstract class _InitialEvent implements MainChapterEvent {
+  const factory _InitialEvent(final DateTime date) = _$InitialEventImpl;
 
   DateTime get date;
   @JsonKey(ignore: true)
-  _$$_InitialEventCopyWith<_$_InitialEvent> get copyWith =>
+  _$$InitialEventImplCopyWith<_$InitialEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotoPPR5EventCopyWith<$Res> {
-  factory _$$_GotoPPR5EventCopyWith(
-          _$_GotoPPR5Event value, $Res Function(_$_GotoPPR5Event) then) =
-      __$$_GotoPPR5EventCopyWithImpl<$Res>;
+abstract class _$$ChangeDateEventImplCopyWith<$Res> {
+  factory _$$ChangeDateEventImplCopyWith(_$ChangeDateEventImpl value,
+          $Res Function(_$ChangeDateEventImpl) then) =
+      __$$ChangeDateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WorkModel work, DateTime newDate});
+
+  $WorkModelCopyWith<$Res> get work;
 }
 
 /// @nodoc
-class __$$_GotoPPR5EventCopyWithImpl<$Res>
-    extends _$WorksEventCopyWithImpl<$Res, _$_GotoPPR5Event>
-    implements _$$_GotoPPR5EventCopyWith<$Res> {
-  __$$_GotoPPR5EventCopyWithImpl(
-      _$_GotoPPR5Event _value, $Res Function(_$_GotoPPR5Event) _then)
+class __$$ChangeDateEventImplCopyWithImpl<$Res>
+    extends _$MainChapterEventCopyWithImpl<$Res, _$ChangeDateEventImpl>
+    implements _$$ChangeDateEventImplCopyWith<$Res> {
+  __$$ChangeDateEventImplCopyWithImpl(
+      _$ChangeDateEventImpl _value, $Res Function(_$ChangeDateEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? work = null,
+    Object? newDate = null,
+  }) {
+    return _then(_$ChangeDateEventImpl(
+      null == work
+          ? _value.work
+          : work // ignore: cast_nullable_to_non_nullable
+              as WorkModel,
+      null == newDate
+          ? _value.newDate
+          : newDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WorkModelCopyWith<$Res> get work {
+    return $WorkModelCopyWith<$Res>(_value.work, (value) {
+      return _then(_value.copyWith(work: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$_GotoPPR5Event implements _GotoPPR5Event {
-  const _$_GotoPPR5Event();
+class _$ChangeDateEventImpl implements _ChangeDateEvent {
+  const _$ChangeDateEventImpl(this.work, this.newDate);
+
+  @override
+  final WorkModel work;
+  @override
+  final DateTime newDate;
 
   @override
   String toString() {
-    return 'WorksEvent.gotoPPR5()';
+    return 'MainChapterEvent.changeDate(work: $work, newDate: $newDate)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GotoPPR5Event);
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeDateEventImpl &&
+            (identical(other.work, work) || other.work == work) &&
+            (identical(other.newDate, newDate) || other.newDate == newDate));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, work, newDate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeDateEventImplCopyWith<_$ChangeDateEventImpl> get copyWith =>
+      __$$ChangeDateEventImplCopyWithImpl<_$ChangeDateEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime date) initial,
-    required TResult Function() gotoPPR5,
+    required TResult Function(WorkModel work, DateTime newDate) changeDate,
     required TResult Function(DateTime date) gotoWorkDay,
   }) {
-    return gotoPPR5();
+    return changeDate(work, newDate);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime date)? initial,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(WorkModel work, DateTime newDate)? changeDate,
     TResult? Function(DateTime date)? gotoWorkDay,
   }) {
-    return gotoPPR5?.call();
+    return changeDate?.call(work, newDate);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime date)? initial,
-    TResult Function()? gotoPPR5,
+    TResult Function(WorkModel work, DateTime newDate)? changeDate,
     TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) {
-    if (gotoPPR5 != null) {
-      return gotoPPR5();
+    if (changeDate != null) {
+      return changeDate(work, newDate);
     }
     return orElse();
   }
@@ -292,56 +337,63 @@ class _$_GotoPPR5Event implements _GotoPPR5Event {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_GotoPPR5Event value) gotoPPR5,
+    required TResult Function(_ChangeDateEvent value) changeDate,
     required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) {
-    return gotoPPR5(this);
+    return changeDate(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult? Function(_ChangeDateEvent value)? changeDate,
     TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) {
-    return gotoPPR5?.call(this);
+    return changeDate?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult Function(_ChangeDateEvent value)? changeDate,
     TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) {
-    if (gotoPPR5 != null) {
-      return gotoPPR5(this);
+    if (changeDate != null) {
+      return changeDate(this);
     }
     return orElse();
   }
 }
 
-abstract class _GotoPPR5Event implements WorksEvent {
-  const factory _GotoPPR5Event() = _$_GotoPPR5Event;
+abstract class _ChangeDateEvent implements MainChapterEvent {
+  const factory _ChangeDateEvent(final WorkModel work, final DateTime newDate) =
+      _$ChangeDateEventImpl;
+
+  WorkModel get work;
+  DateTime get newDate;
+  @JsonKey(ignore: true)
+  _$$ChangeDateEventImplCopyWith<_$ChangeDateEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotoWorkDayEventCopyWith<$Res> {
-  factory _$$_GotoWorkDayEventCopyWith(
-          _$_GotoWorkDayEvent value, $Res Function(_$_GotoWorkDayEvent) then) =
-      __$$_GotoWorkDayEventCopyWithImpl<$Res>;
+abstract class _$$GotoWorkDayEventImplCopyWith<$Res> {
+  factory _$$GotoWorkDayEventImplCopyWith(_$GotoWorkDayEventImpl value,
+          $Res Function(_$GotoWorkDayEventImpl) then) =
+      __$$GotoWorkDayEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime date});
 }
 
 /// @nodoc
-class __$$_GotoWorkDayEventCopyWithImpl<$Res>
-    extends _$WorksEventCopyWithImpl<$Res, _$_GotoWorkDayEvent>
-    implements _$$_GotoWorkDayEventCopyWith<$Res> {
-  __$$_GotoWorkDayEventCopyWithImpl(
-      _$_GotoWorkDayEvent _value, $Res Function(_$_GotoWorkDayEvent) _then)
+class __$$GotoWorkDayEventImplCopyWithImpl<$Res>
+    extends _$MainChapterEventCopyWithImpl<$Res, _$GotoWorkDayEventImpl>
+    implements _$$GotoWorkDayEventImplCopyWith<$Res> {
+  __$$GotoWorkDayEventImplCopyWithImpl(_$GotoWorkDayEventImpl _value,
+      $Res Function(_$GotoWorkDayEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -349,7 +401,7 @@ class __$$_GotoWorkDayEventCopyWithImpl<$Res>
   $Res call({
     Object? date = null,
   }) {
-    return _then(_$_GotoWorkDayEvent(
+    return _then(_$GotoWorkDayEventImpl(
       null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -360,22 +412,22 @@ class __$$_GotoWorkDayEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
-  const _$_GotoWorkDayEvent(this.date);
+class _$GotoWorkDayEventImpl implements _GotoWorkDayEvent {
+  const _$GotoWorkDayEventImpl(this.date);
 
   @override
   final DateTime date;
 
   @override
   String toString() {
-    return 'WorksEvent.gotoWorkDay(date: $date)';
+    return 'MainChapterEvent.gotoWorkDay(date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotoWorkDayEvent &&
+            other is _$GotoWorkDayEventImpl &&
             (identical(other.date, date) || other.date == date));
   }
 
@@ -385,14 +437,15 @@ class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotoWorkDayEventCopyWith<_$_GotoWorkDayEvent> get copyWith =>
-      __$$_GotoWorkDayEventCopyWithImpl<_$_GotoWorkDayEvent>(this, _$identity);
+  _$$GotoWorkDayEventImplCopyWith<_$GotoWorkDayEventImpl> get copyWith =>
+      __$$GotoWorkDayEventImplCopyWithImpl<_$GotoWorkDayEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime date) initial,
-    required TResult Function() gotoPPR5,
+    required TResult Function(WorkModel work, DateTime newDate) changeDate,
     required TResult Function(DateTime date) gotoWorkDay,
   }) {
     return gotoWorkDay(date);
@@ -402,7 +455,7 @@ class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime date)? initial,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(WorkModel work, DateTime newDate)? changeDate,
     TResult? Function(DateTime date)? gotoWorkDay,
   }) {
     return gotoWorkDay?.call(date);
@@ -412,7 +465,7 @@ class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime date)? initial,
-    TResult Function()? gotoPPR5,
+    TResult Function(WorkModel work, DateTime newDate)? changeDate,
     TResult Function(DateTime date)? gotoWorkDay,
     required TResult orElse(),
   }) {
@@ -426,7 +479,7 @@ class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_GotoPPR5Event value) gotoPPR5,
+    required TResult Function(_ChangeDateEvent value) changeDate,
     required TResult Function(_GotoWorkDayEvent value) gotoWorkDay,
   }) {
     return gotoWorkDay(this);
@@ -436,7 +489,7 @@ class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult? Function(_ChangeDateEvent value)? changeDate,
     TResult? Function(_GotoWorkDayEvent value)? gotoWorkDay,
   }) {
     return gotoWorkDay?.call(this);
@@ -446,7 +499,7 @@ class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_GotoPPR5Event value)? gotoPPR5,
+    TResult Function(_ChangeDateEvent value)? changeDate,
     TResult Function(_GotoWorkDayEvent value)? gotoWorkDay,
     required TResult orElse(),
   }) {
@@ -457,25 +510,25 @@ class _$_GotoWorkDayEvent implements _GotoWorkDayEvent {
   }
 }
 
-abstract class _GotoWorkDayEvent implements WorksEvent {
-  const factory _GotoWorkDayEvent(final DateTime date) = _$_GotoWorkDayEvent;
+abstract class _GotoWorkDayEvent implements MainChapterEvent {
+  const factory _GotoWorkDayEvent(final DateTime date) = _$GotoWorkDayEventImpl;
 
   DateTime get date;
   @JsonKey(ignore: true)
-  _$$_GotoWorkDayEventCopyWith<_$_GotoWorkDayEvent> get copyWith =>
+  _$$GotoWorkDayEventImplCopyWith<_$GotoWorkDayEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$WorksState {
+mixin _$MainChapterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() noData,
-    required TResult Function() gotoPPR5,
+    required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
-    required TResult Function(DateTime date, List<WorkModel> list) data,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -483,9 +536,9 @@ mixin _$WorksState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? noData,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
-    TResult? Function(DateTime date, List<WorkModel> list)? data,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -493,9 +546,9 @@ mixin _$WorksState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? noData,
-    TResult Function()? gotoPPR5,
+    TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
-    TResult Function(DateTime date, List<WorkModel> list)? data,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -504,7 +557,7 @@ mixin _$WorksState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
-    required TResult Function(_gotoPPR5State value) gotoPPR5,
+    required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) =>
@@ -514,7 +567,7 @@ mixin _$WorksState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
-    TResult? Function(_gotoPPR5State value)? gotoPPR5,
+    TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) =>
@@ -524,7 +577,7 @@ mixin _$WorksState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
-    TResult Function(_gotoPPR5State value)? gotoPPR5,
+    TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
@@ -533,16 +586,16 @@ mixin _$WorksState {
 }
 
 /// @nodoc
-abstract class $WorksStateCopyWith<$Res> {
-  factory $WorksStateCopyWith(
-          WorksState value, $Res Function(WorksState) then) =
-      _$WorksStateCopyWithImpl<$Res, WorksState>;
+abstract class $MainChapterStateCopyWith<$Res> {
+  factory $MainChapterStateCopyWith(
+          MainChapterState value, $Res Function(MainChapterState) then) =
+      _$MainChapterStateCopyWithImpl<$Res, MainChapterState>;
 }
 
 /// @nodoc
-class _$WorksStateCopyWithImpl<$Res, $Val extends WorksState>
-    implements $WorksStateCopyWith<$Res> {
-  _$WorksStateCopyWithImpl(this._value, this._then);
+class _$MainChapterStateCopyWithImpl<$Res, $Val extends MainChapterState>
+    implements $MainChapterStateCopyWith<$Res> {
+  _$MainChapterStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -551,35 +604,35 @@ class _$WorksStateCopyWithImpl<$Res, $Val extends WorksState>
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(
-          _$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$WorksStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(
-      _$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$MainChapterStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialState implements _InitialState {
-  const _$_InitialState();
+class _$InitialStateImpl implements _InitialState {
+  const _$InitialStateImpl();
 
   @override
   String toString() {
-    return 'WorksState.initial()';
+    return 'MainChapterState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialStateImpl);
   }
 
   @override
@@ -591,9 +644,9 @@ class _$_InitialState implements _InitialState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() noData,
-    required TResult Function() gotoPPR5,
+    required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
-    required TResult Function(DateTime date, List<WorkModel> list) data,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
   }) {
     return initial();
   }
@@ -604,9 +657,9 @@ class _$_InitialState implements _InitialState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? noData,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
-    TResult? Function(DateTime date, List<WorkModel> list)? data,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
   }) {
     return initial?.call();
   }
@@ -617,9 +670,9 @@ class _$_InitialState implements _InitialState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? noData,
-    TResult Function()? gotoPPR5,
+    TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
-    TResult Function(DateTime date, List<WorkModel> list)? data,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -634,7 +687,7 @@ class _$_InitialState implements _InitialState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
-    required TResult Function(_gotoPPR5State value) gotoPPR5,
+    required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
@@ -647,7 +700,7 @@ class _$_InitialState implements _InitialState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
-    TResult? Function(_gotoPPR5State value)? gotoPPR5,
+    TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
@@ -660,7 +713,7 @@ class _$_InitialState implements _InitialState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
-    TResult Function(_gotoPPR5State value)? gotoPPR5,
+    TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
@@ -672,40 +725,40 @@ class _$_InitialState implements _InitialState {
   }
 }
 
-abstract class _InitialState implements WorksState {
-  const factory _InitialState() = _$_InitialState;
+abstract class _InitialState implements MainChapterState {
+  const factory _InitialState() = _$InitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(
-          _$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$WorksStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(
-      _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$MainChapterStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingState implements _LoadingState {
-  const _$_LoadingState();
+class _$LoadingStateImpl implements _LoadingState {
+  const _$LoadingStateImpl();
 
   @override
   String toString() {
-    return 'WorksState.loading()';
+    return 'MainChapterState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingState);
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
   }
 
   @override
@@ -717,9 +770,9 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() noData,
-    required TResult Function() gotoPPR5,
+    required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
-    required TResult Function(DateTime date, List<WorkModel> list) data,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
   }) {
     return loading();
   }
@@ -730,9 +783,9 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? noData,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
-    TResult? Function(DateTime date, List<WorkModel> list)? data,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
   }) {
     return loading?.call();
   }
@@ -743,9 +796,9 @@ class _$_LoadingState implements _LoadingState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? noData,
-    TResult Function()? gotoPPR5,
+    TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
-    TResult Function(DateTime date, List<WorkModel> list)? data,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -760,7 +813,7 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
-    required TResult Function(_gotoPPR5State value) gotoPPR5,
+    required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
@@ -773,7 +826,7 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
-    TResult? Function(_gotoPPR5State value)? gotoPPR5,
+    TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
@@ -786,7 +839,7 @@ class _$_LoadingState implements _LoadingState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
-    TResult Function(_gotoPPR5State value)? gotoPPR5,
+    TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
@@ -798,40 +851,40 @@ class _$_LoadingState implements _LoadingState {
   }
 }
 
-abstract class _LoadingState implements WorksState {
-  const factory _LoadingState() = _$_LoadingState;
+abstract class _LoadingState implements MainChapterState {
+  const factory _LoadingState() = _$LoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_noDataStateCopyWith<$Res> {
-  factory _$$_noDataStateCopyWith(
-          _$_noDataState value, $Res Function(_$_noDataState) then) =
-      __$$_noDataStateCopyWithImpl<$Res>;
+abstract class _$$noDataStateImplCopyWith<$Res> {
+  factory _$$noDataStateImplCopyWith(
+          _$noDataStateImpl value, $Res Function(_$noDataStateImpl) then) =
+      __$$noDataStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_noDataStateCopyWithImpl<$Res>
-    extends _$WorksStateCopyWithImpl<$Res, _$_noDataState>
-    implements _$$_noDataStateCopyWith<$Res> {
-  __$$_noDataStateCopyWithImpl(
-      _$_noDataState _value, $Res Function(_$_noDataState) _then)
+class __$$noDataStateImplCopyWithImpl<$Res>
+    extends _$MainChapterStateCopyWithImpl<$Res, _$noDataStateImpl>
+    implements _$$noDataStateImplCopyWith<$Res> {
+  __$$noDataStateImplCopyWithImpl(
+      _$noDataStateImpl _value, $Res Function(_$noDataStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_noDataState implements _noDataState {
-  const _$_noDataState();
+class _$noDataStateImpl implements _noDataState {
+  const _$noDataStateImpl();
 
   @override
   String toString() {
-    return 'WorksState.noData()';
+    return 'MainChapterState.noData()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_noDataState);
+        (other.runtimeType == runtimeType && other is _$noDataStateImpl);
   }
 
   @override
@@ -843,9 +896,9 @@ class _$_noDataState implements _noDataState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() noData,
-    required TResult Function() gotoPPR5,
+    required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
-    required TResult Function(DateTime date, List<WorkModel> list) data,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
   }) {
     return noData();
   }
@@ -856,9 +909,9 @@ class _$_noDataState implements _noDataState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? noData,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
-    TResult? Function(DateTime date, List<WorkModel> list)? data,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
   }) {
     return noData?.call();
   }
@@ -869,9 +922,9 @@ class _$_noDataState implements _noDataState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? noData,
-    TResult Function()? gotoPPR5,
+    TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
-    TResult Function(DateTime date, List<WorkModel> list)? data,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
     required TResult orElse(),
   }) {
     if (noData != null) {
@@ -886,7 +939,7 @@ class _$_noDataState implements _noDataState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
-    required TResult Function(_gotoPPR5State value) gotoPPR5,
+    required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
@@ -899,7 +952,7 @@ class _$_noDataState implements _noDataState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
-    TResult? Function(_gotoPPR5State value)? gotoPPR5,
+    TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
@@ -912,7 +965,7 @@ class _$_noDataState implements _noDataState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
-    TResult Function(_gotoPPR5State value)? gotoPPR5,
+    TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
@@ -924,151 +977,25 @@ class _$_noDataState implements _noDataState {
   }
 }
 
-abstract class _noDataState implements WorksState {
-  const factory _noDataState() = _$_noDataState;
+abstract class _noDataState implements MainChapterState {
+  const factory _noDataState() = _$noDataStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_gotoPPR5StateCopyWith<$Res> {
-  factory _$$_gotoPPR5StateCopyWith(
-          _$_gotoPPR5State value, $Res Function(_$_gotoPPR5State) then) =
-      __$$_gotoPPR5StateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_gotoPPR5StateCopyWithImpl<$Res>
-    extends _$WorksStateCopyWithImpl<$Res, _$_gotoPPR5State>
-    implements _$$_gotoPPR5StateCopyWith<$Res> {
-  __$$_gotoPPR5StateCopyWithImpl(
-      _$_gotoPPR5State _value, $Res Function(_$_gotoPPR5State) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_gotoPPR5State implements _gotoPPR5State {
-  const _$_gotoPPR5State();
-
-  @override
-  String toString() {
-    return 'WorksState.gotoPPR5()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_gotoPPR5State);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() noData,
-    required TResult Function() gotoPPR5,
-    required TResult Function(DateTime date) gotoWorkDay,
-    required TResult Function(DateTime date, List<WorkModel> list) data,
-  }) {
-    return gotoPPR5();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? noData,
-    TResult? Function()? gotoPPR5,
-    TResult? Function(DateTime date)? gotoWorkDay,
-    TResult? Function(DateTime date, List<WorkModel> list)? data,
-  }) {
-    return gotoPPR5?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? noData,
-    TResult Function()? gotoPPR5,
-    TResult Function(DateTime date)? gotoWorkDay,
-    TResult Function(DateTime date, List<WorkModel> list)? data,
-    required TResult orElse(),
-  }) {
-    if (gotoPPR5 != null) {
-      return gotoPPR5();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initial,
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_noDataState value) noData,
-    required TResult Function(_gotoPPR5State value) gotoPPR5,
-    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
-    required TResult Function(_DataState value) data,
-  }) {
-    return gotoPPR5(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialState value)? initial,
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_noDataState value)? noData,
-    TResult? Function(_gotoPPR5State value)? gotoPPR5,
-    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
-    TResult? Function(_DataState value)? data,
-  }) {
-    return gotoPPR5?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initial,
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_noDataState value)? noData,
-    TResult Function(_gotoPPR5State value)? gotoPPR5,
-    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
-    TResult Function(_DataState value)? data,
-    required TResult orElse(),
-  }) {
-    if (gotoPPR5 != null) {
-      return gotoPPR5(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _gotoPPR5State implements WorksState {
-  const factory _gotoPPR5State() = _$_gotoPPR5State;
-}
-
-/// @nodoc
-abstract class _$$_gotoWorkDayStateCopyWith<$Res> {
-  factory _$$_gotoWorkDayStateCopyWith(
-          _$_gotoWorkDayState value, $Res Function(_$_gotoWorkDayState) then) =
-      __$$_gotoWorkDayStateCopyWithImpl<$Res>;
+abstract class _$$DateChangedStateImplCopyWith<$Res> {
+  factory _$$DateChangedStateImplCopyWith(_$DateChangedStateImpl value,
+          $Res Function(_$DateChangedStateImpl) then) =
+      __$$DateChangedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime date});
 }
 
 /// @nodoc
-class __$$_gotoWorkDayStateCopyWithImpl<$Res>
-    extends _$WorksStateCopyWithImpl<$Res, _$_gotoWorkDayState>
-    implements _$$_gotoWorkDayStateCopyWith<$Res> {
-  __$$_gotoWorkDayStateCopyWithImpl(
-      _$_gotoWorkDayState _value, $Res Function(_$_gotoWorkDayState) _then)
+class __$$DateChangedStateImplCopyWithImpl<$Res>
+    extends _$MainChapterStateCopyWithImpl<$Res, _$DateChangedStateImpl>
+    implements _$$DateChangedStateImplCopyWith<$Res> {
+  __$$DateChangedStateImplCopyWithImpl(_$DateChangedStateImpl _value,
+      $Res Function(_$DateChangedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1076,7 +1003,7 @@ class __$$_gotoWorkDayStateCopyWithImpl<$Res>
   $Res call({
     Object? date = null,
   }) {
-    return _then(_$_gotoWorkDayState(
+    return _then(_$DateChangedStateImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -1087,22 +1014,22 @@ class __$$_gotoWorkDayStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_gotoWorkDayState implements _gotoWorkDayState {
-  const _$_gotoWorkDayState({required this.date});
+class _$DateChangedStateImpl implements _DateChangedState {
+  const _$DateChangedStateImpl({required this.date});
 
   @override
   final DateTime date;
 
   @override
   String toString() {
-    return 'WorksState.gotoWorkDay(date: $date)';
+    return 'MainChapterState.dateChanged(date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_gotoWorkDayState &&
+            other is _$DateChangedStateImpl &&
             (identical(other.date, date) || other.date == date));
   }
 
@@ -1112,8 +1039,9 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_gotoWorkDayStateCopyWith<_$_gotoWorkDayState> get copyWith =>
-      __$$_gotoWorkDayStateCopyWithImpl<_$_gotoWorkDayState>(this, _$identity);
+  _$$DateChangedStateImplCopyWith<_$DateChangedStateImpl> get copyWith =>
+      __$$DateChangedStateImplCopyWithImpl<_$DateChangedStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1121,9 +1049,168 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() noData,
-    required TResult Function() gotoPPR5,
+    required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
-    required TResult Function(DateTime date, List<WorkModel> list) data,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
+  }) {
+    return dateChanged(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? noData,
+    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
+  }) {
+    return dateChanged?.call(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? noData,
+    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
+    required TResult orElse(),
+  }) {
+    if (dateChanged != null) {
+      return dateChanged(date);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_noDataState value) noData,
+    required TResult Function(_DateChangedState value) dateChanged,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
+    required TResult Function(_DataState value) data,
+  }) {
+    return dateChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_noDataState value)? noData,
+    TResult? Function(_DateChangedState value)? dateChanged,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return dateChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_noDataState value)? noData,
+    TResult Function(_DateChangedState value)? dateChanged,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (dateChanged != null) {
+      return dateChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DateChangedState implements MainChapterState {
+  const factory _DateChangedState({required final DateTime date}) =
+      _$DateChangedStateImpl;
+
+  DateTime get date;
+  @JsonKey(ignore: true)
+  _$$DateChangedStateImplCopyWith<_$DateChangedStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$gotoWorkDayStateImplCopyWith<$Res> {
+  factory _$$gotoWorkDayStateImplCopyWith(_$gotoWorkDayStateImpl value,
+          $Res Function(_$gotoWorkDayStateImpl) then) =
+      __$$gotoWorkDayStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime date});
+}
+
+/// @nodoc
+class __$$gotoWorkDayStateImplCopyWithImpl<$Res>
+    extends _$MainChapterStateCopyWithImpl<$Res, _$gotoWorkDayStateImpl>
+    implements _$$gotoWorkDayStateImplCopyWith<$Res> {
+  __$$gotoWorkDayStateImplCopyWithImpl(_$gotoWorkDayStateImpl _value,
+      $Res Function(_$gotoWorkDayStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$gotoWorkDayStateImpl(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$gotoWorkDayStateImpl implements _gotoWorkDayState {
+  const _$gotoWorkDayStateImpl({required this.date});
+
+  @override
+  final DateTime date;
+
+  @override
+  String toString() {
+    return 'MainChapterState.gotoWorkDay(date: $date)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$gotoWorkDayStateImpl &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$gotoWorkDayStateImplCopyWith<_$gotoWorkDayStateImpl> get copyWith =>
+      __$$gotoWorkDayStateImplCopyWithImpl<_$gotoWorkDayStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() noData,
+    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
   }) {
     return gotoWorkDay(date);
   }
@@ -1134,9 +1221,9 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? noData,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
-    TResult? Function(DateTime date, List<WorkModel> list)? data,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
   }) {
     return gotoWorkDay?.call(date);
   }
@@ -1147,9 +1234,9 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? noData,
-    TResult Function()? gotoPPR5,
+    TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
-    TResult Function(DateTime date, List<WorkModel> list)? data,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
     required TResult orElse(),
   }) {
     if (gotoWorkDay != null) {
@@ -1164,7 +1251,7 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
-    required TResult Function(_gotoPPR5State value) gotoPPR5,
+    required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
@@ -1177,7 +1264,7 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
-    TResult? Function(_gotoPPR5State value)? gotoPPR5,
+    TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
@@ -1190,7 +1277,7 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
-    TResult Function(_gotoPPR5State value)? gotoPPR5,
+    TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
@@ -1202,31 +1289,31 @@ class _$_gotoWorkDayState implements _gotoWorkDayState {
   }
 }
 
-abstract class _gotoWorkDayState implements WorksState {
+abstract class _gotoWorkDayState implements MainChapterState {
   const factory _gotoWorkDayState({required final DateTime date}) =
-      _$_gotoWorkDayState;
+      _$gotoWorkDayStateImpl;
 
   DateTime get date;
   @JsonKey(ignore: true)
-  _$$_gotoWorkDayStateCopyWith<_$_gotoWorkDayState> get copyWith =>
+  _$$gotoWorkDayStateImplCopyWith<_$gotoWorkDayStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DataStateCopyWith<$Res> {
-  factory _$$_DataStateCopyWith(
-          _$_DataState value, $Res Function(_$_DataState) then) =
-      __$$_DataStateCopyWithImpl<$Res>;
+abstract class _$$DataStateImplCopyWith<$Res> {
+  factory _$$DataStateImplCopyWith(
+          _$DataStateImpl value, $Res Function(_$DataStateImpl) then) =
+      __$$DataStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({DateTime date, List<WorkModel> list});
+  $Res call({DateTime date, List<MainChapterData> list});
 }
 
 /// @nodoc
-class __$$_DataStateCopyWithImpl<$Res>
-    extends _$WorksStateCopyWithImpl<$Res, _$_DataState>
-    implements _$$_DataStateCopyWith<$Res> {
-  __$$_DataStateCopyWithImpl(
-      _$_DataState _value, $Res Function(_$_DataState) _then)
+class __$$DataStateImplCopyWithImpl<$Res>
+    extends _$MainChapterStateCopyWithImpl<$Res, _$DataStateImpl>
+    implements _$$DataStateImplCopyWith<$Res> {
+  __$$DataStateImplCopyWithImpl(
+      _$DataStateImpl _value, $Res Function(_$DataStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1235,7 +1322,7 @@ class __$$_DataStateCopyWithImpl<$Res>
     Object? date = null,
     Object? list = null,
   }) {
-    return _then(_$_DataState(
+    return _then(_$DataStateImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -1243,22 +1330,23 @@ class __$$_DataStateCopyWithImpl<$Res>
       list: null == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
-              as List<WorkModel>,
+              as List<MainChapterData>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_DataState implements _DataState {
-  const _$_DataState({required this.date, required final List<WorkModel> list})
+class _$DataStateImpl implements _DataState {
+  const _$DataStateImpl(
+      {required this.date, required final List<MainChapterData> list})
       : _list = list;
 
   @override
   final DateTime date;
-  final List<WorkModel> _list;
+  final List<MainChapterData> _list;
   @override
-  List<WorkModel> get list {
+  List<MainChapterData> get list {
     if (_list is EqualUnmodifiableListView) return _list;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_list);
@@ -1266,14 +1354,14 @@ class _$_DataState implements _DataState {
 
   @override
   String toString() {
-    return 'WorksState.data(date: $date, list: $list)';
+    return 'MainChapterState.data(date: $date, list: $list)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataState &&
+            other is _$DataStateImpl &&
             (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality().equals(other._list, _list));
   }
@@ -1285,8 +1373,8 @@ class _$_DataState implements _DataState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataStateCopyWith<_$_DataState> get copyWith =>
-      __$$_DataStateCopyWithImpl<_$_DataState>(this, _$identity);
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
+      __$$DataStateImplCopyWithImpl<_$DataStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1294,9 +1382,9 @@ class _$_DataState implements _DataState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() noData,
-    required TResult Function() gotoPPR5,
+    required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
-    required TResult Function(DateTime date, List<WorkModel> list) data,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
   }) {
     return data(date, list);
   }
@@ -1307,9 +1395,9 @@ class _$_DataState implements _DataState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? noData,
-    TResult? Function()? gotoPPR5,
+    TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
-    TResult? Function(DateTime date, List<WorkModel> list)? data,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
   }) {
     return data?.call(date, list);
   }
@@ -1320,9 +1408,9 @@ class _$_DataState implements _DataState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? noData,
-    TResult Function()? gotoPPR5,
+    TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
-    TResult Function(DateTime date, List<WorkModel> list)? data,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -1337,7 +1425,7 @@ class _$_DataState implements _DataState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_noDataState value) noData,
-    required TResult Function(_gotoPPR5State value) gotoPPR5,
+    required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
     required TResult Function(_DataState value) data,
   }) {
@@ -1350,7 +1438,7 @@ class _$_DataState implements _DataState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_noDataState value)? noData,
-    TResult? Function(_gotoPPR5State value)? gotoPPR5,
+    TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult? Function(_DataState value)? data,
   }) {
@@ -1363,7 +1451,7 @@ class _$_DataState implements _DataState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_noDataState value)? noData,
-    TResult Function(_gotoPPR5State value)? gotoPPR5,
+    TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
@@ -1375,14 +1463,14 @@ class _$_DataState implements _DataState {
   }
 }
 
-abstract class _DataState implements WorksState {
+abstract class _DataState implements MainChapterState {
   const factory _DataState(
       {required final DateTime date,
-      required final List<WorkModel> list}) = _$_DataState;
+      required final List<MainChapterData> list}) = _$DataStateImpl;
 
   DateTime get date;
-  List<WorkModel> get list;
+  List<MainChapterData> get list;
   @JsonKey(ignore: true)
-  _$$_DataStateCopyWith<_$_DataState> get copyWith =>
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

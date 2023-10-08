@@ -99,11 +99,11 @@ class _$OrderEventCopyWithImpl<$Res, $Val extends OrderEvent>
 }
 
 /// @nodoc
-abstract class _$$_AddOrderEventCopyWith<$Res>
+abstract class _$$AddOrderEventImplCopyWith<$Res>
     implements $OrderEventCopyWith<$Res> {
-  factory _$$_AddOrderEventCopyWith(
-          _$_AddOrderEvent value, $Res Function(_$_AddOrderEvent) then) =
-      __$$_AddOrderEventCopyWithImpl<$Res>;
+  factory _$$AddOrderEventImplCopyWith(
+          _$AddOrderEventImpl value, $Res Function(_$AddOrderEventImpl) then) =
+      __$$AddOrderEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({OrderModel order});
@@ -113,11 +113,11 @@ abstract class _$$_AddOrderEventCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddOrderEventCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$_AddOrderEvent>
-    implements _$$_AddOrderEventCopyWith<$Res> {
-  __$$_AddOrderEventCopyWithImpl(
-      _$_AddOrderEvent _value, $Res Function(_$_AddOrderEvent) _then)
+class __$$AddOrderEventImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$AddOrderEventImpl>
+    implements _$$AddOrderEventImplCopyWith<$Res> {
+  __$$AddOrderEventImplCopyWithImpl(
+      _$AddOrderEventImpl _value, $Res Function(_$AddOrderEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_AddOrderEventCopyWithImpl<$Res>
   $Res call({
     Object? order = null,
   }) {
-    return _then(_$_AddOrderEvent(
+    return _then(_$AddOrderEventImpl(
       null == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
@@ -136,8 +136,8 @@ class __$$_AddOrderEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddOrderEvent implements _AddOrderEvent {
-  const _$_AddOrderEvent(this.order);
+class _$AddOrderEventImpl implements _AddOrderEvent {
+  const _$AddOrderEventImpl(this.order);
 
   @override
   final OrderModel order;
@@ -151,7 +151,7 @@ class _$_AddOrderEvent implements _AddOrderEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddOrderEvent &&
+            other is _$AddOrderEventImpl &&
             (identical(other.order, order) || other.order == order));
   }
 
@@ -161,8 +161,8 @@ class _$_AddOrderEvent implements _AddOrderEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddOrderEventCopyWith<_$_AddOrderEvent> get copyWith =>
-      __$$_AddOrderEventCopyWithImpl<_$_AddOrderEvent>(this, _$identity);
+  _$$AddOrderEventImplCopyWith<_$AddOrderEventImpl> get copyWith =>
+      __$$AddOrderEventImplCopyWithImpl<_$AddOrderEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -222,13 +222,13 @@ class _$_AddOrderEvent implements _AddOrderEvent {
 }
 
 abstract class _AddOrderEvent implements OrderEvent {
-  const factory _AddOrderEvent(final OrderModel order) = _$_AddOrderEvent;
+  const factory _AddOrderEvent(final OrderModel order) = _$AddOrderEventImpl;
 
   @override
   OrderModel get order;
   @override
   @JsonKey(ignore: true)
-  _$$_AddOrderEventCopyWith<_$_AddOrderEvent> get copyWith =>
+  _$$AddOrderEventImplCopyWith<_$AddOrderEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -238,7 +238,6 @@ mixin _$OrderState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
   }) =>
@@ -247,7 +246,6 @@ mixin _$OrderState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
   }) =>
@@ -256,7 +254,6 @@ mixin _$OrderState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -266,7 +263,6 @@ mixin _$OrderState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
   }) =>
@@ -275,7 +271,6 @@ mixin _$OrderState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
   }) =>
@@ -284,7 +279,6 @@ mixin _$OrderState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -311,25 +305,25 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(
-          _$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(
-      _$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialState implements _InitialState {
-  const _$_InitialState();
+class _$InitialStateImpl implements _InitialState {
+  const _$InitialStateImpl();
 
   @override
   String toString() {
@@ -339,7 +333,7 @@ class _$_InitialState implements _InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialStateImpl);
   }
 
   @override
@@ -350,7 +344,6 @@ class _$_InitialState implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
   }) {
@@ -362,7 +355,6 @@ class _$_InitialState implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
   }) {
@@ -374,7 +366,6 @@ class _$_InitialState implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -390,7 +381,6 @@ class _$_InitialState implements _InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -402,7 +392,6 @@ class _$_InitialState implements _InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -414,7 +403,6 @@ class _$_InitialState implements _InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -427,29 +415,29 @@ class _$_InitialState implements _InitialState {
 }
 
 abstract class _InitialState implements OrderState {
-  const factory _InitialState() = _$_InitialState;
+  const factory _InitialState() = _$InitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(
-          _$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(
-      _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingState implements _LoadingState {
-  const _$_LoadingState();
+class _$LoadingStateImpl implements _LoadingState {
+  const _$LoadingStateImpl();
 
   @override
   String toString() {
@@ -459,7 +447,7 @@ class _$_LoadingState implements _LoadingState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingState);
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
   }
 
   @override
@@ -470,7 +458,6 @@ class _$_LoadingState implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
   }) {
@@ -482,7 +469,6 @@ class _$_LoadingState implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
   }) {
@@ -494,7 +480,6 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -510,7 +495,6 @@ class _$_LoadingState implements _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -522,7 +506,6 @@ class _$_LoadingState implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -534,7 +517,6 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -547,148 +529,29 @@ class _$_LoadingState implements _LoadingState {
 }
 
 abstract class _LoadingState implements OrderState {
-  const factory _LoadingState() = _$_LoadingState;
+  const factory _LoadingState() = _$LoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_AdditionStateCopyWith<$Res> {
-  factory _$$_AdditionStateCopyWith(
-          _$_AdditionState value, $Res Function(_$_AdditionState) then) =
-      __$$_AdditionStateCopyWithImpl<$Res>;
+abstract class _$$OkStateImplCopyWith<$Res> {
+  factory _$$OkStateImplCopyWith(
+          _$OkStateImpl value, $Res Function(_$OkStateImpl) then) =
+      __$$OkStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AdditionStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_AdditionState>
-    implements _$$_AdditionStateCopyWith<$Res> {
-  __$$_AdditionStateCopyWithImpl(
-      _$_AdditionState _value, $Res Function(_$_AdditionState) _then)
+class __$$OkStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$OkStateImpl>
+    implements _$$OkStateImplCopyWith<$Res> {
+  __$$OkStateImplCopyWithImpl(
+      _$OkStateImpl _value, $Res Function(_$OkStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AdditionState implements _AdditionState {
-  const _$_AdditionState();
-
-  @override
-  String toString() {
-    return 'OrderState.addition()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AdditionState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() addition,
-    required TResult Function() ok,
-    required TResult Function(String error) error,
-  }) {
-    return addition();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? addition,
-    TResult? Function()? ok,
-    TResult? Function(String error)? error,
-  }) {
-    return addition?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? addition,
-    TResult Function()? ok,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (addition != null) {
-      return addition();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initial,
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
-    required TResult Function(_OkState value) ok,
-    required TResult Function(_ErrorState value) error,
-  }) {
-    return addition(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialState value)? initial,
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
-    TResult? Function(_OkState value)? ok,
-    TResult? Function(_ErrorState value)? error,
-  }) {
-    return addition?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initial,
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
-    TResult Function(_OkState value)? ok,
-    TResult Function(_ErrorState value)? error,
-    required TResult orElse(),
-  }) {
-    if (addition != null) {
-      return addition(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AdditionState implements OrderState {
-  const factory _AdditionState() = _$_AdditionState;
-}
-
-/// @nodoc
-abstract class _$$_OkStateCopyWith<$Res> {
-  factory _$$_OkStateCopyWith(
-          _$_OkState value, $Res Function(_$_OkState) then) =
-      __$$_OkStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_OkStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_OkState>
-    implements _$$_OkStateCopyWith<$Res> {
-  __$$_OkStateCopyWithImpl(_$_OkState _value, $Res Function(_$_OkState) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_OkState implements _OkState {
-  const _$_OkState();
+class _$OkStateImpl implements _OkState {
+  const _$OkStateImpl();
 
   @override
   String toString() {
@@ -698,7 +561,7 @@ class _$_OkState implements _OkState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OkState);
+        (other.runtimeType == runtimeType && other is _$OkStateImpl);
   }
 
   @override
@@ -709,7 +572,6 @@ class _$_OkState implements _OkState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
   }) {
@@ -721,7 +583,6 @@ class _$_OkState implements _OkState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
   }) {
@@ -733,7 +594,6 @@ class _$_OkState implements _OkState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -749,7 +609,6 @@ class _$_OkState implements _OkState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -761,7 +620,6 @@ class _$_OkState implements _OkState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -773,7 +631,6 @@ class _$_OkState implements _OkState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -786,24 +643,24 @@ class _$_OkState implements _OkState {
 }
 
 abstract class _OkState implements OrderState {
-  const factory _OkState() = _$_OkState;
+  const factory _OkState() = _$OkStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorStateCopyWith<$Res> {
-  factory _$$_ErrorStateCopyWith(
-          _$_ErrorState value, $Res Function(_$_ErrorState) then) =
-      __$$_ErrorStateCopyWithImpl<$Res>;
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ErrorStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_ErrorState>
-    implements _$$_ErrorStateCopyWith<$Res> {
-  __$$_ErrorStateCopyWithImpl(
-      _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -811,7 +668,7 @@ class __$$_ErrorStateCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_ErrorState(
+    return _then(_$ErrorStateImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -822,8 +679,8 @@ class __$$_ErrorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorState implements _ErrorState {
-  const _$_ErrorState({required this.error});
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl({required this.error});
 
   @override
   final String error;
@@ -837,7 +694,7 @@ class _$_ErrorState implements _ErrorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorState &&
+            other is _$ErrorStateImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -847,15 +704,14 @@ class _$_ErrorState implements _ErrorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
-      __$$_ErrorStateCopyWithImpl<_$_ErrorState>(this, _$identity);
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
   }) {
@@ -867,7 +723,6 @@ class _$_ErrorState implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
   }) {
@@ -879,7 +734,6 @@ class _$_ErrorState implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -895,7 +749,6 @@ class _$_ErrorState implements _ErrorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -907,7 +760,6 @@ class _$_ErrorState implements _ErrorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -919,7 +771,6 @@ class _$_ErrorState implements _ErrorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -932,10 +783,10 @@ class _$_ErrorState implements _ErrorState {
 }
 
 abstract class _ErrorState implements OrderState {
-  const factory _ErrorState({required final String error}) = _$_ErrorState;
+  const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

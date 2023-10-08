@@ -28,9 +28,13 @@ DateTime dateTimeNow() {
   return DateTime.now();
 }
 
-bool boolFromString(String value) => value == '1';
+bool boolFromInt(int value) => value == 0;
 
-String boolToString(bool? value) => value! ? '1' : '0';
+bool boolFromString(String value) {
+  return value == 'true';
+}
+
+String boolToString(bool? value) => value! ? '0' : '1';
 
 String stringFromInt(int? value) => value.toString();
 

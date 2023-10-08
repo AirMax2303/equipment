@@ -1,19 +1,21 @@
+import 'package:dartz/dartz.dart';
+import 'package:equipment/works_day/service/work_day_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:intl/intl.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-import '../calendar/bloc/calendar_bloc.dart';
 import '../calendar/model/calendar_model.dart';
-import '../calendar/service/calendar_service.dart';
-import '../main_chapter/main_page.dart';
 import '../other/other.dart';
-import '../profile/userdata.dart';
+import '../widgets/appbar.dart';
+import '../widgets/dialog.dart';
 import '../widgets/navigator.dart';
 import '../widgets/no_notification.dart';
 import '../widgets/widgets.dart';
+import 'bloc/works_day_bloc.dart';
 import 'dialogs.dart';
 
 //ignore: must_be_immutable
@@ -23,14 +25,27 @@ class WorkDayPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CalendarBloc>(
-      create: (BuildContext context) => CalendarBloc(GetIt.instance.get<CalendarService>())..add(CalendarEvent.getList(date!)),
-      child: BlocConsumer<CalendarBloc, CalendarState>(
+    return BlocProvider<WorkDayBloc>(
+      create: (BuildContext context) => WorkDayBloc(GetIt.instance.get<WorkDayService>(), false)..add(WorkDayEvent.getList
+        (date!)),
+      child: BlocConsumer<WorkDayBloc, WorkDayState>(
         listener: (context, state) {
           state.mapOrNull(
-            ok: (_) {
-//            Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
-            },
+            dateChanged: (data) => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return dialogDateChanged(context, DateFormat('dd.MM.yyyy').format(date!));
+                }).whenComplete(() => BlocProvider.of<WorkDayBloc>(context).add(WorkDayEvent.getList(date!))),
+            workCompleted: (_) => showDialog<bool>(
+                context: context,
+                builder: (BuildContext context) {
+                  return dialogWorkIsDone(context, false, 'Работа', 'выполнена');
+                }).then((_) => context.read<WorkDayBloc>().add(WorkDayEvent.getList(date!))),
+            workTimeSaved: (_) => showDialog<bool>(
+                context: context,
+                builder: (BuildContext context) {
+                  return dialogWorkIsDone(context, false, 'Работа', 'выполнена');
+                }).then((_) => context.read<WorkDayBloc>().add(WorkDayEvent.getList(date!))),
           );
         },
         builder: (context, state) {
@@ -46,7 +61,7 @@ class WorkDayPage extends StatelessWidget {
 
 class WorksDay01 extends StatelessWidget {
   WorksDay01(this.list, {Key? key}) : super(key: key);
-  final List<CalendarView> list;
+  final List<CalendarData> list;
   final ItemScrollController scrollController = ItemScrollController();
   final ItemPositionsListener itemPositionsListener = ItemPositionsListener.create();
   final ScrollOffsetController scrollOffsetController = ScrollOffsetController();
@@ -56,63 +71,54 @@ class WorksDay01 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const AppNavigationBar(Nav.works),
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: AppText.whiteText14('Работы'),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
-            },
-            icon: SvgPicture.asset('assets/back-arrow.svg')),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
-              },
-              icon: SvgPicture.asset('assets/home_white.svg')),
-          IconButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => UserDataScreen()));
-              },
-              icon: SvgPicture.asset('assets/profile_white.svg')),
-        ],
-      ),
+      appBar: appBar(context, 'Работы', {}, null),
       body: SafeArea(
           child: Container(
         color: Colors.white,
-        child: ValueListenableBuilder(
-            valueListenable: current,
-            builder: (BuildContext context, value, Widget? child) {
-              return ScrollablePositionedList.builder(
-                  itemScrollController: scrollController,
-                  itemPositionsListener: itemPositionsListener,
-                  scrollOffsetController: scrollOffsetController,
-                  initialScrollIndex: 6,
-                  itemCount: list.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      child: WordDayCard(
-                          calendarView: list[index],
-                          selected: index == current.value,
-                          index: index,
-                          arrow: (value) {
-                            current.value = value;
-                          }),
-                      onTap: () {
-                        current.value = index;
-                      },
-                    );
-                  });
-            }),
+        child: list.isEmpty
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset('assets/done.svg'),
+                    const SizedBox(height: 20),
+                    const Text('Все работы выполнены').style18w700()
+                  ],
+                ),
+              )
+            : ValueListenableBuilder(
+                valueListenable: current,
+                builder: (BuildContext context, value, Widget? child) {
+                  return ScrollablePositionedList.builder(
+                      itemScrollController: scrollController,
+                      itemPositionsListener: itemPositionsListener,
+                      scrollOffsetController: scrollOffsetController,
+//                  initialScrollIndex: 6,
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          child: WordDayCard(
+                              calendar: list[index],
+                              selected: index == current.value,
+                              index: index,
+                              arrow: (value) {
+                                current.value = value;
+                              }),
+                          onTap: () {
+                            current.value = index;
+                          },
+                        );
+                      });
+                }),
       )),
     );
   }
 }
 
 class WordDayCard extends StatelessWidget {
-  const WordDayCard({Key? key, required this.calendarView, required this.selected, required this.index, required this.arrow})
+  const WordDayCard({Key? key, required this.calendar, required this.selected, required this.index, required this.arrow})
       : super(key: key);
-  final CalendarView calendarView;
+  final CalendarData calendar;
   final bool selected;
   final int index;
   final ItemCallback arrow;
@@ -135,42 +141,34 @@ class WordDayCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(calendarView.calendar!.name1!, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
-                  calendarView.list!.length > 2
+                  Text(calendar.equipment.name1!).style14w700(),
+                  calendar.list.length > 2
                       ? IconButton(
                           onPressed: () {
                             arrow(index);
                           },
                           icon: selected ? SvgPicture.asset('assets/arrow_up.svg') : SvgPicture.asset('assets/arrow_down.svg'),
-                          color: Colors.white,
-                        )
+                          color: Colors.white)
                       : const SizedBox(),
                 ],
               ),
-              AppSixeBox.size5,
+              const SizedBox(height: 5),
               Row(
                 children: [
                   SvgPicture.asset(oval),
-                  const SizedBox(
-                    width: 6,
-                  ),
-                  Text(calendarView.calendar!.name2!, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+                  const SizedBox(width: 6),
+                  Text(calendar.equipment.name2!).style12w400(),
                 ],
               ),
-              AppSixeBox.size5,
+              const SizedBox(height: 5),
               Container(
-                width: double.infinity,
-                decoration: BoxDecoration(color: AppColor.lightBlueColor, borderRadius: BorderRadius.circular(20)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(calendarView.calendar!.plot!,
-                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: AppColor.blueColor)),
-                ),
-              ),
-              WordDayCardWorks(
-                list: calendarView.list!,
-                current: selected,
-              ),
+                  width: double.infinity,
+                  decoration: BoxDecoration(color: AppColor.lightBlueColor, borderRadius: BorderRadius.circular(20)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(calendar.equipment.plot!).style14w700(),
+                  )),
+              WordDayCardWorks(calendar: calendar, current: selected),
             ],
           ),
         ));
@@ -178,8 +176,8 @@ class WordDayCard extends StatelessWidget {
 }
 
 class WordDayCardWorks extends StatelessWidget {
-  const WordDayCardWorks({Key? key, required this.list, required this.current}) : super(key: key);
-  final List<WorkDayModel> list;
+  const WordDayCardWorks({Key? key, required this.calendar, required this.current}) : super(key: key);
+  final CalendarData calendar;
   final bool current;
 
   @override
@@ -187,28 +185,41 @@ class WordDayCardWorks extends StatelessWidget {
     return Column(
       children: List.generate(
           current
-              ? list.length
-              : list.length < 3
-                  ? list.length
+              ? calendar.list.length
+              : calendar.list.length < 3
+                  ? calendar.list.length
                   : 2, (index) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FormBuilderSwitch(
               title: InkWell(
-                onTap: () {},
+                onTap: () {
+                  if (calendar.list[index].worktype == 3) {
+                    showDialog<Either<int, DateTime>>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return dialogSaveWorkTime(context, calendar, index);
+                        }).then((value) => value?.fold(
+                          (l) => context.read<WorkDayBloc>().add(WorkDayEvent.saveWorkTime(calendar.list[index], l)),
+                          (r) => context.read<WorkDayBloc>().add(WorkDayEvent.changeDate(calendar.list[index], r)),
+                        ));
+                  } else {
+                    showDialog<Either<bool, DateTime>>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return dialogWorkDay(context, calendar, index);
+                        }).then((value) => value?.fold(
+                          (l) => context.read<WorkDayBloc>().add(WorkDayEvent.completeWork(calendar.list[index])),
+                          (r) => context.read<WorkDayBloc>().add(WorkDayEvent.changeDate(calendar.list[index], r)),
+                        ));
+                  }
+                },
                 child: Row(
                   children: [
-                    list[index].priority! ? SvgPicture.asset('assets/type1.svg') : const SizedBox(),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Flexible(
-                        child: Text(
-                      list[index].name!,
-                      maxLines: 5,
-                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-                    )),
+                    calendar.list[index].priority! ? SvgPicture.asset('assets/type1.svg') : const SizedBox(),
+                    const SizedBox(width: 10),
+                    Flexible(child: Text(calendar.list[index].name!, maxLines: 5).style12w400()),
                   ],
                 ),
               ),
@@ -216,26 +227,12 @@ class WordDayCardWorks extends StatelessWidget {
               initialValue: false,
               activeColor: AppColor.blueColor,
               inactiveTrackColor: AppColor.lightBlueColor,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-              ),
+              decoration: const InputDecoration(border: InputBorder.none),
               onChanged: (value) {
-                showDialog<bool>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return dialogMain2(
-                        context,
-                      );
-                    }).then((value) => null);
+                context.read<WorkDayBloc>().add(WorkDayEvent.completeWork(calendar.list[index]));
               },
             ),
-            index < list.length - 1
-                ? const Divider(
-                    height: 1,
-                    thickness: 1,
-                    color: Colors.black,
-                  )
-                : const SizedBox(),
+            index < calendar.list.length - 1 ? const Divider(height: 1, thickness: 1, color: Colors.black) : const SizedBox(),
           ],
         );
       }),

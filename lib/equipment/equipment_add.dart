@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
-import 'models/equipment.dart';
+import '../models/models.dart';
+import '../profile/service/profile_service.dart';
 import 'models/name.dart';
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
@@ -16,14 +18,13 @@ import 'name_list.dart';
 
 //ignore: must_be_immutable
 class EquipmentAdd extends StatelessWidget {
-  EquipmentAdd({Key? key, required this.viewList, required this.plotList}) : super(key: key);
-  List<NameModel> viewList;
-  List<NameModel> plotList;
+  EquipmentAdd({Key? key}) : super(key: key);
   String image = '';
   File? file;
-  final ValueNotifier<bool> refrash = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> refresh = ValueNotifier<bool>(false);
   final ValueNotifier<bool> showView = ValueNotifier<bool>(false);
   final ValueNotifier<bool> showPlot = ValueNotifier<bool>(false);
+  EquipmentModel equipmentModel = const EquipmentModel(image: '');
   final formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -41,7 +42,7 @@ class EquipmentAdd extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: ValueListenableBuilder(
-                valueListenable: refrash,
+                valueListenable: refresh,
                 builder: (BuildContext context, value, Widget? child) {
                   return SingleChildScrollView(
                     child: FormBuilder(
@@ -49,21 +50,29 @@ class EquipmentAdd extends StatelessWidget {
                       child: Column(
                         children: [
                           FormBuilderTextField(
-                              name: 'name1',
-                              style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-                              decoration: AppDecoration.inputEq('Название 1'),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
-                              ])),
-                          AppSixeBox.size16,
+                            name: 'name1',
+                            style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+                            decoration: AppDecoration.inputEq('Название 1'),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+                            ]),
+                            onChanged: (value) {
+                              equipmentModel = equipmentModel.copyWith(name1: value);
+                            },
+                          ),
+                          const SizedBox(height: 16),
                           FormBuilderTextField(
-                              name: 'name2',
-                              style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-                              decoration: AppDecoration.inputEq('Название 2'),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
-                              ])),
-                          AppSixeBox.size16,
+                            name: 'name2',
+                            style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+                            decoration: AppDecoration.inputEq('Название 2'),
+                            validator: FormBuilderValidators.compose([
+//                                FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+                            ]),
+                            onChanged: (value) {
+                              equipmentModel = equipmentModel.copyWith(name2: value);
+                            },
+                          ),
+                          const SizedBox(height: 16),
 //-------------------------------------------------------------------------------------------------------------------------------
                           ValueListenableBuilder(
                               valueListenable: showView,
@@ -77,32 +86,21 @@ class EquipmentAdd extends StatelessWidget {
                                     },
                                     decoration: AppDecoration.inputEqDropDown('Вид оборудования', showView.value),
                                     validator: FormBuilderValidators.compose([
-                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+//                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                                     ]));
                               }),
-                          AppSixeBox.size5,
+                          const SizedBox(height: 5),
                           ValueListenableBuilder(
                               valueListenable: showView,
                               builder: (BuildContext context, value, Widget? child) {
                                 if (value) {
-                                  return NameList(
-                                      list: viewList,
-                                      oniItemPressed: (index) {
-                                        formKey.currentState?.fields['view']?.didChange(viewList[index].name);
+                                  return NameList(typeName: true, onNameCallback: (NameModel value) {
+                                        formKey.currentState?.fields['view']?.didChange(value.name);
+                                        equipmentModel = equipmentModel.copyWith(viewid: value.id, view: value.name);
                                         showView.value = false;
-                                      },
-                                      onAddTap: () {
-                                        showDialog<String>(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return newName(context, 'Новый вид оборудования');
-                                            }).then((value) {
-                                          BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.addView(value!));
-                                          showView.value = false;
-                                        });
                                       });
                                 } else {
-                                  return AppSixeBox.size10;
+                                  return const SizedBox(height: 10);
                                 }
                               }),
 //-------------------------------------------------------------------------------------------------------------------------------
@@ -118,32 +116,21 @@ class EquipmentAdd extends StatelessWidget {
                                     },
                                     decoration: AppDecoration.inputEqDropDown('Участок', showPlot.value),
                                     validator: FormBuilderValidators.compose([
-                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+//                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                                     ]));
                               }),
-                          AppSixeBox.size5,
+                          const SizedBox(height: 5),
                           ValueListenableBuilder(
                               valueListenable: showPlot,
                               builder: (BuildContext context, value, Widget? child) {
                                 if (value) {
-                                  return NameList(
-                                      list: plotList,
-                                      oniItemPressed: (index) {
-                                        formKey.currentState?.fields['plot']?.didChange(plotList[index].name);
-                                        showPlot.value = false;
-                                      },
-                                      onAddTap: () {
-                                        showDialog<String>(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return newName(context, 'Новый участок');
-                                            }).then((value) {
-                                          BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.addPlot(value!));
-                                          showPlot.value = false;
-                                        });
+                                  return NameList(typeName: false, onNameCallback: (NameModel value) {
+                                        formKey.currentState?.fields['plot']?.didChange(value.name);
+                                        equipmentModel = equipmentModel.copyWith(plotid: value.id, plot: value.name);
+                                        showView.value = false;
                                       });
                                 } else {
-                                  return AppSixeBox.size10;
+                                  return const SizedBox(height: 10);
                                 }
                               }),
 //-------------------------------------------------------------------------------------------------------------------------------
@@ -153,33 +140,25 @@ class EquipmentAdd extends StatelessWidget {
                                   width: 250,
                                   height: 250,
                                 )
-                              : AppSixeBox.size5,
-                          AppSixeBox.size10,
+                              : const SizedBox(height: 5),
+                          const SizedBox(height: 10),
                           InkWell(
                             child: AppButton.addImageButten(),
                             onTap: () async {
                               FilePickerResult? result = await FilePicker.platform.pickFiles();
-                              if (result != null) {
+                              if ((result != null) && (result.files.isNotEmpty)) {
                                 file = File(result.files.single.path!);
-                                refrash.value = !refrash.value;
+                                equipmentModel = equipmentModel.copyWith(image: result.files[0].path);
+                                refresh.value = !refresh.value;
                               }
                             },
                           ),
-
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                           AppButton.filledButton('Добавить', onPressed: () {
                             if (formKey.currentState?.saveAndValidate() ?? false) {
-                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.addEquipment(EquipmentModel(
-                                name1: formKey.currentState?.fields['name1']?.value,
-                                name2: formKey.currentState?.fields['name2']?.value,
-                                view: formKey.currentState?.fields['view']?.value,
-                                plot: formKey.currentState?.fields['plot']?.value,
-                                valueproftype: 0,
-                                image: file?.path ?? '',
-                                status: 1,
-                              )));
+                              final ProfileService profileService = GetIt.instance.get<ProfileService>();
+                              equipmentModel = equipmentModel.copyWith(clientid: profileService.profile.id);
+                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.addEquipment(equipmentModel));
                             }
                           }),
                         ],
@@ -193,4 +172,3 @@ class EquipmentAdd extends StatelessWidget {
     );
   }
 }
-

@@ -1,3 +1,4 @@
+import 'package:equipment/other/other.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class TextFormFieldBox extends StatelessWidget {
         child: Column(children: [
           Align(
             alignment: Alignment.bottomLeft,
-            child: AppText.blackText12(data),
+            child: Text(data).style13w500(),
           ),
           TextFormField(
             decoration: InputDecoration(

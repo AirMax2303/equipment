@@ -23,9 +23,9 @@ class StateEquipment extends StatelessWidget {
       ),
       child: Column(
         children: [
-          AppSixeBox.size16,
+          const SizedBox(height: 16),
           const Text('Состояние оборудования').style14w700(),
-          AppSixeBox.size10,
+          const SizedBox(height: 10),
           ValueListenableBuilder(
               valueListenable: stateEquipment,
               builder: (BuildContext context, value, Widget? child) {
@@ -39,10 +39,7 @@ class StateEquipment extends StatelessWidget {
                       },
                       icon: Padding(
                         padding: const EdgeInsets.all(1.0),
-                        child: SvgPicture.asset(
-                          value == 0 ? stateImageSelected[0] : stateImage[0],
-                          height: 100,
-                        ),
+                        child: SvgPicture.asset(value == 0 ? stateImageSelected[0] : stateImage[0]),
                       ),
                     ),
                     IconButton(
@@ -62,7 +59,7 @@ class StateEquipment extends StatelessWidget {
                   ],
                 );
               }),
-          AppSixeBox.size10,
+          const SizedBox(height: 10),
         ],
       ),
     );

@@ -6,8 +6,6 @@ class OrderState with _$OrderState {
 
   const factory OrderState.loading() = _LoadingState;
 
-  const factory OrderState.addition() = _AdditionState;
-
   const factory OrderState.ok() = _OkState;
 
   const factory OrderState.error({

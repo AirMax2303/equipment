@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:intl/intl.dart';
 
-import '../equipment/models/equipment.dart';
+import '../models/models.dart';
 import '../other/other.dart';
 import '../widgets/appbar.dart';
 import '../widgets/dialog.dart';
@@ -16,14 +17,16 @@ import 'bloc/calendar_bloc.dart';
 import 'model/calendar_model.dart';
 
 class CalendarPage extends StatelessWidget {
-  const CalendarPage({Key? key, required this.date, required this.nav}) : super(key: key);
+  CalendarPage({Key? key, required this.histiry, required this.date, required this.nav}) : super(key: key);
+  bool? histiry;
   final DateTime date;
   final Nav nav;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CalendarBloc>(
-      create: (BuildContext context) => CalendarBloc(GetIt.instance.get<CalendarService>())..add(CalendarEvent.getList(date)),
+      create: (BuildContext context) =>
+          CalendarBloc(GetIt.instance.get<CalendarService>(), histiry)..add(CalendarEvent.getList(date)),
       child: BlocConsumer<CalendarBloc, CalendarState>(
         listener: (context, state) {
           state.mapOrNull(
@@ -35,7 +38,11 @@ class CalendarPage extends StatelessWidget {
         builder: (context, state) {
           return state.maybeMap(
               loading: (_) => const CircularProgressIndicator(),
-              data: (data) => CalendarScreen(list: data.list!, nav: nav),
+              data: (data) => CalendarScreen(
+                    list: data.list!,
+                    nav: nav,
+                    currentDay: data.date,
+                  ),
               orElse: () => const NoNotification());
         },
       ),
@@ -44,19 +51,20 @@ class CalendarPage extends StatelessWidget {
 }
 
 class CalendarScreen extends StatelessWidget {
-  CalendarScreen({Key? key, required this.list, required this.nav}) : super(key: key);
-  final List<CalendarView> list;
+  CalendarScreen({Key? key, required this.list, required this.nav, required this.currentDay}) : super(key: key);
+  final List<CalendarData> list;
   final Nav nav;
-  String dateText = 'Выберите дату';
   final ValueNotifier<bool> changed = ValueNotifier<bool>(false);
-  DateTime currentDay = DateTime.now();
+  DateTime currentDay;
+  String dateText = '';
   EquipmentModel equipment = const EquipmentModel(name1: 'Выберите оборудование', name2: '');
 
   @override
   Widget build(BuildContext context) {
     final List<bool> arrow = List<bool>.generate(list.length, (index) => false);
+    String dateText = DateFormat('dd.MM.yyyy').format(currentDay);
     return Scaffold(
-      bottomNavigationBar: const AppNavigationBar(Nav.calendar),
+      bottomNavigationBar: AppNavigationBar(nav),
       appBar: appBar(context, 'Календарь', {}, null),
       body: SafeArea(
           child: ValueListenableBuilder(
@@ -72,14 +80,11 @@ class CalendarScreen extends StatelessWidget {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            AppSixeBox.size16,
+                            const SizedBox(height: 16),
 //-------------------------------------------------------------------------------------------------------------------------------
                             IconBox(
                               children: [
-                                Text(
-                                  dateText,
-                                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                                ),
+                                Text(dateText).style13w500(),
                                 IconButton(
                                     onPressed: () {
                                       showDialog<DateTime>(
@@ -90,38 +95,28 @@ class CalendarScreen extends StatelessWidget {
                                             );
                                           }).then((value) {
                                         currentDay = value!;
-                                        dateText = dateFormat(currentDay);
+                                        dateText = DateFormat('dd.MM.yyyy').format(currentDay);
                                         changed.value = !changed.value;
+                                        BlocProvider.of<CalendarBloc>(context).add(CalendarEvent.getList(currentDay));
                                       });
                                     },
                                     icon: SvgPicture.asset('assets/calendar.svg')),
                               ],
                             ),
-                            AppSixeBox.size16,
+                            const SizedBox(height: 16),
 //-------------------------------------------------------------------------------------------------------------------------------
                             IconBox(
                               children: [
                                 Column(
                                   children: [
-                                    Text(
-                                      equipment.name1!,
-                                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                                    ),
+                                    Text(equipment.name1!).style14w400(),
                                     Row(
                                       children: [
                                         equipment.name2!.isNotEmpty
-                                            ? SvgPicture.asset(
-                                                'assets/oval1.svg',
-                                                width: 10,
-                                              )
+                                            ? SvgPicture.asset('assets/oval1.svg', width: 10)
                                             : const SizedBox(),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          equipment.name2!,
-                                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                                        ),
+                                        const SizedBox(width: 5),
+                                        Text(equipment.name2!).style12w500(),
                                       ],
                                     ),
                                   ],
@@ -140,7 +135,7 @@ class CalendarScreen extends StatelessWidget {
                                     icon: SvgPicture.asset('assets/arrow_down.svg')),
                               ],
                             ),
-                            AppSixeBox.size10,
+                            const SizedBox(height: 10),
 //-------------------------------------------------------------------------------------------------------------------------------
                           ],
                         ),
@@ -154,7 +149,7 @@ class CalendarScreen extends StatelessWidget {
                           itemCount: list.length,
                           itemBuilder: (context, index) {
                             return CalendarCard(
-                                calendarView: list[index],
+                                calendar: list[index],
                                 selected: arrow[index],
                                 index: index,
                                 arrow: (value) {
@@ -173,9 +168,9 @@ class CalendarScreen extends StatelessWidget {
 }
 
 class CalendarCard extends StatelessWidget {
-  const CalendarCard({Key? key, required this.calendarView, required this.selected, required this.index, required this.arrow})
+  const CalendarCard({Key? key, required this.calendar, required this.selected, required this.index, required this.arrow})
       : super(key: key);
-  final CalendarView calendarView;
+  final CalendarData calendar;
   final bool selected;
   final int index;
   final ItemCallback arrow;
@@ -192,36 +187,24 @@ class CalendarCard extends StatelessWidget {
             padding: const EdgeInsets.all(1.0),
             child: Row(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('23/04'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(DateFormat('dd/MM').format(calendar.date)),
                 ),
                 Flexible(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        calendarView.calendar!.name1!,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ).style14w700(),
-                      AppSixeBox.size5,
+                      Text(calendar.equipment.name1!, maxLines: 1, overflow: TextOverflow.ellipsis).style14w700(),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          SvgPicture.asset(
-                            oval,
-                            width: 10,
-                          ),
-                          const SizedBox(
-                            width: 6,
-                          ),
+                          SvgPicture.asset(oval, width: 10),
+                          const SizedBox(width: 6),
                           Flexible(
-                            child: Text(calendarView.calendar!.name2!,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+                            child: Text(calendar.equipment.name2!, maxLines: 1, overflow: TextOverflow.ellipsis).style12w400(),
                           ),
                         ],
                       ),
@@ -237,10 +220,8 @@ class CalendarCard extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(
-            thickness: 2,
-          ),
-          selected ? ListWorks(calendarView.list) : const SizedBox(),
+          const Divider(thickness: 2),
+          selected ? ListWorks(calendar.list) : const SizedBox(),
         ],
       ),
     );
@@ -249,7 +230,7 @@ class CalendarCard extends StatelessWidget {
 
 class ListWorks extends StatelessWidget {
   ListWorks(this.list, {Key? key}) : super(key: key);
-  List<WorkDayModel>? list;
+  List<WorkModel>? list;
 
   @override
   Widget build(BuildContext context) {
@@ -262,26 +243,18 @@ class ListWorks extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         children: <Widget>[
-                          SvgPicture.asset(
-                            'assets/type${list![index].state!}.svg',
-                            width: 20,
-                            height: 20,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          SvgPicture.asset('assets/type${list![index].worktype!}.svg', width: 20, height: 20),
+                          const SizedBox(width: 10),
                           Flexible(
-                            child: Text(
-                              list![index].name!,
-                              maxLines: 1,
-                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                            child: Text(list![index].name!,
+                                maxLines: 1,
+                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                                overflow: TextOverflow.ellipsis),
                           )
                         ],
                       ),
                     ),
-                    AppSixeBox.size5,
+                    const SizedBox(height: 5),
                   ],
                 )));
   }

@@ -1,18 +1,19 @@
-import 'package:equipment/equipment/models/equipment.dart';
 import 'package:equipment/equipment/service/equipment_service.dart';
 import 'package:equipment/ppr/bloc/ppr_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 
+import '../models/models.dart';
 import '../ppr/ppr.dart';
+import '../widgets/dialog.dart';
 import 'bloc/equipment_bloc.dart';
 import 'equipment_add.dart';
 import 'equipment_detail.dart';
 import 'equipment_edit.dart';
 import 'equipment_list.dart';
 
+//ignore: must_be_immutable
 class EquipmentPage extends StatelessWidget {
   EquipmentPage({Key? key, this.event}) : super(key: key);
   EquipmentModel? equipment;
@@ -22,38 +23,34 @@ class EquipmentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<EquipmentBloc>(
       create: (context) => EquipmentBloc(GetIt.instance.get<EquipmentService>())..add(event ?? const EquipmentEvent.initial()),
-      child: BlocConsumer<EquipmentBloc, EquipmentState>(
-//          bloc: context.read<EquipmentBloc>()..add(event ?? const EquipmentEvent.initial()),
-          listener: (context, state) {
+      child: BlocConsumer<EquipmentBloc, EquipmentState>(listener: (context, state) {
         state.mapOrNull(
+          ok: (_) => BlocProvider.of<EquipmentBloc>(context).add(const EquipmentEvent.initial()),
+          okUpdate: (_) => showDialog<bool>(
+              context: context,
+              builder: (BuildContext context) {
+                return dialogWorkIsDone(context, false, 'Изменения', 'сохранены');
+              }).then((value) => BlocProvider.of<EquipmentBloc>(context).add(const EquipmentEvent.initial())),
+          okDelete: (_) => showDialog<bool>(
+              context: context,
+              builder: (BuildContext context) {
+                return dialogWorkIsDone(context, true, 'Оборудование', 'удалено');
+              }).then((value) => BlocProvider.of<EquipmentBloc>(context).add(const EquipmentEvent.initial())),
           gotoPprScreen: (data) => Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => PprPage(
-                        equipment: data.equipment,
-                        lastState: LastState.equipment,
-                      ))),
+                  builder: (context) =>
+                      PprPage(pprType: data.pprType, equipmentData: data.equipmentData, lastState: LastState.equipment))),
         );
       }, builder: (context, state) {
         return state.maybeMap(
           loading: (_) => const CircularProgressIndicator(),
-          data: (data) => EquipmentListScreen(list: data.list, viewList: data.viewList, plotList: data.plotList),
-          gotoAddScreen: (data) => EquipmentAdd(
-            viewList: data.viewList,
-            plotList: data.plotList,
+          data: (data) => EquipmentListScreen(list: data.list),
+          gotoAddScreen: (data) => EquipmentAdd(),
+          gotoDetailScreen: (data) => EquipmentDetail(
+            equipmentData: data.equipmentData,
           ),
-          gotoDetailScreen: (data) {
-            equipment = data.equipment;
-            return EquipmentDetail(
-              equipment: data.equipment,
-            );
-          },
-          gotoEditScreen: (data) => EquipmentEdit(
-            equipment: data.equipment,
-            viewList: data.viewList,
-            plotList: data.plotList,
-//              infoList: data.infoList,
-          ),
+          gotoEditScreen: (data) => EquipmentEdit(equipmentData: data.equipmentData),
           orElse: () => Container(
             color: Colors.white,
             child: const Center(

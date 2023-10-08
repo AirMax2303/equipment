@@ -22,7 +22,7 @@ InfoModel _$InfoModelFromJson(Map<String, dynamic> json) {
 mixin _$InfoModel {
   String? get id => throw _privateConstructorUsedError;
   String? get equipmentid => throw _privateConstructorUsedError;
-  String? get info => throw _privateConstructorUsedError;
+  String? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $InfoModelCopyWith<$Res> {
   factory $InfoModelCopyWith(InfoModel value, $Res Function(InfoModel) then) =
       _$InfoModelCopyWithImpl<$Res, InfoModel>;
   @useResult
-  $Res call({String? id, String? equipmentid, String? info});
+  $Res call({String? id, String? equipmentid, String? data});
 }
 
 /// @nodoc
@@ -53,7 +53,7 @@ class _$InfoModelCopyWithImpl<$Res, $Val extends InfoModel>
   $Res call({
     Object? id = freezed,
     Object? equipmentid = freezed,
-    Object? info = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -64,30 +64,31 @@ class _$InfoModelCopyWithImpl<$Res, $Val extends InfoModel>
           ? _value.equipmentid
           : equipmentid // ignore: cast_nullable_to_non_nullable
               as String?,
-      info: freezed == info
-          ? _value.info
-          : info // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_InfoModelCopyWith<$Res> implements $InfoModelCopyWith<$Res> {
-  factory _$$_InfoModelCopyWith(
-          _$_InfoModel value, $Res Function(_$_InfoModel) then) =
-      __$$_InfoModelCopyWithImpl<$Res>;
+abstract class _$$InfoModelImplCopyWith<$Res>
+    implements $InfoModelCopyWith<$Res> {
+  factory _$$InfoModelImplCopyWith(
+          _$InfoModelImpl value, $Res Function(_$InfoModelImpl) then) =
+      __$$InfoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? equipmentid, String? info});
+  $Res call({String? id, String? equipmentid, String? data});
 }
 
 /// @nodoc
-class __$$_InfoModelCopyWithImpl<$Res>
-    extends _$InfoModelCopyWithImpl<$Res, _$_InfoModel>
-    implements _$$_InfoModelCopyWith<$Res> {
-  __$$_InfoModelCopyWithImpl(
-      _$_InfoModel _value, $Res Function(_$_InfoModel) _then)
+class __$$InfoModelImplCopyWithImpl<$Res>
+    extends _$InfoModelCopyWithImpl<$Res, _$InfoModelImpl>
+    implements _$$InfoModelImplCopyWith<$Res> {
+  __$$InfoModelImplCopyWithImpl(
+      _$InfoModelImpl _value, $Res Function(_$InfoModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,9 +96,9 @@ class __$$_InfoModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? equipmentid = freezed,
-    Object? info = freezed,
+    Object? data = freezed,
   }) {
-    return _then(_$_InfoModel(
+    return _then(_$InfoModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -106,9 +107,9 @@ class __$$_InfoModelCopyWithImpl<$Res>
           ? _value.equipmentid
           : equipmentid // ignore: cast_nullable_to_non_nullable
               as String?,
-      info: freezed == info
-          ? _value.info
-          : info // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -116,11 +117,11 @@ class __$$_InfoModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_InfoModel implements _InfoModel {
-  const _$_InfoModel({this.id = '', this.equipmentid = '', this.info = ''});
+class _$InfoModelImpl implements _InfoModel {
+  const _$InfoModelImpl({this.id = '', this.equipmentid = '', this.data = ''});
 
-  factory _$_InfoModel.fromJson(Map<String, dynamic> json) =>
-      _$$_InfoModelFromJson(json);
+  factory _$InfoModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InfoModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -130,37 +131,37 @@ class _$_InfoModel implements _InfoModel {
   final String? equipmentid;
   @override
   @JsonKey()
-  final String? info;
+  final String? data;
 
   @override
   String toString() {
-    return 'InfoModel(id: $id, equipmentid: $equipmentid, info: $info)';
+    return 'InfoModel(id: $id, equipmentid: $equipmentid, data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InfoModel &&
+            other is _$InfoModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.equipmentid, equipmentid) ||
                 other.equipmentid == equipmentid) &&
-            (identical(other.info, info) || other.info == info));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, equipmentid, info);
+  int get hashCode => Object.hash(runtimeType, id, equipmentid, data);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InfoModelCopyWith<_$_InfoModel> get copyWith =>
-      __$$_InfoModelCopyWithImpl<_$_InfoModel>(this, _$identity);
+  _$$InfoModelImplCopyWith<_$InfoModelImpl> get copyWith =>
+      __$$InfoModelImplCopyWithImpl<_$InfoModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InfoModelToJson(
+    return _$$InfoModelImplToJson(
       this,
     );
   }
@@ -170,19 +171,19 @@ abstract class _InfoModel implements InfoModel {
   const factory _InfoModel(
       {final String? id,
       final String? equipmentid,
-      final String? info}) = _$_InfoModel;
+      final String? data}) = _$InfoModelImpl;
 
   factory _InfoModel.fromJson(Map<String, dynamic> json) =
-      _$_InfoModel.fromJson;
+      _$InfoModelImpl.fromJson;
 
   @override
   String? get id;
   @override
   String? get equipmentid;
   @override
-  String? get info;
+  String? get data;
   @override
   @JsonKey(ignore: true)
-  _$$_InfoModelCopyWith<_$_InfoModel> get copyWith =>
+  _$$InfoModelImplCopyWith<_$InfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

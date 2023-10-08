@@ -1,21 +1,25 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:equipment/other/other.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../models/models.dart';
 
 abstract final class AppColor {
   static const Color stdColor = Color(0xFF7067F2);
   static const Color backgroundColor = Color(0xFFF8F8F8);
   static const Color greenColor = Color(0x1A3F60EE);
-
-//  static Color lightBlueColor = Colors.lightBlue.shade50;
   static Color lightBlueColor = const Color(0x1A3F60EE);
   static const Color blueColor = Color(0xFF3F60EE);
+}
 
+extension MyColors on Colors {
+  Color backgroundColor() => Color(0xFFF8F8F8);
 }
 
 abstract final class AppTextStyle {
-  static TextStyle blackTextStyle8Label = const TextStyle(
+  static TextStyle blackTextStyle8Label =  const TextStyle(
     color: Color(0xFF8897A8),
     fontSize: 8,
     fontWeight: FontWeight.w400,
@@ -50,53 +54,24 @@ abstract final class AppText {
     return Text(data!, style: GoogleFonts.poppins());
   }
 
-  static blackText8(String data) {
-    return Text(data,
-        style: GoogleFonts.montserrat(
-          textStyle: AppTextStyle.blackTextStyle8Label,
-        ));
-  }
-
-  static blackText12(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.blackTextStyle12,
-        ));
-  }
-
   static blackText13(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.blackTextStyle13,
-        ));
+    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle13));
   }
 
   static blackText13_800(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.blackTextStyle13_800,
-        ));
+    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle13_800));
   }
 
   static blackText14(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.blackTextStyle14,
-        ));
+    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle14));
   }
 
   static blackText16(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.blackTextStyle16,
-        ));
+    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle16));
   }
 
   static blackText18(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.blackTextStyle18,
-        ));
+    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle18));
   }
 
   static text14(String data) {
@@ -140,23 +115,6 @@ abstract final class AppIcons {
         ),
       ),
       child: Image.asset(image),
-    );
-  }
-
-  static Widget iconSVG({required String image, Color? color, double? size, required VoidCallback? onPressed}) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        width: size ?? 30,
-        height: size ?? 30,
-        decoration: BoxDecoration(
-          color: color ?? Colors.black,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-        child: SvgPicture.asset(image),
-      ),
     );
   }
 
@@ -303,13 +261,11 @@ abstract final class AppButton {
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColor.lightBlueColor,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(20),
-          ),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center, children: [
           Image.asset('assets/addimage.png'),
-          AppSixeBox.size10,
+          const SizedBox(height: 5),
           Text(
             'Добавить фото',
             style: GoogleFonts.poppins(
@@ -331,9 +287,8 @@ abstract final class AppButtonStyle {
     return TextButton.styleFrom(
       elevation: 0,
       backgroundColor: color ?? Colors.black,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10), // <-- Radius
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) // <-- Radius
+          ),
     );
   }
 }
@@ -362,15 +317,37 @@ class Box extends StatelessWidget {
           child: child,
         ),
       ),
-    );;
+    );
+    ;
   }
 }
 
+class TextBox extends StatelessWidget {
+  const TextBox({Key? key, this.width, this.height, this.color, this.radius, this.padding, this.child}) : super(key: key);
+  final double? width;
+  final double? height;
+  final Color? color;
+  final double? radius;
+  final double? padding;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height ?? 46,
+      width: width ?? double.infinity,
+      decoration: BoxDecoration(
+        color: color ?? AppColor.backgroundColor,
+        borderRadius: BorderRadius.all(Radius.circular(radius ?? 10)),
+      ),
+      child: Padding(padding: EdgeInsets.all(padding ?? 13.0), child: child),
+    );
+  }
+}
 
 abstract final class AppTextBox {
-
-  static Widget textBox(String data, {Widget? child, double? width, double? height, Color? color, double? radius, double?
-  padding}) {
+  static Widget textBox(String data,
+      {Widget? child, double? width, double? height, Color? color, double? radius, double? padding}) {
     return Container(
       height: height ?? 46,
       width: width ?? double.infinity,
@@ -393,13 +370,11 @@ abstract final class AppTextBox {
       width: double.infinity,
       decoration: const BoxDecoration(
         color: AppColor.backgroundColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(13.0),
-        child: AppText.blackText13(data),
+        child: Text(data).style13w500(),
       ),
     );
   }
@@ -408,12 +383,7 @@ abstract final class AppTextBox {
     return Container(
       height: 46,
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: AppColor.backgroundColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
-        ),
-      ),
+      decoration: const BoxDecoration(color: AppColor.backgroundColor, borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Padding(
         padding: const EdgeInsets.all(13.0),
         child: AppText.blackText13(data),
@@ -422,23 +392,7 @@ abstract final class AppTextBox {
   }
 }
 
-abstract final class AppSixeBox {
-  static SizedBox size5 = const SizedBox(
-    height: 5,
-  );
-  static SizedBox size10 = const SizedBox(
-    height: 10,
-  );
-  static SizedBox size16 = const SizedBox(
-    height: 16,
-  );
-  static SizedBox size20 = const SizedBox(
-    height: 20,
-  );
-}
-
 abstract final class AppDecoration {
-
   static InputDecoration inputCustom(String labelText, {Color? fillColor, Widget? prefixIcon, Widget? suffixIcon}) {
     return InputDecoration(
       filled: true,
@@ -614,5 +568,19 @@ abstract final class AppDecoration {
       labelText: labelText,
     );
   }
+}
 
+Widget iconWork(WorkModel work) {
+  if (work.priority!) {
+    return SvgPicture.asset('assets/type0.svg');
+  } else {
+    switch (work.worktype) {
+      case 0:
+        return SvgPicture.asset('assets/type3.svg');
+      case 3:
+        return SvgPicture.asset('assets/type2.svg');
+      default:
+        return const SizedBox(width: 16);
+    }
+  }
 }

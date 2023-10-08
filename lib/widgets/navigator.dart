@@ -74,10 +74,7 @@ class AppNavigationBar extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CalendarPage(
-                                      date: DateTime.now(),
-                                      nav: Nav.calendar,
-                                    )));
+                                builder: (context) => CalendarPage(histiry: false, date: DateTime.now(), nav: Nav.calendar)));
                       }),
             element(
                 nav == Nav.works ? 'assets/works_sel.svg' : 'assets/works.svg',
@@ -104,8 +101,10 @@ class AppNavigationBar extends StatelessWidget {
                     ? null
                     : () {
                         print('История');
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => CalendarPage(date: DateTime.now(), nav: Nav.history)));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CalendarPage(histiry: true, date: DateTime.now(), nav: Nav.history)));
                       }),
             iconAdd(context, nav == Nav.add)
           ],

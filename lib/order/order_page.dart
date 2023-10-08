@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:equipment/order/model/order.dart';
 import 'package:equipment/order/service/order_service.dart';
-import 'package:equipment/other/other.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,8 +11,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 
-import '../equipment/models/equipment.dart';
 import '../main_chapter/main_page.dart';
+import '../models/models.dart';
 import '../ppr/ppr_10.dart';
 import '../widgets/appbar.dart';
 import '../widgets/dialog.dart';
@@ -32,9 +31,11 @@ class OrderPage extends StatelessWidget {
       create: (BuildContext context) => OrderBloc(GetIt.instance.get<OrderService>()),
       child: BlocConsumer<OrderBloc, OrderState>(listener: (context, state) {
         state.mapOrNull(
-          ok: (_) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
-          },
+          ok: (_) => showDialog<bool>(
+              context: context,
+              builder: (BuildContext context) {
+                return dialogWorkIsDone(context, false, 'Заявка', 'добавлена');
+              }).whenComplete(() => Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()))),
         );
       }, builder: (context, state) {
         return OrderScreen();
@@ -74,17 +75,14 @@ class OrderScreen extends StatelessWidget {
                   child: Column(
                     children: [
 //------------------------------------------------------------------------------------------------------------------------------
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
                       FormBuilderTextField(
                         name: 'equipment',
                         readOnly: true,
                         initialValue: '',
                         style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                         decoration: AppDecoration.inputCustom('Выберите оборудование',
-                            suffixIcon: const Icon(
-                              Icons.keyboard_arrow_down,
-                              color: Color(0xFF8B97A8),
-                            )),
+                            suffixIcon: const Icon(Icons.keyboard_arrow_down, color: Color(0xFF8B97A8))),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                         ]),
@@ -95,19 +93,17 @@ class OrderScreen extends StatelessWidget {
                                 return selectEquipment(context);
                               }).then((value) {
                             equipment = value;
+                            order = order.copyWith(equipmentid: value!.id!);
                             formKey.currentState?.fields['equipment']?.didChange(equipment!.name1!);
                           });
                         },
-                        onChanged: (value) {
-                          order = order.copyWith(equipmentid: equipment?.id!, name1: equipment?.name1, name2: equipment?.name2);
-                        },
                       ),
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
 //------------------------------------------------------------------------------------------------------------------------------
                       StateEquipment(onPressed: (value) {
                         order = order.copyWith(state: value);
                       }),
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
 //------------------------------------------------------------------------------------------------------------------------------
                       FormBuilderTextField(
                         name: 'description',
@@ -124,7 +120,7 @@ class OrderScreen extends StatelessWidget {
                           order = order.copyWith(description: value);
                         },
                       ),
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
 //------------------------------------------------------------------------------------------------------------------------------
                       FormBuilderTextField(
                         name: 'parts',
@@ -132,29 +128,27 @@ class OrderScreen extends StatelessWidget {
                         initialValue: 'Зап. части и расходники',
                         style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                         decoration: AppDecoration.inputCustom('Зап. части и расходники',
-                            suffixIcon: const Icon(
-                              Icons.keyboard_arrow_down,
-                              color: Color(0xFF8B97A8),
-                            )),
+                            suffixIcon: const Icon(Icons.keyboard_arrow_down, color: Color(0xFF8B97A8))),
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Ppr10Screen()));
+                          showDialog<bool>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return dialogInDeveloping(context);
+                              });
                         },
                         onChanged: (value) {
                           order = order.copyWith(partsid: '');
                         },
                       ),
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
 //------------------------------------------------------------------------------------------------------------------------------
                       FormBuilderTextField(
                         name: 'dateorder',
-                        initialValue: DateFormat('dd.MM.yyyy').format(DateTime.now().nextDay()),
+                        initialValue: DateFormat('dd.MM.yyyy').format(order.dateorder!),
                         readOnly: true,
                         style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                         decoration: AppDecoration.inputCustom('Назначьте дату',
-                            suffixIcon: SvgPicture.asset(
-                              'assets/timer_white.svg',
-                              fit: BoxFit.scaleDown,
-                            )),
+                            suffixIcon: SvgPicture.asset('assets/timer_white.svg', fit: BoxFit.scaleDown)),
                         onTap: () {
                           showDialog<DateTime>(
                               context: context,
@@ -168,34 +162,26 @@ class OrderScreen extends StatelessWidget {
                           });
                         },
                       ),
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
 //------------------------------------------------------------------------------------------------------------------------------
                       FormBuilderTextField(
                         name: 'malfunction',
                         maxLines: 5,
                         style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-                        decoration: AppDecoration.inputCustom(
-                          'Причина неисправности',
-                          suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
-                        ),
+                        decoration: AppDecoration.inputCustom('Причина неисправности',
+                            suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown)),
                         onChanged: (value) {
                           order = order.copyWith(malfunction: value);
                         },
                       ),
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
 //------------------------------------------------------------------------------------------------------------------------------
                       ValueListenableBuilder(
                           valueListenable: showFile,
                           builder: (BuildContext context, value, Widget? child) {
-                            return file != null
-                                ? Image.file(
-                                    File(file!.path),
-                                    width: 250,
-                                    height: 250,
-                                  )
-                                : const SizedBox();
+                            return file != null ? Image.file(File(file!.path), width: 250, height: 250) : const SizedBox();
                           }),
-                      AppSixeBox.size16,
+                      const SizedBox(height: 16),
                       InkWell(
                         child: AppButton.addImageButten(),
                         onTap: () async {
@@ -213,7 +199,7 @@ class OrderScreen extends StatelessWidget {
                 ),
               ),
             )),
-            AppSixeBox.size16,
+            const SizedBox(height: 16),
             Container(
               width: double.infinity,
               height: 55,

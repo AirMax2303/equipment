@@ -1,56 +1,28 @@
-import 'package:dio/dio.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
-import 'package:uuid/uuid.dart';
+import 'package:equipment/models/models.dart';
+import 'package:get_it/get_it.dart';
 
-import '../../other/other.dart';
+import '../../profile/service/profile_service.dart';
+import '../../repository/repository.dart';
 import '../model/order.dart';
 
 class OrderService {
-  List<OrderModel> list = [];
+  final AppRepository repo;
 
-  Future<void> addOrder(OrderModel order) async {
-    String url = '$backendUrl/orders';
-    var uuid = const Uuid();
-    final dio = Dio(BaseOptions(baseUrl: backendUrl));
-    order = order.copyWith(id: uuid.v1());
+  OrderService(this.repo);
 
-    final response = await dio.get('/orders');
-    print(response.data.toString());
-//      final response = await dio.post('/orders/add', data: order.toJson());
-//      print(response.data.toString());
-//    Response response = await post(Uri.parse(url), body: order.toJson()
-/*
-    {
-      'id': '',
-      'equipmentid': 'b5823541-5ca6-11ee-bb5a-8919088e771d',
-      'clientid': '',
-      'state': '0',
-      'description': 'asfewf',
-      'partsid': '',
-      'dateorder': '2023-1-04T00:00:00.000',
-      'malfunction': 'wefwef',
-      'image': '',
-      'workisdone': 'false'
-    }
-
- */
-
-//    );
-    print('------------------------------------------------');
-//    print(response.body);
+  Future<void> addOrder(OrderModel value) async {
+    var service = GetIt.instance.get<ProfileService>();
+    value = value.copyWith(clientid: service.profile.id);
+    await repo.addOrder(value);
+    await repo.addWork(WorkModel(
+        pprid: value.id,
+        equipmentid: value.equipmentid,
+        partsid: '',
+        name: value.description,
+        worktype: 0,
+        priority: false,
+        image: value.image,
+        workdate: value.dateorder,
+        workisdone: false));
   }
-
-//{'id': 'dsvfdsvfds', 'equipmentid': 'dfsdsfsdf', 'clientid': 'dsgsgswg'}
-
-/*
-  void addOrder(OrderModel order) async {
-    var uuid = const Uuid();
-    final service = GetIt.instance.get<ProfileService>();
-    order = order.copyWith(id: uuid.v1(), clientid: service.profile.id);
-    print('---------------------------------------------------');
-    print(order.toJson());
-    list.add(order);
-  }
- */
 }

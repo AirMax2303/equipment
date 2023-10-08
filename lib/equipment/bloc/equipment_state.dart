@@ -8,34 +8,28 @@ class EquipmentState with _$EquipmentState {
 
   const factory EquipmentState.ok() = _OkState;
 
+  const factory EquipmentState.okUpdate() = _OkUpdateState;
+
+  const factory EquipmentState.okDelete() = _OkDeleteState;
+
   const factory EquipmentState.error({
-    required String error
+    required String error,
   }) = _ErrorState;
 
-
-  const factory EquipmentState.gotoAddScreen({
-    required List<NameModel> viewList,
-    required List<NameModel> plotList,
-  }) = _GotoAddScreenState;
+  const factory EquipmentState.gotoAddScreen() = _GotoAddScreenState;
 
   const factory EquipmentState.gotoEditScreen({
-    required EquipmentModel equipment,
-    required List<NameModel> viewList,
-    required List<NameModel> plotList,
-    required List<InfoModel> infoList
+    required Equipment equipmentData,
   }) = _GotoEditScreenState;
 
   const factory EquipmentState.gotoDetailScreen({
-    required EquipmentModel equipment,
+    required Equipment equipmentData,
   }) = _GotoDetailScreenState;
 
   const factory EquipmentState.gotoPprScreen({
-    required EquipmentModel equipment,
+    required PprType pprType,
+    required Equipment equipmentData,
   }) = _GotoPprScreenState;
 
-  const factory EquipmentState.data({
-    required List<EquipmentModel> list,
-    required List<NameModel> viewList,
-    required List<NameModel> plotList,
-  }) = _DataState;
+  const factory EquipmentState.data({required List<Equipment> list}) = _DataState;
 }

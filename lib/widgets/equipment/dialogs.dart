@@ -1,12 +1,13 @@
+import 'package:equipment/other/other.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../equipment/bloc/equipment_bloc.dart';
-import '../../equipment/models/equipment.dart';
-import '../../equipment/models/name.dart';
+import '../../equipment/name/bloc/name_bloc.dart';
 import '../../equipment/service/equipment_service.dart';
+import '../../models/models.dart';
 import '../widgets.dart';
 
 Dialog selectEquipment(BuildContext context) {
@@ -47,21 +48,13 @@ Dialog selectEquipment(BuildContext context) {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    showDialog<SelectedFilter>(
+                                    showDialog<EquipmentFilter>(
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return filterEquipment(context, data.viewList, data.plotList);
+                                          return filterEquipment(context);
                                         }).then((value) {
-                                      if (value != null) {
-                                        GetIt.instance.get<EquipmentBloc>().add(EquipmentEvent.setFilter(value));
-                                        selected.value = 0;
-                                      } else {
-                                        GetIt.instance.get<EquipmentBloc>().add(EquipmentEvent.setFilter(SelectedFilter(
-                                              filtername: '',
-                                              value: '',
-                                            )));
-                                        selected.value = 0;
-                                      }
+                                      GetIt.instance.get<EquipmentBloc>().add(EquipmentEvent.setFilter(value!));
+                                      selected.value = 0;
                                     });
                                   },
                                   icon: SvgPicture.asset('assets/filter_blue.svg'),
@@ -82,7 +75,7 @@ Dialog selectEquipment(BuildContext context) {
                                         return InkWell(
                                           onTap: () {
                                             selected.value = index;
-                                            equipmentModel = data.list[index];
+                                            equipmentModel = data.list[index].equipment;
                                           },
                                           child: Card(
                                             color: AppColor.backgroundColor,
@@ -97,20 +90,12 @@ Dialog selectEquipment(BuildContext context) {
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
-                                                    data.list[index].name1!,
-                                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                                                  ),
+                                                  Text(data.list[index].equipment!.name1!).style16w400(),
                                                   Row(
                                                     children: [
                                                       SvgPicture.asset('assets/oval1.svg'),
-                                                      const SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text(
-                                                        data.list[index].name2!,
-                                                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-                                                      ),
+                                                      const SizedBox(width: 5),
+                                                      Text(data.list[index].equipment!.name2!).style12w400(),
                                                     ],
                                                   )
                                                 ],
@@ -131,13 +116,15 @@ Dialog selectEquipment(BuildContext context) {
                     height: 110,
                     child: Column(
                       children: [
-                        AppSixeBox.size10,
+                        const SizedBox(height: 10),
                         AppButton.filledBlackButton('Сохранить', onPressed: () {
                           Navigator.pop(context, equipmentModel!);
                         }),
-                        AppButton.textButton('Отменить', onPressed: () {
-                          Navigator.pop(context);
-                        })
+                        TextButton(
+                            child: const Text('Отменить').style13w500(),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }),
                       ],
                     ),
                   ),
@@ -150,142 +137,128 @@ Dialog selectEquipment(BuildContext context) {
   );
 }
 
-Dialog filterEquipment(BuildContext context, List<NameModel> viewWorks, List<NameModel> plotWorks) {
-  ValueNotifier<bool> type = ValueNotifier<bool>(true);
+Dialog filterEquipment(BuildContext context) {
+  EquipmentFilter filter = EquipmentFilter(filterType: FilterType.view);
   ValueNotifier<int> selected = ValueNotifier<int>(0);
-  List<NameModel> list = [];
-  list.clear();
-  list.addAll(viewWorks);
   double width = (MediaQuery.of(context).size.width - 80) / 2 + 2;
   return Dialog(
-    backgroundColor: Colors.white,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    insetPadding: const EdgeInsets.all(20),
-    child: Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ValueListenableBuilder(
-          valueListenable: type,
-          builder: (BuildContext context, bool date, Widget? child) {
-            return SizedBox(
-              width: double.infinity,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset('assets/filter_blue.svg'),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      AppText.blackText14('Фильтр'),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+      insetPadding: const EdgeInsets.all(20),
+      child: BlocProvider<NameFilterBloc>(
+        create: (BuildContext context) =>
+            NameFilterBloc(GetIt.instance.get<EquipmentService>())..add(const NameEvent.getFilterList(true)),
+        child: BlocConsumer<NameBloc, NameState>(
+          listener: (context, state) => state.mapOrNull(),
+          builder: (BuildContext context, NameState state) => state.maybeMap(
+            orElse: () => const Placeholder(),
+            data: (data) => Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SvgPicture.asset('assets/filter_blue.svg'),
+                        const SizedBox(width: 10),
+                        AppText.blackText14('Фильтр'),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
 //-----------------------------------------------------------------------------------------------------------------------------
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: width,
-                        child: FilledButton(
-                          onPressed: () {
-                            type.value = !type.value;
-                            list.clear();
-                            list.addAll(viewWorks);
-                            selected.value = 0;
-                          },
-                          style: AppButtonStyle.stdButtonStyle(color: type.value ? AppColor.blueColor : AppColor.lightBlueColor),
-                          child: Text(
-                            'Вид оборудования',
-                            style: type.value
-                                ? const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700)
-                                : const TextStyle(color: AppColor.blueColor, fontSize: 12, fontWeight: FontWeight.w400),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: width,
+                          child: FilledButton(
+                            onPressed: () {
+                              filter.filterType = FilterType.view;
+                              BlocProvider.of<NameFilterBloc>(context).add(const NameEvent.getFilterList(true));
+                              selected.value = 0;
+                            },
+                            style: AppButtonStyle.stdButtonStyle(
+                                color: filter.filterType == FilterType.view ? AppColor.blueColor : AppColor.lightBlueColor),
+                            child: Text(
+                              'Вид оборудования',
+                              style: filter.filterType == FilterType.view
+                                  ? const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700)
+                                  : const TextStyle(color: AppColor.blueColor, fontSize: 12, fontWeight: FontWeight.w400),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: width,
-                        child: FilledButton(
-                          onPressed: () {
-                            type.value = !type.value;
-                            list.clear();
-                            list.addAll(plotWorks);
-                            selected.value = 0;
-                          },
-                          style: AppButtonStyle.stdButtonStyle(color: type.value ? AppColor.lightBlueColor : AppColor.blueColor),
-                          child: Text(
-                            'Участок',
-                            style: type.value
-                                ? const TextStyle(color: AppColor.blueColor, fontSize: 12, fontWeight: FontWeight.w400)
-                                : const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700),
+                        SizedBox(
+                          width: width,
+                          child: FilledButton(
+                            onPressed: () {
+                              filter.filterType = FilterType.plot;
+                              BlocProvider.of<NameFilterBloc>(context).add(const NameEvent.getFilterList(false));
+                              selected.value = 0;
+                            },
+                            style: AppButtonStyle.stdButtonStyle(
+                                color: filter.filterType == FilterType.view ? AppColor.lightBlueColor : AppColor.blueColor),
+                            child: Text(
+                              'Участок',
+                              style: filter.filterType == FilterType.view
+                                  ? const TextStyle(color: AppColor.blueColor, fontSize: 12, fontWeight: FontWeight.w400)
+                                  : const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
 //-----------------------------------------------------------------------------------------------------------------------------
-                  ValueListenableBuilder(
-                      valueListenable: selected,
-                      builder: (BuildContext context, int value, Widget? child) {
-                        return Column(
-                          children: List<Widget>.generate(list.length, (index) {
-                            return InkWell(
-                              onTap: () {
-                                selected.value = index;
-                              },
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: Card(
-                                  color: AppColor.backgroundColor,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: selected.value == index ? AppColor.blueColor : AppColor.backgroundColor),
-                                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      list[index].name!,
-                                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                    ValueListenableBuilder(
+                        valueListenable: selected,
+                        builder: (BuildContext context, int value, Widget? child) {
+                          return Column(
+                            children: List<Widget>.generate(data.list!.length, (index) {
+                              return InkWell(
+                                onTap: () {
+                                  selected.value = index;
+                                },
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Card(
+                                    color: AppColor.backgroundColor,
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color: selected.value == index ? AppColor.blueColor : AppColor.backgroundColor,
+                                        ),
+                                        borderRadius: const BorderRadius.all(Radius.circular(8))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(data.list![index].name!).style13w500(),
                                     ),
                                   ),
                                 ),
-                              ),
-                            );
-                          }),
-                        );
-                      }),
+                              );
+                            }),
+                          );
+                        }),
 //-----------------------------------------------------------------------------------------------------------------------------
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  AppButton.filledBlackButton('Сохранить', onPressed: () {
-                    final SelectedFilter filter =
-                        SelectedFilter(filtername: type.value ? 'view' : 'plot', value: list[selected.value].name!);
-                    Navigator.pop(context, filter);
-                  }),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: AppText.blackText12('Отменить')),
-                ],
+                    const SizedBox(height: 10),
+                    AppButton.filledBlackButton('Сохранить', onPressed: () {
+                      filter.value = data.list![selected.value].id!;
+                      Navigator.pop(context, filter);
+                    }),
+                    const SizedBox(height: 10),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, EquipmentFilter(filterType: FilterType.none));
+                        },
+                        child: const Text('Отменить').style12w500()),
+                  ],
+                ),
               ),
-            );
-          }),
-    ),
-  );
+            ),
+          ),
+        ),
+      ));
 }

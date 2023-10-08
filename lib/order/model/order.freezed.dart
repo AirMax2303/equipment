@@ -21,20 +21,22 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrderModel {
   String? get id => throw _privateConstructorUsedError;
-  String? get equipmentid => throw _privateConstructorUsedError;
   String? get clientid => throw _privateConstructorUsedError;
+  String? get equipmentid => throw _privateConstructorUsedError;
   String? get name1 => throw _privateConstructorUsedError;
   String? get name2 => throw _privateConstructorUsedError;
+  String? get view => throw _privateConstructorUsedError;
+  String? get plot => throw _privateConstructorUsedError;
   @JsonKey(fromJson: stringToInt, toJson: stringFromInt)
   int? get state => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get partsid =>
-      throw _privateConstructorUsedError; //    @JsonKey(fromJson: getDateTimeFromTimestamp, toJson: timeStampToJson) DateTime? dateorder,
+  String? get partsid => throw _privateConstructorUsedError;
   DateTime? get dateorder => throw _privateConstructorUsedError;
   String? get malfunction => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   @JsonKey(fromJson: boolFromString, toJson: boolToString)
   bool? get workisdone => throw _privateConstructorUsedError;
+  DateTime? get datework => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,18 +52,20 @@ abstract class $OrderModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String? equipmentid,
       String? clientid,
+      String? equipmentid,
       String? name1,
       String? name2,
+      String? view,
+      String? plot,
       @JsonKey(fromJson: stringToInt, toJson: stringFromInt) int? state,
       String? description,
       String? partsid,
       DateTime? dateorder,
       String? malfunction,
       String? image,
-      @JsonKey(fromJson: boolFromString, toJson: boolToString)
-      bool? workisdone});
+      @JsonKey(fromJson: boolFromString, toJson: boolToString) bool? workisdone,
+      DateTime? datework});
 }
 
 /// @nodoc
@@ -78,10 +82,12 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? equipmentid = freezed,
     Object? clientid = freezed,
+    Object? equipmentid = freezed,
     Object? name1 = freezed,
     Object? name2 = freezed,
+    Object? view = freezed,
+    Object? plot = freezed,
     Object? state = freezed,
     Object? description = freezed,
     Object? partsid = freezed,
@@ -89,19 +95,20 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
     Object? malfunction = freezed,
     Object? image = freezed,
     Object? workisdone = freezed,
+    Object? datework = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipmentid: freezed == equipmentid
-          ? _value.equipmentid
-          : equipmentid // ignore: cast_nullable_to_non_nullable
-              as String?,
       clientid: freezed == clientid
           ? _value.clientid
           : clientid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentid: freezed == equipmentid
+          ? _value.equipmentid
+          : equipmentid // ignore: cast_nullable_to_non_nullable
               as String?,
       name1: freezed == name1
           ? _value.name1
@@ -110,6 +117,14 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
       name2: freezed == name2
           ? _value.name2
           : name2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      view: freezed == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plot: freezed == plot
+          ? _value.plot
+          : plot // ignore: cast_nullable_to_non_nullable
               as String?,
       state: freezed == state
           ? _value.state
@@ -139,50 +154,58 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
           ? _value.workisdone
           : workisdone // ignore: cast_nullable_to_non_nullable
               as bool?,
+      datework: freezed == datework
+          ? _value.datework
+          : datework // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_OrderModelCopyWith<$Res>
+abstract class _$$OrderModelImplCopyWith<$Res>
     implements $OrderModelCopyWith<$Res> {
-  factory _$$_OrderModelCopyWith(
-          _$_OrderModel value, $Res Function(_$_OrderModel) then) =
-      __$$_OrderModelCopyWithImpl<$Res>;
+  factory _$$OrderModelImplCopyWith(
+          _$OrderModelImpl value, $Res Function(_$OrderModelImpl) then) =
+      __$$OrderModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String? id,
-      String? equipmentid,
       String? clientid,
+      String? equipmentid,
       String? name1,
       String? name2,
+      String? view,
+      String? plot,
       @JsonKey(fromJson: stringToInt, toJson: stringFromInt) int? state,
       String? description,
       String? partsid,
       DateTime? dateorder,
       String? malfunction,
       String? image,
-      @JsonKey(fromJson: boolFromString, toJson: boolToString)
-      bool? workisdone});
+      @JsonKey(fromJson: boolFromString, toJson: boolToString) bool? workisdone,
+      DateTime? datework});
 }
 
 /// @nodoc
-class __$$_OrderModelCopyWithImpl<$Res>
-    extends _$OrderModelCopyWithImpl<$Res, _$_OrderModel>
-    implements _$$_OrderModelCopyWith<$Res> {
-  __$$_OrderModelCopyWithImpl(
-      _$_OrderModel _value, $Res Function(_$_OrderModel) _then)
+class __$$OrderModelImplCopyWithImpl<$Res>
+    extends _$OrderModelCopyWithImpl<$Res, _$OrderModelImpl>
+    implements _$$OrderModelImplCopyWith<$Res> {
+  __$$OrderModelImplCopyWithImpl(
+      _$OrderModelImpl _value, $Res Function(_$OrderModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? equipmentid = freezed,
     Object? clientid = freezed,
+    Object? equipmentid = freezed,
     Object? name1 = freezed,
     Object? name2 = freezed,
+    Object? view = freezed,
+    Object? plot = freezed,
     Object? state = freezed,
     Object? description = freezed,
     Object? partsid = freezed,
@@ -190,19 +213,20 @@ class __$$_OrderModelCopyWithImpl<$Res>
     Object? malfunction = freezed,
     Object? image = freezed,
     Object? workisdone = freezed,
+    Object? datework = freezed,
   }) {
-    return _then(_$_OrderModel(
+    return _then(_$OrderModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipmentid: freezed == equipmentid
-          ? _value.equipmentid
-          : equipmentid // ignore: cast_nullable_to_non_nullable
-              as String?,
       clientid: freezed == clientid
           ? _value.clientid
           : clientid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentid: freezed == equipmentid
+          ? _value.equipmentid
+          : equipmentid // ignore: cast_nullable_to_non_nullable
               as String?,
       name1: freezed == name1
           ? _value.name1
@@ -211,6 +235,14 @@ class __$$_OrderModelCopyWithImpl<$Res>
       name2: freezed == name2
           ? _value.name2
           : name2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      view: freezed == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plot: freezed == plot
+          ? _value.plot
+          : plot // ignore: cast_nullable_to_non_nullable
               as String?,
       state: freezed == state
           ? _value.state
@@ -240,19 +272,25 @@ class __$$_OrderModelCopyWithImpl<$Res>
           ? _value.workisdone
           : workisdone // ignore: cast_nullable_to_non_nullable
               as bool?,
+      datework: freezed == datework
+          ? _value.datework
+          : datework // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderModel implements _OrderModel {
-  const _$_OrderModel(
+class _$OrderModelImpl implements _OrderModel {
+  const _$OrderModelImpl(
       {this.id = '',
-      this.equipmentid = '',
       this.clientid = '',
+      this.equipmentid = '',
       this.name1 = '',
       this.name2 = '',
+      this.view = '',
+      this.plot = '',
       @JsonKey(fromJson: stringToInt, toJson: stringFromInt) this.state = 0,
       this.description = '',
       this.partsid = '',
@@ -260,26 +298,33 @@ class _$_OrderModel implements _OrderModel {
       this.malfunction = '',
       this.image = '',
       @JsonKey(fromJson: boolFromString, toJson: boolToString)
-      this.workisdone = false});
+      this.workisdone = false,
+      this.datework});
 
-  factory _$_OrderModel.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderModelFromJson(json);
+  factory _$OrderModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderModelImplFromJson(json);
 
   @override
   @JsonKey()
   final String? id;
   @override
   @JsonKey()
-  final String? equipmentid;
+  final String? clientid;
   @override
   @JsonKey()
-  final String? clientid;
+  final String? equipmentid;
   @override
   @JsonKey()
   final String? name1;
   @override
   @JsonKey()
   final String? name2;
+  @override
+  @JsonKey()
+  final String? view;
+  @override
+  @JsonKey()
+  final String? plot;
   @override
   @JsonKey(fromJson: stringToInt, toJson: stringFromInt)
   final int? state;
@@ -289,7 +334,6 @@ class _$_OrderModel implements _OrderModel {
   @override
   @JsonKey()
   final String? partsid;
-//    @JsonKey(fromJson: getDateTimeFromTimestamp, toJson: timeStampToJson) DateTime? dateorder,
   @override
   final DateTime? dateorder;
   @override
@@ -301,24 +345,28 @@ class _$_OrderModel implements _OrderModel {
   @override
   @JsonKey(fromJson: boolFromString, toJson: boolToString)
   final bool? workisdone;
+  @override
+  final DateTime? datework;
 
   @override
   String toString() {
-    return 'OrderModel(id: $id, equipmentid: $equipmentid, clientid: $clientid, name1: $name1, name2: $name2, state: $state, description: $description, partsid: $partsid, dateorder: $dateorder, malfunction: $malfunction, image: $image, workisdone: $workisdone)';
+    return 'OrderModel(id: $id, clientid: $clientid, equipmentid: $equipmentid, name1: $name1, name2: $name2, view: $view, plot: $plot, state: $state, description: $description, partsid: $partsid, dateorder: $dateorder, malfunction: $malfunction, image: $image, workisdone: $workisdone, datework: $datework)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderModel &&
+            other is _$OrderModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.equipmentid, equipmentid) ||
-                other.equipmentid == equipmentid) &&
             (identical(other.clientid, clientid) ||
                 other.clientid == clientid) &&
+            (identical(other.equipmentid, equipmentid) ||
+                other.equipmentid == equipmentid) &&
             (identical(other.name1, name1) || other.name1 == name1) &&
             (identical(other.name2, name2) || other.name2 == name2) &&
+            (identical(other.view, view) || other.view == view) &&
+            (identical(other.plot, plot) || other.plot == plot) &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -329,7 +377,9 @@ class _$_OrderModel implements _OrderModel {
                 other.malfunction == malfunction) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.workisdone, workisdone) ||
-                other.workisdone == workisdone));
+                other.workisdone == workisdone) &&
+            (identical(other.datework, datework) ||
+                other.datework == datework));
   }
 
   @JsonKey(ignore: true)
@@ -337,27 +387,30 @@ class _$_OrderModel implements _OrderModel {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      equipmentid,
       clientid,
+      equipmentid,
       name1,
       name2,
+      view,
+      plot,
       state,
       description,
       partsid,
       dateorder,
       malfunction,
       image,
-      workisdone);
+      workisdone,
+      datework);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderModelCopyWith<_$_OrderModel> get copyWith =>
-      __$$_OrderModelCopyWithImpl<_$_OrderModel>(this, _$identity);
+  _$$OrderModelImplCopyWith<_$OrderModelImpl> get copyWith =>
+      __$$OrderModelImplCopyWithImpl<_$OrderModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderModelToJson(
+    return _$$OrderModelImplToJson(
       this,
     );
   }
@@ -366,10 +419,12 @@ class _$_OrderModel implements _OrderModel {
 abstract class _OrderModel implements OrderModel {
   const factory _OrderModel(
       {final String? id,
-      final String? equipmentid,
       final String? clientid,
+      final String? equipmentid,
       final String? name1,
       final String? name2,
+      final String? view,
+      final String? plot,
       @JsonKey(fromJson: stringToInt, toJson: stringFromInt) final int? state,
       final String? description,
       final String? partsid,
@@ -377,21 +432,26 @@ abstract class _OrderModel implements OrderModel {
       final String? malfunction,
       final String? image,
       @JsonKey(fromJson: boolFromString, toJson: boolToString)
-      final bool? workisdone}) = _$_OrderModel;
+      final bool? workisdone,
+      final DateTime? datework}) = _$OrderModelImpl;
 
   factory _OrderModel.fromJson(Map<String, dynamic> json) =
-      _$_OrderModel.fromJson;
+      _$OrderModelImpl.fromJson;
 
   @override
   String? get id;
   @override
-  String? get equipmentid;
-  @override
   String? get clientid;
+  @override
+  String? get equipmentid;
   @override
   String? get name1;
   @override
   String? get name2;
+  @override
+  String? get view;
+  @override
+  String? get plot;
   @override
   @JsonKey(fromJson: stringToInt, toJson: stringFromInt)
   int? get state;
@@ -399,7 +459,7 @@ abstract class _OrderModel implements OrderModel {
   String? get description;
   @override
   String? get partsid;
-  @override //    @JsonKey(fromJson: getDateTimeFromTimestamp, toJson: timeStampToJson) DateTime? dateorder,
+  @override
   DateTime? get dateorder;
   @override
   String? get malfunction;
@@ -409,8 +469,10 @@ abstract class _OrderModel implements OrderModel {
   @JsonKey(fromJson: boolFromString, toJson: boolToString)
   bool? get workisdone;
   @override
+  DateTime? get datework;
+  @override
   @JsonKey(ignore: true)
-  _$$_OrderModelCopyWith<_$_OrderModel> get copyWith =>
+  _$$OrderModelImplCopyWith<_$OrderModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -461,21 +523,22 @@ class _$ListOrderCopyWithImpl<$Res, $Val extends ListOrder>
 }
 
 /// @nodoc
-abstract class _$$_ListOrderCopyWith<$Res> implements $ListOrderCopyWith<$Res> {
-  factory _$$_ListOrderCopyWith(
-          _$_ListOrder value, $Res Function(_$_ListOrder) then) =
-      __$$_ListOrderCopyWithImpl<$Res>;
+abstract class _$$ListOrderImplCopyWith<$Res>
+    implements $ListOrderCopyWith<$Res> {
+  factory _$$ListOrderImplCopyWith(
+          _$ListOrderImpl value, $Res Function(_$ListOrderImpl) then) =
+      __$$ListOrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<OrderModel>? list});
 }
 
 /// @nodoc
-class __$$_ListOrderCopyWithImpl<$Res>
-    extends _$ListOrderCopyWithImpl<$Res, _$_ListOrder>
-    implements _$$_ListOrderCopyWith<$Res> {
-  __$$_ListOrderCopyWithImpl(
-      _$_ListOrder _value, $Res Function(_$_ListOrder) _then)
+class __$$ListOrderImplCopyWithImpl<$Res>
+    extends _$ListOrderCopyWithImpl<$Res, _$ListOrderImpl>
+    implements _$$ListOrderImplCopyWith<$Res> {
+  __$$ListOrderImplCopyWithImpl(
+      _$ListOrderImpl _value, $Res Function(_$ListOrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +546,7 @@ class __$$_ListOrderCopyWithImpl<$Res>
   $Res call({
     Object? list = freezed,
   }) {
-    return _then(_$_ListOrder(
+    return _then(_$ListOrderImpl(
       list: freezed == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
@@ -494,11 +557,11 @@ class __$$_ListOrderCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ListOrder implements _ListOrder {
-  const _$_ListOrder({final List<OrderModel>? list}) : _list = list;
+class _$ListOrderImpl implements _ListOrder {
+  const _$ListOrderImpl({final List<OrderModel>? list}) : _list = list;
 
-  factory _$_ListOrder.fromJson(Map<String, dynamic> json) =>
-      _$$_ListOrderFromJson(json);
+  factory _$ListOrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ListOrderImplFromJson(json);
 
   final List<OrderModel>? _list;
   @override
@@ -519,7 +582,7 @@ class _$_ListOrder implements _ListOrder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ListOrder &&
+            other is _$ListOrderImpl &&
             const DeepCollectionEquality().equals(other._list, _list));
   }
 
@@ -531,27 +594,27 @@ class _$_ListOrder implements _ListOrder {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ListOrderCopyWith<_$_ListOrder> get copyWith =>
-      __$$_ListOrderCopyWithImpl<_$_ListOrder>(this, _$identity);
+  _$$ListOrderImplCopyWith<_$ListOrderImpl> get copyWith =>
+      __$$ListOrderImplCopyWithImpl<_$ListOrderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ListOrderToJson(
+    return _$$ListOrderImplToJson(
       this,
     );
   }
 }
 
 abstract class _ListOrder implements ListOrder {
-  const factory _ListOrder({final List<OrderModel>? list}) = _$_ListOrder;
+  const factory _ListOrder({final List<OrderModel>? list}) = _$ListOrderImpl;
 
   factory _ListOrder.fromJson(Map<String, dynamic> json) =
-      _$_ListOrder.fromJson;
+      _$ListOrderImpl.fromJson;
 
   @override
   List<OrderModel>? get list;
   @override
   @JsonKey(ignore: true)
-  _$$_ListOrderCopyWith<_$_ListOrder> get copyWith =>
+  _$$ListOrderImplCopyWith<_$ListOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

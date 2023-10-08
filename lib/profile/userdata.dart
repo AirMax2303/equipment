@@ -48,12 +48,7 @@ class UserDataScreen extends StatelessWidget {
                           image: 'assets/message_white.svg',
                           onPressed: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        SendMessage(
-                                          email: service.profile.email!,
-                                        )));
+                                context, MaterialPageRoute(builder: (context) => SendMessage(email: service.profile.email!)));
                           }),
                     ],
                   ),
@@ -105,7 +100,7 @@ class UserDataScreen extends StatelessWidget {
                             ));
                           });
                         } else {
-                          return const SizedBox(height: 1);
+                          return const SizedBox();
                         }
                       }),
                   const SizedBox(height: 20),
@@ -118,13 +113,11 @@ class UserDataScreen extends StatelessWidget {
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           color: Color(0xCC3F60EE),
-                          gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
-                            Color(0xFF070159),
-                            Color(0xFF072FEE),
-                          ]),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [Color(0xFF070159), Color(0xFF072FEE)]),
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
@@ -132,9 +125,7 @@ class UserDataScreen extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Column(
                               children: [
-                                const SizedBox(
-                                  height: 40,
-                                ),
+                                const SizedBox(height: 40),
                                 AppText.whiteText16('Ваш тариф $value'),
                                 AppText.whiteText13(
                                   'Действует до 01.01.2023',
@@ -178,10 +169,9 @@ class UserDataScreen extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return changePassword(context);
-                          }).then((value) =>
-                          BlocProvider.of<ProfileBloc>(context).add(
-                            ProfileEvent.savePassword(password: value!),
-                          ));
+                          }).then(
+                        (value) => BlocProvider.of<ProfileBloc>(context).add(ProfileEvent.savePassword(password: value!)),
+                      );
                     },
                     child: Container(
                         height: 60,
@@ -194,12 +184,8 @@ class UserDataScreen extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  AppIcons.icon35(
-                                    image: 'assets/userpassword.svg',
-                                  ),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
+                                  AppIcons.icon35(image: 'assets/userpassword.svg'),
+                                  const SizedBox(width: 5),
                                   AppText.blackText14('Сменить пороль'),
                                 ],
                               ),
@@ -225,12 +211,8 @@ class UserDataScreen extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  AppIcons.icon35(
-                                    image: 'assets/log-out.svg',
-                                  ),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
+                                  AppIcons.icon35(image: 'assets/log-out.svg'),
+                                  const SizedBox(width: 5),
                                   AppText.blackText14('Выйти'),
                                 ],
                               ),
@@ -249,5 +231,4 @@ class UserDataScreen extends StatelessWidget {
       ),
     );
   }
-
 }

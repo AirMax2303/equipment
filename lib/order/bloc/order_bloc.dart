@@ -11,16 +11,14 @@ part 'order_event.dart';
 part 'order_state.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
-  OrderService service = OrderService();
+  OrderService service;
+
   OrderBloc(this.service) : super(const OrderState.initial()) {
     on<_AddOrderEvent>(_onAddOrderEvent);
   }
-  void _onAddOrderEvent(
-    _AddOrderEvent event,
-      Emitter<OrderState> emit,
-      ) async {
+
+  void _onAddOrderEvent(_AddOrderEvent event, Emitter<OrderState> emit) async {
     await service.addOrder(event.order);
-    emit(const _AdditionState());
     emit(const _OkState());
   }
 }

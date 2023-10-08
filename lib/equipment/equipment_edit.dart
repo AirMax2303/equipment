@@ -1,14 +1,13 @@
 import 'dart:io';
 
 import 'package:equipment/equipment/models/info.dart';
+import 'package:equipment/other/other.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:uuid/uuid.dart';
 
 import '../widgets/appbar.dart';
 import 'bloc/equipment_bloc.dart';
@@ -20,20 +19,16 @@ import 'models/name.dart';
 import 'name_list.dart';
 
 //ignore: must_be_immutable
-
 class EquipmentEdit extends StatelessWidget {
-  EquipmentEdit({Key? key, required this.equipment, required this.viewList, required this.plotList}) : super(key: key);
-  late EquipmentModel equipment;
-  List<NameModel> viewList;
-  List<NameModel> plotList;
-  List<InfoModel> infoList = [];
+  EquipmentEdit({Key? key, required this.equipmentData}) : super(key: key);
+  Equipment equipmentData;
   String image = '';
   File? file;
-  final ValueNotifier<bool> refrash = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> refresh = ValueNotifier<bool>(false);
   final ValueNotifier<bool> showView = ValueNotifier<bool>(false);
   final ValueNotifier<bool> showPlot = ValueNotifier<bool>(false);
   final ValueNotifier<bool> infoListChange = ValueNotifier<bool>(false);
-  final ValueNotifier<bool> showProftype = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> showProfType = ValueNotifier<bool>(false);
   final formKey = GlobalKey<FormBuilderState>();
   final formInfoKey = GlobalKey<FormBuilderState>();
 
@@ -41,7 +36,7 @@ class EquipmentEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context, 'Карточка оборудования', {}, () {
-        BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoDetailScreen(equipment));
+        BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoDetailScreen(equipmentData));
       }),
       bottomNavigationBar: const AppNavigationBar(Nav.equip),
       body: SafeArea(
@@ -52,7 +47,7 @@ class EquipmentEdit extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: ValueListenableBuilder(
-                valueListenable: refrash,
+                valueListenable: refresh,
                 builder: (BuildContext context, value, Widget? child) {
                   return SingleChildScrollView(
                     child: FormBuilder(
@@ -60,10 +55,10 @@ class EquipmentEdit extends StatelessWidget {
                       child: Column(
                         children: [
                           Stack(alignment: Alignment.bottomRight, children: [
-                            equipment.image!.isEmpty
+                            equipmentData.equipment!.image!.isEmpty
                                 ? Image.asset('assets/eq.png')
                                 : Image.file(
-                                    File(equipment.image!),
+                                    File(equipmentData.equipment!.image!),
                                     height: 150,
                                   ),
                             IconButton(
@@ -72,38 +67,46 @@ class EquipmentEdit extends StatelessWidget {
                                 FilePickerResult? result = await FilePicker.platform.pickFiles();
                                 if (result != null) {
                                   file = File(result.files.single.path!);
-                                  equipment = equipment.copyWith(image: file?.path);
-                                  refrash.value = !refrash.value;
+                                  equipmentData.equipment = equipmentData.equipment!.copyWith(image: file?.path);
+                                  refresh.value = !refresh.value;
                                 }
                               },
                             ),
                           ]),
-                          AppSixeBox.size16,
+                          const SizedBox(height: 16),
                           FormBuilderTextField(
-                              name: 'name1',
-                              initialValue: equipment.name1,
-                              style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-                              decoration: AppDecoration.inputEq('Название 1'),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
-                              ])),
-                          AppSixeBox.size16,
+                            name: 'name1',
+                            initialValue: equipmentData.equipment!.name1,
+                            style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+                            decoration: AppDecoration.inputEq('Название 1'),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+                            ]),
+                            onChanged: (value) {
+                              equipmentData.equipment = equipmentData.equipment!.copyWith(name1: value);
+                            },
+                          ),
+                          const SizedBox(height: 16),
                           FormBuilderTextField(
-                              name: 'name2',
-                              initialValue: equipment.name2,
-                              style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-                              decoration: AppDecoration.inputEq('Название 2'),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
-                              ])),
-                          AppSixeBox.size16,
+                            name: 'name2',
+                            initialValue: equipmentData.equipment!.name2,
+                            style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+                            decoration: AppDecoration.inputEq('Название 2'),
+                            validator: FormBuilderValidators.compose([
+//                              FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+                            ]),
+                            onChanged: (value) {
+                              equipmentData.equipment = equipmentData.equipment!.copyWith(name2: value);
+                            },
+                          ),
+                          const SizedBox(height: 16),
 //-------------------------------------------------------------------------------------------------------------------------------
                           ValueListenableBuilder(
                               valueListenable: showView,
                               builder: (BuildContext context, value, Widget? child) {
                                 return FormBuilderTextField(
                                     name: 'view',
-                                    initialValue: equipment.view,
+                                    initialValue: equipmentData.equipment!.view,
                                     style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                                     readOnly: true,
                                     onTap: () {
@@ -111,33 +114,24 @@ class EquipmentEdit extends StatelessWidget {
                                     },
                                     decoration: AppDecoration.inputEqDropDown('Вид оборудования', showView.value),
                                     validator: FormBuilderValidators.compose([
-                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+//                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                                     ]));
                               }),
-                          AppSixeBox.size5,
+                          const SizedBox(height: 5),
                           ValueListenableBuilder(
                               valueListenable: showView,
                               builder: (BuildContext context, value, Widget? child) {
                                 if (value) {
                                   return NameList(
-                                      list: viewList,
-                                      oniItemPressed: (index) {
-                                        formKey.currentState?.fields['view']?.didChange(viewList[index].name);
+                                      typeName: true,
+                                      onNameCallback: (NameModel value) {
+                                        formKey.currentState?.fields['view']?.didChange(value.name);
+                                        equipmentData.equipment =
+                                            equipmentData.equipment?.copyWith(viewid: value.id, view: value.name);
                                         showView.value = false;
-                                      },
-                                      onAddTap: () {
-                                        showDialog<String>(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return newName(context, 'Новый вид оборудования');
-                                            }).then((value) {
-                                          BlocProvider.of<EquipmentBloc>(context)
-                                              .add(EquipmentEvent.addViewInEdit(equipment, value!));
-                                          showView.value = false;
-                                        });
                                       });
                                 } else {
-                                  return AppSixeBox.size10;
+                                  return const SizedBox(height: 16);
                                 }
                               }),
 //-------------------------------------------------------------------------------------------------------------------------------
@@ -146,7 +140,7 @@ class EquipmentEdit extends StatelessWidget {
                               builder: (BuildContext context, value, Widget? child) {
                                 return FormBuilderTextField(
                                     name: 'plot',
-                                    initialValue: equipment.plot,
+                                    initialValue: equipmentData.equipment!.plot,
                                     style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                                     readOnly: true,
                                     onTap: () {
@@ -154,55 +148,45 @@ class EquipmentEdit extends StatelessWidget {
                                     },
                                     decoration: AppDecoration.inputEqDropDown('Участок', showPlot.value),
                                     validator: FormBuilderValidators.compose([
-                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+//                                      FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                                     ]));
                               }),
-                          AppSixeBox.size5,
+                          const SizedBox(height: 5),
                           ValueListenableBuilder(
                               valueListenable: showPlot,
                               builder: (BuildContext context, value, Widget? child) {
                                 if (value) {
                                   return NameList(
-                                      list: plotList,
-                                      oniItemPressed: (index) {
-                                        formKey.currentState?.fields['plot']?.didChange(plotList[index].name);
+                                      typeName: false,
+                                      onNameCallback: (NameModel value) {
+                                        formKey.currentState?.fields['plot']?.didChange(value.name);
+                                        equipmentData.equipment =
+                                            equipmentData.equipment?.copyWith(plotid: value.id, plot: value.name);
                                         showPlot.value = false;
-                                      },
-                                      onAddTap: () {
-                                        showDialog<String>(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return newName(context, 'Новый участок');
-                                            }).then((value) {
-                                          BlocProvider.of<EquipmentBloc>(context)
-                                              .add(EquipmentEvent.addPlotInEdit(equipment, value!));
-                                          showPlot.value = false;
-                                        });
                                       });
                                 } else {
-                                  return AppSixeBox.size10;
+                                  return const SizedBox();
                                 }
                               }),
 //-------------------------------------------------------------------------------------------------------------------------------
                           FormBuilderSwitch(
                             title: const Text('Работа/часы'),
                             name: 'proftype',
-                            initialValue: equipment.proftype,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                            ),
+                            initialValue: equipmentData.equipment!.proftype,
+                            decoration: const InputDecoration(border: InputBorder.none),
                             onChanged: (value) {
-                              showProftype.value = value!;
+                              equipmentData.equipment = equipmentData.equipment?.copyWith(proftype: value);
+                              showProfType.value = value!;
                             },
                           ),
                           ValueListenableBuilder(
-                              valueListenable: showProftype,
+                              valueListenable: showProfType,
                               builder: (BuildContext context, bool value, Widget? child) {
                                 if (value) {
                                   return FormBuilderTextField(
-                                    name: 'valueproftype',
+                                    name: 'valuex',
                                     readOnly: true,
-                                    initialValue: equipment.valueproftype.toString(),
+                                    initialValue: equipmentData.equipment!.valuex.toString(),
                                     style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                                     decoration: AppDecoration.inputEq('Текущее значение работа/часов'),
                                   );
@@ -214,25 +198,14 @@ class EquipmentEdit extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
-                                'Информация',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                              ),
+                              const Text('Информация').style16w700(),
                               Row(
                                 children: [
-                                  const Icon(
-                                    Icons.add,
-                                    color: Color(0xFF8F9BB3),
-                                  ),
+                                  const Icon(Icons.add, color: Color(0xFF8F9BB3)),
                                   TextButton(
-                                    child: Text('Добавить',
-                                        style: GoogleFonts.poppins(
-                                          textStyle: const TextStyle(
-                                              color: Color(0xFF8F9BB3), fontSize: 14, fontWeight: FontWeight.w700),
-                                        )),
+                                    child: const Text('Добавить').style14w700(color: const Color(0xFF8F9BB3)),
                                     onPressed: () {
-                                      var uuid = const Uuid();
-                                      infoList.add(InfoModel(id: uuid.v1(), equipmentid: equipment.id, info: ''));
+                                      equipmentData.infoList!.add(InfoModel(equipmentid: equipmentData.equipment!.id, data: ''));
                                       infoListChange.value = !infoListChange.value;
                                     },
                                   ),
@@ -240,15 +213,16 @@ class EquipmentEdit extends StatelessWidget {
                               )
                             ],
                           ),
-                          AppSixeBox.size16,
+                          const SizedBox(height: 16),
 //-------------------------------------------------------------------------------------------------------------------------------
                           ValueListenableBuilder(
                               valueListenable: infoListChange,
                               builder: (BuildContext context, bool value, Widget? child) {
+                                print('infoListChange -------------------------------------------------------------------------');
                                 return FormBuilder(
                                   key: formInfoKey,
                                   child: Column(
-                                    children: List<Widget>.generate(infoList.length, (index) {
+                                    children: List<Widget>.generate(equipmentData.infoList!.length, (index) {
                                       return Column(
                                         children: [
                                           Stack(
@@ -257,25 +231,30 @@ class EquipmentEdit extends StatelessWidget {
                                               FormBuilderTextField(
                                                 name: index.toString(),
                                                 onChanged: (value) {
-                                                  infoList[index] = infoList[index].copyWith(
-                                                      id: infoList[index].id,
-                                                      equipmentid: infoList[index].equipmentid,
-                                                      info: value);
+                                                  equipmentData.infoList![index] = equipmentData.infoList![index].copyWith(
+                                                      id: equipmentData.infoList![index].id,
+                                                      equipmentid: equipmentData.infoList![index].equipmentid,
+                                                      data: value);
                                                 },
-                                                initialValue: infoList[index].info,
+                                                initialValue: equipmentData.infoList![index].data,
                                                 style: const TextStyle(
                                                     color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
                                                 decoration: AppDecoration.inputEq('Информация'),
                                               ),
                                               IconButton(
                                                   onPressed: () {
-                                                    infoList.removeAt(index);
+                                                    equipmentData.infoList!.removeAt(index);
                                                     infoListChange.value = !infoListChange.value;
+                                                    for (var i = 0; i < equipmentData.infoList!.length; ++i) {
+                                                      formInfoKey.currentState?.fields[i.toString()]?.didChange(
+                                                        equipmentData.infoList![i].data,
+                                                      );
+                                                    }
                                                   },
                                                   icon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown)),
                                             ],
                                           ),
-                                          AppSixeBox.size16,
+                                          const SizedBox(height: 16),
                                         ],
                                       );
                                     }),
@@ -284,32 +263,22 @@ class EquipmentEdit extends StatelessWidget {
                               }),
 //-------------------------------------------------------------------------------------------------------------------------------
                           AppButton.filledButton('Сохранить', onPressed: () {
-                            final keys = formInfoKey.currentState?.fields.keys;
-                            formKey.currentState?.saveAndValidate();
-                            formInfoKey.currentState?.saveAndValidate();
-
-/*
                             if (formKey.currentState?.saveAndValidate() ?? false) {
-                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.EditEquipment(EquipmentModel(
-                                name1: formKey.currentState?.fields['name1']?.value,
-                                name2: formKey.currentState?.fields['name2']?.value,
-                                view: formKey.currentState?.fields['view']?.value,
-                                plot: formKey.currentState?.fields['plot']?.value,
-                                image: file?.path,
-                              )));
+                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.updateEquipment(equipmentData));
                             }
-
- */
                           }),
                           AppButton.textButton('Удалить', onPressed: () {
-                            showDialog<String>(
+                            showDialog<bool>(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return dialogDeleteConfirm(context);
                                 }).then((value) {
-                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.deleteEquipment(equipment));
+                              if (value!) {
+                                BlocProvider.of<EquipmentBloc>(context)
+                                    .add(EquipmentEvent.deleteEquipment(equipmentData));
+                              }
                             });
-                          })
+                          }),
                         ],
                       ),
                     ),

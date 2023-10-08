@@ -75,25 +75,25 @@ class _$CalendarEventCopyWithImpl<$Res, $Val extends CalendarEvent>
 }
 
 /// @nodoc
-abstract class _$$_InitialEventCopyWith<$Res> {
-  factory _$$_InitialEventCopyWith(
-          _$_InitialEvent value, $Res Function(_$_InitialEvent) then) =
-      __$$_InitialEventCopyWithImpl<$Res>;
+abstract class _$$InitialEventImplCopyWith<$Res> {
+  factory _$$InitialEventImplCopyWith(
+          _$InitialEventImpl value, $Res Function(_$InitialEventImpl) then) =
+      __$$InitialEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialEventCopyWithImpl<$Res>
-    extends _$CalendarEventCopyWithImpl<$Res, _$_InitialEvent>
-    implements _$$_InitialEventCopyWith<$Res> {
-  __$$_InitialEventCopyWithImpl(
-      _$_InitialEvent _value, $Res Function(_$_InitialEvent) _then)
+class __$$InitialEventImplCopyWithImpl<$Res>
+    extends _$CalendarEventCopyWithImpl<$Res, _$InitialEventImpl>
+    implements _$$InitialEventImplCopyWith<$Res> {
+  __$$InitialEventImplCopyWithImpl(
+      _$InitialEventImpl _value, $Res Function(_$InitialEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialEvent implements _InitialEvent {
-  const _$_InitialEvent();
+class _$InitialEventImpl implements _InitialEvent {
+  const _$InitialEventImpl();
 
   @override
   String toString() {
@@ -103,7 +103,7 @@ class _$_InitialEvent implements _InitialEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialEvent);
+        (other.runtimeType == runtimeType && other is _$InitialEventImpl);
   }
 
   @override
@@ -173,24 +173,24 @@ class _$_InitialEvent implements _InitialEvent {
 }
 
 abstract class _InitialEvent implements CalendarEvent {
-  const factory _InitialEvent() = _$_InitialEvent;
+  const factory _InitialEvent() = _$InitialEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_GetListEventCopyWith<$Res> {
-  factory _$$_GetListEventCopyWith(
-          _$_GetListEvent value, $Res Function(_$_GetListEvent) then) =
-      __$$_GetListEventCopyWithImpl<$Res>;
+abstract class _$$GetListEventImplCopyWith<$Res> {
+  factory _$$GetListEventImplCopyWith(
+          _$GetListEventImpl value, $Res Function(_$GetListEventImpl) then) =
+      __$$GetListEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime date});
 }
 
 /// @nodoc
-class __$$_GetListEventCopyWithImpl<$Res>
-    extends _$CalendarEventCopyWithImpl<$Res, _$_GetListEvent>
-    implements _$$_GetListEventCopyWith<$Res> {
-  __$$_GetListEventCopyWithImpl(
-      _$_GetListEvent _value, $Res Function(_$_GetListEvent) _then)
+class __$$GetListEventImplCopyWithImpl<$Res>
+    extends _$CalendarEventCopyWithImpl<$Res, _$GetListEventImpl>
+    implements _$$GetListEventImplCopyWith<$Res> {
+  __$$GetListEventImplCopyWithImpl(
+      _$GetListEventImpl _value, $Res Function(_$GetListEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -198,7 +198,7 @@ class __$$_GetListEventCopyWithImpl<$Res>
   $Res call({
     Object? date = null,
   }) {
-    return _then(_$_GetListEvent(
+    return _then(_$GetListEventImpl(
       null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -209,8 +209,8 @@ class __$$_GetListEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetListEvent implements _GetListEvent {
-  const _$_GetListEvent(this.date);
+class _$GetListEventImpl implements _GetListEvent {
+  const _$GetListEventImpl(this.date);
 
   @override
   final DateTime date;
@@ -224,7 +224,7 @@ class _$_GetListEvent implements _GetListEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetListEvent &&
+            other is _$GetListEventImpl &&
             (identical(other.date, date) || other.date == date));
   }
 
@@ -234,8 +234,8 @@ class _$_GetListEvent implements _GetListEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetListEventCopyWith<_$_GetListEvent> get copyWith =>
-      __$$_GetListEventCopyWithImpl<_$_GetListEvent>(this, _$identity);
+  _$$GetListEventImplCopyWith<_$GetListEventImpl> get copyWith =>
+      __$$GetListEventImplCopyWithImpl<_$GetListEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -301,11 +301,11 @@ class _$_GetListEvent implements _GetListEvent {
 }
 
 abstract class _GetListEvent implements CalendarEvent {
-  const factory _GetListEvent(final DateTime date) = _$_GetListEvent;
+  const factory _GetListEvent(final DateTime date) = _$GetListEventImpl;
 
   DateTime get date;
   @JsonKey(ignore: true)
-  _$$_GetListEventCopyWith<_$_GetListEvent> get copyWith =>
+  _$$GetListEventImplCopyWith<_$GetListEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -318,7 +318,7 @@ mixin _$CalendarState {
     required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarView>? list) data,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -328,7 +328,7 @@ mixin _$CalendarState {
     TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarView>? list)? data,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -338,7 +338,7 @@ mixin _$CalendarState {
     TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarView>? list)? data,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -394,25 +394,25 @@ class _$CalendarStateCopyWithImpl<$Res, $Val extends CalendarState>
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(
-          _$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(
-      _$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialState implements _InitialState {
-  const _$_InitialState();
+class _$InitialStateImpl implements _InitialState {
+  const _$InitialStateImpl();
 
   @override
   String toString() {
@@ -422,7 +422,7 @@ class _$_InitialState implements _InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialStateImpl);
   }
 
   @override
@@ -436,7 +436,7 @@ class _$_InitialState implements _InitialState {
     required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarView>? list) data,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
   }) {
     return initial();
   }
@@ -449,7 +449,7 @@ class _$_InitialState implements _InitialState {
     TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarView>? list)? data,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
   }) {
     return initial?.call();
   }
@@ -462,7 +462,7 @@ class _$_InitialState implements _InitialState {
     TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarView>? list)? data,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -516,29 +516,29 @@ class _$_InitialState implements _InitialState {
 }
 
 abstract class _InitialState implements CalendarState {
-  const factory _InitialState() = _$_InitialState;
+  const factory _InitialState() = _$InitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(
-          _$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(
-      _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingState implements _LoadingState {
-  const _$_LoadingState();
+class _$LoadingStateImpl implements _LoadingState {
+  const _$LoadingStateImpl();
 
   @override
   String toString() {
@@ -548,7 +548,7 @@ class _$_LoadingState implements _LoadingState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingState);
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
   }
 
   @override
@@ -562,7 +562,7 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarView>? list) data,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
   }) {
     return loading();
   }
@@ -575,7 +575,7 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarView>? list)? data,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
   }) {
     return loading?.call();
   }
@@ -588,7 +588,7 @@ class _$_LoadingState implements _LoadingState {
     TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarView>? list)? data,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -642,29 +642,29 @@ class _$_LoadingState implements _LoadingState {
 }
 
 abstract class _LoadingState implements CalendarState {
-  const factory _LoadingState() = _$_LoadingState;
+  const factory _LoadingState() = _$LoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_AdditionStateCopyWith<$Res> {
-  factory _$$_AdditionStateCopyWith(
-          _$_AdditionState value, $Res Function(_$_AdditionState) then) =
-      __$$_AdditionStateCopyWithImpl<$Res>;
+abstract class _$$AdditionStateImplCopyWith<$Res> {
+  factory _$$AdditionStateImplCopyWith(
+          _$AdditionStateImpl value, $Res Function(_$AdditionStateImpl) then) =
+      __$$AdditionStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AdditionStateCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$_AdditionState>
-    implements _$$_AdditionStateCopyWith<$Res> {
-  __$$_AdditionStateCopyWithImpl(
-      _$_AdditionState _value, $Res Function(_$_AdditionState) _then)
+class __$$AdditionStateImplCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$AdditionStateImpl>
+    implements _$$AdditionStateImplCopyWith<$Res> {
+  __$$AdditionStateImplCopyWithImpl(
+      _$AdditionStateImpl _value, $Res Function(_$AdditionStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AdditionState implements _AdditionState {
-  const _$_AdditionState();
+class _$AdditionStateImpl implements _AdditionState {
+  const _$AdditionStateImpl();
 
   @override
   String toString() {
@@ -674,7 +674,7 @@ class _$_AdditionState implements _AdditionState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AdditionState);
+        (other.runtimeType == runtimeType && other is _$AdditionStateImpl);
   }
 
   @override
@@ -688,7 +688,7 @@ class _$_AdditionState implements _AdditionState {
     required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarView>? list) data,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
   }) {
     return addition();
   }
@@ -701,7 +701,7 @@ class _$_AdditionState implements _AdditionState {
     TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarView>? list)? data,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
   }) {
     return addition?.call();
   }
@@ -714,7 +714,7 @@ class _$_AdditionState implements _AdditionState {
     TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarView>? list)? data,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
     required TResult orElse(),
   }) {
     if (addition != null) {
@@ -768,28 +768,29 @@ class _$_AdditionState implements _AdditionState {
 }
 
 abstract class _AdditionState implements CalendarState {
-  const factory _AdditionState() = _$_AdditionState;
+  const factory _AdditionState() = _$AdditionStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_OkStateCopyWith<$Res> {
-  factory _$$_OkStateCopyWith(
-          _$_OkState value, $Res Function(_$_OkState) then) =
-      __$$_OkStateCopyWithImpl<$Res>;
+abstract class _$$OkStateImplCopyWith<$Res> {
+  factory _$$OkStateImplCopyWith(
+          _$OkStateImpl value, $Res Function(_$OkStateImpl) then) =
+      __$$OkStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OkStateCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$_OkState>
-    implements _$$_OkStateCopyWith<$Res> {
-  __$$_OkStateCopyWithImpl(_$_OkState _value, $Res Function(_$_OkState) _then)
+class __$$OkStateImplCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$OkStateImpl>
+    implements _$$OkStateImplCopyWith<$Res> {
+  __$$OkStateImplCopyWithImpl(
+      _$OkStateImpl _value, $Res Function(_$OkStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OkState implements _OkState {
-  const _$_OkState();
+class _$OkStateImpl implements _OkState {
+  const _$OkStateImpl();
 
   @override
   String toString() {
@@ -799,7 +800,7 @@ class _$_OkState implements _OkState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OkState);
+        (other.runtimeType == runtimeType && other is _$OkStateImpl);
   }
 
   @override
@@ -813,7 +814,7 @@ class _$_OkState implements _OkState {
     required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarView>? list) data,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
   }) {
     return ok();
   }
@@ -826,7 +827,7 @@ class _$_OkState implements _OkState {
     TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarView>? list)? data,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
   }) {
     return ok?.call();
   }
@@ -839,7 +840,7 @@ class _$_OkState implements _OkState {
     TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarView>? list)? data,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -893,24 +894,24 @@ class _$_OkState implements _OkState {
 }
 
 abstract class _OkState implements CalendarState {
-  const factory _OkState() = _$_OkState;
+  const factory _OkState() = _$OkStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorStateCopyWith<$Res> {
-  factory _$$_ErrorStateCopyWith(
-          _$_ErrorState value, $Res Function(_$_ErrorState) then) =
-      __$$_ErrorStateCopyWithImpl<$Res>;
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ErrorStateCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$_ErrorState>
-    implements _$$_ErrorStateCopyWith<$Res> {
-  __$$_ErrorStateCopyWithImpl(
-      _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -918,7 +919,7 @@ class __$$_ErrorStateCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_ErrorState(
+    return _then(_$ErrorStateImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -929,8 +930,8 @@ class __$$_ErrorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorState implements _ErrorState {
-  const _$_ErrorState({required this.error});
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl({required this.error});
 
   @override
   final String error;
@@ -944,7 +945,7 @@ class _$_ErrorState implements _ErrorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorState &&
+            other is _$ErrorStateImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -954,8 +955,8 @@ class _$_ErrorState implements _ErrorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
-      __$$_ErrorStateCopyWithImpl<_$_ErrorState>(this, _$identity);
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -965,7 +966,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarView>? list) data,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
   }) {
     return error(this.error);
   }
@@ -978,7 +979,7 @@ class _$_ErrorState implements _ErrorState {
     TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarView>? list)? data,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
   }) {
     return error?.call(this.error);
   }
@@ -991,7 +992,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarView>? list)? data,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1045,29 +1046,29 @@ class _$_ErrorState implements _ErrorState {
 }
 
 abstract class _ErrorState implements CalendarState {
-  const factory _ErrorState({required final String error}) = _$_ErrorState;
+  const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DataStateCopyWith<$Res> {
-  factory _$$_DataStateCopyWith(
-          _$_DataState value, $Res Function(_$_DataState) then) =
-      __$$_DataStateCopyWithImpl<$Res>;
+abstract class _$$DataStateImplCopyWith<$Res> {
+  factory _$$DataStateImplCopyWith(
+          _$DataStateImpl value, $Res Function(_$DataStateImpl) then) =
+      __$$DataStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({DateTime date, List<CalendarView>? list});
+  $Res call({DateTime date, List<CalendarData>? list});
 }
 
 /// @nodoc
-class __$$_DataStateCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$_DataState>
-    implements _$$_DataStateCopyWith<$Res> {
-  __$$_DataStateCopyWithImpl(
-      _$_DataState _value, $Res Function(_$_DataState) _then)
+class __$$DataStateImplCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$DataStateImpl>
+    implements _$$DataStateImplCopyWith<$Res> {
+  __$$DataStateImplCopyWithImpl(
+      _$DataStateImpl _value, $Res Function(_$DataStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1076,7 +1077,7 @@ class __$$_DataStateCopyWithImpl<$Res>
     Object? date = null,
     Object? list = freezed,
   }) {
-    return _then(_$_DataState(
+    return _then(_$DataStateImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -1084,23 +1085,23 @@ class __$$_DataStateCopyWithImpl<$Res>
       list: freezed == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
-              as List<CalendarView>?,
+              as List<CalendarData>?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_DataState implements _DataState {
-  const _$_DataState(
-      {required this.date, required final List<CalendarView>? list})
+class _$DataStateImpl implements _DataState {
+  const _$DataStateImpl(
+      {required this.date, required final List<CalendarData>? list})
       : _list = list;
 
   @override
   final DateTime date;
-  final List<CalendarView>? _list;
+  final List<CalendarData>? _list;
   @override
-  List<CalendarView>? get list {
+  List<CalendarData>? get list {
     final value = _list;
     if (value == null) return null;
     if (_list is EqualUnmodifiableListView) return _list;
@@ -1117,7 +1118,7 @@ class _$_DataState implements _DataState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataState &&
+            other is _$DataStateImpl &&
             (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality().equals(other._list, _list));
   }
@@ -1129,8 +1130,8 @@ class _$_DataState implements _DataState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataStateCopyWith<_$_DataState> get copyWith =>
-      __$$_DataStateCopyWithImpl<_$_DataState>(this, _$identity);
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
+      __$$DataStateImplCopyWithImpl<_$DataStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1140,7 +1141,7 @@ class _$_DataState implements _DataState {
     required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarView>? list) data,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
   }) {
     return data(date, list);
   }
@@ -1153,7 +1154,7 @@ class _$_DataState implements _DataState {
     TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarView>? list)? data,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
   }) {
     return data?.call(date, list);
   }
@@ -1166,7 +1167,7 @@ class _$_DataState implements _DataState {
     TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarView>? list)? data,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -1222,11 +1223,11 @@ class _$_DataState implements _DataState {
 abstract class _DataState implements CalendarState {
   const factory _DataState(
       {required final DateTime date,
-      required final List<CalendarView>? list}) = _$_DataState;
+      required final List<CalendarData>? list}) = _$DataStateImpl;
 
   DateTime get date;
-  List<CalendarView>? get list;
+  List<CalendarData>? get list;
   @JsonKey(ignore: true)
-  _$$_DataStateCopyWith<_$_DataState> get copyWith =>
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

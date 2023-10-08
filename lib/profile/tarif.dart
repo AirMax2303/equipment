@@ -23,27 +23,27 @@ class SelectTarif extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  AppSixeBox.size20,
-                  AppSixeBox.size20,
+                  const SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   AppText.blackText14('Тарифы'),
-                  AppSixeBox.size20,
+                  const SizedBox(height: 16),
                   ValueListenableBuilder(
                       valueListenable: radio,
                       builder: (BuildContext context, bool value, Widget? child) {
                         return Column(
                           children: [
                             Element('Бесплатно', 'Начальный', radio.value, () {if (!radio.value) {radio.value = !radio.value;}}),
-                            AppSixeBox.size16,
+                            const SizedBox(height: 16),
                             Element('700р./мес.', 'Полный', !radio.value, () {if (radio.value) {radio.value = !radio.value;}}),
                           ],
                         );
                       }),
-                  AppSixeBox.size20,
+                  const SizedBox(height: 16),
                   AppButton.filledBlackButton('Подключить', onPressed: () {
                     Navigator.pop(context, radio.value ? 'Начальный' : 'Полный');
                   }),
-                  AppSixeBox.size20,
-                  AppSixeBox.size20,
+                  const SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     'Пользовательское соглашение',
                     style: GoogleFonts.poppins(

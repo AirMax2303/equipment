@@ -1,9 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../models/models.dart';
+import '../../other/other.dart';
 import '../models/equipment.dart';
 import '../models/info.dart';
-import '../models/name.dart';
 import '../service/equipment_service.dart';
 
 part 'equipment_bloc.freezed.dart';
@@ -13,7 +14,7 @@ part 'equipment_event.dart';
 part 'equipment_state.dart';
 
 class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
-  EquipmentService service = EquipmentService();
+  EquipmentService service;
 
   EquipmentBloc(this.service) : super(const EquipmentState.initial()) {
     on<_InitialEvent>(_onInitialEvent);
@@ -24,20 +25,16 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     on<_GotoEditScreenEvent>(_onGotoEditScreenEvent);
     on<_GotoPprScreenEvent>(_onGotoPprScreenEvent);
     on<_AddEquipmentEvent>(_onAddEquipmentEvent);
-    on<_AddViewEvent>(_onAddViewEvent);
-    on<_AddViewInEditEvent>(_onAddViewInEditEvent);
-    on<_AddPlotEvent>(_onAddPlotEvent);
-    on<_AddPlotInEditEvent>(_onAddPlotInEditEvent);
-    on<_EditEquipmentEvent>(_onEditEquipmentEvent);
+    on<_UpdateEquipmentEvent>(_onUpdateEquipmentEvent);
     on<_DeleteEquipmentEvent>(_onDeleteEquipmentEvent);
   }
 
   void _onInitialEvent(
     _InitialEvent event,
-      Emitter<EquipmentState> emit,
+    Emitter<EquipmentState> emit,
   ) async {
     await service.getEquipmentList().then((value) async {
-      emit(_DataState(list: value, viewList: await service.getViewList(), plotList: await service.getPlotList()));
+      emit(_DataState(list: value));
     });
   }
 
@@ -46,10 +43,8 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     Emitter<EquipmentState> emit,
   ) async {
     service.setFilter(event.filter);
-    await service.getFilteredList().then((value) async {
-      emit(
-        _DataState(list: value, viewList: await service.getViewList(), plotList: await service.getPlotList()),
-      );
+    await service.getEquipmentList().then((value) async {
+      emit(_DataState(list: value));
     });
   }
 
@@ -57,10 +52,8 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     _GetListEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    await service.getFilteredList().then((value) async {
-      emit(
-        _DataState(list: value, viewList: await service.getViewList(), plotList: await service.getPlotList()),
-      );
+    await service.getEquipmentList().then((value) async {
+      emit(_DataState(list: value));
     });
   }
 
@@ -68,34 +61,28 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     _GotoAddScreenEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    emit(EquipmentState.gotoAddScreen(viewList: await service.getViewList(), plotList: await service.getPlotList()));
+    emit(const EquipmentState.gotoAddScreen());
   }
 
   void _onGotoDetailScreenEvent(
     _GotoDetailScreenEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    emit(EquipmentState.gotoDetailScreen(
-      equipment: event.equipment,
-    ));
+    emit(EquipmentState.gotoDetailScreen(equipmentData: event.equipment));
   }
 
   void _onGotoEditScreenEvent(
     _GotoEditScreenEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    emit(EquipmentState.gotoEditScreen(
-        equipment: event.equipment,
-        viewList: await service.getViewList(),
-        plotList: await service.getPlotList(),
-        infoList: await service.getInfoList(event.equipment.id!)));
+    emit(EquipmentState.gotoEditScreen(equipmentData: event.equipment));
   }
 
   void _onGotoPprScreenEvent(
     _GotoPprScreenEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    emit(EquipmentState.gotoPprScreen(equipment: event.equipment));
+    emit(EquipmentState.gotoPprScreen(pprType: event.pprType, equipmentData: event.equipment));
   }
 
   void _onAddEquipmentEvent(
@@ -104,76 +91,21 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
   ) async {
     service.addEquipment(event.equipment);
     emit(const _OkState());
-    await service.getFilteredList().then((value) async {
-      emit(
-        _DataState(list: value, viewList: await service.getViewList(), plotList: await service.getPlotList()),
-      );
-    });
   }
 
-  void _onAddViewEvent(
-    _AddViewEvent event,
+  void _onUpdateEquipmentEvent(
+    _UpdateEquipmentEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    service.addViw(event.view);
-    emit(EquipmentState.gotoAddScreen(viewList: await service.getViewList(), plotList: await service.getPlotList()));
-  }
-
-  void _onAddViewInEditEvent(
-    _AddViewInEditEvent event,
-    Emitter<EquipmentState> emit,
-  ) async {
-    service.addViw(event.view);
-    emit(EquipmentState.gotoEditScreen(
-        equipment: event.equipment,
-        viewList: await service.getViewList(),
-        plotList: await service.getPlotList(),
-        infoList: await service.getInfoList(event.equipment.id!)));
-  }
-
-  void _onAddPlotEvent(
-    _AddPlotEvent event,
-    Emitter<EquipmentState> emit,
-  ) async {
-    service.addPlot(event.plot);
-    emit(EquipmentState.gotoAddScreen(viewList: await service.getViewList(), plotList: await service.getPlotList()));
-  }
-
-  void _onAddPlotInEditEvent(
-    _AddPlotInEditEvent event,
-    Emitter<EquipmentState> emit,
-  ) async {
-    service.addPlot(event.plot);
-    emit(EquipmentState.gotoEditScreen(
-        equipment: event.equipment,
-        viewList: await service.getViewList(),
-        plotList: await service.getPlotList(),
-        infoList: await service.getInfoList(event.equipment.id!)));
-  }
-
-  void _onEditEquipmentEvent(
-    _EditEquipmentEvent event,
-    Emitter<EquipmentState> emit,
-  ) async {
-    service.editEquipment(event.equipment);
+    await service.updateEquipment(event.equipment);
     emit(const _OkState());
-    await service.getFilteredList().then((value) async {
-      emit(
-        _DataState(list: value, viewList: await service.getViewList(), plotList: await service.getPlotList()),
-      );
-    });
   }
 
   void _onDeleteEquipmentEvent(
     _DeleteEquipmentEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    service.deleteEquipment(event.equipment);
-    emit(const _OkState());
-    await service.getFilteredList().then((value) async {
-      emit(
-        _DataState(list: value, viewList: await service.getViewList(), plotList: await service.getPlotList()),
-      );
-    });
+    await service.deleteEquipment(event.equipment);
+    emit(const _OkDeleteState());
   }
 }

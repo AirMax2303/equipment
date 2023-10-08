@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../other/other.dart';
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
 import '../widgets/widgets.dart';
 import 'bloc/ppr_bloc.dart';
 
 class Ppr3Screen extends StatelessWidget {
-  Ppr3Screen({Key? key, required this.equipmentid}) : super(key: key);
+  Ppr3Screen({Key? key, required this.pprType, required this.equipmentid}) : super(key: key);
+  PprType pprType;
   String equipmentid;
 
   @override
@@ -16,7 +18,7 @@ class Ppr3Screen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const AppNavigationBar(Nav.equip),
       appBar: appBar(context, 'ППР', {}, () {
-        BlocProvider.of<PprBloc>(context).add(PprEvent.initial(equipmentid));
+        BlocProvider.of<PprBloc>(context).add(PprEvent.initial(pprType, equipmentid));
       }),
       body: SafeArea(
           child: Padding(
@@ -32,9 +34,9 @@ class Ppr3Screen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          AppSixeBox.size20,
+                          const SizedBox(height: 20),
                           SvgPicture.asset('assets/done.svg'),
-                          AppSixeBox.size20,
+                          const SizedBox(height: 20),
                           AppText.blackText18('Работа сохранена'),
                         ],
                       ),

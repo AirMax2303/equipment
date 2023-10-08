@@ -11,33 +11,23 @@ part 'calendar_event.dart';
 part 'calendar_state.dart';
 
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
-  CalendarService service = CalendarService();
+  CalendarService service;
+  bool? histiry;
 
-  CalendarBloc(this.service) : super(const CalendarState.initial()) {
-//    on<_GetListEvent>(_onGetListEvent);
-    on<CalendarEvent>((event, emit) async {
-      await event.when(
-          initial: () {},
-          getList: (date) async {
-            emit(const CalendarState.initial());
-            await service.getCalendarViewList(date).then((value) async {
-              emit(_DataState(
-                date: date,
-                list: value,
-              ));
-            });
-          });
-    });
+  CalendarBloc(this.service, this.histiry) : super(const CalendarState.initial()) {
+    on<_GetListEvent>(_onGetListEvent);
   }
-/*
+
   void _onGetListEvent(
-      _GetListEvent event,
-      Emitter<CalendarState> emit,
-      ) async {
-    emit(const _OkState());
-    await service.getCalendarViewList(event.date).then((value) async {
-      emit(_DataState(date: event.date, list: value,));
+    _GetListEvent event,
+    Emitter<CalendarState> emit,
+  ) async {
+//    emit(const _OkState());
+    await service.getCalendarList(histiry!, event.date).then((value) async {
+      emit(_DataState(
+        date: event.date,
+        list: value,
+      ));
     });
   }
- */
 }

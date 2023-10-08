@@ -1,233 +1,106 @@
-import 'dart:math';
-import 'package:get_it/get_it.dart';
-import 'package:uuid/uuid.dart';
-
-import '../../order/model/order.dart';
-import '../../profile/service/profile_service.dart';
+import '../../models/models.dart';
+import '../../repository/repository.dart';
 import '../models/equipment.dart';
 import '../models/info.dart';
 import '../models/name.dart';
 
-class SelectedFilter {
-  SelectedFilter({required this.filtername, required this.value});
+enum FilterType { none, view, plot }
 
-  String filtername = '';
-  String value = '';
+class EquipmentFilter {
+  EquipmentFilter({required this.filterType, this.value});
 
-  SelectedFilter.fromJson(Map<String, dynamic> json) {
-    filtername = json['filtername'];
-    value = json['value'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['filtername'] = filtername;
-    data['value'] = value;
-    return data;
-  }
+  FilterType filterType;
+  String? value = '';
 }
 
 class EquipmentService {
-  List<EquipmentModel> list = [];
-  List<List<InfoModel>> listInfo = [];
+  final AppRepository repo;
+  EquipmentFilter filter = EquipmentFilter(filterType: FilterType.none);
+  List<Equipment> list = [];
 
-  SelectedFilter filter = SelectedFilter(
-    filtername: '',
-    value: '',
-  );
+  EquipmentService(this.repo);
 
-  void setFilter(SelectedFilter newFilter) {
-    filter = newFilter;
+  void setFilter(EquipmentFilter value) {
+    filter = value;
   }
 
-  Future<List<EquipmentModel>> listFiltered() async {
-    List<EquipmentModel> _list = [];
-    if (filter.filtername == 'view') {
-      for (int i = 0; i < list.length; i++) {
-        if (list[i].view == filter.value) {
-          _list.add(list[i]);
-        }
-      }
-    } else if (filter.filtername == 'plot') {
-      for (int i = 0; i < list.length; i++) {
-        if (list[i].plot == filter.value) {
-          _list.add(list[i]);
-        }
-      }
-    } else {
-      _list = list;
+  Future<List<Equipment>> getEquipmentList() async {
+    list.clear();
+    final List<EquipmentModel> equipmentList;
+    switch (filter.filterType) {
+      case FilterType.none:
+        equipmentList = await repo.getEquipmentList();
+      case FilterType.view:
+        equipmentList = await repo.getEquipmentViewList(filter.value!);
+      case FilterType.plot:
+        equipmentList = await repo.getEquipmentPlotList(filter.value!);
     }
-    return _list;
-  }
-
-/*
-  Future<List<EquipmentModel>> getEquipmentList() async {
-    String url = '$host/equipments';
-    Response response = await get(Uri.parse(url));
-    if (response.statusCode == 200) {
-      final List result = jsonDecode(utf8convert(response.body));
-      return result.map((e) => EquipmentModel.fromJson(e)).toList();
-    } else {
-      throw Exception(response.reasonPhrase);
-    }
-  }
- */
-
-  Future<List<EquipmentModel>> getEquipmentList() async {
-    list = getlist();
-    final EquipmentModel equipment = EquipmentModel();
-    const OrderModel order = OrderModel();
-//    final json = equipment.toJson();
-    final json = order.toJson();
-    print('----------------------------------------------');
-    for (var s in json.keys) {
-      print("'" + s + "':" + " order." + s + ',');
+    ;
+    for (var i = 0; i < equipmentList.length; ++i) {
+      final infoList = await repo.getInfoList(equipmentList[i].id!);
+      list.add(Equipment(equipment: equipmentList[i], infoList: infoList));
     }
     return list;
   }
 
-  Future<List<EquipmentModel>> getFilteredList() async {
-    return listFiltered();
+  Future addEquipment(EquipmentModel value) async {
+    repo.addEquipment(value);
   }
 
-  void addEquipment(EquipmentModel equipment) async {
-    var uuid = const Uuid();
-    final service = GetIt.instance.get<ProfileService>();
-    equipment = equipment.copyWith(id: uuid.v1(), clientid: service.profile.id);
-    list.add(equipment);
+  Future deleteEquipment(Equipment value) async {
+    await repo.deleteInfos(value.equipment!.id!);
+    await repo.deleteEquipment(value.equipment!);
   }
 
-  void addViw(String name) async {
-    viewWorks.add(NameModel(name:  name));
-  }
-
-  void addPlot(String name) async {
-    plotWorks.add(NameModel(name: name));
-  }
-
-  void editEquipment(EquipmentModel equipment) async {}
-
-  void deleteEquipment(EquipmentModel equipment) async {}
-
-  Future<List<NameModel>> getViewList() async {
-    return viewWorks;
-  }
-
-  Future<List<NameModel>> getPlotList() async {
-    return plotWorks;
+  Future updateEquipment(Equipment value) async {
+    final EquipmentModel equipment;
+    final equipments = await repo.getEquipment(value.equipment!.id!);
+    await repo.updateEquipment(value.equipment!);
+    if (equipments.isNotEmpty) {
+      if (equipments[0].proftype != value.equipment!.proftype!) {
+        if (value.equipment!.proftype!) {
+          var result = await repo.addPPR(PprModel(
+              equipmentid: value.equipment!.id,
+              partsid: '',
+              pprtype: 2,
+              name: 'Записать работа/часы',
+              priority: false,
+              proftype: false,
+              repeatcount: 0,
+              intervalcount: 3,
+              begindate: DateTime.now(),
+              beginint: 0,
+              image: ''));
+          result.fold(
+              (l) async => await repo.addWork(WorkModel(
+                  pprid: l.id,
+                  equipmentid: l.equipmentid,
+                  partsid: '',
+                  name: l.name,
+                  worktype: 1,
+                  priority: l.priority,
+                  image: l.image,
+                  workdate: l.begindate,
+                  workisdone: false)),
+              (r) => null);
+        } else {}
+      }
+    }
+    await repo.deleteInfos(value.equipment!.id!);
+    for (var i = 0; i < value.infoList!.length; ++i) {
+      await repo.addInfo(value.infoList![i]);
+    }
   }
 
   Future<List<InfoModel>> getInfoList(String id) async {
-    return listInfo[0];
+    return repo.getInfoList(id);
   }
 
-  void deleteInfo(String id) {
-
+  Future<List<NameModel>> getNameList(String path) async {
+    return await repo.getNameList(path);
   }
 
-  void saveInfoList(List<InfoModel> infoList) {
-
-  }
-
-  void addInfo(InfoModel info){
-    listInfo[0].add(info);
-  }
-
-/*
-  Future<void> addEquipment(EquipmentModel equipment) async {
-    String url = '$host/equipments';
-    Response response = await post(Uri.parse(url), body: {
-      'id': equipment.id,
-      'clientid': equipment.clientid,
-      'view': equipment.view,
-      'plot': equipment.plot,
-      'name1': equipment.name1,
-      'name2': equipment.name2,
-      'status': equipment.status,
-    });
-    print(response.body);
-  }
- */
-
-  List<String> stanWorks = [
-    'Hanva XC-3500',
-    'Comaro CF-425',
-    'ИЖ-102',
-    'ИЖ-802',
-    'Marda-12G',
-    'Hanva XC-8500',
-    'Comaro CFSD-4025',
-    'ПРИМА-10',
-    'Marda-F12G',
-    'Marda-12G',
-  ];
-
-  List<NameModel> viewWorks = [
-    const NameModel(
-      name: 'Токарные',
-    ),
-    const NameModel(
-      name: 'Шлифовальные',
-    ),
-    const NameModel(
-      name: 'Комбинированные',
-    ),
-    const NameModel(
-      name: 'Фрезерные',
-    ),
-    const NameModel(
-      name: 'Карусельные',
-    )
-  ];
-
-  List<NameModel> plotWorks = [
-    const NameModel(
-      name: 'Участок 1',
-    ),
-    const NameModel(
-      name: 'Участок 2',
-    ),
-    const NameModel(
-      name: 'Участок 3',
-    ),
-    const NameModel(
-      name: 'Участок 4',
-    )
-  ];
-
-  List<EquipmentModel> getlist() {
-    var uuid = const Uuid();
-    List<EquipmentModel> list = [];
-    Random random = Random();
-    listInfo = List<List<InfoModel>>.empty(growable: true);
-    for (int i = 0; i < 10; i++) {
-      EquipmentModel work = const EquipmentModel();
-      int r = random.nextInt(3);
-      work = work.copyWith(
-          id: uuid.v1(),
-          view: viewWorks[random.nextInt(5)].name,
-          plot: plotWorks[random.nextInt(4)].name,
-          name1: 'Станок ' + (random.nextInt(50) + 1).toString(),
-          name2: stanWorks[random.nextInt(9)],
-          valueproftype: 0,
-          status: r + 1);
-      list.add(work);
-      listInfo.add(List<InfoModel>.empty(growable: true));
-    }
-    return list;
+  Future addName(NameModel value, String path) async {
+    repo.addName(value, path);
   }
 }
-
-
-/*
-'id':equipment.id
-'clientid':equipment.clientid
-'view':equipment.view
-'plot':equipment.plot
-'name1':equipment.name1
-'name2':equipment.name2
-'image':equipment.image
-'status':equipment.status
-'proftype':equipment.proftype
-'valueproftype':equipment.valueproftype
-*/

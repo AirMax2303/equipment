@@ -9,9 +9,7 @@ Dialog changePassword(BuildContext context) {
   final formKey = GlobalKey<FormBuilderState>();
   return Dialog(
     backgroundColor: Colors.white,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
+    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
     insetPadding: const EdgeInsets.all(20),
     child: Padding(
       padding: const EdgeInsets.all(16.0),
@@ -22,10 +20,10 @@ Dialog changePassword(BuildContext context) {
             children: [
               AppText.blackText14('Изменение пароля'),
               IconButton(
+                  icon: SvgPicture.asset('assets/close.svg'),
                   onPressed: () {
                     Navigator.pop(context);
-                  },
-                  icon: SvgPicture.asset('assets/close.svg')),
+                  }),
             ],
           ),
           FormBuilder(
@@ -50,9 +48,7 @@ Dialog changePassword(BuildContext context) {
               ],
             ),
           ),
-          const SizedBox(
-            height: 25,
-          ),
+          const SizedBox(height: 25),
           AppButton.filledBlackButton('Сохранить', onPressed: () {
             if (formKey.currentState?.saveAndValidate() ?? false) {
               Navigator.pop(context, formKey.currentState?.fields['password']?.value);
@@ -63,4 +59,3 @@ Dialog changePassword(BuildContext context) {
     ),
   );
 }
-

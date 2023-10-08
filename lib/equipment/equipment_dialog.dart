@@ -18,15 +18,15 @@ Dialog dialogDeleteConfirm(BuildContext context) {
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset('assets/delete_big.svg'),
-            AppSixeBox.size16,
+            const SizedBox(height: 16),
             AppText.blackText14('Вы действительно хотите'),
             AppText.blackText14(' удалить данное оборудование ?'),
-            AppSixeBox.size20,
+            const SizedBox(height: 20),
             AppButton.filledBlackButton('Удалить', onPressed: () {
-              Navigator.pop(context, 'delete');
+              Navigator.pop(context, true);
             }),
             AppButton.textButton('Отмена', onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(context, false);
             }),
           ],
         ),

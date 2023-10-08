@@ -6,13 +6,15 @@ part of 'order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderModel _$$_OrderModelFromJson(Map<String, dynamic> json) =>
-    _$_OrderModel(
+_$OrderModelImpl _$$OrderModelImplFromJson(Map<String, dynamic> json) =>
+    _$OrderModelImpl(
       id: json['id'] as String? ?? '',
-      equipmentid: json['equipmentid'] as String? ?? '',
       clientid: json['clientid'] as String? ?? '',
+      equipmentid: json['equipmentid'] as String? ?? '',
       name1: json['name1'] as String? ?? '',
       name2: json['name2'] as String? ?? '',
+      view: json['view'] as String? ?? '',
+      plot: json['plot'] as String? ?? '',
       state: json['state'] == null ? 0 : stringToInt(json['state'] as String),
       description: json['description'] as String? ?? '',
       partsid: json['partsid'] as String? ?? '',
@@ -24,15 +26,20 @@ _$_OrderModel _$$_OrderModelFromJson(Map<String, dynamic> json) =>
       workisdone: json['workisdone'] == null
           ? false
           : boolFromString(json['workisdone'] as String),
+      datework: json['datework'] == null
+          ? null
+          : DateTime.parse(json['datework'] as String),
     );
 
-Map<String, dynamic> _$$_OrderModelToJson(_$_OrderModel instance) =>
+Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'equipmentid': instance.equipmentid,
       'clientid': instance.clientid,
+      'equipmentid': instance.equipmentid,
       'name1': instance.name1,
       'name2': instance.name2,
+      'view': instance.view,
+      'plot': instance.plot,
       'state': stringFromInt(instance.state),
       'description': instance.description,
       'partsid': instance.partsid,
@@ -40,15 +47,17 @@ Map<String, dynamic> _$$_OrderModelToJson(_$_OrderModel instance) =>
       'malfunction': instance.malfunction,
       'image': instance.image,
       'workisdone': boolToString(instance.workisdone),
+      'datework': instance.datework?.toIso8601String(),
     };
 
-_$_ListOrder _$$_ListOrderFromJson(Map<String, dynamic> json) => _$_ListOrder(
+_$ListOrderImpl _$$ListOrderImplFromJson(Map<String, dynamic> json) =>
+    _$ListOrderImpl(
       list: (json['list'] as List<dynamic>?)
           ?.map((e) => OrderModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_ListOrderToJson(_$_ListOrder instance) =>
+Map<String, dynamic> _$$ListOrderImplToJson(_$ListOrderImpl instance) =>
     <String, dynamic>{
       'list': instance.list,
     };

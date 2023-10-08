@@ -20,6 +20,7 @@ NameModel _$NameModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NameModel {
+  String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +34,7 @@ abstract class $NameModelCopyWith<$Res> {
   factory $NameModelCopyWith(NameModel value, $Res Function(NameModel) then) =
       _$NameModelCopyWithImpl<$Res, NameModel>;
   @useResult
-  $Res call({String? name});
+  $Res call({String? id, String? name});
 }
 
 /// @nodoc
@@ -49,9 +50,14 @@ class _$NameModelCopyWithImpl<$Res, $Val extends NameModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -61,29 +67,35 @@ class _$NameModelCopyWithImpl<$Res, $Val extends NameModel>
 }
 
 /// @nodoc
-abstract class _$$_NameModelCopyWith<$Res> implements $NameModelCopyWith<$Res> {
-  factory _$$_NameModelCopyWith(
-          _$_NameModel value, $Res Function(_$_NameModel) then) =
-      __$$_NameModelCopyWithImpl<$Res>;
+abstract class _$$NameModelImplCopyWith<$Res>
+    implements $NameModelCopyWith<$Res> {
+  factory _$$NameModelImplCopyWith(
+          _$NameModelImpl value, $Res Function(_$NameModelImpl) then) =
+      __$$NameModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name});
+  $Res call({String? id, String? name});
 }
 
 /// @nodoc
-class __$$_NameModelCopyWithImpl<$Res>
-    extends _$NameModelCopyWithImpl<$Res, _$_NameModel>
-    implements _$$_NameModelCopyWith<$Res> {
-  __$$_NameModelCopyWithImpl(
-      _$_NameModel _value, $Res Function(_$_NameModel) _then)
+class __$$NameModelImplCopyWithImpl<$Res>
+    extends _$NameModelCopyWithImpl<$Res, _$NameModelImpl>
+    implements _$$NameModelImplCopyWith<$Res> {
+  __$$NameModelImplCopyWithImpl(
+      _$NameModelImpl _value, $Res Function(_$NameModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_NameModel(
+    return _then(_$NameModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -94,57 +106,64 @@ class __$$_NameModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NameModel implements _NameModel {
-  const _$_NameModel({this.name = ''});
+class _$NameModelImpl implements _NameModel {
+  const _$NameModelImpl({this.id = '', this.name = ''});
 
-  factory _$_NameModel.fromJson(Map<String, dynamic> json) =>
-      _$$_NameModelFromJson(json);
+  factory _$NameModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NameModelImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String? id;
   @override
   @JsonKey()
   final String? name;
 
   @override
   String toString() {
-    return 'NameModel(name: $name)';
+    return 'NameModel(id: $id, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NameModel &&
+            other is _$NameModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NameModelCopyWith<_$_NameModel> get copyWith =>
-      __$$_NameModelCopyWithImpl<_$_NameModel>(this, _$identity);
+  _$$NameModelImplCopyWith<_$NameModelImpl> get copyWith =>
+      __$$NameModelImplCopyWithImpl<_$NameModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NameModelToJson(
+    return _$$NameModelImplToJson(
       this,
     );
   }
 }
 
 abstract class _NameModel implements NameModel {
-  const factory _NameModel({final String? name}) = _$_NameModel;
+  const factory _NameModel({final String? id, final String? name}) =
+      _$NameModelImpl;
 
   factory _NameModel.fromJson(Map<String, dynamic> json) =
-      _$_NameModel.fromJson;
+      _$NameModelImpl.fromJson;
 
+  @override
+  String? get id;
   @override
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_NameModelCopyWith<_$_NameModel> get copyWith =>
+  _$$NameModelImplCopyWith<_$NameModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

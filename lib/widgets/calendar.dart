@@ -111,10 +111,10 @@ class CalendarApp extends StatelessWidget {
                           return InkWell(
                             customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
                             onTap: () {
-                              if (list[indexCol][index].compareTo(DateTime.now()) > 0) {
+//                              if (list[indexCol][index].compareTo(DateTime.now()) > 0) {
                                 selectedDate.value = list[indexCol][index];
                                 onChangeDate!(list[indexCol][index]);
-                              }
+//                              }
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width/10,

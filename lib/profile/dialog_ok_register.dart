@@ -15,17 +15,17 @@ Dialog dialogOkRegister(BuildContext context, String info, String error) {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppSixeBox.size20,
+          const SizedBox(height: 20),
           SvgPicture.asset('assets/logo.svg'),
-          AppSixeBox.size20,
+          const SizedBox(height: 20),
           AppText.whiteText16(info),
-          AppSixeBox.size20,
+          const SizedBox(height: 20),
           AppText.whiteText16(error),
-          AppSixeBox.size20,
+          const SizedBox(height: 20),
           AppButton.filledInputButton('Продолжить', onPressed: () {
             Navigator.pop(context, 'Ok');
           }),
-          AppSixeBox.size20,
+          const SizedBox(height: 20),
         ],
       ),
     ),

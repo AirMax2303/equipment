@@ -19,12 +19,13 @@ mixin _$EquipmentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -32,46 +33,46 @@ mixin _$EquipmentEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) =>
@@ -90,7 +91,7 @@ mixin _$EquipmentEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) =>
@@ -109,7 +110,7 @@ mixin _$EquipmentEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) =>
@@ -128,7 +129,7 @@ mixin _$EquipmentEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -155,25 +156,25 @@ class _$EquipmentEventCopyWithImpl<$Res, $Val extends EquipmentEvent>
 }
 
 /// @nodoc
-abstract class _$$_InitialEventCopyWith<$Res> {
-  factory _$$_InitialEventCopyWith(
-          _$_InitialEvent value, $Res Function(_$_InitialEvent) then) =
-      __$$_InitialEventCopyWithImpl<$Res>;
+abstract class _$$InitialEventImplCopyWith<$Res> {
+  factory _$$InitialEventImplCopyWith(
+          _$InitialEventImpl value, $Res Function(_$InitialEventImpl) then) =
+      __$$InitialEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_InitialEvent>
-    implements _$$_InitialEventCopyWith<$Res> {
-  __$$_InitialEventCopyWithImpl(
-      _$_InitialEvent _value, $Res Function(_$_InitialEvent) _then)
+class __$$InitialEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$InitialEventImpl>
+    implements _$$InitialEventImplCopyWith<$Res> {
+  __$$InitialEventImplCopyWithImpl(
+      _$InitialEventImpl _value, $Res Function(_$InitialEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialEvent implements _InitialEvent {
-  const _$_InitialEvent();
+class _$InitialEventImpl implements _InitialEvent {
+  const _$InitialEventImpl();
 
   @override
   String toString() {
@@ -183,7 +184,7 @@ class _$_InitialEvent implements _InitialEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialEvent);
+        (other.runtimeType == runtimeType && other is _$InitialEventImpl);
   }
 
   @override
@@ -193,12 +194,13 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -206,8 +208,8 @@ class _$_InitialEvent implements _InitialEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return initial();
@@ -217,19 +219,19 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return initial?.call();
@@ -239,19 +241,19 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -276,7 +278,7 @@ class _$_InitialEvent implements _InitialEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -298,7 +300,7 @@ class _$_InitialEvent implements _InitialEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -320,7 +322,7 @@ class _$_InitialEvent implements _InitialEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -333,24 +335,24 @@ class _$_InitialEvent implements _InitialEvent {
 }
 
 abstract class _InitialEvent implements EquipmentEvent {
-  const factory _InitialEvent() = _$_InitialEvent;
+  const factory _InitialEvent() = _$InitialEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_SetFilterEventCopyWith<$Res> {
-  factory _$$_SetFilterEventCopyWith(
-          _$_SetFilterEvent value, $Res Function(_$_SetFilterEvent) then) =
-      __$$_SetFilterEventCopyWithImpl<$Res>;
+abstract class _$$SetFilterEventImplCopyWith<$Res> {
+  factory _$$SetFilterEventImplCopyWith(_$SetFilterEventImpl value,
+          $Res Function(_$SetFilterEventImpl) then) =
+      __$$SetFilterEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SelectedFilter filter});
+  $Res call({EquipmentFilter filter});
 }
 
 /// @nodoc
-class __$$_SetFilterEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_SetFilterEvent>
-    implements _$$_SetFilterEventCopyWith<$Res> {
-  __$$_SetFilterEventCopyWithImpl(
-      _$_SetFilterEvent _value, $Res Function(_$_SetFilterEvent) _then)
+class __$$SetFilterEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$SetFilterEventImpl>
+    implements _$$SetFilterEventImplCopyWith<$Res> {
+  __$$SetFilterEventImplCopyWithImpl(
+      _$SetFilterEventImpl _value, $Res Function(_$SetFilterEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -358,22 +360,22 @@ class __$$_SetFilterEventCopyWithImpl<$Res>
   $Res call({
     Object? filter = null,
   }) {
-    return _then(_$_SetFilterEvent(
+    return _then(_$SetFilterEventImpl(
       null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
-              as SelectedFilter,
+              as EquipmentFilter,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_SetFilterEvent implements _SetFilterEvent {
-  const _$_SetFilterEvent(this.filter);
+class _$SetFilterEventImpl implements _SetFilterEvent {
+  const _$SetFilterEventImpl(this.filter);
 
   @override
-  final SelectedFilter filter;
+  final EquipmentFilter filter;
 
   @override
   String toString() {
@@ -384,7 +386,7 @@ class _$_SetFilterEvent implements _SetFilterEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SetFilterEvent &&
+            other is _$SetFilterEventImpl &&
             (identical(other.filter, filter) || other.filter == filter));
   }
 
@@ -394,19 +396,21 @@ class _$_SetFilterEvent implements _SetFilterEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SetFilterEventCopyWith<_$_SetFilterEvent> get copyWith =>
-      __$$_SetFilterEventCopyWithImpl<_$_SetFilterEvent>(this, _$identity);
+  _$$SetFilterEventImplCopyWith<_$SetFilterEventImpl> get copyWith =>
+      __$$SetFilterEventImplCopyWithImpl<_$SetFilterEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -414,8 +418,8 @@ class _$_SetFilterEvent implements _SetFilterEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return setFilter(filter);
@@ -425,19 +429,19 @@ class _$_SetFilterEvent implements _SetFilterEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return setFilter?.call(filter);
@@ -447,19 +451,19 @@ class _$_SetFilterEvent implements _SetFilterEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -484,7 +488,7 @@ class _$_SetFilterEvent implements _SetFilterEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -506,7 +510,7 @@ class _$_SetFilterEvent implements _SetFilterEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -528,7 +532,7 @@ class _$_SetFilterEvent implements _SetFilterEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -541,35 +545,35 @@ class _$_SetFilterEvent implements _SetFilterEvent {
 }
 
 abstract class _SetFilterEvent implements EquipmentEvent {
-  const factory _SetFilterEvent(final SelectedFilter filter) =
-      _$_SetFilterEvent;
+  const factory _SetFilterEvent(final EquipmentFilter filter) =
+      _$SetFilterEventImpl;
 
-  SelectedFilter get filter;
+  EquipmentFilter get filter;
   @JsonKey(ignore: true)
-  _$$_SetFilterEventCopyWith<_$_SetFilterEvent> get copyWith =>
+  _$$SetFilterEventImplCopyWith<_$SetFilterEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetListEventCopyWith<$Res> {
-  factory _$$_GetListEventCopyWith(
-          _$_GetListEvent value, $Res Function(_$_GetListEvent) then) =
-      __$$_GetListEventCopyWithImpl<$Res>;
+abstract class _$$GetListEventImplCopyWith<$Res> {
+  factory _$$GetListEventImplCopyWith(
+          _$GetListEventImpl value, $Res Function(_$GetListEventImpl) then) =
+      __$$GetListEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetListEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_GetListEvent>
-    implements _$$_GetListEventCopyWith<$Res> {
-  __$$_GetListEventCopyWithImpl(
-      _$_GetListEvent _value, $Res Function(_$_GetListEvent) _then)
+class __$$GetListEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$GetListEventImpl>
+    implements _$$GetListEventImplCopyWith<$Res> {
+  __$$GetListEventImplCopyWithImpl(
+      _$GetListEventImpl _value, $Res Function(_$GetListEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetListEvent implements _GetListEvent {
-  const _$_GetListEvent();
+class _$GetListEventImpl implements _GetListEvent {
+  const _$GetListEventImpl();
 
   @override
   String toString() {
@@ -579,7 +583,7 @@ class _$_GetListEvent implements _GetListEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetListEvent);
+        (other.runtimeType == runtimeType && other is _$GetListEventImpl);
   }
 
   @override
@@ -589,12 +593,13 @@ class _$_GetListEvent implements _GetListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -602,8 +607,8 @@ class _$_GetListEvent implements _GetListEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return getList();
@@ -613,19 +618,19 @@ class _$_GetListEvent implements _GetListEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return getList?.call();
@@ -635,19 +640,19 @@ class _$_GetListEvent implements _GetListEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -672,7 +677,7 @@ class _$_GetListEvent implements _GetListEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -694,7 +699,7 @@ class _$_GetListEvent implements _GetListEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -716,7 +721,7 @@ class _$_GetListEvent implements _GetListEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -729,29 +734,29 @@ class _$_GetListEvent implements _GetListEvent {
 }
 
 abstract class _GetListEvent implements EquipmentEvent {
-  const factory _GetListEvent() = _$_GetListEvent;
+  const factory _GetListEvent() = _$GetListEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_GotoAddScreenEventCopyWith<$Res> {
-  factory _$$_GotoAddScreenEventCopyWith(_$_GotoAddScreenEvent value,
-          $Res Function(_$_GotoAddScreenEvent) then) =
-      __$$_GotoAddScreenEventCopyWithImpl<$Res>;
+abstract class _$$GotoAddScreenEventImplCopyWith<$Res> {
+  factory _$$GotoAddScreenEventImplCopyWith(_$GotoAddScreenEventImpl value,
+          $Res Function(_$GotoAddScreenEventImpl) then) =
+      __$$GotoAddScreenEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GotoAddScreenEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_GotoAddScreenEvent>
-    implements _$$_GotoAddScreenEventCopyWith<$Res> {
-  __$$_GotoAddScreenEventCopyWithImpl(
-      _$_GotoAddScreenEvent _value, $Res Function(_$_GotoAddScreenEvent) _then)
+class __$$GotoAddScreenEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$GotoAddScreenEventImpl>
+    implements _$$GotoAddScreenEventImplCopyWith<$Res> {
+  __$$GotoAddScreenEventImplCopyWithImpl(_$GotoAddScreenEventImpl _value,
+      $Res Function(_$GotoAddScreenEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
-  const _$_GotoAddScreenEvent();
+class _$GotoAddScreenEventImpl implements _GotoAddScreenEvent {
+  const _$GotoAddScreenEventImpl();
 
   @override
   String toString() {
@@ -761,7 +766,7 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GotoAddScreenEvent);
+        (other.runtimeType == runtimeType && other is _$GotoAddScreenEventImpl);
   }
 
   @override
@@ -771,12 +776,13 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -784,8 +790,8 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return gotoAddScreen();
@@ -795,19 +801,19 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return gotoAddScreen?.call();
@@ -817,19 +823,19 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -854,7 +860,7 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -876,7 +882,7 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -898,7 +904,7 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -911,26 +917,25 @@ class _$_GotoAddScreenEvent implements _GotoAddScreenEvent {
 }
 
 abstract class _GotoAddScreenEvent implements EquipmentEvent {
-  const factory _GotoAddScreenEvent() = _$_GotoAddScreenEvent;
+  const factory _GotoAddScreenEvent() = _$GotoAddScreenEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_GotoDetailScreenEventCopyWith<$Res> {
-  factory _$$_GotoDetailScreenEventCopyWith(_$_GotoDetailScreenEvent value,
-          $Res Function(_$_GotoDetailScreenEvent) then) =
-      __$$_GotoDetailScreenEventCopyWithImpl<$Res>;
+abstract class _$$GotoDetailScreenEventImplCopyWith<$Res> {
+  factory _$$GotoDetailScreenEventImplCopyWith(
+          _$GotoDetailScreenEventImpl value,
+          $Res Function(_$GotoDetailScreenEventImpl) then) =
+      __$$GotoDetailScreenEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EquipmentModel equipment});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({Equipment equipment});
 }
 
 /// @nodoc
-class __$$_GotoDetailScreenEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_GotoDetailScreenEvent>
-    implements _$$_GotoDetailScreenEventCopyWith<$Res> {
-  __$$_GotoDetailScreenEventCopyWithImpl(_$_GotoDetailScreenEvent _value,
-      $Res Function(_$_GotoDetailScreenEvent) _then)
+class __$$GotoDetailScreenEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$GotoDetailScreenEventImpl>
+    implements _$$GotoDetailScreenEventImplCopyWith<$Res> {
+  __$$GotoDetailScreenEventImplCopyWithImpl(_$GotoDetailScreenEventImpl _value,
+      $Res Function(_$GotoDetailScreenEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -938,30 +943,22 @@ class __$$_GotoDetailScreenEventCopyWithImpl<$Res>
   $Res call({
     Object? equipment = null,
   }) {
-    return _then(_$_GotoDetailScreenEvent(
+    return _then(_$GotoDetailScreenEventImpl(
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
-  const _$_GotoDetailScreenEvent(this.equipment);
+class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
+  const _$GotoDetailScreenEventImpl(this.equipment);
 
   @override
-  final EquipmentModel equipment;
+  final Equipment equipment;
 
   @override
   String toString() {
@@ -972,7 +969,7 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotoDetailScreenEvent &&
+            other is _$GotoDetailScreenEventImpl &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment));
   }
@@ -983,20 +980,21 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotoDetailScreenEventCopyWith<_$_GotoDetailScreenEvent> get copyWith =>
-      __$$_GotoDetailScreenEventCopyWithImpl<_$_GotoDetailScreenEvent>(
-          this, _$identity);
+  _$$GotoDetailScreenEventImplCopyWith<_$GotoDetailScreenEventImpl>
+      get copyWith => __$$GotoDetailScreenEventImplCopyWithImpl<
+          _$GotoDetailScreenEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1004,8 +1002,8 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return gotoDetailScreen(equipment);
@@ -1015,19 +1013,19 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return gotoDetailScreen?.call(equipment);
@@ -1037,19 +1035,19 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -1074,7 +1072,7 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -1096,7 +1094,7 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -1118,7 +1116,7 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -1131,32 +1129,30 @@ class _$_GotoDetailScreenEvent implements _GotoDetailScreenEvent {
 }
 
 abstract class _GotoDetailScreenEvent implements EquipmentEvent {
-  const factory _GotoDetailScreenEvent(final EquipmentModel equipment) =
-      _$_GotoDetailScreenEvent;
+  const factory _GotoDetailScreenEvent(final Equipment equipment) =
+      _$GotoDetailScreenEventImpl;
 
-  EquipmentModel get equipment;
+  Equipment get equipment;
   @JsonKey(ignore: true)
-  _$$_GotoDetailScreenEventCopyWith<_$_GotoDetailScreenEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GotoDetailScreenEventImplCopyWith<_$GotoDetailScreenEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotoEditScreenEventCopyWith<$Res> {
-  factory _$$_GotoEditScreenEventCopyWith(_$_GotoEditScreenEvent value,
-          $Res Function(_$_GotoEditScreenEvent) then) =
-      __$$_GotoEditScreenEventCopyWithImpl<$Res>;
+abstract class _$$GotoEditScreenEventImplCopyWith<$Res> {
+  factory _$$GotoEditScreenEventImplCopyWith(_$GotoEditScreenEventImpl value,
+          $Res Function(_$GotoEditScreenEventImpl) then) =
+      __$$GotoEditScreenEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EquipmentModel equipment});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({Equipment equipment});
 }
 
 /// @nodoc
-class __$$_GotoEditScreenEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_GotoEditScreenEvent>
-    implements _$$_GotoEditScreenEventCopyWith<$Res> {
-  __$$_GotoEditScreenEventCopyWithImpl(_$_GotoEditScreenEvent _value,
-      $Res Function(_$_GotoEditScreenEvent) _then)
+class __$$GotoEditScreenEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$GotoEditScreenEventImpl>
+    implements _$$GotoEditScreenEventImplCopyWith<$Res> {
+  __$$GotoEditScreenEventImplCopyWithImpl(_$GotoEditScreenEventImpl _value,
+      $Res Function(_$GotoEditScreenEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1164,30 +1160,22 @@ class __$$_GotoEditScreenEventCopyWithImpl<$Res>
   $Res call({
     Object? equipment = null,
   }) {
-    return _then(_$_GotoEditScreenEvent(
+    return _then(_$GotoEditScreenEventImpl(
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
-  const _$_GotoEditScreenEvent(this.equipment);
+class _$GotoEditScreenEventImpl implements _GotoEditScreenEvent {
+  const _$GotoEditScreenEventImpl(this.equipment);
 
   @override
-  final EquipmentModel equipment;
+  final Equipment equipment;
 
   @override
   String toString() {
@@ -1198,7 +1186,7 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotoEditScreenEvent &&
+            other is _$GotoEditScreenEventImpl &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment));
   }
@@ -1209,20 +1197,21 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotoEditScreenEventCopyWith<_$_GotoEditScreenEvent> get copyWith =>
-      __$$_GotoEditScreenEventCopyWithImpl<_$_GotoEditScreenEvent>(
+  _$$GotoEditScreenEventImplCopyWith<_$GotoEditScreenEventImpl> get copyWith =>
+      __$$GotoEditScreenEventImplCopyWithImpl<_$GotoEditScreenEventImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1230,8 +1219,8 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return gotoEditScreen(equipment);
@@ -1241,19 +1230,19 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return gotoEditScreen?.call(equipment);
@@ -1263,19 +1252,19 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -1300,7 +1289,7 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -1322,7 +1311,7 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -1344,7 +1333,7 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -1357,98 +1346,97 @@ class _$_GotoEditScreenEvent implements _GotoEditScreenEvent {
 }
 
 abstract class _GotoEditScreenEvent implements EquipmentEvent {
-  const factory _GotoEditScreenEvent(final EquipmentModel equipment) =
-      _$_GotoEditScreenEvent;
+  const factory _GotoEditScreenEvent(final Equipment equipment) =
+      _$GotoEditScreenEventImpl;
 
-  EquipmentModel get equipment;
+  Equipment get equipment;
   @JsonKey(ignore: true)
-  _$$_GotoEditScreenEventCopyWith<_$_GotoEditScreenEvent> get copyWith =>
+  _$$GotoEditScreenEventImplCopyWith<_$GotoEditScreenEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotoPprScreenEventCopyWith<$Res> {
-  factory _$$_GotoPprScreenEventCopyWith(_$_GotoPprScreenEvent value,
-          $Res Function(_$_GotoPprScreenEvent) then) =
-      __$$_GotoPprScreenEventCopyWithImpl<$Res>;
+abstract class _$$GotoPprScreenEventImplCopyWith<$Res> {
+  factory _$$GotoPprScreenEventImplCopyWith(_$GotoPprScreenEventImpl value,
+          $Res Function(_$GotoPprScreenEventImpl) then) =
+      __$$GotoPprScreenEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EquipmentModel equipment});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({PprType pprType, Equipment equipment});
 }
 
 /// @nodoc
-class __$$_GotoPprScreenEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_GotoPprScreenEvent>
-    implements _$$_GotoPprScreenEventCopyWith<$Res> {
-  __$$_GotoPprScreenEventCopyWithImpl(
-      _$_GotoPprScreenEvent _value, $Res Function(_$_GotoPprScreenEvent) _then)
+class __$$GotoPprScreenEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$GotoPprScreenEventImpl>
+    implements _$$GotoPprScreenEventImplCopyWith<$Res> {
+  __$$GotoPprScreenEventImplCopyWithImpl(_$GotoPprScreenEventImpl _value,
+      $Res Function(_$GotoPprScreenEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? pprType = null,
     Object? equipment = null,
   }) {
-    return _then(_$_GotoPprScreenEvent(
+    return _then(_$GotoPprScreenEventImpl(
+      null == pprType
+          ? _value.pprType
+          : pprType // ignore: cast_nullable_to_non_nullable
+              as PprType,
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_GotoPprScreenEvent implements _GotoPprScreenEvent {
-  const _$_GotoPprScreenEvent(this.equipment);
+class _$GotoPprScreenEventImpl implements _GotoPprScreenEvent {
+  const _$GotoPprScreenEventImpl(this.pprType, this.equipment);
 
   @override
-  final EquipmentModel equipment;
+  final PprType pprType;
+  @override
+  final Equipment equipment;
 
   @override
   String toString() {
-    return 'EquipmentEvent.gotoPprScreen(equipment: $equipment)';
+    return 'EquipmentEvent.gotoPprScreen(pprType: $pprType, equipment: $equipment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotoPprScreenEvent &&
+            other is _$GotoPprScreenEventImpl &&
+            (identical(other.pprType, pprType) || other.pprType == pprType) &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, equipment);
+  int get hashCode => Object.hash(runtimeType, pprType, equipment);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotoPprScreenEventCopyWith<_$_GotoPprScreenEvent> get copyWith =>
-      __$$_GotoPprScreenEventCopyWithImpl<_$_GotoPprScreenEvent>(
+  _$$GotoPprScreenEventImplCopyWith<_$GotoPprScreenEventImpl> get copyWith =>
+      __$$GotoPprScreenEventImplCopyWithImpl<_$GotoPprScreenEventImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1456,57 +1444,57 @@ class _$_GotoPprScreenEvent implements _GotoPprScreenEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
-    return gotoPprScreen(equipment);
+    return gotoPprScreen(pprType, equipment);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
-    return gotoPprScreen?.call(equipment);
+    return gotoPprScreen?.call(pprType, equipment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
     if (gotoPprScreen != null) {
-      return gotoPprScreen(equipment);
+      return gotoPprScreen(pprType, equipment);
     }
     return orElse();
   }
@@ -1526,7 +1514,7 @@ class _$_GotoPprScreenEvent implements _GotoPprScreenEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -1548,7 +1536,7 @@ class _$_GotoPprScreenEvent implements _GotoPprScreenEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -1570,7 +1558,7 @@ class _$_GotoPprScreenEvent implements _GotoPprScreenEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -1583,30 +1571,32 @@ class _$_GotoPprScreenEvent implements _GotoPprScreenEvent {
 }
 
 abstract class _GotoPprScreenEvent implements EquipmentEvent {
-  const factory _GotoPprScreenEvent(final EquipmentModel equipment) =
-      _$_GotoPprScreenEvent;
+  const factory _GotoPprScreenEvent(
+          final PprType pprType, final Equipment equipment) =
+      _$GotoPprScreenEventImpl;
 
-  EquipmentModel get equipment;
+  PprType get pprType;
+  Equipment get equipment;
   @JsonKey(ignore: true)
-  _$$_GotoPprScreenEventCopyWith<_$_GotoPprScreenEvent> get copyWith =>
+  _$$GotoPprScreenEventImplCopyWith<_$GotoPprScreenEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddViewEventCopyWith<$Res> {
-  factory _$$_AddViewEventCopyWith(
-          _$_AddViewEvent value, $Res Function(_$_AddViewEvent) then) =
-      __$$_AddViewEventCopyWithImpl<$Res>;
+abstract class _$$AddViewEventImplCopyWith<$Res> {
+  factory _$$AddViewEventImplCopyWith(
+          _$AddViewEventImpl value, $Res Function(_$AddViewEventImpl) then) =
+      __$$AddViewEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String view});
 }
 
 /// @nodoc
-class __$$_AddViewEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_AddViewEvent>
-    implements _$$_AddViewEventCopyWith<$Res> {
-  __$$_AddViewEventCopyWithImpl(
-      _$_AddViewEvent _value, $Res Function(_$_AddViewEvent) _then)
+class __$$AddViewEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$AddViewEventImpl>
+    implements _$$AddViewEventImplCopyWith<$Res> {
+  __$$AddViewEventImplCopyWithImpl(
+      _$AddViewEventImpl _value, $Res Function(_$AddViewEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1614,7 +1604,7 @@ class __$$_AddViewEventCopyWithImpl<$Res>
   $Res call({
     Object? view = null,
   }) {
-    return _then(_$_AddViewEvent(
+    return _then(_$AddViewEventImpl(
       null == view
           ? _value.view
           : view // ignore: cast_nullable_to_non_nullable
@@ -1625,8 +1615,8 @@ class __$$_AddViewEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddViewEvent implements _AddViewEvent {
-  const _$_AddViewEvent(this.view);
+class _$AddViewEventImpl implements _AddViewEvent {
+  const _$AddViewEventImpl(this.view);
 
   @override
   final String view;
@@ -1640,7 +1630,7 @@ class _$_AddViewEvent implements _AddViewEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddViewEvent &&
+            other is _$AddViewEventImpl &&
             (identical(other.view, view) || other.view == view));
   }
 
@@ -1650,19 +1640,20 @@ class _$_AddViewEvent implements _AddViewEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddViewEventCopyWith<_$_AddViewEvent> get copyWith =>
-      __$$_AddViewEventCopyWithImpl<_$_AddViewEvent>(this, _$identity);
+  _$$AddViewEventImplCopyWith<_$AddViewEventImpl> get copyWith =>
+      __$$AddViewEventImplCopyWithImpl<_$AddViewEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1670,8 +1661,8 @@ class _$_AddViewEvent implements _AddViewEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return addView(view);
@@ -1681,19 +1672,19 @@ class _$_AddViewEvent implements _AddViewEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return addView?.call(view);
@@ -1703,19 +1694,19 @@ class _$_AddViewEvent implements _AddViewEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -1740,7 +1731,7 @@ class _$_AddViewEvent implements _AddViewEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -1762,7 +1753,7 @@ class _$_AddViewEvent implements _AddViewEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -1784,7 +1775,7 @@ class _$_AddViewEvent implements _AddViewEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -1797,19 +1788,19 @@ class _$_AddViewEvent implements _AddViewEvent {
 }
 
 abstract class _AddViewEvent implements EquipmentEvent {
-  const factory _AddViewEvent(final String view) = _$_AddViewEvent;
+  const factory _AddViewEvent(final String view) = _$AddViewEventImpl;
 
   String get view;
   @JsonKey(ignore: true)
-  _$$_AddViewEventCopyWith<_$_AddViewEvent> get copyWith =>
+  _$$AddViewEventImplCopyWith<_$AddViewEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddViewInEditEventCopyWith<$Res> {
-  factory _$$_AddViewInEditEventCopyWith(_$_AddViewInEditEvent value,
-          $Res Function(_$_AddViewInEditEvent) then) =
-      __$$_AddViewInEditEventCopyWithImpl<$Res>;
+abstract class _$$AddViewInEditEventImplCopyWith<$Res> {
+  factory _$$AddViewInEditEventImplCopyWith(_$AddViewInEditEventImpl value,
+          $Res Function(_$AddViewInEditEventImpl) then) =
+      __$$AddViewInEditEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EquipmentModel equipment, String view});
 
@@ -1817,11 +1808,11 @@ abstract class _$$_AddViewInEditEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddViewInEditEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_AddViewInEditEvent>
-    implements _$$_AddViewInEditEventCopyWith<$Res> {
-  __$$_AddViewInEditEventCopyWithImpl(
-      _$_AddViewInEditEvent _value, $Res Function(_$_AddViewInEditEvent) _then)
+class __$$AddViewInEditEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$AddViewInEditEventImpl>
+    implements _$$AddViewInEditEventImplCopyWith<$Res> {
+  __$$AddViewInEditEventImplCopyWithImpl(_$AddViewInEditEventImpl _value,
+      $Res Function(_$AddViewInEditEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1830,7 +1821,7 @@ class __$$_AddViewInEditEventCopyWithImpl<$Res>
     Object? equipment = null,
     Object? view = null,
   }) {
-    return _then(_$_AddViewInEditEvent(
+    return _then(_$AddViewInEditEventImpl(
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
@@ -1853,8 +1844,8 @@ class __$$_AddViewInEditEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddViewInEditEvent implements _AddViewInEditEvent {
-  const _$_AddViewInEditEvent(this.equipment, this.view);
+class _$AddViewInEditEventImpl implements _AddViewInEditEvent {
+  const _$AddViewInEditEventImpl(this.equipment, this.view);
 
   @override
   final EquipmentModel equipment;
@@ -1870,7 +1861,7 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddViewInEditEvent &&
+            other is _$AddViewInEditEventImpl &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment) &&
             (identical(other.view, view) || other.view == view));
@@ -1882,20 +1873,21 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddViewInEditEventCopyWith<_$_AddViewInEditEvent> get copyWith =>
-      __$$_AddViewInEditEventCopyWithImpl<_$_AddViewInEditEvent>(
+  _$$AddViewInEditEventImplCopyWith<_$AddViewInEditEventImpl> get copyWith =>
+      __$$AddViewInEditEventImplCopyWithImpl<_$AddViewInEditEventImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1903,8 +1895,8 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return addViewInEdit(equipment, view);
@@ -1914,19 +1906,19 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return addViewInEdit?.call(equipment, view);
@@ -1936,19 +1928,19 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -1973,7 +1965,7 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -1995,7 +1987,7 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -2017,7 +2009,7 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -2032,30 +2024,30 @@ class _$_AddViewInEditEvent implements _AddViewInEditEvent {
 abstract class _AddViewInEditEvent implements EquipmentEvent {
   const factory _AddViewInEditEvent(
           final EquipmentModel equipment, final String view) =
-      _$_AddViewInEditEvent;
+      _$AddViewInEditEventImpl;
 
   EquipmentModel get equipment;
   String get view;
   @JsonKey(ignore: true)
-  _$$_AddViewInEditEventCopyWith<_$_AddViewInEditEvent> get copyWith =>
+  _$$AddViewInEditEventImplCopyWith<_$AddViewInEditEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddPlotEventCopyWith<$Res> {
-  factory _$$_AddPlotEventCopyWith(
-          _$_AddPlotEvent value, $Res Function(_$_AddPlotEvent) then) =
-      __$$_AddPlotEventCopyWithImpl<$Res>;
+abstract class _$$AddPlotEventImplCopyWith<$Res> {
+  factory _$$AddPlotEventImplCopyWith(
+          _$AddPlotEventImpl value, $Res Function(_$AddPlotEventImpl) then) =
+      __$$AddPlotEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String plot});
 }
 
 /// @nodoc
-class __$$_AddPlotEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_AddPlotEvent>
-    implements _$$_AddPlotEventCopyWith<$Res> {
-  __$$_AddPlotEventCopyWithImpl(
-      _$_AddPlotEvent _value, $Res Function(_$_AddPlotEvent) _then)
+class __$$AddPlotEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$AddPlotEventImpl>
+    implements _$$AddPlotEventImplCopyWith<$Res> {
+  __$$AddPlotEventImplCopyWithImpl(
+      _$AddPlotEventImpl _value, $Res Function(_$AddPlotEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2063,7 +2055,7 @@ class __$$_AddPlotEventCopyWithImpl<$Res>
   $Res call({
     Object? plot = null,
   }) {
-    return _then(_$_AddPlotEvent(
+    return _then(_$AddPlotEventImpl(
       null == plot
           ? _value.plot
           : plot // ignore: cast_nullable_to_non_nullable
@@ -2074,8 +2066,8 @@ class __$$_AddPlotEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddPlotEvent implements _AddPlotEvent {
-  const _$_AddPlotEvent(this.plot);
+class _$AddPlotEventImpl implements _AddPlotEvent {
+  const _$AddPlotEventImpl(this.plot);
 
   @override
   final String plot;
@@ -2089,7 +2081,7 @@ class _$_AddPlotEvent implements _AddPlotEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddPlotEvent &&
+            other is _$AddPlotEventImpl &&
             (identical(other.plot, plot) || other.plot == plot));
   }
 
@@ -2099,19 +2091,20 @@ class _$_AddPlotEvent implements _AddPlotEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddPlotEventCopyWith<_$_AddPlotEvent> get copyWith =>
-      __$$_AddPlotEventCopyWithImpl<_$_AddPlotEvent>(this, _$identity);
+  _$$AddPlotEventImplCopyWith<_$AddPlotEventImpl> get copyWith =>
+      __$$AddPlotEventImplCopyWithImpl<_$AddPlotEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2119,8 +2112,8 @@ class _$_AddPlotEvent implements _AddPlotEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return addPlot(plot);
@@ -2130,19 +2123,19 @@ class _$_AddPlotEvent implements _AddPlotEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return addPlot?.call(plot);
@@ -2152,19 +2145,19 @@ class _$_AddPlotEvent implements _AddPlotEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -2189,7 +2182,7 @@ class _$_AddPlotEvent implements _AddPlotEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -2211,7 +2204,7 @@ class _$_AddPlotEvent implements _AddPlotEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -2233,7 +2226,7 @@ class _$_AddPlotEvent implements _AddPlotEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -2246,19 +2239,19 @@ class _$_AddPlotEvent implements _AddPlotEvent {
 }
 
 abstract class _AddPlotEvent implements EquipmentEvent {
-  const factory _AddPlotEvent(final String plot) = _$_AddPlotEvent;
+  const factory _AddPlotEvent(final String plot) = _$AddPlotEventImpl;
 
   String get plot;
   @JsonKey(ignore: true)
-  _$$_AddPlotEventCopyWith<_$_AddPlotEvent> get copyWith =>
+  _$$AddPlotEventImplCopyWith<_$AddPlotEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddPlotInEditEventCopyWith<$Res> {
-  factory _$$_AddPlotInEditEventCopyWith(_$_AddPlotInEditEvent value,
-          $Res Function(_$_AddPlotInEditEvent) then) =
-      __$$_AddPlotInEditEventCopyWithImpl<$Res>;
+abstract class _$$AddPlotInEditEventImplCopyWith<$Res> {
+  factory _$$AddPlotInEditEventImplCopyWith(_$AddPlotInEditEventImpl value,
+          $Res Function(_$AddPlotInEditEventImpl) then) =
+      __$$AddPlotInEditEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EquipmentModel equipment, String plot});
 
@@ -2266,11 +2259,11 @@ abstract class _$$_AddPlotInEditEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddPlotInEditEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_AddPlotInEditEvent>
-    implements _$$_AddPlotInEditEventCopyWith<$Res> {
-  __$$_AddPlotInEditEventCopyWithImpl(
-      _$_AddPlotInEditEvent _value, $Res Function(_$_AddPlotInEditEvent) _then)
+class __$$AddPlotInEditEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$AddPlotInEditEventImpl>
+    implements _$$AddPlotInEditEventImplCopyWith<$Res> {
+  __$$AddPlotInEditEventImplCopyWithImpl(_$AddPlotInEditEventImpl _value,
+      $Res Function(_$AddPlotInEditEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2279,7 +2272,7 @@ class __$$_AddPlotInEditEventCopyWithImpl<$Res>
     Object? equipment = null,
     Object? plot = null,
   }) {
-    return _then(_$_AddPlotInEditEvent(
+    return _then(_$AddPlotInEditEventImpl(
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
@@ -2302,8 +2295,8 @@ class __$$_AddPlotInEditEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
-  const _$_AddPlotInEditEvent(this.equipment, this.plot);
+class _$AddPlotInEditEventImpl implements _AddPlotInEditEvent {
+  const _$AddPlotInEditEventImpl(this.equipment, this.plot);
 
   @override
   final EquipmentModel equipment;
@@ -2319,7 +2312,7 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddPlotInEditEvent &&
+            other is _$AddPlotInEditEventImpl &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment) &&
             (identical(other.plot, plot) || other.plot == plot));
@@ -2331,20 +2324,21 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddPlotInEditEventCopyWith<_$_AddPlotInEditEvent> get copyWith =>
-      __$$_AddPlotInEditEventCopyWithImpl<_$_AddPlotInEditEvent>(
+  _$$AddPlotInEditEventImplCopyWith<_$AddPlotInEditEventImpl> get copyWith =>
+      __$$AddPlotInEditEventImplCopyWithImpl<_$AddPlotInEditEventImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2352,8 +2346,8 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return addPlotInEdit(equipment, plot);
@@ -2363,19 +2357,19 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return addPlotInEdit?.call(equipment, plot);
@@ -2385,19 +2379,19 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -2422,7 +2416,7 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -2444,7 +2438,7 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -2466,7 +2460,7 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -2481,20 +2475,20 @@ class _$_AddPlotInEditEvent implements _AddPlotInEditEvent {
 abstract class _AddPlotInEditEvent implements EquipmentEvent {
   const factory _AddPlotInEditEvent(
           final EquipmentModel equipment, final String plot) =
-      _$_AddPlotInEditEvent;
+      _$AddPlotInEditEventImpl;
 
   EquipmentModel get equipment;
   String get plot;
   @JsonKey(ignore: true)
-  _$$_AddPlotInEditEventCopyWith<_$_AddPlotInEditEvent> get copyWith =>
+  _$$AddPlotInEditEventImplCopyWith<_$AddPlotInEditEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddEquipmentEventCopyWith<$Res> {
-  factory _$$_AddEquipmentEventCopyWith(_$_AddEquipmentEvent value,
-          $Res Function(_$_AddEquipmentEvent) then) =
-      __$$_AddEquipmentEventCopyWithImpl<$Res>;
+abstract class _$$AddEquipmentEventImplCopyWith<$Res> {
+  factory _$$AddEquipmentEventImplCopyWith(_$AddEquipmentEventImpl value,
+          $Res Function(_$AddEquipmentEventImpl) then) =
+      __$$AddEquipmentEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EquipmentModel equipment});
 
@@ -2502,11 +2496,11 @@ abstract class _$$_AddEquipmentEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddEquipmentEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_AddEquipmentEvent>
-    implements _$$_AddEquipmentEventCopyWith<$Res> {
-  __$$_AddEquipmentEventCopyWithImpl(
-      _$_AddEquipmentEvent _value, $Res Function(_$_AddEquipmentEvent) _then)
+class __$$AddEquipmentEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$AddEquipmentEventImpl>
+    implements _$$AddEquipmentEventImplCopyWith<$Res> {
+  __$$AddEquipmentEventImplCopyWithImpl(_$AddEquipmentEventImpl _value,
+      $Res Function(_$AddEquipmentEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2514,7 +2508,7 @@ class __$$_AddEquipmentEventCopyWithImpl<$Res>
   $Res call({
     Object? equipment = null,
   }) {
-    return _then(_$_AddEquipmentEvent(
+    return _then(_$AddEquipmentEventImpl(
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
@@ -2533,8 +2527,8 @@ class __$$_AddEquipmentEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddEquipmentEvent implements _AddEquipmentEvent {
-  const _$_AddEquipmentEvent(this.equipment);
+class _$AddEquipmentEventImpl implements _AddEquipmentEvent {
+  const _$AddEquipmentEventImpl(this.equipment);
 
   @override
   final EquipmentModel equipment;
@@ -2548,7 +2542,7 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddEquipmentEvent &&
+            other is _$AddEquipmentEventImpl &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment));
   }
@@ -2559,20 +2553,21 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddEquipmentEventCopyWith<_$_AddEquipmentEvent> get copyWith =>
-      __$$_AddEquipmentEventCopyWithImpl<_$_AddEquipmentEvent>(
+  _$$AddEquipmentEventImplCopyWith<_$AddEquipmentEventImpl> get copyWith =>
+      __$$AddEquipmentEventImplCopyWithImpl<_$AddEquipmentEventImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2580,8 +2575,8 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return addEquipment(equipment);
@@ -2591,19 +2586,19 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return addEquipment?.call(equipment);
@@ -2613,19 +2608,19 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -2650,7 +2645,7 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -2672,7 +2667,7 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -2694,7 +2689,7 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -2708,31 +2703,29 @@ class _$_AddEquipmentEvent implements _AddEquipmentEvent {
 
 abstract class _AddEquipmentEvent implements EquipmentEvent {
   const factory _AddEquipmentEvent(final EquipmentModel equipment) =
-      _$_AddEquipmentEvent;
+      _$AddEquipmentEventImpl;
 
   EquipmentModel get equipment;
   @JsonKey(ignore: true)
-  _$$_AddEquipmentEventCopyWith<_$_AddEquipmentEvent> get copyWith =>
+  _$$AddEquipmentEventImplCopyWith<_$AddEquipmentEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_EditEquipmentEventCopyWith<$Res> {
-  factory _$$_EditEquipmentEventCopyWith(_$_EditEquipmentEvent value,
-          $Res Function(_$_EditEquipmentEvent) then) =
-      __$$_EditEquipmentEventCopyWithImpl<$Res>;
+abstract class _$$UpdateEquipmentEventImplCopyWith<$Res> {
+  factory _$$UpdateEquipmentEventImplCopyWith(_$UpdateEquipmentEventImpl value,
+          $Res Function(_$UpdateEquipmentEventImpl) then) =
+      __$$UpdateEquipmentEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EquipmentModel equipment});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({Equipment equipment});
 }
 
 /// @nodoc
-class __$$_EditEquipmentEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_EditEquipmentEvent>
-    implements _$$_EditEquipmentEventCopyWith<$Res> {
-  __$$_EditEquipmentEventCopyWithImpl(
-      _$_EditEquipmentEvent _value, $Res Function(_$_EditEquipmentEvent) _then)
+class __$$UpdateEquipmentEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$UpdateEquipmentEventImpl>
+    implements _$$UpdateEquipmentEventImplCopyWith<$Res> {
+  __$$UpdateEquipmentEventImplCopyWithImpl(_$UpdateEquipmentEventImpl _value,
+      $Res Function(_$UpdateEquipmentEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2740,41 +2733,33 @@ class __$$_EditEquipmentEventCopyWithImpl<$Res>
   $Res call({
     Object? equipment = null,
   }) {
-    return _then(_$_EditEquipmentEvent(
+    return _then(_$UpdateEquipmentEventImpl(
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_EditEquipmentEvent implements _EditEquipmentEvent {
-  const _$_EditEquipmentEvent(this.equipment);
+class _$UpdateEquipmentEventImpl implements _UpdateEquipmentEvent {
+  const _$UpdateEquipmentEventImpl(this.equipment);
 
   @override
-  final EquipmentModel equipment;
+  final Equipment equipment;
 
   @override
   String toString() {
-    return 'EquipmentEvent.editEquipment(equipment: $equipment)';
+    return 'EquipmentEvent.updateEquipment(equipment: $equipment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EditEquipmentEvent &&
+            other is _$UpdateEquipmentEventImpl &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment));
   }
@@ -2785,20 +2770,22 @@ class _$_EditEquipmentEvent implements _EditEquipmentEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EditEquipmentEventCopyWith<_$_EditEquipmentEvent> get copyWith =>
-      __$$_EditEquipmentEventCopyWithImpl<_$_EditEquipmentEvent>(
-          this, _$identity);
+  _$$UpdateEquipmentEventImplCopyWith<_$UpdateEquipmentEventImpl>
+      get copyWith =>
+          __$$UpdateEquipmentEventImplCopyWithImpl<_$UpdateEquipmentEventImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2806,57 +2793,57 @@ class _$_EditEquipmentEvent implements _EditEquipmentEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
-    return editEquipment(equipment);
+    return updateEquipment(equipment);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
-    return editEquipment?.call(equipment);
+    return updateEquipment?.call(equipment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
-    if (editEquipment != null) {
-      return editEquipment(equipment);
+    if (updateEquipment != null) {
+      return updateEquipment(equipment);
     }
     return orElse();
   }
@@ -2876,11 +2863,11 @@ class _$_EditEquipmentEvent implements _EditEquipmentEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
-    return editEquipment(this);
+    return updateEquipment(this);
   }
 
   @override
@@ -2898,11 +2885,11 @@ class _$_EditEquipmentEvent implements _EditEquipmentEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
-    return editEquipment?.call(this);
+    return updateEquipment?.call(this);
   }
 
   @override
@@ -2920,45 +2907,43 @@ class _$_EditEquipmentEvent implements _EditEquipmentEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
   }) {
-    if (editEquipment != null) {
-      return editEquipment(this);
+    if (updateEquipment != null) {
+      return updateEquipment(this);
     }
     return orElse();
   }
 }
 
-abstract class _EditEquipmentEvent implements EquipmentEvent {
-  const factory _EditEquipmentEvent(final EquipmentModel equipment) =
-      _$_EditEquipmentEvent;
+abstract class _UpdateEquipmentEvent implements EquipmentEvent {
+  const factory _UpdateEquipmentEvent(final Equipment equipment) =
+      _$UpdateEquipmentEventImpl;
 
-  EquipmentModel get equipment;
+  Equipment get equipment;
   @JsonKey(ignore: true)
-  _$$_EditEquipmentEventCopyWith<_$_EditEquipmentEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UpdateEquipmentEventImplCopyWith<_$UpdateEquipmentEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DeleteEquipmentEventCopyWith<$Res> {
-  factory _$$_DeleteEquipmentEventCopyWith(_$_DeleteEquipmentEvent value,
-          $Res Function(_$_DeleteEquipmentEvent) then) =
-      __$$_DeleteEquipmentEventCopyWithImpl<$Res>;
+abstract class _$$DeleteEquipmentEventImplCopyWith<$Res> {
+  factory _$$DeleteEquipmentEventImplCopyWith(_$DeleteEquipmentEventImpl value,
+          $Res Function(_$DeleteEquipmentEventImpl) then) =
+      __$$DeleteEquipmentEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EquipmentModel equipment});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({Equipment equipment});
 }
 
 /// @nodoc
-class __$$_DeleteEquipmentEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_DeleteEquipmentEvent>
-    implements _$$_DeleteEquipmentEventCopyWith<$Res> {
-  __$$_DeleteEquipmentEventCopyWithImpl(_$_DeleteEquipmentEvent _value,
-      $Res Function(_$_DeleteEquipmentEvent) _then)
+class __$$DeleteEquipmentEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$DeleteEquipmentEventImpl>
+    implements _$$DeleteEquipmentEventImplCopyWith<$Res> {
+  __$$DeleteEquipmentEventImplCopyWithImpl(_$DeleteEquipmentEventImpl _value,
+      $Res Function(_$DeleteEquipmentEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2966,30 +2951,22 @@ class __$$_DeleteEquipmentEventCopyWithImpl<$Res>
   $Res call({
     Object? equipment = null,
   }) {
-    return _then(_$_DeleteEquipmentEvent(
+    return _then(_$DeleteEquipmentEventImpl(
       null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
-  const _$_DeleteEquipmentEvent(this.equipment);
+class _$DeleteEquipmentEventImpl implements _DeleteEquipmentEvent {
+  const _$DeleteEquipmentEventImpl(this.equipment);
 
   @override
-  final EquipmentModel equipment;
+  final Equipment equipment;
 
   @override
   String toString() {
@@ -3000,7 +2977,7 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeleteEquipmentEvent &&
+            other is _$DeleteEquipmentEventImpl &&
             (identical(other.equipment, equipment) ||
                 other.equipment == equipment));
   }
@@ -3011,20 +2988,22 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeleteEquipmentEventCopyWith<_$_DeleteEquipmentEvent> get copyWith =>
-      __$$_DeleteEquipmentEventCopyWithImpl<_$_DeleteEquipmentEvent>(
-          this, _$identity);
+  _$$DeleteEquipmentEventImplCopyWith<_$DeleteEquipmentEventImpl>
+      get copyWith =>
+          __$$DeleteEquipmentEventImplCopyWithImpl<_$DeleteEquipmentEventImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -3032,8 +3011,8 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return deleteEquipment(equipment);
@@ -3043,19 +3022,19 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return deleteEquipment?.call(equipment);
@@ -3065,19 +3044,19 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -3102,7 +3081,7 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -3124,7 +3103,7 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -3146,7 +3125,7 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -3159,20 +3138,20 @@ class _$_DeleteEquipmentEvent implements _DeleteEquipmentEvent {
 }
 
 abstract class _DeleteEquipmentEvent implements EquipmentEvent {
-  const factory _DeleteEquipmentEvent(final EquipmentModel equipment) =
-      _$_DeleteEquipmentEvent;
+  const factory _DeleteEquipmentEvent(final Equipment equipment) =
+      _$DeleteEquipmentEventImpl;
 
-  EquipmentModel get equipment;
+  Equipment get equipment;
   @JsonKey(ignore: true)
-  _$$_DeleteEquipmentEventCopyWith<_$_DeleteEquipmentEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeleteEquipmentEventImplCopyWith<_$DeleteEquipmentEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddInfoEventCopyWith<$Res> {
-  factory _$$_AddInfoEventCopyWith(
-          _$_AddInfoEvent value, $Res Function(_$_AddInfoEvent) then) =
-      __$$_AddInfoEventCopyWithImpl<$Res>;
+abstract class _$$AddInfoEventImplCopyWith<$Res> {
+  factory _$$AddInfoEventImplCopyWith(
+          _$AddInfoEventImpl value, $Res Function(_$AddInfoEventImpl) then) =
+      __$$AddInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({InfoModel info});
 
@@ -3180,11 +3159,11 @@ abstract class _$$_AddInfoEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddInfoEventCopyWithImpl<$Res>
-    extends _$EquipmentEventCopyWithImpl<$Res, _$_AddInfoEvent>
-    implements _$$_AddInfoEventCopyWith<$Res> {
-  __$$_AddInfoEventCopyWithImpl(
-      _$_AddInfoEvent _value, $Res Function(_$_AddInfoEvent) _then)
+class __$$AddInfoEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$AddInfoEventImpl>
+    implements _$$AddInfoEventImplCopyWith<$Res> {
+  __$$AddInfoEventImplCopyWithImpl(
+      _$AddInfoEventImpl _value, $Res Function(_$AddInfoEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3192,7 +3171,7 @@ class __$$_AddInfoEventCopyWithImpl<$Res>
   $Res call({
     Object? info = null,
   }) {
-    return _then(_$_AddInfoEvent(
+    return _then(_$AddInfoEventImpl(
       null == info
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
@@ -3211,8 +3190,8 @@ class __$$_AddInfoEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddInfoEvent implements _AddInfoEvent {
-  const _$_AddInfoEvent(this.info);
+class _$AddInfoEventImpl implements _AddInfoEvent {
+  const _$AddInfoEventImpl(this.info);
 
   @override
   final InfoModel info;
@@ -3226,7 +3205,7 @@ class _$_AddInfoEvent implements _AddInfoEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddInfoEvent &&
+            other is _$AddInfoEventImpl &&
             (identical(other.info, info) || other.info == info));
   }
 
@@ -3236,19 +3215,20 @@ class _$_AddInfoEvent implements _AddInfoEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddInfoEventCopyWith<_$_AddInfoEvent> get copyWith =>
-      __$$_AddInfoEventCopyWithImpl<_$_AddInfoEvent>(this, _$identity);
+  _$$AddInfoEventImplCopyWith<_$AddInfoEventImpl> get copyWith =>
+      __$$AddInfoEventImplCopyWithImpl<_$AddInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SelectedFilter filter) setFilter,
+    required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -3256,8 +3236,8 @@ class _$_AddInfoEvent implements _AddInfoEvent {
     required TResult Function(EquipmentModel equipment, String plot)
         addPlotInEdit,
     required TResult Function(EquipmentModel equipment) addEquipment,
-    required TResult Function(EquipmentModel equipment) editEquipment,
-    required TResult Function(EquipmentModel equipment) deleteEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
     return addInfo(info);
@@ -3267,19 +3247,19 @@ class _$_AddInfoEvent implements _AddInfoEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SelectedFilter filter)? setFilter,
+    TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
     TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult? Function(EquipmentModel equipment)? addEquipment,
-    TResult? Function(EquipmentModel equipment)? editEquipment,
-    TResult? Function(EquipmentModel equipment)? deleteEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
     return addInfo?.call(info);
@@ -3289,19 +3269,19 @@ class _$_AddInfoEvent implements _AddInfoEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SelectedFilter filter)? setFilter,
+    TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
     TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
     TResult Function(EquipmentModel equipment)? addEquipment,
-    TResult Function(EquipmentModel equipment)? editEquipment,
-    TResult Function(EquipmentModel equipment)? deleteEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
     TResult Function(InfoModel info)? addInfo,
     required TResult orElse(),
   }) {
@@ -3326,7 +3306,7 @@ class _$_AddInfoEvent implements _AddInfoEvent {
     required TResult Function(_AddPlotEvent value) addPlot,
     required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
     required TResult Function(_AddEquipmentEvent value) addEquipment,
-    required TResult Function(_EditEquipmentEvent value) editEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
     required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
     required TResult Function(_AddInfoEvent value) addInfo,
   }) {
@@ -3348,7 +3328,7 @@ class _$_AddInfoEvent implements _AddInfoEvent {
     TResult? Function(_AddPlotEvent value)? addPlot,
     TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult? Function(_AddEquipmentEvent value)? addEquipment,
-    TResult? Function(_EditEquipmentEvent value)? editEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult? Function(_AddInfoEvent value)? addInfo,
   }) {
@@ -3370,7 +3350,7 @@ class _$_AddInfoEvent implements _AddInfoEvent {
     TResult Function(_AddPlotEvent value)? addPlot,
     TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
     TResult Function(_AddEquipmentEvent value)? addEquipment,
-    TResult Function(_EditEquipmentEvent value)? editEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
     TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
     TResult Function(_AddInfoEvent value)? addInfo,
     required TResult orElse(),
@@ -3383,11 +3363,11 @@ class _$_AddInfoEvent implements _AddInfoEvent {
 }
 
 abstract class _AddInfoEvent implements EquipmentEvent {
-  const factory _AddInfoEvent(final InfoModel info) = _$_AddInfoEvent;
+  const factory _AddInfoEvent(final InfoModel info) = _$AddInfoEventImpl;
 
   InfoModel get info;
   @JsonKey(ignore: true)
-  _$$_AddInfoEventCopyWith<_$_AddInfoEvent> get copyWith =>
+  _$$AddInfoEventImplCopyWith<_$AddInfoEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -3398,21 +3378,15 @@ mixin _$EquipmentState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3420,17 +3394,14 @@ mixin _$EquipmentState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3438,17 +3409,14 @@ mixin _$EquipmentState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3457,6 +3425,8 @@ mixin _$EquipmentState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -3470,6 +3440,8 @@ mixin _$EquipmentState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3483,6 +3455,8 @@ mixin _$EquipmentState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3513,25 +3487,25 @@ class _$EquipmentStateCopyWithImpl<$Res, $Val extends EquipmentState>
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(
-          _$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(
-      _$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialState implements _InitialState {
-  const _$_InitialState();
+class _$InitialStateImpl implements _InitialState {
+  const _$InitialStateImpl();
 
   @override
   String toString() {
@@ -3541,7 +3515,7 @@ class _$_InitialState implements _InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialStateImpl);
   }
 
   @override
@@ -3553,21 +3527,15 @@ class _$_InitialState implements _InitialState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
     return initial();
   }
@@ -3578,17 +3546,14 @@ class _$_InitialState implements _InitialState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
     return initial?.call();
   }
@@ -3599,17 +3564,14 @@ class _$_InitialState implements _InitialState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -3624,6 +3586,8 @@ class _$_InitialState implements _InitialState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -3640,6 +3604,8 @@ class _$_InitialState implements _InitialState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3656,6 +3622,8 @@ class _$_InitialState implements _InitialState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3672,29 +3640,29 @@ class _$_InitialState implements _InitialState {
 }
 
 abstract class _InitialState implements EquipmentState {
-  const factory _InitialState() = _$_InitialState;
+  const factory _InitialState() = _$InitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(
-          _$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(
-      _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingState implements _LoadingState {
-  const _$_LoadingState();
+class _$LoadingStateImpl implements _LoadingState {
+  const _$LoadingStateImpl();
 
   @override
   String toString() {
@@ -3704,7 +3672,7 @@ class _$_LoadingState implements _LoadingState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingState);
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
   }
 
   @override
@@ -3716,21 +3684,15 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
     return loading();
   }
@@ -3741,17 +3703,14 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
     return loading?.call();
   }
@@ -3762,17 +3721,14 @@ class _$_LoadingState implements _LoadingState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -3787,6 +3743,8 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -3803,6 +3761,8 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3819,6 +3779,8 @@ class _$_LoadingState implements _LoadingState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3835,28 +3797,29 @@ class _$_LoadingState implements _LoadingState {
 }
 
 abstract class _LoadingState implements EquipmentState {
-  const factory _LoadingState() = _$_LoadingState;
+  const factory _LoadingState() = _$LoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_OkStateCopyWith<$Res> {
-  factory _$$_OkStateCopyWith(
-          _$_OkState value, $Res Function(_$_OkState) then) =
-      __$$_OkStateCopyWithImpl<$Res>;
+abstract class _$$OkStateImplCopyWith<$Res> {
+  factory _$$OkStateImplCopyWith(
+          _$OkStateImpl value, $Res Function(_$OkStateImpl) then) =
+      __$$OkStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OkStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_OkState>
-    implements _$$_OkStateCopyWith<$Res> {
-  __$$_OkStateCopyWithImpl(_$_OkState _value, $Res Function(_$_OkState) _then)
+class __$$OkStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$OkStateImpl>
+    implements _$$OkStateImplCopyWith<$Res> {
+  __$$OkStateImplCopyWithImpl(
+      _$OkStateImpl _value, $Res Function(_$OkStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OkState implements _OkState {
-  const _$_OkState();
+class _$OkStateImpl implements _OkState {
+  const _$OkStateImpl();
 
   @override
   String toString() {
@@ -3866,7 +3829,7 @@ class _$_OkState implements _OkState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OkState);
+        (other.runtimeType == runtimeType && other is _$OkStateImpl);
   }
 
   @override
@@ -3878,21 +3841,15 @@ class _$_OkState implements _OkState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
     return ok();
   }
@@ -3903,17 +3860,14 @@ class _$_OkState implements _OkState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
     return ok?.call();
   }
@@ -3924,17 +3878,14 @@ class _$_OkState implements _OkState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -3949,6 +3900,8 @@ class _$_OkState implements _OkState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -3965,6 +3918,8 @@ class _$_OkState implements _OkState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3981,6 +3936,8 @@ class _$_OkState implements _OkState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -3997,24 +3954,338 @@ class _$_OkState implements _OkState {
 }
 
 abstract class _OkState implements EquipmentState {
-  const factory _OkState() = _$_OkState;
+  const factory _OkState() = _$OkStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorStateCopyWith<$Res> {
-  factory _$$_ErrorStateCopyWith(
-          _$_ErrorState value, $Res Function(_$_ErrorState) then) =
-      __$$_ErrorStateCopyWithImpl<$Res>;
+abstract class _$$OkUpdateStateImplCopyWith<$Res> {
+  factory _$$OkUpdateStateImplCopyWith(
+          _$OkUpdateStateImpl value, $Res Function(_$OkUpdateStateImpl) then) =
+      __$$OkUpdateStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OkUpdateStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$OkUpdateStateImpl>
+    implements _$$OkUpdateStateImplCopyWith<$Res> {
+  __$$OkUpdateStateImplCopyWithImpl(
+      _$OkUpdateStateImpl _value, $Res Function(_$OkUpdateStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OkUpdateStateImpl implements _OkUpdateState {
+  const _$OkUpdateStateImpl();
+
+  @override
+  String toString() {
+    return 'EquipmentState.okUpdate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OkUpdateStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
+    required TResult Function(String error) error,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
+  }) {
+    return okUpdate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
+    TResult? Function(String error)? error,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
+  }) {
+    return okUpdate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
+    TResult Function(String error)? error,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
+    required TResult orElse(),
+  }) {
+    if (okUpdate != null) {
+      return okUpdate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_GotoAddScreenState value) gotoAddScreen,
+    required TResult Function(_GotoEditScreenState value) gotoEditScreen,
+    required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
+    required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_DataState value) data,
+  }) {
+    return okUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return okUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (okUpdate != null) {
+      return okUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OkUpdateState implements EquipmentState {
+  const factory _OkUpdateState() = _$OkUpdateStateImpl;
+}
+
+/// @nodoc
+abstract class _$$OkDeleteStateImplCopyWith<$Res> {
+  factory _$$OkDeleteStateImplCopyWith(
+          _$OkDeleteStateImpl value, $Res Function(_$OkDeleteStateImpl) then) =
+      __$$OkDeleteStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OkDeleteStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$OkDeleteStateImpl>
+    implements _$$OkDeleteStateImplCopyWith<$Res> {
+  __$$OkDeleteStateImplCopyWithImpl(
+      _$OkDeleteStateImpl _value, $Res Function(_$OkDeleteStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OkDeleteStateImpl implements _OkDeleteState {
+  const _$OkDeleteStateImpl();
+
+  @override
+  String toString() {
+    return 'EquipmentState.okDelete()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OkDeleteStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
+    required TResult Function(String error) error,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
+  }) {
+    return okDelete();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
+    TResult? Function(String error)? error,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
+  }) {
+    return okDelete?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
+    TResult Function(String error)? error,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
+    required TResult orElse(),
+  }) {
+    if (okDelete != null) {
+      return okDelete();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_GotoAddScreenState value) gotoAddScreen,
+    required TResult Function(_GotoEditScreenState value) gotoEditScreen,
+    required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
+    required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_DataState value) data,
+  }) {
+    return okDelete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return okDelete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (okDelete != null) {
+      return okDelete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OkDeleteState implements EquipmentState {
+  const factory _OkDeleteState() = _$OkDeleteStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ErrorStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_ErrorState>
-    implements _$$_ErrorStateCopyWith<$Res> {
-  __$$_ErrorStateCopyWithImpl(
-      _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4022,7 +4293,7 @@ class __$$_ErrorStateCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_ErrorState(
+    return _then(_$ErrorStateImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -4033,8 +4304,8 @@ class __$$_ErrorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorState implements _ErrorState {
-  const _$_ErrorState({required this.error});
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl({required this.error});
 
   @override
   final String error;
@@ -4048,7 +4319,7 @@ class _$_ErrorState implements _ErrorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorState &&
+            other is _$ErrorStateImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -4058,8 +4329,8 @@ class _$_ErrorState implements _ErrorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
-      __$$_ErrorStateCopyWithImpl<_$_ErrorState>(this, _$identity);
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4067,21 +4338,15 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
     return error(this.error);
   }
@@ -4092,17 +4357,14 @@ class _$_ErrorState implements _ErrorState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
     return error?.call(this.error);
   }
@@ -4113,17 +4375,14 @@ class _$_ErrorState implements _ErrorState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -4138,6 +4397,8 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -4154,6 +4415,8 @@ class _$_ErrorState implements _ErrorState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4170,6 +4433,8 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4186,101 +4451,48 @@ class _$_ErrorState implements _ErrorState {
 }
 
 abstract class _ErrorState implements EquipmentState {
-  const factory _ErrorState({required final String error}) = _$_ErrorState;
+  const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotoAddScreenStateCopyWith<$Res> {
-  factory _$$_GotoAddScreenStateCopyWith(_$_GotoAddScreenState value,
-          $Res Function(_$_GotoAddScreenState) then) =
-      __$$_GotoAddScreenStateCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<NameModel> viewList, List<NameModel> plotList});
+abstract class _$$GotoAddScreenStateImplCopyWith<$Res> {
+  factory _$$GotoAddScreenStateImplCopyWith(_$GotoAddScreenStateImpl value,
+          $Res Function(_$GotoAddScreenStateImpl) then) =
+      __$$GotoAddScreenStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GotoAddScreenStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_GotoAddScreenState>
-    implements _$$_GotoAddScreenStateCopyWith<$Res> {
-  __$$_GotoAddScreenStateCopyWithImpl(
-      _$_GotoAddScreenState _value, $Res Function(_$_GotoAddScreenState) _then)
+class __$$GotoAddScreenStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$GotoAddScreenStateImpl>
+    implements _$$GotoAddScreenStateImplCopyWith<$Res> {
+  __$$GotoAddScreenStateImplCopyWithImpl(_$GotoAddScreenStateImpl _value,
+      $Res Function(_$GotoAddScreenStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? viewList = null,
-    Object? plotList = null,
-  }) {
-    return _then(_$_GotoAddScreenState(
-      viewList: null == viewList
-          ? _value._viewList
-          : viewList // ignore: cast_nullable_to_non_nullable
-              as List<NameModel>,
-      plotList: null == plotList
-          ? _value._plotList
-          : plotList // ignore: cast_nullable_to_non_nullable
-              as List<NameModel>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_GotoAddScreenState implements _GotoAddScreenState {
-  const _$_GotoAddScreenState(
-      {required final List<NameModel> viewList,
-      required final List<NameModel> plotList})
-      : _viewList = viewList,
-        _plotList = plotList;
-
-  final List<NameModel> _viewList;
-  @override
-  List<NameModel> get viewList {
-    if (_viewList is EqualUnmodifiableListView) return _viewList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_viewList);
-  }
-
-  final List<NameModel> _plotList;
-  @override
-  List<NameModel> get plotList {
-    if (_plotList is EqualUnmodifiableListView) return _plotList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_plotList);
-  }
+class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
+  const _$GotoAddScreenStateImpl();
 
   @override
   String toString() {
-    return 'EquipmentState.gotoAddScreen(viewList: $viewList, plotList: $plotList)';
+    return 'EquipmentState.gotoAddScreen()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_GotoAddScreenState &&
-            const DeepCollectionEquality().equals(other._viewList, _viewList) &&
-            const DeepCollectionEquality().equals(other._plotList, _plotList));
+        (other.runtimeType == runtimeType && other is _$GotoAddScreenStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_viewList),
-      const DeepCollectionEquality().hash(_plotList));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_GotoAddScreenStateCopyWith<_$_GotoAddScreenState> get copyWith =>
-      __$$_GotoAddScreenStateCopyWithImpl<_$_GotoAddScreenState>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -4288,23 +4500,17 @@ class _$_GotoAddScreenState implements _GotoAddScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
-    return gotoAddScreen(viewList, plotList);
+    return gotoAddScreen();
   }
 
   @override
@@ -4313,19 +4519,16 @@ class _$_GotoAddScreenState implements _GotoAddScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
-    return gotoAddScreen?.call(viewList, plotList);
+    return gotoAddScreen?.call();
   }
 
   @override
@@ -4334,21 +4537,18 @@ class _$_GotoAddScreenState implements _GotoAddScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (gotoAddScreen != null) {
-      return gotoAddScreen(viewList, plotList);
+      return gotoAddScreen();
     }
     return orElse();
   }
@@ -4359,6 +4559,8 @@ class _$_GotoAddScreenState implements _GotoAddScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -4375,6 +4577,8 @@ class _$_GotoAddScreenState implements _GotoAddScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4391,6 +4595,8 @@ class _$_GotoAddScreenState implements _GotoAddScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4407,145 +4613,70 @@ class _$_GotoAddScreenState implements _GotoAddScreenState {
 }
 
 abstract class _GotoAddScreenState implements EquipmentState {
-  const factory _GotoAddScreenState(
-      {required final List<NameModel> viewList,
-      required final List<NameModel> plotList}) = _$_GotoAddScreenState;
-
-  List<NameModel> get viewList;
-  List<NameModel> get plotList;
-  @JsonKey(ignore: true)
-  _$$_GotoAddScreenStateCopyWith<_$_GotoAddScreenState> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _GotoAddScreenState() = _$GotoAddScreenStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_GotoEditScreenStateCopyWith<$Res> {
-  factory _$$_GotoEditScreenStateCopyWith(_$_GotoEditScreenState value,
-          $Res Function(_$_GotoEditScreenState) then) =
-      __$$_GotoEditScreenStateCopyWithImpl<$Res>;
+abstract class _$$GotoEditScreenStateImplCopyWith<$Res> {
+  factory _$$GotoEditScreenStateImplCopyWith(_$GotoEditScreenStateImpl value,
+          $Res Function(_$GotoEditScreenStateImpl) then) =
+      __$$GotoEditScreenStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {EquipmentModel equipment,
-      List<NameModel> viewList,
-      List<NameModel> plotList,
-      List<InfoModel> infoList});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({Equipment equipmentData});
 }
 
 /// @nodoc
-class __$$_GotoEditScreenStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_GotoEditScreenState>
-    implements _$$_GotoEditScreenStateCopyWith<$Res> {
-  __$$_GotoEditScreenStateCopyWithImpl(_$_GotoEditScreenState _value,
-      $Res Function(_$_GotoEditScreenState) _then)
+class __$$GotoEditScreenStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$GotoEditScreenStateImpl>
+    implements _$$GotoEditScreenStateImplCopyWith<$Res> {
+  __$$GotoEditScreenStateImplCopyWithImpl(_$GotoEditScreenStateImpl _value,
+      $Res Function(_$GotoEditScreenStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? equipment = null,
-    Object? viewList = null,
-    Object? plotList = null,
-    Object? infoList = null,
+    Object? equipmentData = null,
   }) {
-    return _then(_$_GotoEditScreenState(
-      equipment: null == equipment
-          ? _value.equipment
-          : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
-      viewList: null == viewList
-          ? _value._viewList
-          : viewList // ignore: cast_nullable_to_non_nullable
-              as List<NameModel>,
-      plotList: null == plotList
-          ? _value._plotList
-          : plotList // ignore: cast_nullable_to_non_nullable
-              as List<NameModel>,
-      infoList: null == infoList
-          ? _value._infoList
-          : infoList // ignore: cast_nullable_to_non_nullable
-              as List<InfoModel>,
+    return _then(_$GotoEditScreenStateImpl(
+      equipmentData: null == equipmentData
+          ? _value.equipmentData
+          : equipmentData // ignore: cast_nullable_to_non_nullable
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_GotoEditScreenState implements _GotoEditScreenState {
-  const _$_GotoEditScreenState(
-      {required this.equipment,
-      required final List<NameModel> viewList,
-      required final List<NameModel> plotList,
-      required final List<InfoModel> infoList})
-      : _viewList = viewList,
-        _plotList = plotList,
-        _infoList = infoList;
+class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
+  const _$GotoEditScreenStateImpl({required this.equipmentData});
 
   @override
-  final EquipmentModel equipment;
-  final List<NameModel> _viewList;
-  @override
-  List<NameModel> get viewList {
-    if (_viewList is EqualUnmodifiableListView) return _viewList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_viewList);
-  }
-
-  final List<NameModel> _plotList;
-  @override
-  List<NameModel> get plotList {
-    if (_plotList is EqualUnmodifiableListView) return _plotList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_plotList);
-  }
-
-  final List<InfoModel> _infoList;
-  @override
-  List<InfoModel> get infoList {
-    if (_infoList is EqualUnmodifiableListView) return _infoList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_infoList);
-  }
+  final Equipment equipmentData;
 
   @override
   String toString() {
-    return 'EquipmentState.gotoEditScreen(equipment: $equipment, viewList: $viewList, plotList: $plotList, infoList: $infoList)';
+    return 'EquipmentState.gotoEditScreen(equipmentData: $equipmentData)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotoEditScreenState &&
-            (identical(other.equipment, equipment) ||
-                other.equipment == equipment) &&
-            const DeepCollectionEquality().equals(other._viewList, _viewList) &&
-            const DeepCollectionEquality().equals(other._plotList, _plotList) &&
-            const DeepCollectionEquality().equals(other._infoList, _infoList));
+            other is _$GotoEditScreenStateImpl &&
+            (identical(other.equipmentData, equipmentData) ||
+                other.equipmentData == equipmentData));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      equipment,
-      const DeepCollectionEquality().hash(_viewList),
-      const DeepCollectionEquality().hash(_plotList),
-      const DeepCollectionEquality().hash(_infoList));
+  int get hashCode => Object.hash(runtimeType, equipmentData);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotoEditScreenStateCopyWith<_$_GotoEditScreenState> get copyWith =>
-      __$$_GotoEditScreenStateCopyWithImpl<_$_GotoEditScreenState>(
+  _$$GotoEditScreenStateImplCopyWith<_$GotoEditScreenStateImpl> get copyWith =>
+      __$$GotoEditScreenStateImplCopyWithImpl<_$GotoEditScreenStateImpl>(
           this, _$identity);
 
   @override
@@ -4554,23 +4685,17 @@ class _$_GotoEditScreenState implements _GotoEditScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
-    return gotoEditScreen(equipment, viewList, plotList, infoList);
+    return gotoEditScreen(equipmentData);
   }
 
   @override
@@ -4579,19 +4704,16 @@ class _$_GotoEditScreenState implements _GotoEditScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
-    return gotoEditScreen?.call(equipment, viewList, plotList, infoList);
+    return gotoEditScreen?.call(equipmentData);
   }
 
   @override
@@ -4600,21 +4722,18 @@ class _$_GotoEditScreenState implements _GotoEditScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (gotoEditScreen != null) {
-      return gotoEditScreen(equipment, viewList, plotList, infoList);
+      return gotoEditScreen(equipmentData);
     }
     return orElse();
   }
@@ -4625,6 +4744,8 @@ class _$_GotoEditScreenState implements _GotoEditScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -4641,6 +4762,8 @@ class _$_GotoEditScreenState implements _GotoEditScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4657,6 +4780,8 @@ class _$_GotoEditScreenState implements _GotoEditScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4673,93 +4798,78 @@ class _$_GotoEditScreenState implements _GotoEditScreenState {
 }
 
 abstract class _GotoEditScreenState implements EquipmentState {
-  const factory _GotoEditScreenState(
-      {required final EquipmentModel equipment,
-      required final List<NameModel> viewList,
-      required final List<NameModel> plotList,
-      required final List<InfoModel> infoList}) = _$_GotoEditScreenState;
+  const factory _GotoEditScreenState({required final Equipment equipmentData}) =
+      _$GotoEditScreenStateImpl;
 
-  EquipmentModel get equipment;
-  List<NameModel> get viewList;
-  List<NameModel> get plotList;
-  List<InfoModel> get infoList;
+  Equipment get equipmentData;
   @JsonKey(ignore: true)
-  _$$_GotoEditScreenStateCopyWith<_$_GotoEditScreenState> get copyWith =>
+  _$$GotoEditScreenStateImplCopyWith<_$GotoEditScreenStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotoDetailScreenStateCopyWith<$Res> {
-  factory _$$_GotoDetailScreenStateCopyWith(_$_GotoDetailScreenState value,
-          $Res Function(_$_GotoDetailScreenState) then) =
-      __$$_GotoDetailScreenStateCopyWithImpl<$Res>;
+abstract class _$$GotoDetailScreenStateImplCopyWith<$Res> {
+  factory _$$GotoDetailScreenStateImplCopyWith(
+          _$GotoDetailScreenStateImpl value,
+          $Res Function(_$GotoDetailScreenStateImpl) then) =
+      __$$GotoDetailScreenStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EquipmentModel equipment});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({Equipment equipmentData});
 }
 
 /// @nodoc
-class __$$_GotoDetailScreenStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_GotoDetailScreenState>
-    implements _$$_GotoDetailScreenStateCopyWith<$Res> {
-  __$$_GotoDetailScreenStateCopyWithImpl(_$_GotoDetailScreenState _value,
-      $Res Function(_$_GotoDetailScreenState) _then)
+class __$$GotoDetailScreenStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$GotoDetailScreenStateImpl>
+    implements _$$GotoDetailScreenStateImplCopyWith<$Res> {
+  __$$GotoDetailScreenStateImplCopyWithImpl(_$GotoDetailScreenStateImpl _value,
+      $Res Function(_$GotoDetailScreenStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? equipment = null,
+    Object? equipmentData = null,
   }) {
-    return _then(_$_GotoDetailScreenState(
-      equipment: null == equipment
-          ? _value.equipment
-          : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
+    return _then(_$GotoDetailScreenStateImpl(
+      equipmentData: null == equipmentData
+          ? _value.equipmentData
+          : equipmentData // ignore: cast_nullable_to_non_nullable
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_GotoDetailScreenState implements _GotoDetailScreenState {
-  const _$_GotoDetailScreenState({required this.equipment});
+class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
+  const _$GotoDetailScreenStateImpl({required this.equipmentData});
 
   @override
-  final EquipmentModel equipment;
+  final Equipment equipmentData;
 
   @override
   String toString() {
-    return 'EquipmentState.gotoDetailScreen(equipment: $equipment)';
+    return 'EquipmentState.gotoDetailScreen(equipmentData: $equipmentData)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotoDetailScreenState &&
-            (identical(other.equipment, equipment) ||
-                other.equipment == equipment));
+            other is _$GotoDetailScreenStateImpl &&
+            (identical(other.equipmentData, equipmentData) ||
+                other.equipmentData == equipmentData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, equipment);
+  int get hashCode => Object.hash(runtimeType, equipmentData);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotoDetailScreenStateCopyWith<_$_GotoDetailScreenState> get copyWith =>
-      __$$_GotoDetailScreenStateCopyWithImpl<_$_GotoDetailScreenState>(
-          this, _$identity);
+  _$$GotoDetailScreenStateImplCopyWith<_$GotoDetailScreenStateImpl>
+      get copyWith => __$$GotoDetailScreenStateImplCopyWithImpl<
+          _$GotoDetailScreenStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4767,23 +4877,17 @@ class _$_GotoDetailScreenState implements _GotoDetailScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
-    return gotoDetailScreen(equipment);
+    return gotoDetailScreen(equipmentData);
   }
 
   @override
@@ -4792,19 +4896,16 @@ class _$_GotoDetailScreenState implements _GotoDetailScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
-    return gotoDetailScreen?.call(equipment);
+    return gotoDetailScreen?.call(equipmentData);
   }
 
   @override
@@ -4813,21 +4914,18 @@ class _$_GotoDetailScreenState implements _GotoDetailScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (gotoDetailScreen != null) {
-      return gotoDetailScreen(equipment);
+      return gotoDetailScreen(equipmentData);
     }
     return orElse();
   }
@@ -4838,6 +4936,8 @@ class _$_GotoDetailScreenState implements _GotoDetailScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -4854,6 +4954,8 @@ class _$_GotoDetailScreenState implements _GotoDetailScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4870,6 +4972,8 @@ class _$_GotoDetailScreenState implements _GotoDetailScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -4887,85 +4991,84 @@ class _$_GotoDetailScreenState implements _GotoDetailScreenState {
 
 abstract class _GotoDetailScreenState implements EquipmentState {
   const factory _GotoDetailScreenState(
-      {required final EquipmentModel equipment}) = _$_GotoDetailScreenState;
+      {required final Equipment equipmentData}) = _$GotoDetailScreenStateImpl;
 
-  EquipmentModel get equipment;
+  Equipment get equipmentData;
   @JsonKey(ignore: true)
-  _$$_GotoDetailScreenStateCopyWith<_$_GotoDetailScreenState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GotoDetailScreenStateImplCopyWith<_$GotoDetailScreenStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotoPprScreenStateCopyWith<$Res> {
-  factory _$$_GotoPprScreenStateCopyWith(_$_GotoPprScreenState value,
-          $Res Function(_$_GotoPprScreenState) then) =
-      __$$_GotoPprScreenStateCopyWithImpl<$Res>;
+abstract class _$$GotoPprScreenStateImplCopyWith<$Res> {
+  factory _$$GotoPprScreenStateImplCopyWith(_$GotoPprScreenStateImpl value,
+          $Res Function(_$GotoPprScreenStateImpl) then) =
+      __$$GotoPprScreenStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EquipmentModel equipment});
-
-  $EquipmentModelCopyWith<$Res> get equipment;
+  $Res call({PprType pprType, Equipment equipmentData});
 }
 
 /// @nodoc
-class __$$_GotoPprScreenStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_GotoPprScreenState>
-    implements _$$_GotoPprScreenStateCopyWith<$Res> {
-  __$$_GotoPprScreenStateCopyWithImpl(
-      _$_GotoPprScreenState _value, $Res Function(_$_GotoPprScreenState) _then)
+class __$$GotoPprScreenStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$GotoPprScreenStateImpl>
+    implements _$$GotoPprScreenStateImplCopyWith<$Res> {
+  __$$GotoPprScreenStateImplCopyWithImpl(_$GotoPprScreenStateImpl _value,
+      $Res Function(_$GotoPprScreenStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? equipment = null,
+    Object? pprType = null,
+    Object? equipmentData = null,
   }) {
-    return _then(_$_GotoPprScreenState(
-      equipment: null == equipment
-          ? _value.equipment
-          : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentModel,
+    return _then(_$GotoPprScreenStateImpl(
+      pprType: null == pprType
+          ? _value.pprType
+          : pprType // ignore: cast_nullable_to_non_nullable
+              as PprType,
+      equipmentData: null == equipmentData
+          ? _value.equipmentData
+          : equipmentData // ignore: cast_nullable_to_non_nullable
+              as Equipment,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EquipmentModelCopyWith<$Res> get equipment {
-    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
-      return _then(_value.copyWith(equipment: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_GotoPprScreenState implements _GotoPprScreenState {
-  const _$_GotoPprScreenState({required this.equipment});
+class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
+  const _$GotoPprScreenStateImpl(
+      {required this.pprType, required this.equipmentData});
 
   @override
-  final EquipmentModel equipment;
+  final PprType pprType;
+  @override
+  final Equipment equipmentData;
 
   @override
   String toString() {
-    return 'EquipmentState.gotoPprScreen(equipment: $equipment)';
+    return 'EquipmentState.gotoPprScreen(pprType: $pprType, equipmentData: $equipmentData)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotoPprScreenState &&
-            (identical(other.equipment, equipment) ||
-                other.equipment == equipment));
+            other is _$GotoPprScreenStateImpl &&
+            (identical(other.pprType, pprType) || other.pprType == pprType) &&
+            (identical(other.equipmentData, equipmentData) ||
+                other.equipmentData == equipmentData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, equipment);
+  int get hashCode => Object.hash(runtimeType, pprType, equipmentData);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotoPprScreenStateCopyWith<_$_GotoPprScreenState> get copyWith =>
-      __$$_GotoPprScreenStateCopyWithImpl<_$_GotoPprScreenState>(
+  _$$GotoPprScreenStateImplCopyWith<_$GotoPprScreenStateImpl> get copyWith =>
+      __$$GotoPprScreenStateImplCopyWithImpl<_$GotoPprScreenStateImpl>(
           this, _$identity);
 
   @override
@@ -4974,23 +5077,17 @@ class _$_GotoPprScreenState implements _GotoPprScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
-    return gotoPprScreen(equipment);
+    return gotoPprScreen(pprType, equipmentData);
   }
 
   @override
@@ -4999,19 +5096,16 @@ class _$_GotoPprScreenState implements _GotoPprScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
-    return gotoPprScreen?.call(equipment);
+    return gotoPprScreen?.call(pprType, equipmentData);
   }
 
   @override
@@ -5020,21 +5114,18 @@ class _$_GotoPprScreenState implements _GotoPprScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (gotoPprScreen != null) {
-      return gotoPprScreen(equipment);
+      return gotoPprScreen(pprType, equipmentData);
     }
     return orElse();
   }
@@ -5045,6 +5136,8 @@ class _$_GotoPprScreenState implements _GotoPprScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -5061,6 +5154,8 @@ class _$_GotoPprScreenState implements _GotoPprScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -5077,6 +5172,8 @@ class _$_GotoPprScreenState implements _GotoPprScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -5093,121 +5190,83 @@ class _$_GotoPprScreenState implements _GotoPprScreenState {
 }
 
 abstract class _GotoPprScreenState implements EquipmentState {
-  const factory _GotoPprScreenState({required final EquipmentModel equipment}) =
-      _$_GotoPprScreenState;
+  const factory _GotoPprScreenState(
+      {required final PprType pprType,
+      required final Equipment equipmentData}) = _$GotoPprScreenStateImpl;
 
-  EquipmentModel get equipment;
+  PprType get pprType;
+  Equipment get equipmentData;
   @JsonKey(ignore: true)
-  _$$_GotoPprScreenStateCopyWith<_$_GotoPprScreenState> get copyWith =>
+  _$$GotoPprScreenStateImplCopyWith<_$GotoPprScreenStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DataStateCopyWith<$Res> {
-  factory _$$_DataStateCopyWith(
-          _$_DataState value, $Res Function(_$_DataState) then) =
-      __$$_DataStateCopyWithImpl<$Res>;
+abstract class _$$DataStateImplCopyWith<$Res> {
+  factory _$$DataStateImplCopyWith(
+          _$DataStateImpl value, $Res Function(_$DataStateImpl) then) =
+      __$$DataStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {List<EquipmentModel> list,
-      List<NameModel> viewList,
-      List<NameModel> plotList});
+  $Res call({List<Equipment> list});
 }
 
 /// @nodoc
-class __$$_DataStateCopyWithImpl<$Res>
-    extends _$EquipmentStateCopyWithImpl<$Res, _$_DataState>
-    implements _$$_DataStateCopyWith<$Res> {
-  __$$_DataStateCopyWithImpl(
-      _$_DataState _value, $Res Function(_$_DataState) _then)
+class __$$DataStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$DataStateImpl>
+    implements _$$DataStateImplCopyWith<$Res> {
+  __$$DataStateImplCopyWithImpl(
+      _$DataStateImpl _value, $Res Function(_$DataStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? list = null,
-    Object? viewList = null,
-    Object? plotList = null,
   }) {
-    return _then(_$_DataState(
+    return _then(_$DataStateImpl(
       list: null == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
-              as List<EquipmentModel>,
-      viewList: null == viewList
-          ? _value._viewList
-          : viewList // ignore: cast_nullable_to_non_nullable
-              as List<NameModel>,
-      plotList: null == plotList
-          ? _value._plotList
-          : plotList // ignore: cast_nullable_to_non_nullable
-              as List<NameModel>,
+              as List<Equipment>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_DataState implements _DataState {
-  const _$_DataState(
-      {required final List<EquipmentModel> list,
-      required final List<NameModel> viewList,
-      required final List<NameModel> plotList})
-      : _list = list,
-        _viewList = viewList,
-        _plotList = plotList;
+class _$DataStateImpl implements _DataState {
+  const _$DataStateImpl({required final List<Equipment> list}) : _list = list;
 
-  final List<EquipmentModel> _list;
+  final List<Equipment> _list;
   @override
-  List<EquipmentModel> get list {
+  List<Equipment> get list {
     if (_list is EqualUnmodifiableListView) return _list;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_list);
   }
 
-  final List<NameModel> _viewList;
-  @override
-  List<NameModel> get viewList {
-    if (_viewList is EqualUnmodifiableListView) return _viewList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_viewList);
-  }
-
-  final List<NameModel> _plotList;
-  @override
-  List<NameModel> get plotList {
-    if (_plotList is EqualUnmodifiableListView) return _plotList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_plotList);
-  }
-
   @override
   String toString() {
-    return 'EquipmentState.data(list: $list, viewList: $viewList, plotList: $plotList)';
+    return 'EquipmentState.data(list: $list)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataState &&
-            const DeepCollectionEquality().equals(other._list, _list) &&
-            const DeepCollectionEquality().equals(other._viewList, _viewList) &&
-            const DeepCollectionEquality().equals(other._plotList, _plotList));
+            other is _$DataStateImpl &&
+            const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_list),
-      const DeepCollectionEquality().hash(_viewList),
-      const DeepCollectionEquality().hash(_plotList));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataStateCopyWith<_$_DataState> get copyWith =>
-      __$$_DataStateCopyWithImpl<_$_DataState>(this, _$identity);
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
+      __$$DataStateImplCopyWithImpl<_$DataStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5215,23 +5274,17 @@ class _$_DataState implements _DataState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
     required TResult Function(String error) error,
-    required TResult Function(
-            List<NameModel> viewList, List<NameModel> plotList)
-        gotoAddScreen,
-    required TResult Function(
-            EquipmentModel equipment,
-            List<NameModel> viewList,
-            List<NameModel> plotList,
-            List<InfoModel> infoList)
-        gotoEditScreen,
-    required TResult Function(EquipmentModel equipment) gotoDetailScreen,
-    required TResult Function(EquipmentModel equipment) gotoPprScreen,
-    required TResult Function(List<EquipmentModel> list,
-            List<NameModel> viewList, List<NameModel> plotList)
-        data,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(List<Equipment> list) data,
   }) {
-    return data(list, viewList, plotList);
+    return data(list);
   }
 
   @override
@@ -5240,19 +5293,16 @@ class _$_DataState implements _DataState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
     TResult? Function(String error)? error,
-    TResult? Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult? Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult? Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult? Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult? Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(List<Equipment> list)? data,
   }) {
-    return data?.call(list, viewList, plotList);
+    return data?.call(list);
   }
 
   @override
@@ -5261,21 +5311,18 @@ class _$_DataState implements _DataState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
     TResult Function(String error)? error,
-    TResult Function(List<NameModel> viewList, List<NameModel> plotList)?
-        gotoAddScreen,
-    TResult Function(EquipmentModel equipment, List<NameModel> viewList,
-            List<NameModel> plotList, List<InfoModel> infoList)?
-        gotoEditScreen,
-    TResult Function(EquipmentModel equipment)? gotoDetailScreen,
-    TResult Function(EquipmentModel equipment)? gotoPprScreen,
-    TResult Function(List<EquipmentModel> list, List<NameModel> viewList,
-            List<NameModel> plotList)?
-        data,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(list, viewList, plotList);
+      return data(list);
     }
     return orElse();
   }
@@ -5286,6 +5333,8 @@ class _$_DataState implements _DataState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_GotoAddScreenState value) gotoAddScreen,
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
@@ -5302,6 +5351,8 @@ class _$_DataState implements _DataState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -5318,6 +5369,8 @@ class _$_DataState implements _DataState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
     TResult Function(_GotoAddScreenState value)? gotoAddScreen,
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
@@ -5334,15 +5387,11 @@ class _$_DataState implements _DataState {
 }
 
 abstract class _DataState implements EquipmentState {
-  const factory _DataState(
-      {required final List<EquipmentModel> list,
-      required final List<NameModel> viewList,
-      required final List<NameModel> plotList}) = _$_DataState;
+  const factory _DataState({required final List<Equipment> list}) =
+      _$DataStateImpl;
 
-  List<EquipmentModel> get list;
-  List<NameModel> get viewList;
-  List<NameModel> get plotList;
+  List<Equipment> get list;
   @JsonKey(ignore: true)
-  _$$_DataStateCopyWith<_$_DataState> get copyWith =>
+  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

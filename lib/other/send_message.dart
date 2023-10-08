@@ -35,13 +35,9 @@ class SendMessage extends StatelessWidget {
                       icon: SvgPicture.asset('assets/back-arrow.svg')),
                 ],
               ),
-              const SizedBox(
-                height: 70,
-              ),
+              const SizedBox(height: 70),
               AppText.whiteText16('Какой у вас вопрос'),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: FormBuilder(

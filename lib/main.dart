@@ -1,7 +1,8 @@
-import 'package:equipment/ppr/bloc/ppr_bloc.dart';
 import 'package:equipment/ppr/service/ppr_service.dart';
 import 'package:equipment/profile/bloc/profile_bloc.dart';
+import 'package:equipment/repository/repository.dart';
 import 'package:equipment/route/route.dart';
+import 'package:equipment/works_day/service/work_day_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +14,7 @@ import 'equipment/bloc/equipment_bloc.dart';
 import 'equipment/service/equipment_service.dart';
 import 'package:equipment/profile/service/profile_service.dart';
 
-import 'main_chapter/service/work_service.dart';
+import 'main_chapter/service/main_chapter_service.dart';
 import 'order/service/order_service.dart';
 
 //eq092023@mail.ru
@@ -26,13 +27,15 @@ import 'order/service/order_service.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 //  Bloc.observer = AppBlocObserver();
-  GetIt.instance.registerSingleton<EquipmentService>(EquipmentService());
+  GetIt.instance.registerSingleton<AppRepository>(AppRepository());
+  GetIt.instance.registerSingleton<EquipmentService>(EquipmentService(GetIt.instance.get<AppRepository>()));
   GetIt.instance.registerSingleton<ProfileService>(ProfileService());
-  GetIt.instance.registerSingleton<WorkService>(WorkService());
-  GetIt.instance.registerSingleton<PprService>(PprService());
-  GetIt.instance.registerSingleton<OrderService>(OrderService());
+  GetIt.instance.registerSingleton<MainChapterService>(MainChapterService(GetIt.instance.get<AppRepository>()));
+  GetIt.instance.registerSingleton<PprService>(PprService(GetIt.instance.get<AppRepository>()));
+  GetIt.instance.registerSingleton<OrderService>(OrderService(GetIt.instance.get<AppRepository>()));
+  GetIt.instance.registerSingleton<WorkDayService>(WorkDayService(GetIt.instance.get<AppRepository>()));
   GetIt.instance.registerSingleton<EquipmentBloc>(EquipmentBloc(GetIt.instance.get<EquipmentService>()));
-  GetIt.instance.registerSingleton<CalendarService>(CalendarService());
+  GetIt.instance.registerSingleton<CalendarService>(CalendarService(GetIt.instance.get<AppRepository>()));
 //  GetIt.instance.registerSingleton<OrderBloc>(OrderBloc(GetIt.instance.get<OrderService>()));
   runApp(MultiBlocProvider(providers: [
     BlocProvider<ProfileBloc>(
