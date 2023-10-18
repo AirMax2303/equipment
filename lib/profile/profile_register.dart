@@ -20,7 +20,7 @@ class ProfileRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColor.blackColor,
         body: SafeArea(
             child: SingleChildScrollView(
           child: Column(
@@ -37,9 +37,7 @@ class ProfileRegister extends StatelessWidget {
                       icon: SvgPicture.asset('assets/back-arrow.svg')),
                 ],
               ),
-              const SizedBox(
-                height: 50,
-              ),
+              const SizedBox(height: 100),
               AppText.whiteText16('Регистрация'),
               const SizedBox(
                 height: 30,
@@ -53,7 +51,7 @@ class ProfileRegister extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'name',
                           initialValue: service.profile.name,
-                          decoration: AppDecoration.input('Название компании*', 'assets/company.svg'),
+                          decoration: AppDecoration.input('Название компании*', 'assets/company.svg', fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                           ]),
@@ -62,7 +60,7 @@ class ProfileRegister extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'email',
                           initialValue: service.profile.email,
-                          decoration: AppDecoration.input('Эл.почта', 'assets/email.svg'),
+                          decoration: AppDecoration.input('Эл.почта', 'assets/email.svg', fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                             FormBuilderValidators.email(errorText: 'Введите адрес электронной почты'),
@@ -73,7 +71,7 @@ class ProfileRegister extends StatelessWidget {
                           name: 'phone',
                           initialValue: service.profile.phone,
                           inputFormatters: [PhoneInputFormatter()],
-                          decoration: AppDecoration.input('Телефон*', 'assets/phone.svg'),
+                          decoration: AppDecoration.input('Телефон*', 'assets/phone.svg', fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                           ]),
@@ -82,7 +80,7 @@ class ProfileRegister extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'password',
                           initialValue: service.profile.password,
-                          decoration: AppDecoration.input('Пароль*', 'assets/password.svg'),
+                          decoration: AppDecoration.input('Пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
                           obscureText: true,
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
@@ -93,12 +91,12 @@ class ProfileRegister extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'confirm_password',
                           initialValue: service.profile.password,
-                          decoration: AppDecoration.input('Подвертдить пароль*', 'assets/password.svg'),
+                          decoration: AppDecoration.input('Подвертдить пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
                           obscureText: true,
                           validator: (value) =>
                               formKey.currentState?.fields['password']?.value != value ? 'Пароли не равны' : null,
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 25),
                         AppButton.filledInputButton('Регистрация', onPressed: () {
                           if (formKey.currentState?.saveAndValidate() ?? false) {
                             BlocProvider.of<ProfileBloc>(context).add(ProfileEvent.saveProfile(
@@ -115,12 +113,28 @@ class ProfileRegister extends StatelessWidget {
                           }
                           print(formKey.currentState?.value.toString());
                         }),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Нажимая “Регистрация” я соглашусь с условиями пользовательского соглашения, политикой конфидециальности и принимаю условия публичной оферты',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
-                        ),
+                        const SizedBox(height: 16),
+                        RichText(
+                            text: const TextSpan(
+                                text: 'Нажимая  “Регистрация”  я  соглашусь  с  условиями  ',
+                                style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
+                                children: [
+                              TextSpan(
+                                  text: 'пользовательского  соглашения',
+                                  style: TextStyle(color: AppColor.blueColor, fontSize: 14, fontWeight: FontWeight.w500)),
+                              TextSpan(
+                                  text: ', ', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
+                              TextSpan(
+                                  text: ' политикой конфидециальности  ',
+                                  style: TextStyle(color: AppColor.blueColor, fontSize: 14, fontWeight: FontWeight.w500)),
+                              TextSpan(
+                                  text: 'и  принимаю  условия  ',
+                                  style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
+                              TextSpan(
+                                  text: 'публичной  оферты',
+                                  style: TextStyle(color: AppColor.blueColor, fontSize: 14, fontWeight: FontWeight.w500)),
+                            ])),
+                        const SizedBox(height: 16),
                       ],
                     )),
               )

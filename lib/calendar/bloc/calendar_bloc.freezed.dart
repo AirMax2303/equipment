@@ -20,18 +20,21 @@ mixin _$CalendarEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
+    required TResult Function(EquipmentModel equipment) getEquipmentList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
+    TResult? Function(EquipmentModel equipment)? getEquipmentList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
+    TResult Function(EquipmentModel equipment)? getEquipmentList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$CalendarEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GetEquipmentListEvent value) getEquipmentList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GetEquipmentListEvent value)? getEquipmentList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GetEquipmentListEvent value)? getEquipmentList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
+    required TResult Function(EquipmentModel equipment) getEquipmentList,
   }) {
     return initial();
   }
@@ -123,6 +130,7 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
+    TResult? Function(EquipmentModel equipment)? getEquipmentList,
   }) {
     return initial?.call();
   }
@@ -132,6 +140,7 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
+    TResult Function(EquipmentModel equipment)? getEquipmentList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -145,6 +154,7 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GetEquipmentListEvent value) getEquipmentList,
   }) {
     return initial(this);
   }
@@ -154,6 +164,7 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GetEquipmentListEvent value)? getEquipmentList,
   }) {
     return initial?.call(this);
   }
@@ -163,6 +174,7 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GetEquipmentListEvent value)? getEquipmentList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -242,6 +254,7 @@ class _$GetListEventImpl implements _GetListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
+    required TResult Function(EquipmentModel equipment) getEquipmentList,
   }) {
     return getList(date);
   }
@@ -251,6 +264,7 @@ class _$GetListEventImpl implements _GetListEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
+    TResult? Function(EquipmentModel equipment)? getEquipmentList,
   }) {
     return getList?.call(date);
   }
@@ -260,6 +274,7 @@ class _$GetListEventImpl implements _GetListEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
+    TResult Function(EquipmentModel equipment)? getEquipmentList,
     required TResult orElse(),
   }) {
     if (getList != null) {
@@ -273,6 +288,7 @@ class _$GetListEventImpl implements _GetListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GetEquipmentListEvent value) getEquipmentList,
   }) {
     return getList(this);
   }
@@ -282,6 +298,7 @@ class _$GetListEventImpl implements _GetListEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GetEquipmentListEvent value)? getEquipmentList,
   }) {
     return getList?.call(this);
   }
@@ -291,6 +308,7 @@ class _$GetListEventImpl implements _GetListEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GetEquipmentListEvent value)? getEquipmentList,
     required TResult orElse(),
   }) {
     if (getList != null) {
@@ -310,6 +328,159 @@ abstract class _GetListEvent implements CalendarEvent {
 }
 
 /// @nodoc
+abstract class _$$GetEquipmentListEventImplCopyWith<$Res> {
+  factory _$$GetEquipmentListEventImplCopyWith(
+          _$GetEquipmentListEventImpl value,
+          $Res Function(_$GetEquipmentListEventImpl) then) =
+      __$$GetEquipmentListEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EquipmentModel equipment});
+
+  $EquipmentModelCopyWith<$Res> get equipment;
+}
+
+/// @nodoc
+class __$$GetEquipmentListEventImplCopyWithImpl<$Res>
+    extends _$CalendarEventCopyWithImpl<$Res, _$GetEquipmentListEventImpl>
+    implements _$$GetEquipmentListEventImplCopyWith<$Res> {
+  __$$GetEquipmentListEventImplCopyWithImpl(_$GetEquipmentListEventImpl _value,
+      $Res Function(_$GetEquipmentListEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipment = null,
+  }) {
+    return _then(_$GetEquipmentListEventImpl(
+      null == equipment
+          ? _value.equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as EquipmentModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EquipmentModelCopyWith<$Res> get equipment {
+    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
+      return _then(_value.copyWith(equipment: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GetEquipmentListEventImpl implements _GetEquipmentListEvent {
+  const _$GetEquipmentListEventImpl(this.equipment);
+
+  @override
+  final EquipmentModel equipment;
+
+  @override
+  String toString() {
+    return 'CalendarEvent.getEquipmentList(equipment: $equipment)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetEquipmentListEventImpl &&
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, equipment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetEquipmentListEventImplCopyWith<_$GetEquipmentListEventImpl>
+      get copyWith => __$$GetEquipmentListEventImplCopyWithImpl<
+          _$GetEquipmentListEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(DateTime date) getList,
+    required TResult Function(EquipmentModel equipment) getEquipmentList,
+  }) {
+    return getEquipmentList(equipment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(DateTime date)? getList,
+    TResult? Function(EquipmentModel equipment)? getEquipmentList,
+  }) {
+    return getEquipmentList?.call(equipment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(DateTime date)? getList,
+    TResult Function(EquipmentModel equipment)? getEquipmentList,
+    required TResult orElse(),
+  }) {
+    if (getEquipmentList != null) {
+      return getEquipmentList(equipment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GetEquipmentListEvent value) getEquipmentList,
+  }) {
+    return getEquipmentList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GetEquipmentListEvent value)? getEquipmentList,
+  }) {
+    return getEquipmentList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GetEquipmentListEvent value)? getEquipmentList,
+    required TResult orElse(),
+  }) {
+    if (getEquipmentList != null) {
+      return getEquipmentList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetEquipmentListEvent implements CalendarEvent {
+  const factory _GetEquipmentListEvent(final EquipmentModel equipment) =
+      _$GetEquipmentListEventImpl;
+
+  EquipmentModel get equipment;
+  @JsonKey(ignore: true)
+  _$$GetEquipmentListEventImplCopyWith<_$GetEquipmentListEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CalendarState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -319,6 +490,9 @@ mixin _$CalendarState {
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -329,6 +503,8 @@ mixin _$CalendarState {
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -339,6 +515,8 @@ mixin _$CalendarState {
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -350,6 +528,7 @@ mixin _$CalendarState {
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -360,6 +539,7 @@ mixin _$CalendarState {
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -370,6 +550,7 @@ mixin _$CalendarState {
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -437,6 +618,9 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
   }) {
     return initial();
   }
@@ -450,6 +634,8 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
   }) {
     return initial?.call();
   }
@@ -463,6 +649,8 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -480,6 +668,7 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
   }) {
     return initial(this);
   }
@@ -493,6 +682,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
   }) {
     return initial?.call(this);
   }
@@ -506,6 +696,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -563,6 +754,9 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
   }) {
     return loading();
   }
@@ -576,6 +770,8 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
   }) {
     return loading?.call();
   }
@@ -589,6 +785,8 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -606,6 +804,7 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
   }) {
     return loading(this);
   }
@@ -619,6 +818,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
   }) {
     return loading?.call(this);
   }
@@ -632,6 +832,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -689,6 +890,9 @@ class _$AdditionStateImpl implements _AdditionState {
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
   }) {
     return addition();
   }
@@ -702,6 +906,8 @@ class _$AdditionStateImpl implements _AdditionState {
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
   }) {
     return addition?.call();
   }
@@ -715,6 +921,8 @@ class _$AdditionStateImpl implements _AdditionState {
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
     required TResult orElse(),
   }) {
     if (addition != null) {
@@ -732,6 +940,7 @@ class _$AdditionStateImpl implements _AdditionState {
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
   }) {
     return addition(this);
   }
@@ -745,6 +954,7 @@ class _$AdditionStateImpl implements _AdditionState {
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
   }) {
     return addition?.call(this);
   }
@@ -758,6 +968,7 @@ class _$AdditionStateImpl implements _AdditionState {
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
     required TResult orElse(),
   }) {
     if (addition != null) {
@@ -815,6 +1026,9 @@ class _$OkStateImpl implements _OkState {
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
   }) {
     return ok();
   }
@@ -828,6 +1042,8 @@ class _$OkStateImpl implements _OkState {
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
   }) {
     return ok?.call();
   }
@@ -841,6 +1057,8 @@ class _$OkStateImpl implements _OkState {
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -858,6 +1076,7 @@ class _$OkStateImpl implements _OkState {
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
   }) {
     return ok(this);
   }
@@ -871,6 +1090,7 @@ class _$OkStateImpl implements _OkState {
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
   }) {
     return ok?.call(this);
   }
@@ -884,6 +1104,7 @@ class _$OkStateImpl implements _OkState {
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -967,6 +1188,9 @@ class _$ErrorStateImpl implements _ErrorState {
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
   }) {
     return error(this.error);
   }
@@ -980,6 +1204,8 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
   }) {
     return error?.call(this.error);
   }
@@ -993,6 +1219,8 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1010,6 +1238,7 @@ class _$ErrorStateImpl implements _ErrorState {
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
   }) {
     return error(this);
   }
@@ -1023,6 +1252,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
   }) {
     return error?.call(this);
   }
@@ -1036,6 +1266,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1142,6 +1373,9 @@ class _$DataStateImpl implements _DataState {
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
   }) {
     return data(date, list);
   }
@@ -1155,6 +1389,8 @@ class _$DataStateImpl implements _DataState {
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
   }) {
     return data?.call(date, list);
   }
@@ -1168,6 +1404,8 @@ class _$DataStateImpl implements _DataState {
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -1185,6 +1423,7 @@ class _$DataStateImpl implements _DataState {
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
   }) {
     return data(this);
   }
@@ -1198,6 +1437,7 @@ class _$DataStateImpl implements _DataState {
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
   }) {
     return data?.call(this);
   }
@@ -1211,6 +1451,7 @@ class _$DataStateImpl implements _DataState {
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -1229,5 +1470,205 @@ abstract class _DataState implements CalendarState {
   List<CalendarData>? get list;
   @JsonKey(ignore: true)
   _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EquipmentDataStateImplCopyWith<$Res> {
+  factory _$$EquipmentDataStateImplCopyWith(_$EquipmentDataStateImpl value,
+          $Res Function(_$EquipmentDataStateImpl) then) =
+      __$$EquipmentDataStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EquipmentModel equipment, List<CalendarData>? list});
+
+  $EquipmentModelCopyWith<$Res> get equipment;
+}
+
+/// @nodoc
+class __$$EquipmentDataStateImplCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$EquipmentDataStateImpl>
+    implements _$$EquipmentDataStateImplCopyWith<$Res> {
+  __$$EquipmentDataStateImplCopyWithImpl(_$EquipmentDataStateImpl _value,
+      $Res Function(_$EquipmentDataStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipment = null,
+    Object? list = freezed,
+  }) {
+    return _then(_$EquipmentDataStateImpl(
+      equipment: null == equipment
+          ? _value.equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as EquipmentModel,
+      list: freezed == list
+          ? _value._list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<CalendarData>?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EquipmentModelCopyWith<$Res> get equipment {
+    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
+      return _then(_value.copyWith(equipment: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$EquipmentDataStateImpl implements _EquipmentDataState {
+  const _$EquipmentDataStateImpl(
+      {required this.equipment, required final List<CalendarData>? list})
+      : _list = list;
+
+  @override
+  final EquipmentModel equipment;
+  final List<CalendarData>? _list;
+  @override
+  List<CalendarData>? get list {
+    final value = _list;
+    if (value == null) return null;
+    if (_list is EqualUnmodifiableListView) return _list;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'CalendarState.equipmentData(equipment: $equipment, list: $list)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EquipmentDataStateImpl &&
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment) &&
+            const DeepCollectionEquality().equals(other._list, _list));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, equipment, const DeepCollectionEquality().hash(_list));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EquipmentDataStateImplCopyWith<_$EquipmentDataStateImpl> get copyWith =>
+      __$$EquipmentDataStateImplCopyWithImpl<_$EquipmentDataStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() addition,
+    required TResult Function() ok,
+    required TResult Function(String error) error,
+    required TResult Function(DateTime date, List<CalendarData>? list) data,
+    required TResult Function(
+            EquipmentModel equipment, List<CalendarData>? list)
+        equipmentData,
+  }) {
+    return equipmentData(equipment, list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? addition,
+    TResult? Function()? ok,
+    TResult? Function(String error)? error,
+    TResult? Function(DateTime date, List<CalendarData>? list)? data,
+    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
+  }) {
+    return equipmentData?.call(equipment, list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? addition,
+    TResult Function()? ok,
+    TResult Function(String error)? error,
+    TResult Function(DateTime date, List<CalendarData>? list)? data,
+    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
+        equipmentData,
+    required TResult orElse(),
+  }) {
+    if (equipmentData != null) {
+      return equipmentData(equipment, list);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_AdditionState value) addition,
+    required TResult Function(_OkState value) ok,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_DataState value) data,
+    required TResult Function(_EquipmentDataState value) equipmentData,
+  }) {
+    return equipmentData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_AdditionState value)? addition,
+    TResult? Function(_OkState value)? ok,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_DataState value)? data,
+    TResult? Function(_EquipmentDataState value)? equipmentData,
+  }) {
+    return equipmentData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_AdditionState value)? addition,
+    TResult Function(_OkState value)? ok,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_DataState value)? data,
+    TResult Function(_EquipmentDataState value)? equipmentData,
+    required TResult orElse(),
+  }) {
+    if (equipmentData != null) {
+      return equipmentData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EquipmentDataState implements CalendarState {
+  const factory _EquipmentDataState(
+      {required final EquipmentModel equipment,
+      required final List<CalendarData>? list}) = _$EquipmentDataStateImpl;
+
+  EquipmentModel get equipment;
+  List<CalendarData>? get list;
+  @JsonKey(ignore: true)
+  _$$EquipmentDataStateImplCopyWith<_$EquipmentDataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

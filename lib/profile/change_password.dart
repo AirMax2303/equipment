@@ -32,23 +32,23 @@ Dialog changePassword(BuildContext context) {
               children: [
                 FormBuilderTextField(
                   name: 'password',
-                  decoration: AppDecoration.inputPassword('Пароль*', 'assets/password.svg'),
+                  decoration: AppDecoration.inputPassword('Пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
                   obscureText: true,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                   ]),
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 16),
                 FormBuilderTextField(
                   name: 'confirm_password',
-                  decoration: AppDecoration.inputPassword('Подвертдить пароль*', 'assets/password.svg'),
+                  decoration: AppDecoration.inputPassword('Подвертдить пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
                   obscureText: true,
                   validator: (value) => formKey.currentState?.fields['password']?.value != value ? 'Пароли не равны' : null,
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 16),
           AppButton.filledBlackButton('Сохранить', onPressed: () {
             if (formKey.currentState?.saveAndValidate() ?? false) {
               Navigator.pop(context, formKey.currentState?.fields['password']?.value);

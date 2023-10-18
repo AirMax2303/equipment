@@ -21,3 +21,18 @@ class Tem01 extends StatelessWidget {
     );
   }
 }
+
+class EmptyScreen extends StatelessWidget {
+  const EmptyScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}

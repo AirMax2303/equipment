@@ -8,8 +8,10 @@ import 'package:intl/intl.dart';
 
 import '../profile/bloc/profile_bloc.dart';
 import '../profile/profile_page.dart';
+import '../template/template01.dart';
 import '../widgets/dialog.dart';
 import '../widgets/navigator.dart';
+import '../widgets/no_notification.dart';
 import '../widgets/widgets.dart';
 import '../works_day/works_day_01.dart';
 import 'bloc/main_chapter_bloc.dart';
@@ -19,6 +21,7 @@ import '../other/other.dart';
 
 typedef ChangeDayCallback = void Function(DateTime date);
 
+//ignore: must_be_immutable
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   DateTime? date;
@@ -39,16 +42,10 @@ class MainPage extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => WorkDayPage(date: data.date))));
       }, builder: (context, state) {
         return state.maybeMap(
-          loading: (_) => const CircularProgressIndicator(),
-          data: (data) {
-            return MainScreen(currentday: data.date, list: data.list);
-          },
-          orElse: () {
-            return Container(
-              color: Colors.white,
-            );
-          },
-        );
+            loading: (_) => const NoNotification(),
+//          const CircularProgressIndicator(),
+            data: (data) => MainScreen(currentday: data.date, list: data.list),
+            orElse: () => const EmptyScreen());
       }),
     );
   }
@@ -63,7 +60,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColor.blackColor,
       bottomNavigationBar: const AppNavigationBar(Nav.none),
       body: SafeArea(
         child: Column(
@@ -71,7 +68,7 @@ class MainScreen extends StatelessWidget {
             Container(
               height: 200,
               width: double.infinity,
-              color: Colors.black,
+              color: AppColor.blackColor,
               child: Column(
                 children: [
                   const BarScreen(),
@@ -125,7 +122,9 @@ class MainScreen extends StatelessWidget {
                                         builder: (BuildContext context) {
                                           return dialogOrder(context, list[index]);
                                         }).then((value) {
-                                      context.read<MainChapterBloc>().add(MainChapterEvent.gotoWorkDay(currentday));
+                                      if (value!) {
+                                        context.read<MainChapterBloc>().add(MainChapterEvent.gotoWorkDay(currentday));
+                                      }
                                     });
                                   }
                                 },
@@ -168,6 +167,7 @@ class MainScreen extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class BarScreen extends StatelessWidget {
   const BarScreen({Key? key}) : super(key: key);
 
@@ -205,6 +205,7 @@ class BarScreen extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class Calendar extends StatelessWidget {
   Calendar({
     Key? key,
@@ -261,7 +262,11 @@ class Calendar extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List<Widget>.generate(7, (index) {
-            return currentElement(index, list[index], list[index] == currentday ? Colors.blue : Colors.black);
+            return currentElement(
+              index,
+              list[index],
+              list[index] == currentday ? Colors.blue : AppColor.blackColor,
+            );
           })),
     );
   }

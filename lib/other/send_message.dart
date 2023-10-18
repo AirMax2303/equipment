@@ -17,7 +17,7 @@ class SendMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColor.blackColor,
         body: SafeArea(
             child: SingleChildScrollView(
           child: Column(
@@ -35,18 +35,18 @@ class SendMessage extends StatelessWidget {
                       icon: SvgPicture.asset('assets/back-arrow.svg')),
                 ],
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 200),
               AppText.whiteText16('Какой у вас вопрос'),
               const SizedBox(height: 30),
               Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding: const EdgeInsets.all(16.0),
                 child: FormBuilder(
                     key: formKey,
                     child: Column(
                       children: [
                         FormBuilderTextField(
                           name: 'theme',
-                          decoration: AppDecoration.input('Тема', ''),
+                          decoration: AppDecoration.input('Тема', '', fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                           ]),
@@ -54,13 +54,13 @@ class SendMessage extends StatelessWidget {
                         const SizedBox(height: 16),
                         FormBuilderTextField(
                           name: 'messagge',
-                          decoration: AppDecoration.input('Текст сообщения', ''),
+                          decoration: AppDecoration.input('Текст сообщения', '', fillColor: AppColor.profileInputColor),
                           keyboardType: TextInputType.multiline,
                           minLines: 5,
                           maxLines: 6,
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
-                          ]),
+                          ])
                         ),
                         const SizedBox(height: 25),
                         AppButton.filledInputButton('Отправить', onPressed: () {

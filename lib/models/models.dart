@@ -31,6 +31,15 @@ class IdModel with _$IdModel {
 }
 
 @freezed
+class DateModel with _$DateModel {
+  factory DateModel({
+    DateTime? workdate,
+  }) = _DateModel;
+
+  factory DateModel.fromJson(Map<String, Object?> json) => _$DateModelFromJson(json);
+}
+
+@freezed
 class EquipmentModel with _$EquipmentModel {
   const factory EquipmentModel(
       {@Default('') String? id,
@@ -42,7 +51,7 @@ class EquipmentModel with _$EquipmentModel {
       @Default('') String? plotid,
       @Default('') String? plot,
       @Default('') String? image,
-      @JsonKey(toJson: stringFromInt) @Default(1) int? status,
+      @JsonKey(toJson: stringFromInt) @Default(0) int? status,
       @JsonKey(fromJson: boolFromInt, toJson: boolToString) @Default(false) bool? proftype,
       @JsonKey(toJson: stringFromInt) @Default(0) int? valuex}) = _EquipmentModel;
 
@@ -87,10 +96,13 @@ class WorkModel with _$WorkModel {
 }
 
 @freezed
-class WorkList with _$WorkList {
-  const factory WorkList({
-    List<WorkModel>? list,
-  }) = _WorkList;
+class ProfTypeModel with _$ProfTypeModel {
+  factory ProfTypeModel({
+    @Default('') String? id,
+    @Default('') String? equipmentid,
+    DateTime? workdate,
+    @JsonKey(toJson: stringFromInt) @Default(0) int? valuex
+  }) = _ProfTypeModel;
 
-  factory WorkList.fromJson(Map<String, dynamic> json) => _$WorkListFromJson(json);
+  factory ProfTypeModel.fromJson(Map<String, Object?> json) => _$ProfTypeModelFromJson(json);
 }

@@ -9,17 +9,15 @@ import '../models/models.dart';
 abstract final class AppColor {
   static const Color stdColor = Color(0xFF7067F2);
   static const Color backgroundColor = Color(0xFFF8F8F8);
+  static const Color profileInputColor = Color(0xFFF8F8F8);
+//  static const Color backgroundColor = Color(0x1ABAF1C4);
   static const Color greenColor = Color(0x1A3F60EE);
   static Color lightBlueColor = const Color(0x1A3F60EE);
   static const Color blueColor = Color(0xFF3F60EE);
+  static const Color blackColor = Color(0xFF2F2E41);
 }
-
-extension MyColors on Colors {
-  Color backgroundColor() => Color(0xFFF8F8F8);
-}
-
 abstract final class AppTextStyle {
-  static TextStyle blackTextStyle8Label =  const TextStyle(
+  static TextStyle blackTextStyle8Label = const TextStyle(
     color: Color(0xFF8897A8),
     fontSize: 8,
     fontWeight: FontWeight.w400,
@@ -122,8 +120,8 @@ abstract final class AppIcons {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: 45,
-        height: 45,
+        width: 40,
+        height: 40,
         decoration: BoxDecoration(
           color: color,
           borderRadius: const BorderRadius.all(
@@ -140,7 +138,7 @@ abstract final class AppIcons {
 
   static Widget icon35({required String image}) {
     return Container(
-      width: 35,
+      width: 28,
       height: 35,
       decoration: const BoxDecoration(
         color: Color(0xCC3F60EE),
@@ -177,7 +175,7 @@ abstract final class AppIcons {
 }
 
 abstract final class AppButton {
-  static double defHeight = 60;
+  static double defHeight = 50;
 
   static Widget filledButton(String data, {Key? key, required VoidCallback? onPressed}) {
     return SizedBox(
@@ -199,7 +197,7 @@ abstract final class AppButton {
       width: double.infinity,
       height: 50,
       child: FilledButton(
-        style: AppButtonStyle.stdButtonStyle(color: Colors.black),
+        style: AppButtonStyle.stdButtonStyle(color: AppColor.blackColor),
         onPressed: onPressed,
         child: Text(data,
             style: GoogleFonts.poppins(
@@ -283,11 +281,11 @@ abstract final class AppButton {
 }
 
 abstract final class AppButtonStyle {
-  static ButtonStyle stdButtonStyle({Color? color}) {
+  static ButtonStyle stdButtonStyle({Color? color, double? radius}) {
     return TextButton.styleFrom(
       elevation: 0,
-      backgroundColor: color ?? Colors.black,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) // <-- Radius
+      backgroundColor: color ?? AppColor.blackColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius ?? 10) // <-- Radius
           ),
     );
   }
@@ -395,68 +393,70 @@ abstract final class AppTextBox {
 abstract final class AppDecoration {
   static InputDecoration inputCustom(String labelText, {Color? fillColor, Widget? prefixIcon, Widget? suffixIcon}) {
     return InputDecoration(
-      filled: true,
-      fillColor: fillColor ?? const Color(0xFFF8F8F8),
-      labelStyle: AppTextStyle.blackTextStyle13,
-      floatingLabelBehavior: FloatingLabelBehavior.never,
-      errorStyle: AppTextStyle.blackTextStyle13,
-      prefixIcon: prefixIcon,
-      suffixIcon: suffixIcon,
-      errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      labelText: labelText,
-    );
+        filled: true,
+        fillColor: fillColor ?? AppColor.backgroundColor,
+        labelStyle: AppTextStyle.blackTextStyle13,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        errorStyle: AppTextStyle.blackTextStyle13,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        labelText: labelText,
+        isDense: true,
+        contentPadding: const EdgeInsets.all(12));
   }
 
-  static InputDecoration input(String labelText, String prefixIcon) {
+  static InputDecoration input(String labelText, String prefixIcon, {Color? fillColor}) {
     return InputDecoration(
-      filled: true,
-      fillColor: const Color(0xFFF8F8F8),
-      labelStyle: AppTextStyle.blackTextStyle13Label,
-      floatingLabelBehavior: FloatingLabelBehavior.never,
-      errorStyle: AppTextStyle.whiteTextStyle12,
-      prefixIcon: SvgPicture.asset(prefixIcon, fit: BoxFit.scaleDown),
-      suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
-      errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      labelText: labelText,
-    );
+        filled: true,
+        fillColor: fillColor ?? AppColor.backgroundColor,
+        labelStyle: AppTextStyle.blackTextStyle13Label,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        floatingLabelAlignment: FloatingLabelAlignment.start,
+        errorStyle: AppTextStyle.whiteTextStyle12,
+        prefixIcon: SvgPicture.asset(prefixIcon, fit: BoxFit.scaleDown),
+        suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        labelText: labelText,
+        isDense: true,
+        contentPadding: const EdgeInsets.all(12));
   }
 
-  static InputDecoration inputPassword(String labelText, String prefixIcon) {
+  static InputDecoration inputPassword(String labelText, String prefixIcon, {Color? fillColor}) {
     return InputDecoration(
       isCollapsed: true,
-      contentPadding: const EdgeInsets.all(9),
       filled: true,
-      fillColor: const Color(0xFFF8F8F8),
+      fillColor: fillColor ?? AppColor.backgroundColor,
       labelStyle: AppTextStyle.blackTextStyle13Label,
       floatingLabelBehavior: FloatingLabelBehavior.never,
       errorStyle: AppTextStyle.blackTextStyle12,
@@ -479,72 +479,76 @@ abstract final class AppDecoration {
         borderRadius: BorderRadius.circular(10),
       ),
       labelText: labelText,
+      isDense: true,
+      contentPadding: const EdgeInsets.all(9),
     );
   }
 
   static InputDecoration inputEq(String labelText) {
     return InputDecoration(
-      filled: true,
-      fillColor: const Color(0xFFF8F8F8),
-      labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-      floatingLabelBehavior: FloatingLabelBehavior.never,
-      errorStyle: AppTextStyle.blackTextStyle12,
-      suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
-      errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      labelText: labelText,
-    );
+        filled: true,
+        fillColor: AppColor.backgroundColor,
+        labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        errorStyle: AppTextStyle.blackTextStyle12,
+        suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        labelText: labelText,
+        isDense: true,
+        contentPadding: const EdgeInsets.all(12));
   }
 
   static InputDecoration inputEqDropDown(String labelText, bool up) {
     return InputDecoration(
-      filled: true,
-      fillColor: const Color(0xFFF8F8F8),
-      labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
-      floatingLabelBehavior: FloatingLabelBehavior.never,
-      errorStyle: AppTextStyle.blackTextStyle12,
-      suffixIcon: Icon(
-        up ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-        color: const Color(0xFF8B97A8),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(width: 3, color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      labelText: labelText,
-    );
+        filled: true,
+        fillColor: AppColor.backgroundColor,
+        labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        errorStyle: AppTextStyle.blackTextStyle12,
+        suffixIcon: Icon(
+          up ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+          color: const Color(0xFF8B97A8),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 3, color: Colors.transparent),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        labelText: labelText,
+        isDense: true,
+        contentPadding: const EdgeInsets.all(12));
   }
 
   static InputDecoration inputIcon(String labelText) {
     return InputDecoration(
       filled: true,
-      fillColor: const Color(0xFFF8F8F8),
+      fillColor: AppColor.backgroundColor,
       labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
       floatingLabelBehavior: FloatingLabelBehavior.never,
       errorStyle: AppTextStyle.blackTextStyle12,

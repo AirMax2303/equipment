@@ -15,92 +15,100 @@ import 'models/info.dart';
 class EquipmentDetail extends StatelessWidget {
   EquipmentDetail({Key? key, required this.equipmentData}) : super(key: key);
   final Equipment equipmentData;
-  final ValueNotifier<bool> showProftype = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> showProfType = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
+    showProfType.value = equipmentData.equipment!.proftype!;
     return Scaffold(
       bottomNavigationBar: const AppNavigationBar(Nav.equip),
       appBar: appBar(context, 'Карточка оборудования', {}, () {
         BlocProvider.of<EquipmentBloc>(context).add(const EquipmentEvent.getList());
       }),
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Stack(
-                    children: [
-                      equipmentData.equipment!.image!.isEmpty
-                          ? Image.asset('assets/eq.png')
-                          : Image.file(
-                              File(equipmentData.equipment!.image!),
-                              height: 150,
-                            ),
-                      SvgPicture.asset(status(equipmentData.equipment!.status!)),
-                    ],
+        child: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Stack(
+                      children: [
+                        equipmentData.equipment!.image!.isEmpty
+                            ? Image.asset('assets/eq.png')
+                            : SizedBox(
+                                height: 170,
+                                child: Image.network(fit: BoxFit.contain, imageUrl + equipmentData.equipment!.image!)),
+                        SvgPicture.asset(status(equipmentData.equipment!.status!)),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                AppTextBox.textBox(equipmentData.equipment!.name1!),
-                const SizedBox(height: 16),
-                AppTextBox.textBox(equipmentData.equipment!.name2!),
-                const SizedBox(height: 16),
-                AppText.text14('Вид оборудования'),
-                const SizedBox(height: 16),
-                AppTextBox.textBox(equipmentData.equipment!.view!),
-                const SizedBox(height: 16),
-                AppText.text14('Участок'),
-                const SizedBox(height: 16),
-                AppTextBox.textBox(equipmentData.equipment!.plot!),
-                const SizedBox(height: 16),
-                AppText.text14('Работа/часы'),
-                FormBuilderSwitch(
-                  title: const Text('Работа/часы'),
-                  name: 'proftype',
-                  initialValue: equipmentData.equipment!.proftype,
-                  enabled: false,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
+                  const SizedBox(height: 16),
+                  AppTextBox.textBox(equipmentData.equipment!.name1!),
+                  const SizedBox(height: 16),
+                  AppTextBox.textBox(equipmentData.equipment!.name2!),
+                  const SizedBox(height: 16),
+                  AppText.text14('Вид оборудования'),
+                  const SizedBox(height: 8),
+                  AppTextBox.textBox(equipmentData.equipment!.view!),
+                  const SizedBox(height: 16),
+                  AppText.text14('Участок'),
+                  const SizedBox(height: 16),
+                  AppTextBox.textBox(equipmentData.equipment!.plot!),
+                  const SizedBox(height: 8),
+                  AppText.text14('Работа/часы'),
+                  FormBuilderSwitch(
+                    title: const Text('Работа/часы'),
+                    name: 'proftype',
+                    initialValue: equipmentData.equipment!.proftype,
+                    enabled: false,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                    onChanged: (value) {
+                      showProfType.value = value!;
+                    },
                   ),
-                  onChanged: (value) {
-                    showProftype.value = value!;
-                  },
-                ),
-                ValueListenableBuilder(
-                    valueListenable: showProftype,
-                    builder: (BuildContext context, bool value, Widget? child) {
-                      if (value) {
-                        return AppTextBox.textBox('Текущее значение работа/часов');
-                      } else {
-                        return const SizedBox();
-                      }
-                    }),
-                const SizedBox(height: 16),
-                AppText.text14('Информация'),
-                const SizedBox(height: 16),
-                InfoBox(equipmentData.infoList!),
-                const SizedBox(height: 8),
-                AppButton.filledLightBlueButton('ППР Работы по работа/часам', onPressed: () {
-                  BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoPprScreen(PprType.workTime, equipmentData));
-                }),
-                const SizedBox(height: 16),
-                AppButton.filledLightBlueButton('ППР Работы по времени', onPressed: () {
-                  BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoPprScreen(PprType.time, equipmentData));
-                }),
-                const SizedBox(height: 16),
-                AppButton.filledLightBlueButton('План работ', onPressed: () {}),
-                const SizedBox(height: 16),
-                AppButton.filledButton('Редактировать', onPressed: () {
-                  BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoEditScreen(equipmentData));
-                }),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
+                  ValueListenableBuilder(
+                      valueListenable: showProfType,
+                      builder: (BuildContext context, bool value, Widget? child) {
+                        if (value) {
+//                        return AppTextBox.textBox('Текущее значение работа/часов');
+                          return AppTextBox.textBox(equipmentData.equipment!.valuex.toString());
+                        } else {
+                          return const SizedBox();
+                        }
+                      }),
+                  const SizedBox(height: 16),
+                  AppText.text14('Информация'),
+                  const SizedBox(height: 16),
+                  InfoBox(equipmentData.infoList!),
+                  const SizedBox(height: 8),
+                  equipmentData.equipment!.proftype!
+                      ? AppButton.filledLightBlueButton('ППР Работы по работа/часам', onPressed: () {
+                          BlocProvider.of<EquipmentBloc>(context)
+                              .add(EquipmentEvent.gotoPprScreen(PprType.workTime, equipmentData));
+                        })
+                      : const SizedBox(),
+                  const SizedBox(height: 16),
+                  AppButton.filledLightBlueButton('ППР Работы по времени', onPressed: () {
+                    BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoPprScreen(PprType.time, equipmentData));
+                  }),
+                  const SizedBox(height: 16),
+                  AppButton.filledLightBlueButton('План работ', onPressed: () {}),
+                  const SizedBox(height: 16),
+                  AppButton.filledButton('Редактировать', onPressed: () {
+                    BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoEditScreen(equipmentData));
+                  }),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

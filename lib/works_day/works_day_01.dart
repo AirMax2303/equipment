@@ -26,8 +26,8 @@ class WorkDayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WorkDayBloc>(
-      create: (BuildContext context) => WorkDayBloc(GetIt.instance.get<WorkDayService>(), false)..add(WorkDayEvent.getList
-        (date!)),
+      create: (BuildContext context) =>
+          WorkDayBloc(GetIt.instance.get<WorkDayService>(), false)..add(WorkDayEvent.getList(date!)),
       child: BlocConsumer<WorkDayBloc, WorkDayState>(
         listener: (context, state) {
           state.mapOrNull(
@@ -129,10 +129,10 @@ class WordDayCard extends StatelessWidget {
     return Card(
         elevation: 0,
         color: AppColor.backgroundColor,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(color: selected ? Colors.black : AppColor.backgroundColor),
-          borderRadius: const BorderRadius.all(Radius.circular(0)),
-        ),
+//        shape: RoundedRectangleBorder(
+//          side: BorderSide(color: selected ? Colors.black : AppColor.backgroundColor),
+//          borderRadius: const BorderRadius.all(Radius.circular(0)),
+//        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -166,7 +166,7 @@ class WordDayCard extends StatelessWidget {
                   decoration: BoxDecoration(color: AppColor.lightBlueColor, borderRadius: BorderRadius.circular(20)),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Text(calendar.equipment.plot!).style14w700(),
+                    child: Text(calendar.equipment.plot!).style14w700(color: AppColor.blueColor),
                   )),
               WordDayCardWorks(calendar: calendar, current: selected),
             ],
@@ -217,7 +217,11 @@ class WordDayCardWorks extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    calendar.list[index].priority! ? SvgPicture.asset('assets/type1.svg') : const SizedBox(),
+                    calendar.list[index].priority!
+                        ? SvgPicture.asset('assets/type1.svg', width: 20, height: 20)
+                        : calendar.list[index].worktype == 0
+                            ? SvgPicture.asset('assets/type3.svg', width: 20, height: 20)
+                            : const SizedBox(),
                     const SizedBox(width: 10),
                     Flexible(child: Text(calendar.list[index].name!, maxLines: 5).style12w400()),
                   ],
@@ -229,7 +233,18 @@ class WordDayCardWorks extends StatelessWidget {
               inactiveTrackColor: AppColor.lightBlueColor,
               decoration: const InputDecoration(border: InputBorder.none),
               onChanged: (value) {
-                context.read<WorkDayBloc>().add(WorkDayEvent.completeWork(calendar.list[index]));
+                if (calendar.list[index].worktype == 3) {
+                  showDialog<Either<int, DateTime>>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return dialogSaveWorkTime(context, calendar, index);
+                      }).then((value) => value?.fold(
+                        (l) => context.read<WorkDayBloc>().add(WorkDayEvent.saveWorkTime(calendar.list[index], l)),
+                        (r) => context.read<WorkDayBloc>().add(WorkDayEvent.changeDate(calendar.list[index], r)),
+                      ));
+                } else {
+                  context.read<WorkDayBloc>().add(WorkDayEvent.completeWork(calendar.list[index]));
+                }
               },
             ),
             index < calendar.list.length - 1 ? const Divider(height: 1, thickness: 1, color: Colors.black) : const SizedBox(),

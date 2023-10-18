@@ -6,8 +6,10 @@ import 'package:get_it/get_it.dart';
 
 import '../../equipment/bloc/equipment_bloc.dart';
 import '../../equipment/name/bloc/name_bloc.dart';
+import '../../equipment/name_filter/bloc/name_filter_bloc.dart';
 import '../../equipment/service/equipment_service.dart';
 import '../../models/models.dart';
+import '../../template/template01.dart';
 import '../widgets.dart';
 
 Dialog selectEquipment(BuildContext context) {
@@ -123,7 +125,7 @@ Dialog selectEquipment(BuildContext context) {
                         TextButton(
                             child: const Text('Отменить').style13w500(),
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.pop(context, null);
                             }),
                       ],
                     ),
@@ -131,7 +133,8 @@ Dialog selectEquipment(BuildContext context) {
                 ],
               ),
             ),
-            orElse: () => Container(),
+            loading: (_) => const EmptyScreen(),
+            orElse: () => const EmptyScreen(),
           );
         }),
   );
@@ -147,11 +150,11 @@ Dialog filterEquipment(BuildContext context) {
       insetPadding: const EdgeInsets.all(20),
       child: BlocProvider<NameFilterBloc>(
         create: (BuildContext context) =>
-            NameFilterBloc(GetIt.instance.get<EquipmentService>())..add(const NameEvent.getFilterList(true)),
-        child: BlocConsumer<NameBloc, NameState>(
+            NameFilterBloc(GetIt.instance.get<EquipmentService>())..add(const NameFilterEvent.getFilterList(true)),
+        child: BlocConsumer<NameFilterBloc, NameFilterState>(
           listener: (context, state) => state.mapOrNull(),
-          builder: (BuildContext context, NameState state) => state.maybeMap(
-            orElse: () => const Placeholder(),
+          builder: (BuildContext context, NameFilterState state) => state.maybeMap(
+            orElse: () => const EmptyScreen(),
             data: (data) => Padding(
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
@@ -179,10 +182,10 @@ Dialog filterEquipment(BuildContext context) {
                           child: FilledButton(
                             onPressed: () {
                               filter.filterType = FilterType.view;
-                              BlocProvider.of<NameFilterBloc>(context).add(const NameEvent.getFilterList(true));
+                              BlocProvider.of<NameFilterBloc>(context).add(const NameFilterEvent.getFilterList(true));
                               selected.value = 0;
                             },
-                            style: AppButtonStyle.stdButtonStyle(
+                            style: AppButtonStyle.stdButtonStyle(radius: filter.filterType == FilterType.view ? 10 : 0,
                                 color: filter.filterType == FilterType.view ? AppColor.blueColor : AppColor.lightBlueColor),
                             child: Text(
                               'Вид оборудования',
@@ -197,10 +200,10 @@ Dialog filterEquipment(BuildContext context) {
                           child: FilledButton(
                             onPressed: () {
                               filter.filterType = FilterType.plot;
-                              BlocProvider.of<NameFilterBloc>(context).add(const NameEvent.getFilterList(false));
+                              BlocProvider.of<NameFilterBloc>(context).add(const NameFilterEvent.getFilterList(false));
                               selected.value = 0;
                             },
-                            style: AppButtonStyle.stdButtonStyle(
+                            style: AppButtonStyle.stdButtonStyle(radius: filter.filterType == FilterType.view ? 0 : 10,
                                 color: filter.filterType == FilterType.view ? AppColor.lightBlueColor : AppColor.blueColor),
                             child: Text(
                               'Участок',

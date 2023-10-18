@@ -14,5 +14,5 @@ class NameState with _$NameState {
   const factory NameState.data({
     required List<NameModel>? list
   }) = _DataState;
+}
 
-}  

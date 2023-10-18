@@ -38,6 +38,7 @@ class UserDataScreen extends StatelessWidget {
               padding: const EdgeInsets.all(18.0),
               child: Column(
                 children: [
+                  const SizedBox(height: 32),
 //--------------------------------------------------------------------------------------------------------------------------------
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -52,7 +53,7 @@ class UserDataScreen extends StatelessWidget {
                           }),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 16),
 //--------------------------------------------------------------------------------------------------------------------------------
                   FormBuilder(
                     key: formKey,
@@ -69,18 +70,16 @@ class UserDataScreen extends StatelessWidget {
                           name: 'phone',
                           initialValue: service.profile.phone!,
                           inputFormatters: [PhoneInputFormatter()],
-                          decoration: AppDecoration.input('Телефон*', 'assets/phone.svg'),
+                          decoration: AppDecoration.input('Телефон*', 'assets/phone.svg', fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                           ]),
                         ),
-                        const SizedBox(
-                          height: 16,
-                        ),
+                        const SizedBox(height: 16),
                         FormBuilderTextField(
                           name: 'email',
                           initialValue: service.profile.email!,
-                          decoration: AppDecoration.input('Эл.почта', 'assets/email.svg'),
+                          decoration: AppDecoration.input('Эл.почта', 'assets/email.svg', fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                             FormBuilderValidators.email(errorText: 'Введите адрес электронной почты'),
@@ -108,32 +107,38 @@ class UserDataScreen extends StatelessWidget {
                   ValueListenableBuilder(
                     valueListenable: tarif,
                     builder: (BuildContext context, value, Widget? child) {
-                      return Container(
-                        height: 130,
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Color(0xCC3F60EE),
-                          gradient: LinearGradient(
-                              begin: Alignment.topRight,
-                              end: Alignment.bottomLeft,
-                              colors: [Color(0xFF070159), Color(0xFF072FEE)]),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Column(
-                              children: [
-                                const SizedBox(height: 40),
-                                AppText.whiteText16('Ваш тариф $value'),
-                                AppText.whiteText13(
-                                  'Действует до 01.01.2023',
-                                )
-                              ],
+                      return Stack(
+                        alignment: AlignmentDirectional.topEnd,
+                        children: [
+                          Container(
+                            height: 130,
+                            width: double.infinity,
+                            decoration: const BoxDecoration(
+                              color: Color(0xCC3F60EE),
+                              gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft,
+                                  colors: [Color(0xFF070159), Color(0xFF072FEE)]),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 40),
+                                    AppText.whiteText16('Ваш тариф $value'),
+                                    AppText.whiteText13(
+                                      'Действует до 01.01.2023',
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          Image.asset('assets/Group 528.png'),
+                        ],
                       );
                     },
                   ),
@@ -148,7 +153,7 @@ class UserDataScreen extends StatelessWidget {
                     },
                     child: Container(
                         height: 60,
-                        color: const Color(0xFFF8F8F8),
+                        color: AppColor.backgroundColor,
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Row(
@@ -175,7 +180,7 @@ class UserDataScreen extends StatelessWidget {
                     },
                     child: Container(
                         height: 60,
-                        color: const Color(0xFFF8F8F8),
+                        color: AppColor.backgroundColor,
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Row(
@@ -202,7 +207,7 @@ class UserDataScreen extends StatelessWidget {
                     },
                     child: Container(
                         height: 60,
-                        color: const Color(0xFFF8F8F8),
+                        color: AppColor.backgroundColor,
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Row(

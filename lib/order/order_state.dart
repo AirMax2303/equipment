@@ -25,7 +25,7 @@ class StateEquipment extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
           const Text('Состояние оборудования').style14w700(),
-          const SizedBox(height: 10),
+//          const SizedBox(height: 10),
           ValueListenableBuilder(
               valueListenable: stateEquipment,
               builder: (BuildContext context, value, Widget? child) {
@@ -33,23 +33,24 @@ class StateEquipment extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
+                      iconSize: 80,
                       onPressed: () {
                         stateEquipment.value = 0;
                         onPressed!(0);
                       },
-                      icon: Padding(
-                        padding: const EdgeInsets.all(1.0),
-                        child: SvgPicture.asset(value == 0 ? stateImageSelected[0] : stateImage[0]),
-                      ),
+                      icon: SvgPicture.asset(value == 0 ? stateImageSelected[0] : stateImage[0]),
                     ),
                     IconButton(
+                      iconSize: 80,
                       onPressed: () {
                         stateEquipment.value = 1;
                         onPressed!(1);
                       },
+
                       icon: SvgPicture.asset(value == 1 ? stateImageSelected[1] : stateImage[1]),
                     ),
                     IconButton(
+                      iconSize: 80,
                       onPressed: () {
                         stateEquipment.value = 2;
                         onPressed!(2);
@@ -59,7 +60,7 @@ class StateEquipment extends StatelessWidget {
                   ],
                 );
               }),
-          const SizedBox(height: 10),
+//          const SizedBox(height: 10),
         ],
       ),
     );

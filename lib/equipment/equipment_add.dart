@@ -24,7 +24,7 @@ class EquipmentAdd extends StatelessWidget {
   final ValueNotifier<bool> refresh = ValueNotifier<bool>(false);
   final ValueNotifier<bool> showView = ValueNotifier<bool>(false);
   final ValueNotifier<bool> showPlot = ValueNotifier<bool>(false);
-  EquipmentModel equipmentModel = const EquipmentModel(image: '');
+  EquipmentModel equipmentModel = const EquipmentModel(proftype: false, image: '');
   final formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -40,7 +40,7 @@ class EquipmentAdd extends StatelessWidget {
           height: double.infinity,
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.all(18.0),
+            padding: const EdgeInsets.all(16.0),
             child: ValueListenableBuilder(
                 valueListenable: refresh,
                 builder: (BuildContext context, value, Widget? child) {
@@ -127,7 +127,7 @@ class EquipmentAdd extends StatelessWidget {
                                   return NameList(typeName: false, onNameCallback: (NameModel value) {
                                         formKey.currentState?.fields['plot']?.didChange(value.name);
                                         equipmentModel = equipmentModel.copyWith(plotid: value.id, plot: value.name);
-                                        showView.value = false;
+                                        showPlot.value = false;
                                       });
                                 } else {
                                   return const SizedBox(height: 10);

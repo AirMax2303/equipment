@@ -23,8 +23,7 @@ class SelectTarif extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const SizedBox(height: 16),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 290),
                   AppText.blackText14('Тарифы'),
                   const SizedBox(height: 16),
                   ValueListenableBuilder(
@@ -38,7 +37,7 @@ class SelectTarif extends StatelessWidget {
                           ],
                         );
                       }),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 25),
                   AppButton.filledBlackButton('Подключить', onPressed: () {
                     Navigator.pop(context, radio.value ? 'Начальный' : 'Полный');
                   }),

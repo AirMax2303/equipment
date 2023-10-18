@@ -83,7 +83,7 @@ Dialog dialogOrder(BuildContext context, MainChapterData data) {
               IconButton(
                   icon: SvgPicture.asset('assets/close.svg'),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, false);
                   }),
             ],
           ),

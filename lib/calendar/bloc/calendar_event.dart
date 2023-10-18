@@ -4,4 +4,5 @@ part of 'calendar_bloc.dart';
 class CalendarEvent with _$CalendarEvent {
   const factory CalendarEvent.initial() = _InitialEvent;
   const factory CalendarEvent.getList(DateTime date) = _GetListEvent;
+  const factory CalendarEvent.getEquipmentList(EquipmentModel equipment) = _GetEquipmentListEvent;
 }

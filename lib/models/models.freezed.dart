@@ -436,6 +436,142 @@ abstract class _IdModel implements IdModel {
       throw _privateConstructorUsedError;
 }
 
+DateModel _$DateModelFromJson(Map<String, dynamic> json) {
+  return _DateModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DateModel {
+  DateTime? get workdate => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DateModelCopyWith<DateModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DateModelCopyWith<$Res> {
+  factory $DateModelCopyWith(DateModel value, $Res Function(DateModel) then) =
+      _$DateModelCopyWithImpl<$Res, DateModel>;
+  @useResult
+  $Res call({DateTime? workdate});
+}
+
+/// @nodoc
+class _$DateModelCopyWithImpl<$Res, $Val extends DateModel>
+    implements $DateModelCopyWith<$Res> {
+  _$DateModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? workdate = freezed,
+  }) {
+    return _then(_value.copyWith(
+      workdate: freezed == workdate
+          ? _value.workdate
+          : workdate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DateModelImplCopyWith<$Res>
+    implements $DateModelCopyWith<$Res> {
+  factory _$$DateModelImplCopyWith(
+          _$DateModelImpl value, $Res Function(_$DateModelImpl) then) =
+      __$$DateModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DateTime? workdate});
+}
+
+/// @nodoc
+class __$$DateModelImplCopyWithImpl<$Res>
+    extends _$DateModelCopyWithImpl<$Res, _$DateModelImpl>
+    implements _$$DateModelImplCopyWith<$Res> {
+  __$$DateModelImplCopyWithImpl(
+      _$DateModelImpl _value, $Res Function(_$DateModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? workdate = freezed,
+  }) {
+    return _then(_$DateModelImpl(
+      workdate: freezed == workdate
+          ? _value.workdate
+          : workdate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DateModelImpl implements _DateModel {
+  _$DateModelImpl({this.workdate});
+
+  factory _$DateModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DateModelImplFromJson(json);
+
+  @override
+  final DateTime? workdate;
+
+  @override
+  String toString() {
+    return 'DateModel(workdate: $workdate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DateModelImpl &&
+            (identical(other.workdate, workdate) ||
+                other.workdate == workdate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, workdate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DateModelImplCopyWith<_$DateModelImpl> get copyWith =>
+      __$$DateModelImplCopyWithImpl<_$DateModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DateModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DateModel implements DateModel {
+  factory _DateModel({final DateTime? workdate}) = _$DateModelImpl;
+
+  factory _DateModel.fromJson(Map<String, dynamic> json) =
+      _$DateModelImpl.fromJson;
+
+  @override
+  DateTime? get workdate;
+  @override
+  @JsonKey(ignore: true)
+  _$$DateModelImplCopyWith<_$DateModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 EquipmentModel _$EquipmentModelFromJson(Map<String, dynamic> json) {
   return _EquipmentModel.fromJson(json);
 }
@@ -1571,32 +1707,41 @@ abstract class _WorkModel implements WorkModel {
       throw _privateConstructorUsedError;
 }
 
-WorkList _$WorkListFromJson(Map<String, dynamic> json) {
-  return _WorkList.fromJson(json);
+ProfTypeModel _$ProfTypeModelFromJson(Map<String, dynamic> json) {
+  return _ProfTypeModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WorkList {
-  List<WorkModel>? get list => throw _privateConstructorUsedError;
+mixin _$ProfTypeModel {
+  String? get id => throw _privateConstructorUsedError;
+  String? get equipmentid => throw _privateConstructorUsedError;
+  DateTime? get workdate => throw _privateConstructorUsedError;
+  @JsonKey(toJson: stringFromInt)
+  int? get valuex => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WorkListCopyWith<WorkList> get copyWith =>
+  $ProfTypeModelCopyWith<ProfTypeModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WorkListCopyWith<$Res> {
-  factory $WorkListCopyWith(WorkList value, $Res Function(WorkList) then) =
-      _$WorkListCopyWithImpl<$Res, WorkList>;
+abstract class $ProfTypeModelCopyWith<$Res> {
+  factory $ProfTypeModelCopyWith(
+          ProfTypeModel value, $Res Function(ProfTypeModel) then) =
+      _$ProfTypeModelCopyWithImpl<$Res, ProfTypeModel>;
   @useResult
-  $Res call({List<WorkModel>? list});
+  $Res call(
+      {String? id,
+      String? equipmentid,
+      DateTime? workdate,
+      @JsonKey(toJson: stringFromInt) int? valuex});
 }
 
 /// @nodoc
-class _$WorkListCopyWithImpl<$Res, $Val extends WorkList>
-    implements $WorkListCopyWith<$Res> {
-  _$WorkListCopyWithImpl(this._value, this._then);
+class _$ProfTypeModelCopyWithImpl<$Res, $Val extends ProfTypeModel>
+    implements $ProfTypeModelCopyWith<$Res> {
+  _$ProfTypeModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1606,110 +1751,166 @@ class _$WorkListCopyWithImpl<$Res, $Val extends WorkList>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = freezed,
+    Object? id = freezed,
+    Object? equipmentid = freezed,
+    Object? workdate = freezed,
+    Object? valuex = freezed,
   }) {
     return _then(_value.copyWith(
-      list: freezed == list
-          ? _value.list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<WorkModel>?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentid: freezed == equipmentid
+          ? _value.equipmentid
+          : equipmentid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workdate: freezed == workdate
+          ? _value.workdate
+          : workdate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      valuex: freezed == valuex
+          ? _value.valuex
+          : valuex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$WorkListImplCopyWith<$Res>
-    implements $WorkListCopyWith<$Res> {
-  factory _$$WorkListImplCopyWith(
-          _$WorkListImpl value, $Res Function(_$WorkListImpl) then) =
-      __$$WorkListImplCopyWithImpl<$Res>;
+abstract class _$$ProfTypeModelImplCopyWith<$Res>
+    implements $ProfTypeModelCopyWith<$Res> {
+  factory _$$ProfTypeModelImplCopyWith(
+          _$ProfTypeModelImpl value, $Res Function(_$ProfTypeModelImpl) then) =
+      __$$ProfTypeModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<WorkModel>? list});
+  $Res call(
+      {String? id,
+      String? equipmentid,
+      DateTime? workdate,
+      @JsonKey(toJson: stringFromInt) int? valuex});
 }
 
 /// @nodoc
-class __$$WorkListImplCopyWithImpl<$Res>
-    extends _$WorkListCopyWithImpl<$Res, _$WorkListImpl>
-    implements _$$WorkListImplCopyWith<$Res> {
-  __$$WorkListImplCopyWithImpl(
-      _$WorkListImpl _value, $Res Function(_$WorkListImpl) _then)
+class __$$ProfTypeModelImplCopyWithImpl<$Res>
+    extends _$ProfTypeModelCopyWithImpl<$Res, _$ProfTypeModelImpl>
+    implements _$$ProfTypeModelImplCopyWith<$Res> {
+  __$$ProfTypeModelImplCopyWithImpl(
+      _$ProfTypeModelImpl _value, $Res Function(_$ProfTypeModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = freezed,
+    Object? id = freezed,
+    Object? equipmentid = freezed,
+    Object? workdate = freezed,
+    Object? valuex = freezed,
   }) {
-    return _then(_$WorkListImpl(
-      list: freezed == list
-          ? _value._list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<WorkModel>?,
+    return _then(_$ProfTypeModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentid: freezed == equipmentid
+          ? _value.equipmentid
+          : equipmentid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workdate: freezed == workdate
+          ? _value.workdate
+          : workdate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      valuex: freezed == valuex
+          ? _value.valuex
+          : valuex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$WorkListImpl implements _WorkList {
-  const _$WorkListImpl({final List<WorkModel>? list}) : _list = list;
+class _$ProfTypeModelImpl implements _ProfTypeModel {
+  _$ProfTypeModelImpl(
+      {this.id = '',
+      this.equipmentid = '',
+      this.workdate,
+      @JsonKey(toJson: stringFromInt) this.valuex = 0});
 
-  factory _$WorkListImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WorkListImplFromJson(json);
+  factory _$ProfTypeModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProfTypeModelImplFromJson(json);
 
-  final List<WorkModel>? _list;
   @override
-  List<WorkModel>? get list {
-    final value = _list;
-    if (value == null) return null;
-    if (_list is EqualUnmodifiableListView) return _list;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  @JsonKey()
+  final String? id;
+  @override
+  @JsonKey()
+  final String? equipmentid;
+  @override
+  final DateTime? workdate;
+  @override
+  @JsonKey(toJson: stringFromInt)
+  final int? valuex;
 
   @override
   String toString() {
-    return 'WorkList(list: $list)';
+    return 'ProfTypeModel(id: $id, equipmentid: $equipmentid, workdate: $workdate, valuex: $valuex)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WorkListImpl &&
-            const DeepCollectionEquality().equals(other._list, _list));
+            other is _$ProfTypeModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.equipmentid, equipmentid) ||
+                other.equipmentid == equipmentid) &&
+            (identical(other.workdate, workdate) ||
+                other.workdate == workdate) &&
+            (identical(other.valuex, valuex) || other.valuex == valuex));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
+      Object.hash(runtimeType, id, equipmentid, workdate, valuex);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WorkListImplCopyWith<_$WorkListImpl> get copyWith =>
-      __$$WorkListImplCopyWithImpl<_$WorkListImpl>(this, _$identity);
+  _$$ProfTypeModelImplCopyWith<_$ProfTypeModelImpl> get copyWith =>
+      __$$ProfTypeModelImplCopyWithImpl<_$ProfTypeModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WorkListImplToJson(
+    return _$$ProfTypeModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _WorkList implements WorkList {
-  const factory _WorkList({final List<WorkModel>? list}) = _$WorkListImpl;
+abstract class _ProfTypeModel implements ProfTypeModel {
+  factory _ProfTypeModel(
+      {final String? id,
+      final String? equipmentid,
+      final DateTime? workdate,
+      @JsonKey(toJson: stringFromInt) final int? valuex}) = _$ProfTypeModelImpl;
 
-  factory _WorkList.fromJson(Map<String, dynamic> json) =
-      _$WorkListImpl.fromJson;
+  factory _ProfTypeModel.fromJson(Map<String, dynamic> json) =
+      _$ProfTypeModelImpl.fromJson;
 
   @override
-  List<WorkModel>? get list;
+  String? get id;
+  @override
+  String? get equipmentid;
+  @override
+  DateTime? get workdate;
+  @override
+  @JsonKey(toJson: stringFromInt)
+  int? get valuex;
   @override
   @JsonKey(ignore: true)
-  _$$WorkListImplCopyWith<_$WorkListImpl> get copyWith =>
+  _$$ProfTypeModelImplCopyWith<_$ProfTypeModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

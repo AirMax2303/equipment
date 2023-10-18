@@ -22,7 +22,7 @@ class ProfileLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColor.blackColor,
         body: SafeArea(
             child: SingleChildScrollView(
           child: Column(
@@ -33,6 +33,7 @@ class ProfileLogin extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset('assets/logo.svg'),
+                  const SizedBox(width: 200,),
                   AppIcons.iconButton(
                       image: 'assets/message.svg',
                       color: Colors.white,
@@ -41,14 +42,15 @@ class ProfileLogin extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SendMessage(email: formKey.currentState?.fields['name']?.value)));
+                                  builder: (context) => SendMessage(email: "formKey.currentState?.fields['name']?.value")));
                         }
-                      })
+                      }),
+                  const SizedBox(width: 5,)
                 ],
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 300),
               AppText.whiteText16('Войти'),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: FormBuilder(
@@ -58,7 +60,7 @@ class ProfileLogin extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'email',
                           initialValue: service.profile.email,
-                          decoration: AppDecoration.input('Эл.почта', 'assets/email.svg'),
+                          decoration: AppDecoration.input('Эл.почта', 'assets/email.svg', fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                             FormBuilderValidators.email(errorText: 'Введите адрес электронной почты'),
@@ -68,7 +70,7 @@ class ProfileLogin extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'password',
                           initialValue: service.profile.password,
-                          decoration: AppDecoration.input('Пароль*', 'assets/password.svg'),
+                          decoration: AppDecoration.input('Пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
                           obscureText: true,
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
@@ -88,7 +90,7 @@ class ProfileLogin extends StatelessWidget {
                           }
                           print(formKey.currentState?.value.toString());
                         }),
-                        const SizedBox(height: 10),
+//                        const SizedBox(height: 5),
                         TextButton(
                             onPressed: () {
                               BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.gotoProfileScreen());

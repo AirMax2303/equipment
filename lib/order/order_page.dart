@@ -92,9 +92,11 @@ class OrderScreen extends StatelessWidget {
                               builder: (BuildContext context) {
                                 return selectEquipment(context);
                               }).then((value) {
-                            equipment = value;
-                            order = order.copyWith(equipmentid: value!.id!);
-                            formKey.currentState?.fields['equipment']?.didChange(equipment!.name1!);
+                            if (value != null) {
+                              equipment = value;
+                              order = order.copyWith(equipmentid: value!.id!);
+                              formKey.currentState?.fields['equipment']?.didChange(equipment!.name1!);
+                            }
                           });
                         },
                       ),
@@ -186,7 +188,7 @@ class OrderScreen extends StatelessWidget {
                         child: AppButton.addImageButten(),
                         onTap: () async {
                           FilePickerResult? result = await FilePicker.platform.pickFiles();
-                          if (result != null) {
+                          if ((result != null) && (result.files.isNotEmpty)) {
                             file = File(result.files.single.path!);
                             order = order.copyWith(image: file!.path);
                             showFile.value = !showFile.value;

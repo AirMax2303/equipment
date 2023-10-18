@@ -33,7 +33,7 @@ Dialog dialogCalendar(BuildContext context) {
               }),
               TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, null);
                   },
                   child: const Text('Отменить').style13w500()),
             ],

@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 
 import '../models/models.dart';
 
-//const String backendUrl = 'http://62.183.34.180:5000';
+const String backendUrl = 'http://62.183.34.180:5000';
 //const String backendUrl = 'http://192.168.31.185:5000';
-const String backendUrl = 'http://192.168.46.16:5000';
+//const String backendUrl = 'http://192.168.46.16:5000';
+
+const String imageUrl = 'http://62.183.34.180/eq/image/';
+//const String imageUrl = 'http://192.168.31.185/eq/image/';
+//const String imageUrl = 'http://192.168.46.16/eq/image/';
 
 String utf8convert(String text) {
   List<int> bytes = text.toString().codeUnits;

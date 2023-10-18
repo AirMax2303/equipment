@@ -11,6 +11,8 @@ import 'package:toast/toast.dart';
 import 'bloc/observer.dart';
 import 'calendar/service/calendar_service.dart';
 import 'equipment/bloc/equipment_bloc.dart';
+import 'equipment/name/bloc/name_bloc.dart';
+import 'equipment/name_filter/bloc/name_filter_bloc.dart';
 import 'equipment/service/equipment_service.dart';
 import 'package:equipment/profile/service/profile_service.dart';
 
@@ -41,6 +43,9 @@ void main() {
     BlocProvider<ProfileBloc>(
       create: (BuildContext context) => ProfileBloc(GetIt.instance.get<ProfileService>()),
     ),
+//    BlocProvider<NameFilterBloc>(
+//      create: (BuildContext context) => NameFilterBloc(GetIt.instance.get<EquipmentService>()),
+//    ),
 //    BlocProvider<EquipmentBloc>(
 //      create: (BuildContext context) => GetIt.instance.get<EquipmentBloc>(),
 //    ),
@@ -61,6 +66,7 @@ class MyApp extends StatelessWidget {
 //        useMaterial3: true,
         fontFamily: GoogleFonts.poppins().fontFamily,
         dialogBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
         primaryColor: const Color(0xFF3F60EE),
       ),
       routerConfig: router,

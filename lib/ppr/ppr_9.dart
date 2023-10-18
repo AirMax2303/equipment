@@ -96,8 +96,10 @@ class Ppr9Screen extends StatelessWidget {
                               builder: (BuildContext context) {
                                 return pprType == PprType.workTime ? dialog15(context, ppr) : dialog13(context, ppr);
                               }).then((value) {
-                            ppr = value!;
-                            formKey.currentState?.fields['timer']?.didChange(DateFormat('dd.MM.yyyy').format(ppr.begindate!));
+                            if (value != null) {
+                              ppr = value!;
+                              formKey.currentState?.fields['timer']?.didChange(DateFormat('dd.MM.yyyy').format(ppr.begindate!));
+                            }
                           });
                         },
                       ),
@@ -131,7 +133,7 @@ class Ppr9Screen extends StatelessWidget {
                         child: AppButton.addImageButten(),
                         onTap: () async {
                           FilePickerResult? result = await FilePicker.platform.pickFiles();
-                          if (result != null) {
+                          if ((result != null) && (result.files.isNotEmpty)) {
                             file = File(result.files.single.path!);
                             ppr = ppr.copyWith(image: file!.path);
                             showFile.value = !showFile.value;

@@ -39,16 +39,3 @@ class NameBloc extends Bloc<NameEvent, NameState> {
   }
 }
 
-class NameFilterBloc extends Bloc<NameEvent, NameState> {
-  EquipmentService service;
-
-  NameFilterBloc(this.service) : super(const NameState.initial()) {
-    on<_GetFilterListEvent>(_onGetFilterListEvent);
-  }
-
-  void _onGetFilterListEvent(_GetFilterListEvent event, Emitter<NameState> emit) async {
-    await service.getNameList(event.typeName ? '/view/list' : '/plot/list').then((value) async {
-      emit(_DataState(list: value));
-    });
-  }
-}

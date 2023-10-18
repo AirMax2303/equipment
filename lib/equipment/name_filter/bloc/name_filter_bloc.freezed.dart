@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'name_bloc.dart';
+part of 'name_filter_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,63 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$NameEvent {
+mixin _$NameFilterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
+    required TResult Function(bool typeName) getFilterList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
+    TResult? Function(bool typeName)? getFilterList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
+    TResult Function(bool typeName)? getFilterList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GetFilterListEvent value) getFilterList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GetFilterListEvent value)? getFilterList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GetFilterListEvent value)? getFilterList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NameEventCopyWith<$Res> {
-  factory $NameEventCopyWith(NameEvent value, $Res Function(NameEvent) then) =
-      _$NameEventCopyWithImpl<$Res, NameEvent>;
+abstract class $NameFilterEventCopyWith<$Res> {
+  factory $NameFilterEventCopyWith(
+          NameFilterEvent value, $Res Function(NameFilterEvent) then) =
+      _$NameFilterEventCopyWithImpl<$Res, NameFilterEvent>;
 }
 
 /// @nodoc
-class _$NameEventCopyWithImpl<$Res, $Val extends NameEvent>
-    implements $NameEventCopyWith<$Res> {
-  _$NameEventCopyWithImpl(this._value, this._then);
+class _$NameFilterEventCopyWithImpl<$Res, $Val extends NameFilterEvent>
+    implements $NameFilterEventCopyWith<$Res> {
+  _$NameFilterEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,7 +83,7 @@ abstract class _$$InitialEventImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialEventImplCopyWithImpl<$Res>
-    extends _$NameEventCopyWithImpl<$Res, _$InitialEventImpl>
+    extends _$NameFilterEventCopyWithImpl<$Res, _$InitialEventImpl>
     implements _$$InitialEventImplCopyWith<$Res> {
   __$$InitialEventImplCopyWithImpl(
       _$InitialEventImpl _value, $Res Function(_$InitialEventImpl) _then)
@@ -102,7 +97,7 @@ class _$InitialEventImpl implements _InitialEvent {
 
   @override
   String toString() {
-    return 'NameEvent.initial()';
+    return 'NameFilterEvent.initial()';
   }
 
   @override
@@ -118,8 +113,7 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
+    required TResult Function(bool typeName) getFilterList,
   }) {
     return initial();
   }
@@ -128,8 +122,7 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
+    TResult? Function(bool typeName)? getFilterList,
   }) {
     return initial?.call();
   }
@@ -138,8 +131,7 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
+    TResult Function(bool typeName)? getFilterList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -152,8 +144,7 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GetFilterListEvent value) getFilterList,
   }) {
     return initial(this);
   }
@@ -162,8 +153,7 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GetFilterListEvent value)? getFilterList,
   }) {
     return initial?.call(this);
   }
@@ -172,8 +162,7 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GetFilterListEvent value)? getFilterList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,185 +172,25 @@ class _$InitialEventImpl implements _InitialEvent {
   }
 }
 
-abstract class _InitialEvent implements NameEvent {
+abstract class _InitialEvent implements NameFilterEvent {
   const factory _InitialEvent() = _$InitialEventImpl;
 }
 
 /// @nodoc
-abstract class _$$AddEventImplCopyWith<$Res> {
-  factory _$$AddEventImplCopyWith(
-          _$AddEventImpl value, $Res Function(_$AddEventImpl) then) =
-      __$$AddEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool typeName, NameModel value});
-
-  $NameModelCopyWith<$Res> get value;
-}
-
-/// @nodoc
-class __$$AddEventImplCopyWithImpl<$Res>
-    extends _$NameEventCopyWithImpl<$Res, _$AddEventImpl>
-    implements _$$AddEventImplCopyWith<$Res> {
-  __$$AddEventImplCopyWithImpl(
-      _$AddEventImpl _value, $Res Function(_$AddEventImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? typeName = null,
-    Object? value = null,
-  }) {
-    return _then(_$AddEventImpl(
-      null == typeName
-          ? _value.typeName
-          : typeName // ignore: cast_nullable_to_non_nullable
-              as bool,
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as NameModel,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NameModelCopyWith<$Res> get value {
-    return $NameModelCopyWith<$Res>(_value.value, (value) {
-      return _then(_value.copyWith(value: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$AddEventImpl implements _AddEvent {
-  const _$AddEventImpl(this.typeName, this.value);
-
-  @override
-  final bool typeName;
-  @override
-  final NameModel value;
-
-  @override
-  String toString() {
-    return 'NameEvent.add(typeName: $typeName, value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddEventImpl &&
-            (identical(other.typeName, typeName) ||
-                other.typeName == typeName) &&
-            (identical(other.value, value) || other.value == value));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, typeName, value);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddEventImplCopyWith<_$AddEventImpl> get copyWith =>
-      __$$AddEventImplCopyWithImpl<_$AddEventImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
-  }) {
-    return add(typeName, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
-  }) {
-    return add?.call(typeName, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
-    required TResult orElse(),
-  }) {
-    if (add != null) {
-      return add(typeName, value);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
-  }) {
-    return add(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
-  }) {
-    return add?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
-    required TResult orElse(),
-  }) {
-    if (add != null) {
-      return add(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddEvent implements NameEvent {
-  const factory _AddEvent(final bool typeName, final NameModel value) =
-      _$AddEventImpl;
-
-  bool get typeName;
-  NameModel get value;
-  @JsonKey(ignore: true)
-  _$$AddEventImplCopyWith<_$AddEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetListEventImplCopyWith<$Res> {
-  factory _$$GetListEventImplCopyWith(
-          _$GetListEventImpl value, $Res Function(_$GetListEventImpl) then) =
-      __$$GetListEventImplCopyWithImpl<$Res>;
+abstract class _$$GetFilterListEventImplCopyWith<$Res> {
+  factory _$$GetFilterListEventImplCopyWith(_$GetFilterListEventImpl value,
+          $Res Function(_$GetFilterListEventImpl) then) =
+      __$$GetFilterListEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool typeName});
 }
 
 /// @nodoc
-class __$$GetListEventImplCopyWithImpl<$Res>
-    extends _$NameEventCopyWithImpl<$Res, _$GetListEventImpl>
-    implements _$$GetListEventImplCopyWith<$Res> {
-  __$$GetListEventImplCopyWithImpl(
-      _$GetListEventImpl _value, $Res Function(_$GetListEventImpl) _then)
+class __$$GetFilterListEventImplCopyWithImpl<$Res>
+    extends _$NameFilterEventCopyWithImpl<$Res, _$GetFilterListEventImpl>
+    implements _$$GetFilterListEventImplCopyWith<$Res> {
+  __$$GetFilterListEventImplCopyWithImpl(_$GetFilterListEventImpl _value,
+      $Res Function(_$GetFilterListEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -369,7 +198,7 @@ class __$$GetListEventImplCopyWithImpl<$Res>
   $Res call({
     Object? typeName = null,
   }) {
-    return _then(_$GetListEventImpl(
+    return _then(_$GetFilterListEventImpl(
       null == typeName
           ? _value.typeName
           : typeName // ignore: cast_nullable_to_non_nullable
@@ -380,22 +209,22 @@ class __$$GetListEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetListEventImpl implements _GetListEvent {
-  const _$GetListEventImpl(this.typeName);
+class _$GetFilterListEventImpl implements _GetFilterListEvent {
+  const _$GetFilterListEventImpl(this.typeName);
 
   @override
   final bool typeName;
 
   @override
   String toString() {
-    return 'NameEvent.getList(typeName: $typeName)';
+    return 'NameFilterEvent.getFilterList(typeName: $typeName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetListEventImpl &&
+            other is _$GetFilterListEventImpl &&
             (identical(other.typeName, typeName) ||
                 other.typeName == typeName));
   }
@@ -406,39 +235,37 @@ class _$GetListEventImpl implements _GetListEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetListEventImplCopyWith<_$GetListEventImpl> get copyWith =>
-      __$$GetListEventImplCopyWithImpl<_$GetListEventImpl>(this, _$identity);
+  _$$GetFilterListEventImplCopyWith<_$GetFilterListEventImpl> get copyWith =>
+      __$$GetFilterListEventImplCopyWithImpl<_$GetFilterListEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
+    required TResult Function(bool typeName) getFilterList,
   }) {
-    return getList(typeName);
+    return getFilterList(typeName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
+    TResult? Function(bool typeName)? getFilterList,
   }) {
-    return getList?.call(typeName);
+    return getFilterList?.call(typeName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
+    TResult Function(bool typeName)? getFilterList,
     required TResult orElse(),
   }) {
-    if (getList != null) {
-      return getList(typeName);
+    if (getFilterList != null) {
+      return getFilterList(typeName);
     }
     return orElse();
   }
@@ -447,48 +274,46 @@ class _$GetListEventImpl implements _GetListEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GetFilterListEvent value) getFilterList,
   }) {
-    return getList(this);
+    return getFilterList(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GetFilterListEvent value)? getFilterList,
   }) {
-    return getList?.call(this);
+    return getFilterList?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GetFilterListEvent value)? getFilterList,
     required TResult orElse(),
   }) {
-    if (getList != null) {
-      return getList(this);
+    if (getFilterList != null) {
+      return getFilterList(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetListEvent implements NameEvent {
-  const factory _GetListEvent(final bool typeName) = _$GetListEventImpl;
+abstract class _GetFilterListEvent implements NameFilterEvent {
+  const factory _GetFilterListEvent(final bool typeName) =
+      _$GetFilterListEventImpl;
 
   bool get typeName;
   @JsonKey(ignore: true)
-  _$$GetListEventImplCopyWith<_$GetListEventImpl> get copyWith =>
+  _$$GetFilterListEventImplCopyWith<_$GetFilterListEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$NameState {
+mixin _$NameFilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -542,15 +367,16 @@ mixin _$NameState {
 }
 
 /// @nodoc
-abstract class $NameStateCopyWith<$Res> {
-  factory $NameStateCopyWith(NameState value, $Res Function(NameState) then) =
-      _$NameStateCopyWithImpl<$Res, NameState>;
+abstract class $NameFilterStateCopyWith<$Res> {
+  factory $NameFilterStateCopyWith(
+          NameFilterState value, $Res Function(NameFilterState) then) =
+      _$NameFilterStateCopyWithImpl<$Res, NameFilterState>;
 }
 
 /// @nodoc
-class _$NameStateCopyWithImpl<$Res, $Val extends NameState>
-    implements $NameStateCopyWith<$Res> {
-  _$NameStateCopyWithImpl(this._value, this._then);
+class _$NameFilterStateCopyWithImpl<$Res, $Val extends NameFilterState>
+    implements $NameFilterStateCopyWith<$Res> {
+  _$NameFilterStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -567,7 +393,7 @@ abstract class _$$InitialStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$InitialStateImpl>
+    extends _$NameFilterStateCopyWithImpl<$Res, _$InitialStateImpl>
     implements _$$InitialStateImplCopyWith<$Res> {
   __$$InitialStateImplCopyWithImpl(
       _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
@@ -581,7 +407,7 @@ class _$InitialStateImpl implements _InitialState {
 
   @override
   String toString() {
-    return 'NameState.initial()';
+    return 'NameFilterState.initial()';
   }
 
   @override
@@ -668,7 +494,7 @@ class _$InitialStateImpl implements _InitialState {
   }
 }
 
-abstract class _InitialState implements NameState {
+abstract class _InitialState implements NameFilterState {
   const factory _InitialState() = _$InitialStateImpl;
 }
 
@@ -681,7 +507,7 @@ abstract class _$$LoadingStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    extends _$NameFilterStateCopyWithImpl<$Res, _$LoadingStateImpl>
     implements _$$LoadingStateImplCopyWith<$Res> {
   __$$LoadingStateImplCopyWithImpl(
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
@@ -695,7 +521,7 @@ class _$LoadingStateImpl implements _LoadingState {
 
   @override
   String toString() {
-    return 'NameState.loading()';
+    return 'NameFilterState.loading()';
   }
 
   @override
@@ -782,7 +608,7 @@ class _$LoadingStateImpl implements _LoadingState {
   }
 }
 
-abstract class _LoadingState implements NameState {
+abstract class _LoadingState implements NameFilterState {
   const factory _LoadingState() = _$LoadingStateImpl;
 }
 
@@ -797,7 +623,7 @@ abstract class _$$ErrorStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    extends _$NameFilterStateCopyWithImpl<$Res, _$ErrorStateImpl>
     implements _$$ErrorStateImplCopyWith<$Res> {
   __$$ErrorStateImplCopyWithImpl(
       _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
@@ -827,7 +653,7 @@ class _$ErrorStateImpl implements _ErrorState {
 
   @override
   String toString() {
-    return 'NameState.error(error: $error)';
+    return 'NameFilterState.error(error: $error)';
   }
 
   @override
@@ -922,7 +748,7 @@ class _$ErrorStateImpl implements _ErrorState {
   }
 }
 
-abstract class _ErrorState implements NameState {
+abstract class _ErrorState implements NameFilterState {
   const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
 
   String get error;
@@ -942,7 +768,7 @@ abstract class _$$DataStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$DataStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$DataStateImpl>
+    extends _$NameFilterStateCopyWithImpl<$Res, _$DataStateImpl>
     implements _$$DataStateImplCopyWith<$Res> {
   __$$DataStateImplCopyWithImpl(
       _$DataStateImpl _value, $Res Function(_$DataStateImpl) _then)
@@ -979,7 +805,7 @@ class _$DataStateImpl implements _DataState {
 
   @override
   String toString() {
-    return 'NameState.data(list: $list)';
+    return 'NameFilterState.data(list: $list)';
   }
 
   @override
@@ -1075,7 +901,7 @@ class _$DataStateImpl implements _DataState {
   }
 }
 
-abstract class _DataState implements NameState {
+abstract class _DataState implements NameFilterState {
   const factory _DataState({required final List<NameModel>? list}) =
       _$DataStateImpl;
 

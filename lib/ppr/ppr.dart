@@ -13,6 +13,7 @@ import 'package:get_it/get_it.dart';
 import '../equipment/equipment_page.dart';
 import '../main_chapter/main_page.dart';
 import '../other/other.dart';
+import '../template/template01.dart';
 import '../widgets/dialog.dart';
 
 //ignore: must_be_immutable
@@ -54,15 +55,13 @@ class PprPage extends StatelessWidget {
         );
       }, builder: (context, state) {
         return state.maybeMap(
-          loading: (_) => const CircularProgressIndicator(),
+          loading: (_) => const EmptyScreen(),
           data: (data) =>
               Ppr5Screen(pprType: data.pprType!, equipmentid: data.equipmentid!, list: data.list!, lastState: lastState),
           addScreen: (data) => Ppr9Screen(equipment: equipmentData!.equipment, pprType: pprType),
           editScreen: (data) => Ppr8Screen(ppr: data.ppr),
           ppr3Screen: (data) => Ppr3Screen(pprType: pprType, equipmentid: data.equipmentid),
-          orElse: () {
-            return Container(color: Colors.white, child: const Center(child: Text('Equipment page')));
-          },
+          orElse: () =>  const EmptyScreen(),
         );
       }),
     );

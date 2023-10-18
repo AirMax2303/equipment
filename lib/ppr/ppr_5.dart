@@ -84,8 +84,19 @@ class Ppr5Screen extends StatelessWidget {
                                           list[index].pprtype == 2!
                                               ? SvgPicture.asset('assets/timer_blue.svg')
                                               : list[index].image!.isEmpty
-                                                  ? Image.asset('assets/image4.png')
-                                                  : Image.file(File(list[index].image!), width: 50, height: 50),
+                                                  ? const SizedBox()
+                                                  : Container(
+                                                      width: 50,
+                                                      height: 50,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                                        image: DecorationImage(
+                                                          fit: BoxFit.cover,
+                                                          alignment: FractionalOffset.topCenter,
+                                                          image: NetworkImage(imageUrl + list[index].image!),
+                                                        ),
+                                                      ),
+                                                    ),
                                         ],
                                       ),
                                       Row(
@@ -94,7 +105,8 @@ class Ppr5Screen extends StatelessWidget {
                                               height: 30,
                                               padding: 8,
                                               color: AppColor.lightBlueColor,
-                                              child: Text('1 X ${list[index].intervalcount} ${repeat[list[index].repeatcount!]}')
+                                              child: Text('1 X в ${list[index].intervalcount} ${repeat[list[index]
+                                                  .repeatcount!]}')
                                                   .style12w500(color: AppColor.blueColor)),
                                           const SizedBox(width: 10),
                                           Box(

@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 
 import '../models/models.dart';
 import '../ppr/ppr.dart';
+import '../template/template01.dart';
 import '../widgets/dialog.dart';
 import 'bloc/equipment_bloc.dart';
 import 'equipment_add.dart';
@@ -25,7 +26,7 @@ class EquipmentPage extends StatelessWidget {
       create: (context) => EquipmentBloc(GetIt.instance.get<EquipmentService>())..add(event ?? const EquipmentEvent.initial()),
       child: BlocConsumer<EquipmentBloc, EquipmentState>(listener: (context, state) {
         state.mapOrNull(
-          ok: (_) => BlocProvider.of<EquipmentBloc>(context).add(const EquipmentEvent.initial()),
+//          ok: (_) => BlocProvider.of<EquipmentBloc>(context).add(const EquipmentEvent.initial()),
           okUpdate: (_) => showDialog<bool>(
               context: context,
               builder: (BuildContext context) {
@@ -44,19 +45,14 @@ class EquipmentPage extends StatelessWidget {
         );
       }, builder: (context, state) {
         return state.maybeMap(
-          loading: (_) => const CircularProgressIndicator(),
+          loading: (_) => const EmptyScreen(),
           data: (data) => EquipmentListScreen(list: data.list),
           gotoAddScreen: (data) => EquipmentAdd(),
           gotoDetailScreen: (data) => EquipmentDetail(
             equipmentData: data.equipmentData,
           ),
           gotoEditScreen: (data) => EquipmentEdit(equipmentData: data.equipmentData),
-          orElse: () => Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text('Equipment page'),
-            ),
-          ),
+          orElse: () => const EmptyScreen(),
         );
       }),
     );

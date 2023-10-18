@@ -34,8 +34,7 @@ class EquipmentService {
         equipmentList = await repo.getEquipmentViewList(filter.value!);
       case FilterType.plot:
         equipmentList = await repo.getEquipmentPlotList(filter.value!);
-    }
-    ;
+    };
     for (var i = 0; i < equipmentList.length; ++i) {
       final infoList = await repo.getInfoList(equipmentList[i].id!);
       list.add(Equipment(equipment: equipmentList[i], infoList: infoList));
@@ -77,13 +76,16 @@ class EquipmentService {
                   equipmentid: l.equipmentid,
                   partsid: '',
                   name: l.name,
-                  worktype: 1,
+                  worktype: 3,
                   priority: l.priority,
                   image: l.image,
                   workdate: l.begindate,
                   workisdone: false)),
               (r) => null);
-        } else {}
+        } else {
+          await repo.deletePPR3(value.equipment!.id!);
+          await repo.deleteWork3(value.equipment!.id!);
+        }
       }
     }
     await repo.deleteInfos(value.equipment!.id!);

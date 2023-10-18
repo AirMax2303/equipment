@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:equipment/equipment/models/name.dart';
 import 'package:equipment/models/models.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
@@ -14,13 +16,16 @@ import 'error_response.dart';
 
 abstract class IEquipment {
   final Dio dio = Dio(
-      BaseOptions(baseUrl: backendUrl, connectTimeout: const Duration(seconds: 3), receiveTimeout: const Duration(seconds: 3)));
+      BaseOptions(baseUrl: backendUrl, connectTimeout: const Duration(seconds: 10), receiveTimeout: const Duration(seconds: 10)));
   var uuid = const Uuid();
 
 // Calendar
 // -------------------------------------------------------------------------------------------------------------------------------
 // select equipmentid from work where workdate = $date group by equipmentid order by equipmentid
-  Future<List<IdModel>> calendarGetEquipmentModelList(bool histiry, DateTime date);
+  Future<List<IdModel>> calendarGetDateModelList(bool histiry, DateTime date);
+
+// select workdate from work where equipmentid = ? group by workdate order by workdate
+  Future<List<DateModel>> calendarGetEquipmentModelList(bool histiry, String equipmentid);
 
 // select * from work where workdate = $date and equipmentid = $equipmentid
   Future<List<WorkModel>> calendarGetWorkModelEquipmentList(bool histiry, DateTime date, String equipmentid);
@@ -66,9 +71,13 @@ abstract class IEquipment {
 
   Future<List<PprModel>> getPPRList(PprType pprType, String equipmentid);
 
+  Future<List<PprModel>> getPPR(String id);
+
   Future<Either<PprModel, DioException>> addPPR(PprModel value);
 
   Future deletePPR(String id);
+
+  Future deletePPR3(String equipmentid);
 
   Future updatePPR(PprModel value);
 
@@ -79,11 +88,18 @@ abstract class IEquipment {
 
   Future deleteWork(String pprid);
 
+  Future deleteWork3(String equipmentid);
+
   Future changeWorkDate(WorkModel value, DateTime newDate);
 
   Future saveWorkTime(WorkModel work, int value);
 
   Future completeWork(WorkModel work);
+
+//  ProfType
+// ------------------------------------------------------------------------------------------------------------------------------
+
+  Future addProfType(ProfTypeModel value);
 }
 
 //@LazySingleton(as: IEquipment)
@@ -93,15 +109,45 @@ class AppRepository extends IEquipment {
     return ErrorResponse();
   }
 
+  Future<Response> postImage({required String path}) async {
+    final String fileName = path.split('/').last;
+    final fileExt = fileName.split('.').last;
+    final formData = FormData.fromMap(
+        {'file': await MultipartFile.fromFile(path, filename: fileName, contentType: MediaType("image", fileExt))});
+    return await dio.post('/images', data: formData, queryParameters: {});
+  }
+
 // Calendar
 // -------------------------------------------------------------------------------------------------------------------------------
   @override
-  Future<List<IdModel>> calendarGetEquipmentModelList(bool histiry, DateTime date) async {
+  Future<List<IdModel>> calendarGetDateModelList(bool histiry, DateTime date) async {
     try {
-      Response response = await dio.get('/calendar/equipment',
-          data: {'date': DateFormat('yyyy-MM-dd').format(date), 'workisdone': (histiry ? 0 : 1).toString()});
+      Response response = await dio.get(
+        '/calendar/equipment',
+        data: {
+          'date': DateFormat('yyyy-MM-dd').format(date),
+          'workisdone': (histiry ? 0 : 1).toString(),
+        },
+      );
       List<dynamic> list = jsonDecode(response.data);
       var result = list.map((e) => IdModel.fromJson(e)).toList();
+      return result;
+    } on DioException catch (e) {
+      return [];
+    }
+  }
+
+  @override
+  Future<List<DateModel>> calendarGetEquipmentModelList(bool histiry, String equipmentid) async {
+    try {
+      Response response = await dio.get(
+        '/calendar/date',
+        data: {
+          'equipmentid': equipmentid,
+        },
+      );
+      List<dynamic> list = jsonDecode(response.data);
+      var result = list.map((e) => DateModel.fromJson(e)).toList();
       return result;
     } on DioException catch (e) {
       return [];
@@ -139,11 +185,18 @@ class AppRepository extends IEquipment {
 
 // Order
 // -------------------------------------------------------------------------------------------------------------------------------
+
   @override
   Future addOrder(OrderModel order) async {
     try {
-      order = order.copyWith(id: uuid.v1());
+      final String oldFileName = order.image!;
+      final String fileName = order.image!.split('/').last;
+      order = order.copyWith(id: uuid.v1(), image: fileName);
       final response = await dio.post('/orders/add', data: order.toJson());
+      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+      if (order.image!.isNotEmpty) {
+        await postImage(path: oldFileName);
+      }
     } on DioException catch (e) {
       print(e);
     }
@@ -228,9 +281,15 @@ class AppRepository extends IEquipment {
   Future addEquipment(EquipmentModel value) async {
     try {
       print('----------------------- addEquipment ---------------------');
-      value = value.copyWith(id: uuid.v1());
+      final String oldFileName = value.image!;
+      final String fileName = value.image!.split('/').last;
+      value = value.copyWith(id: uuid.v1(), image: fileName);
       final response = await dio.post('/equipment/add', data: value.toJson());
       final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+      if (value.image!.isNotEmpty) {
+        await postImage(path: oldFileName);
+      }
+      ;
     } on DioException catch (e) {
       print('----------------------- error ---------------------');
       print(e.toString());
@@ -257,7 +316,8 @@ class AppRepository extends IEquipment {
         'view': value.view,
         'plotid': value.plotid,
         'plot': value.plot,
-        'proftype': value.proftype,
+        'proftype': value.proftype! ? '0' : '1',
+//        'image': value.image,
         'id': value.id,
       });
       final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
@@ -316,11 +376,30 @@ class AppRepository extends IEquipment {
   }
 
   @override
+  Future<List<PprModel>> getPPR(String id) async {
+    try {
+      Response response;
+      response = await dio.get('/ppr/get', data: {'id': id});
+      List list = jsonDecode(response.data);
+      var result = list.map((e) => PprModel.fromJson(e)).toList();
+      return result;
+    } on DioException catch (e) {
+      return [];
+    }
+  }
+
+  @override
   Future<Either<PprModel, DioException>> addPPR(PprModel value) async {
     try {
-      value = value.copyWith(id: uuid.v1());
+      final String oldFileName = value.image!;
+      final String fileName = value.image!.split('/').last;
+      value = value.copyWith(id: uuid.v1(), image: fileName);
       final response = await dio.post('/ppr/add', data: value.toJson());
       final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+      if (value.image!.isNotEmpty) {
+        await postImage(path: oldFileName);
+      }
+      ;
       return left<PprModel, DioException>(value);
     } on DioException catch (e) {
       print(e);
@@ -332,6 +411,14 @@ class AppRepository extends IEquipment {
   Future deletePPR(String id) async {
     try {
       final response = await dio.delete('/ppr/delete', data: {'id': id});
+      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+    } on DioException catch (e) {}
+  }
+
+  @override
+  Future deletePPR3(String equipmentid) async {
+    try {
+      final response = await dio.delete('/ppr/delete/3', data: {'equipmentid': equipmentid});
       final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
     } on DioException catch (e) {}
   }
@@ -389,11 +476,20 @@ class AppRepository extends IEquipment {
     }
   }
 
+  Future deleteWork3(String equipmentid) async {
+    try {
+      final response = await dio.delete('/work/delete/3', data: {'equipmentid': equipmentid});
+      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+    } on DioException catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Future changeWorkDate(WorkModel value, DateTime newDate) async {
     try {
       Response response = await dio.put('/work/update/date', data: {
-        'workdate': DateFormat('yyyy.MM.dd').format(value.workdate!),
+        'workdate': DateFormat('yyyy.MM.dd').format(newDate),
         'id': value.id,
       });
       final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
@@ -426,4 +522,25 @@ class AppRepository extends IEquipment {
       print(e);
     }
   }
+
+  @override
+  Future addProfType(ProfTypeModel value) async {
+    try {
+      value = value.copyWith(id: uuid.v1());
+      final response = await dio.post('/proftype/add', data: value.toJson());
+      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+    } on DioException catch (e) {
+      print(e);
+    }
+  }
+
+/*
+  Future<Response> postImage({required File file, required Map<String, dynamic> query}) async {
+    String fileName = file.path.split('/').last;
+    var fileExt = fileName.split('.').last;
+    var formData = FormData.fromMap(
+        {'file': await MultipartFile.fromFile(file.path, filename: fileName, contentType: MediaType("image", fileExt))});
+  return await dio!.post('/images', data: formData, queryParameters: query);
+  }
+ */
 }

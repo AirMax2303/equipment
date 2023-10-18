@@ -34,10 +34,12 @@ class EquipmentEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    showProfType.value = equipmentData.equipment!.proftype!;
     return Scaffold(
       appBar: appBar(context, 'Карточка оборудования', {}, () {
         BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoDetailScreen(equipmentData));
       }),
+      backgroundColor: Colors.white,
       bottomNavigationBar: const AppNavigationBar(Nav.equip),
       body: SafeArea(
         child: Container(
@@ -45,7 +47,7 @@ class EquipmentEdit extends StatelessWidget {
           height: double.infinity,
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.all(18.0),
+            padding: const EdgeInsets.all(16.0),
             child: ValueListenableBuilder(
                 valueListenable: refresh,
                 builder: (BuildContext context, value, Widget? child) {
@@ -57,17 +59,16 @@ class EquipmentEdit extends StatelessWidget {
                           Stack(alignment: Alignment.bottomRight, children: [
                             equipmentData.equipment!.image!.isEmpty
                                 ? Image.asset('assets/eq.png')
-                                : Image.file(
-                                    File(equipmentData.equipment!.image!),
-                                    height: 150,
-                                  ),
+                                : SizedBox(
+                                    height: 170,
+                                    child: Image.network(fit: BoxFit.contain, imageUrl + equipmentData.equipment!.image!)),
                             IconButton(
                               icon: SvgPicture.asset('assets/plus.svg'),
                               onPressed: () async {
                                 FilePickerResult? result = await FilePicker.platform.pickFiles();
-                                if (result != null) {
+                                if ((result != null) && (result.files.isNotEmpty)) {
                                   file = File(result.files.single.path!);
-                                  equipmentData.equipment = equipmentData.equipment!.copyWith(image: file?.path);
+                                  equipmentData.equipment = equipmentData.equipment!.copyWith(image: result.files[0].path);
                                   refresh.value = !refresh.value;
                                 }
                               },
@@ -274,8 +275,7 @@ class EquipmentEdit extends StatelessWidget {
                                   return dialogDeleteConfirm(context);
                                 }).then((value) {
                               if (value!) {
-                                BlocProvider.of<EquipmentBloc>(context)
-                                    .add(EquipmentEvent.deleteEquipment(equipmentData));
+                                BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.deleteEquipment(equipmentData));
                               }
                             });
                           }),

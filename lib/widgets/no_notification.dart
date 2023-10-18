@@ -7,7 +7,8 @@ class NoNotification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
+      body: Container(
+        color: Colors.white,
         child: Center(
           child: SvgPicture.asset('assets/nonotification.svg'),
         ),

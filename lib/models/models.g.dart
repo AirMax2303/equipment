@@ -40,6 +40,18 @@ Map<String, dynamic> _$$IdModelImplToJson(_$IdModelImpl instance) =>
       'id': instance.id,
     };
 
+_$DateModelImpl _$$DateModelImplFromJson(Map<String, dynamic> json) =>
+    _$DateModelImpl(
+      workdate: json['workdate'] == null
+          ? null
+          : DateTime.parse(json['workdate'] as String),
+    );
+
+Map<String, dynamic> _$$DateModelImplToJson(_$DateModelImpl instance) =>
+    <String, dynamic>{
+      'workdate': instance.workdate?.toIso8601String(),
+    };
+
 _$EquipmentModelImpl _$$EquipmentModelImplFromJson(Map<String, dynamic> json) =>
     _$EquipmentModelImpl(
       id: json['id'] as String? ?? '',
@@ -147,14 +159,20 @@ Map<String, dynamic> _$$WorkModelImplToJson(_$WorkModelImpl instance) =>
       'workisdone': boolToString(instance.workisdone),
     };
 
-_$WorkListImpl _$$WorkListImplFromJson(Map<String, dynamic> json) =>
-    _$WorkListImpl(
-      list: (json['list'] as List<dynamic>?)
-          ?.map((e) => WorkModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+_$ProfTypeModelImpl _$$ProfTypeModelImplFromJson(Map<String, dynamic> json) =>
+    _$ProfTypeModelImpl(
+      id: json['id'] as String? ?? '',
+      equipmentid: json['equipmentid'] as String? ?? '',
+      workdate: json['workdate'] == null
+          ? null
+          : DateTime.parse(json['workdate'] as String),
+      valuex: json['valuex'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$WorkListImplToJson(_$WorkListImpl instance) =>
+Map<String, dynamic> _$$ProfTypeModelImplToJson(_$ProfTypeModelImpl instance) =>
     <String, dynamic>{
-      'list': instance.list,
+      'id': instance.id,
+      'equipmentid': instance.equipmentid,
+      'workdate': instance.workdate?.toIso8601String(),
+      'valuex': stringFromInt(instance.valuex),
     };

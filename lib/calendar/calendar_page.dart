@@ -42,6 +42,13 @@ class CalendarPage extends StatelessWidget {
                     list: data.list!,
                     nav: nav,
                     currentDay: data.date,
+                    equipment: const EquipmentModel(name1: 'Выберите оборудование', name2: ''),
+                  ),
+              equipmentData: (data) => CalendarScreen(
+                    list: data.list!,
+                    nav: nav,
+                    currentDay: DateTime.now(),
+                    equipment: data.equipment,
                   ),
               orElse: () => const NoNotification());
         },
@@ -51,19 +58,21 @@ class CalendarPage extends StatelessWidget {
 }
 
 class CalendarScreen extends StatelessWidget {
-  CalendarScreen({Key? key, required this.list, required this.nav, required this.currentDay}) : super(key: key);
+  CalendarScreen({Key? key, required this.list, required this.nav, required this.currentDay, required this.equipment})
+      : super(key: key);
   final List<CalendarData> list;
   final Nav nav;
   final ValueNotifier<bool> changed = ValueNotifier<bool>(false);
   DateTime currentDay;
   String dateText = '';
-  EquipmentModel equipment = const EquipmentModel(name1: 'Выберите оборудование', name2: '');
+  EquipmentModel equipment;
 
   @override
   Widget build(BuildContext context) {
     final List<bool> arrow = List<bool>.generate(list.length, (index) => false);
     String dateText = DateFormat('dd.MM.yyyy').format(currentDay);
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: AppNavigationBar(nav),
       appBar: appBar(context, 'Календарь', {}, null),
       body: SafeArea(
@@ -90,14 +99,14 @@ class CalendarScreen extends StatelessWidget {
                                       showDialog<DateTime>(
                                           context: context,
                                           builder: (BuildContext context) {
-                                            return dialogCalendar(
-                                              context,
-                                            );
+                                            return dialogCalendar(context);
                                           }).then((value) {
-                                        currentDay = value!;
-                                        dateText = DateFormat('dd.MM.yyyy').format(currentDay);
-                                        changed.value = !changed.value;
-                                        BlocProvider.of<CalendarBloc>(context).add(CalendarEvent.getList(currentDay));
+                                        if (value != null) {
+                                          currentDay = value;
+                                          dateText = DateFormat('dd.MM.yyyy').format(currentDay);
+                                          changed.value = !changed.value;
+                                          BlocProvider.of<CalendarBloc>(context).add(CalendarEvent.getList(currentDay));
+                                        }
                                       });
                                     },
                                     icon: SvgPicture.asset('assets/calendar.svg')),
@@ -128,8 +137,13 @@ class CalendarScreen extends StatelessWidget {
                                           builder: (BuildContext context) {
                                             return selectEquipment(context);
                                           }).then((value) {
-                                        equipment = value!;
-                                        changed.value = !changed.value;
+                                        if (value != null) {
+                                          equipment = value;
+                                          changed.value = !changed.value;
+                                          BlocProvider.of<CalendarBloc>(context).add(CalendarEvent.getEquipmentList(equipment));
+                                        } else {
+                                          BlocProvider.of<CalendarBloc>(context).add(CalendarEvent.getList(currentDay));
+                                        }
                                       });
                                     },
                                     icon: SvgPicture.asset('assets/arrow_down.svg')),
@@ -145,19 +159,23 @@ class CalendarScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 60,
                         color: Colors.white,
-                        child: ListView.builder(
-                          itemCount: list.length,
-                          itemBuilder: (context, index) {
-                            return CalendarCard(
-                                calendar: list[index],
-                                selected: arrow[index],
-                                index: index,
-                                arrow: (value) {
-                                  arrow[index] = !arrow[index];
-                                  changed.value = !changed.value;
-                                });
-                          },
-                        ),
+                        child: list.isNotEmpty
+                            ? ListView.builder(
+                                itemCount: list.length,
+                                itemBuilder: (context, index) {
+                                  return CalendarCard(
+                                      calendar: list[index],
+                                      selected: arrow[index],
+                                      index: index,
+                                      arrow: (value) {
+                                        arrow[index] = !arrow[index];
+                                        changed.value = !changed.value;
+                                      });
+                                },
+                              )
+                            : Center(
+                                child: SvgPicture.asset('assets/nonotification.svg'),
+                              ),
                       )),
                     ],
                   ),
@@ -243,7 +261,11 @@ class ListWorks extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         children: <Widget>[
-                          SvgPicture.asset('assets/type${list![index].worktype!}.svg', width: 20, height: 20),
+                          list![index].priority!
+                              ? SvgPicture.asset('assets/type1.svg', width: 20, height: 20)
+                              : list![index].worktype! == 0
+                                  ? SvgPicture.asset('assets/type3.svg', width: 20, height: 20)
+                                  : const SizedBox(),
                           const SizedBox(width: 10),
                           Flexible(
                             child: Text(list![index].name!,

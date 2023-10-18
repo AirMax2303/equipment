@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'name_bloc.dart';
+part of 'web_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,63 +15,51 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$NameEvent {
+mixin _$WebEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NameEventCopyWith<$Res> {
-  factory $NameEventCopyWith(NameEvent value, $Res Function(NameEvent) then) =
-      _$NameEventCopyWithImpl<$Res, NameEvent>;
+abstract class $WebEventCopyWith<$Res> {
+  factory $WebEventCopyWith(WebEvent value, $Res Function(WebEvent) then) =
+      _$WebEventCopyWithImpl<$Res, WebEvent>;
 }
 
 /// @nodoc
-class _$NameEventCopyWithImpl<$Res, $Val extends NameEvent>
-    implements $NameEventCopyWith<$Res> {
-  _$NameEventCopyWithImpl(this._value, this._then);
+class _$WebEventCopyWithImpl<$Res, $Val extends WebEvent>
+    implements $WebEventCopyWith<$Res> {
+  _$WebEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,7 +76,7 @@ abstract class _$$InitialEventImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialEventImplCopyWithImpl<$Res>
-    extends _$NameEventCopyWithImpl<$Res, _$InitialEventImpl>
+    extends _$WebEventCopyWithImpl<$Res, _$InitialEventImpl>
     implements _$$InitialEventImplCopyWith<$Res> {
   __$$InitialEventImplCopyWithImpl(
       _$InitialEventImpl _value, $Res Function(_$InitialEventImpl) _then)
@@ -102,7 +90,7 @@ class _$InitialEventImpl implements _InitialEvent {
 
   @override
   String toString() {
-    return 'NameEvent.initial()';
+    return 'WebEvent.initial()';
   }
 
   @override
@@ -118,8 +106,6 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
   }) {
     return initial();
   }
@@ -128,8 +114,6 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
   }) {
     return initial?.call();
   }
@@ -138,8 +122,6 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -152,8 +134,6 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
   }) {
     return initial(this);
   }
@@ -162,8 +142,6 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
   }) {
     return initial?.call(this);
   }
@@ -172,8 +150,6 @@ class _$InitialEventImpl implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,334 +159,34 @@ class _$InitialEventImpl implements _InitialEvent {
   }
 }
 
-abstract class _InitialEvent implements NameEvent {
+abstract class _InitialEvent implements WebEvent {
   const factory _InitialEvent() = _$InitialEventImpl;
 }
 
 /// @nodoc
-abstract class _$$AddEventImplCopyWith<$Res> {
-  factory _$$AddEventImplCopyWith(
-          _$AddEventImpl value, $Res Function(_$AddEventImpl) then) =
-      __$$AddEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool typeName, NameModel value});
-
-  $NameModelCopyWith<$Res> get value;
-}
-
-/// @nodoc
-class __$$AddEventImplCopyWithImpl<$Res>
-    extends _$NameEventCopyWithImpl<$Res, _$AddEventImpl>
-    implements _$$AddEventImplCopyWith<$Res> {
-  __$$AddEventImplCopyWithImpl(
-      _$AddEventImpl _value, $Res Function(_$AddEventImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? typeName = null,
-    Object? value = null,
-  }) {
-    return _then(_$AddEventImpl(
-      null == typeName
-          ? _value.typeName
-          : typeName // ignore: cast_nullable_to_non_nullable
-              as bool,
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as NameModel,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NameModelCopyWith<$Res> get value {
-    return $NameModelCopyWith<$Res>(_value.value, (value) {
-      return _then(_value.copyWith(value: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$AddEventImpl implements _AddEvent {
-  const _$AddEventImpl(this.typeName, this.value);
-
-  @override
-  final bool typeName;
-  @override
-  final NameModel value;
-
-  @override
-  String toString() {
-    return 'NameEvent.add(typeName: $typeName, value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddEventImpl &&
-            (identical(other.typeName, typeName) ||
-                other.typeName == typeName) &&
-            (identical(other.value, value) || other.value == value));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, typeName, value);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddEventImplCopyWith<_$AddEventImpl> get copyWith =>
-      __$$AddEventImplCopyWithImpl<_$AddEventImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
-  }) {
-    return add(typeName, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
-  }) {
-    return add?.call(typeName, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
-    required TResult orElse(),
-  }) {
-    if (add != null) {
-      return add(typeName, value);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
-  }) {
-    return add(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
-  }) {
-    return add?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
-    required TResult orElse(),
-  }) {
-    if (add != null) {
-      return add(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddEvent implements NameEvent {
-  const factory _AddEvent(final bool typeName, final NameModel value) =
-      _$AddEventImpl;
-
-  bool get typeName;
-  NameModel get value;
-  @JsonKey(ignore: true)
-  _$$AddEventImplCopyWith<_$AddEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetListEventImplCopyWith<$Res> {
-  factory _$$GetListEventImplCopyWith(
-          _$GetListEventImpl value, $Res Function(_$GetListEventImpl) then) =
-      __$$GetListEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool typeName});
-}
-
-/// @nodoc
-class __$$GetListEventImplCopyWithImpl<$Res>
-    extends _$NameEventCopyWithImpl<$Res, _$GetListEventImpl>
-    implements _$$GetListEventImplCopyWith<$Res> {
-  __$$GetListEventImplCopyWithImpl(
-      _$GetListEventImpl _value, $Res Function(_$GetListEventImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? typeName = null,
-  }) {
-    return _then(_$GetListEventImpl(
-      null == typeName
-          ? _value.typeName
-          : typeName // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$GetListEventImpl implements _GetListEvent {
-  const _$GetListEventImpl(this.typeName);
-
-  @override
-  final bool typeName;
-
-  @override
-  String toString() {
-    return 'NameEvent.getList(typeName: $typeName)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetListEventImpl &&
-            (identical(other.typeName, typeName) ||
-                other.typeName == typeName));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, typeName);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetListEventImplCopyWith<_$GetListEventImpl> get copyWith =>
-      __$$GetListEventImplCopyWithImpl<_$GetListEventImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(bool typeName, NameModel value) add,
-    required TResult Function(bool typeName) getList,
-  }) {
-    return getList(typeName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(bool typeName, NameModel value)? add,
-    TResult? Function(bool typeName)? getList,
-  }) {
-    return getList?.call(typeName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool typeName, NameModel value)? add,
-    TResult Function(bool typeName)? getList,
-    required TResult orElse(),
-  }) {
-    if (getList != null) {
-      return getList(typeName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEvent value) initial,
-    required TResult Function(_AddEvent value) add,
-    required TResult Function(_GetListEvent value) getList,
-  }) {
-    return getList(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialEvent value)? initial,
-    TResult? Function(_AddEvent value)? add,
-    TResult? Function(_GetListEvent value)? getList,
-  }) {
-    return getList?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEvent value)? initial,
-    TResult Function(_AddEvent value)? add,
-    TResult Function(_GetListEvent value)? getList,
-    required TResult orElse(),
-  }) {
-    if (getList != null) {
-      return getList(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetListEvent implements NameEvent {
-  const factory _GetListEvent(final bool typeName) = _$GetListEventImpl;
-
-  bool get typeName;
-  @JsonKey(ignore: true)
-  _$$GetListEventImplCopyWith<_$GetListEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$NameState {
+mixin _$WebState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function(List<NameModel>? list) data,
+    required TResult Function(String message) error,
+    required TResult Function(List<WebModel> list) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String error)? error,
-    TResult? Function(List<NameModel>? list)? data,
+    TResult? Function(String message)? error,
+    TResult? Function(List<WebModel> list)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(List<NameModel>? list)? data,
+    TResult Function(String message)? error,
+    TResult Function(List<WebModel> list)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -519,7 +195,7 @@ mixin _$NameState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_ErrorState value) error,
-    required TResult Function(_DataState value) data,
+    required TResult Function(_SuccessState value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -527,7 +203,7 @@ mixin _$NameState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_ErrorState value)? error,
-    TResult? Function(_DataState value)? data,
+    TResult? Function(_SuccessState value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -535,22 +211,22 @@ mixin _$NameState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_ErrorState value)? error,
-    TResult Function(_DataState value)? data,
+    TResult Function(_SuccessState value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NameStateCopyWith<$Res> {
-  factory $NameStateCopyWith(NameState value, $Res Function(NameState) then) =
-      _$NameStateCopyWithImpl<$Res, NameState>;
+abstract class $WebStateCopyWith<$Res> {
+  factory $WebStateCopyWith(WebState value, $Res Function(WebState) then) =
+      _$WebStateCopyWithImpl<$Res, WebState>;
 }
 
 /// @nodoc
-class _$NameStateCopyWithImpl<$Res, $Val extends NameState>
-    implements $NameStateCopyWith<$Res> {
-  _$NameStateCopyWithImpl(this._value, this._then);
+class _$WebStateCopyWithImpl<$Res, $Val extends WebState>
+    implements $WebStateCopyWith<$Res> {
+  _$WebStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -567,7 +243,7 @@ abstract class _$$InitialStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$InitialStateImpl>
+    extends _$WebStateCopyWithImpl<$Res, _$InitialStateImpl>
     implements _$$InitialStateImplCopyWith<$Res> {
   __$$InitialStateImplCopyWithImpl(
       _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
@@ -581,7 +257,7 @@ class _$InitialStateImpl implements _InitialState {
 
   @override
   String toString() {
-    return 'NameState.initial()';
+    return 'WebState.initial()';
   }
 
   @override
@@ -598,8 +274,8 @@ class _$InitialStateImpl implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function(List<NameModel>? list) data,
+    required TResult Function(String message) error,
+    required TResult Function(List<WebModel> list) success,
   }) {
     return initial();
   }
@@ -609,8 +285,8 @@ class _$InitialStateImpl implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String error)? error,
-    TResult? Function(List<NameModel>? list)? data,
+    TResult? Function(String message)? error,
+    TResult? Function(List<WebModel> list)? success,
   }) {
     return initial?.call();
   }
@@ -620,8 +296,8 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(List<NameModel>? list)? data,
+    TResult Function(String message)? error,
+    TResult Function(List<WebModel> list)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -636,7 +312,7 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_ErrorState value) error,
-    required TResult Function(_DataState value) data,
+    required TResult Function(_SuccessState value) success,
   }) {
     return initial(this);
   }
@@ -647,7 +323,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_ErrorState value)? error,
-    TResult? Function(_DataState value)? data,
+    TResult? Function(_SuccessState value)? success,
   }) {
     return initial?.call(this);
   }
@@ -658,7 +334,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_ErrorState value)? error,
-    TResult Function(_DataState value)? data,
+    TResult Function(_SuccessState value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -668,7 +344,7 @@ class _$InitialStateImpl implements _InitialState {
   }
 }
 
-abstract class _InitialState implements NameState {
+abstract class _InitialState implements WebState {
   const factory _InitialState() = _$InitialStateImpl;
 }
 
@@ -681,7 +357,7 @@ abstract class _$$LoadingStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    extends _$WebStateCopyWithImpl<$Res, _$LoadingStateImpl>
     implements _$$LoadingStateImplCopyWith<$Res> {
   __$$LoadingStateImplCopyWithImpl(
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
@@ -695,7 +371,7 @@ class _$LoadingStateImpl implements _LoadingState {
 
   @override
   String toString() {
-    return 'NameState.loading()';
+    return 'WebState.loading()';
   }
 
   @override
@@ -712,8 +388,8 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function(List<NameModel>? list) data,
+    required TResult Function(String message) error,
+    required TResult Function(List<WebModel> list) success,
   }) {
     return loading();
   }
@@ -723,8 +399,8 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String error)? error,
-    TResult? Function(List<NameModel>? list)? data,
+    TResult? Function(String message)? error,
+    TResult? Function(List<WebModel> list)? success,
   }) {
     return loading?.call();
   }
@@ -734,8 +410,8 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(List<NameModel>? list)? data,
+    TResult Function(String message)? error,
+    TResult Function(List<WebModel> list)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -750,7 +426,7 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_ErrorState value) error,
-    required TResult Function(_DataState value) data,
+    required TResult Function(_SuccessState value) success,
   }) {
     return loading(this);
   }
@@ -761,7 +437,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_ErrorState value)? error,
-    TResult? Function(_DataState value)? data,
+    TResult? Function(_SuccessState value)? success,
   }) {
     return loading?.call(this);
   }
@@ -772,7 +448,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_ErrorState value)? error,
-    TResult Function(_DataState value)? data,
+    TResult Function(_SuccessState value)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -782,7 +458,7 @@ class _$LoadingStateImpl implements _LoadingState {
   }
 }
 
-abstract class _LoadingState implements NameState {
+abstract class _LoadingState implements WebState {
   const factory _LoadingState() = _$LoadingStateImpl;
 }
 
@@ -792,12 +468,12 @@ abstract class _$$ErrorStateImplCopyWith<$Res> {
           _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
       __$$ErrorStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({String message});
 }
 
 /// @nodoc
 class __$$ErrorStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    extends _$WebStateCopyWithImpl<$Res, _$ErrorStateImpl>
     implements _$$ErrorStateImplCopyWith<$Res> {
   __$$ErrorStateImplCopyWithImpl(
       _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
@@ -806,12 +482,12 @@ class __$$ErrorStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = null,
+    Object? message = null,
   }) {
     return _then(_$ErrorStateImpl(
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -820,14 +496,14 @@ class __$$ErrorStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorStateImpl implements _ErrorState {
-  const _$ErrorStateImpl({required this.error});
+  const _$ErrorStateImpl(this.message);
 
   @override
-  final String error;
+  final String message;
 
   @override
   String toString() {
-    return 'NameState.error(error: $error)';
+    return 'WebState.error(message: $message)';
   }
 
   @override
@@ -835,11 +511,11 @@ class _$ErrorStateImpl implements _ErrorState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorStateImpl &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -852,10 +528,10 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function(List<NameModel>? list) data,
+    required TResult Function(String message) error,
+    required TResult Function(List<WebModel> list) success,
   }) {
-    return error(this.error);
+    return error(message);
   }
 
   @override
@@ -863,10 +539,10 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String error)? error,
-    TResult? Function(List<NameModel>? list)? data,
+    TResult? Function(String message)? error,
+    TResult? Function(List<WebModel> list)? success,
   }) {
-    return error?.call(this.error);
+    return error?.call(message);
   }
 
   @override
@@ -874,12 +550,12 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(List<NameModel>? list)? data,
+    TResult Function(String message)? error,
+    TResult Function(List<WebModel> list)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error(message);
     }
     return orElse();
   }
@@ -890,7 +566,7 @@ class _$ErrorStateImpl implements _ErrorState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_ErrorState value) error,
-    required TResult Function(_DataState value) data,
+    required TResult Function(_SuccessState value) success,
   }) {
     return error(this);
   }
@@ -901,7 +577,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_ErrorState value)? error,
-    TResult? Function(_DataState value)? data,
+    TResult? Function(_SuccessState value)? success,
   }) {
     return error?.call(this);
   }
@@ -912,7 +588,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_ErrorState value)? error,
-    TResult Function(_DataState value)? data,
+    TResult Function(_SuccessState value)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -922,71 +598,69 @@ class _$ErrorStateImpl implements _ErrorState {
   }
 }
 
-abstract class _ErrorState implements NameState {
-  const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
+abstract class _ErrorState implements WebState {
+  const factory _ErrorState(final String message) = _$ErrorStateImpl;
 
-  String get error;
+  String get message;
   @JsonKey(ignore: true)
   _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DataStateImplCopyWith<$Res> {
-  factory _$$DataStateImplCopyWith(
-          _$DataStateImpl value, $Res Function(_$DataStateImpl) then) =
-      __$$DataStateImplCopyWithImpl<$Res>;
+abstract class _$$SuccessStateImplCopyWith<$Res> {
+  factory _$$SuccessStateImplCopyWith(
+          _$SuccessStateImpl value, $Res Function(_$SuccessStateImpl) then) =
+      __$$SuccessStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<NameModel>? list});
+  $Res call({List<WebModel> list});
 }
 
 /// @nodoc
-class __$$DataStateImplCopyWithImpl<$Res>
-    extends _$NameStateCopyWithImpl<$Res, _$DataStateImpl>
-    implements _$$DataStateImplCopyWith<$Res> {
-  __$$DataStateImplCopyWithImpl(
-      _$DataStateImpl _value, $Res Function(_$DataStateImpl) _then)
+class __$$SuccessStateImplCopyWithImpl<$Res>
+    extends _$WebStateCopyWithImpl<$Res, _$SuccessStateImpl>
+    implements _$$SuccessStateImplCopyWith<$Res> {
+  __$$SuccessStateImplCopyWithImpl(
+      _$SuccessStateImpl _value, $Res Function(_$SuccessStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = freezed,
+    Object? list = null,
   }) {
-    return _then(_$DataStateImpl(
-      list: freezed == list
+    return _then(_$SuccessStateImpl(
+      list: null == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
-              as List<NameModel>?,
+              as List<WebModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DataStateImpl implements _DataState {
-  const _$DataStateImpl({required final List<NameModel>? list}) : _list = list;
+class _$SuccessStateImpl implements _SuccessState {
+  const _$SuccessStateImpl({required final List<WebModel> list}) : _list = list;
 
-  final List<NameModel>? _list;
+  final List<WebModel> _list;
   @override
-  List<NameModel>? get list {
-    final value = _list;
-    if (value == null) return null;
+  List<WebModel> get list {
     if (_list is EqualUnmodifiableListView) return _list;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_list);
   }
 
   @override
   String toString() {
-    return 'NameState.data(list: $list)';
+    return 'WebState.success(list: $list)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataStateImpl &&
+            other is _$SuccessStateImpl &&
             const DeepCollectionEquality().equals(other._list, _list));
   }
 
@@ -997,18 +671,18 @@ class _$DataStateImpl implements _DataState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
-      __$$DataStateImplCopyWithImpl<_$DataStateImpl>(this, _$identity);
+  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
+      __$$SuccessStateImplCopyWithImpl<_$SuccessStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function(List<NameModel>? list) data,
+    required TResult Function(String message) error,
+    required TResult Function(List<WebModel> list) success,
   }) {
-    return data(list);
+    return success(list);
   }
 
   @override
@@ -1016,10 +690,10 @@ class _$DataStateImpl implements _DataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String error)? error,
-    TResult? Function(List<NameModel>? list)? data,
+    TResult? Function(String message)? error,
+    TResult? Function(List<WebModel> list)? success,
   }) {
-    return data?.call(list);
+    return success?.call(list);
   }
 
   @override
@@ -1027,12 +701,12 @@ class _$DataStateImpl implements _DataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(List<NameModel>? list)? data,
+    TResult Function(String message)? error,
+    TResult Function(List<WebModel> list)? success,
     required TResult orElse(),
   }) {
-    if (data != null) {
-      return data(list);
+    if (success != null) {
+      return success(list);
     }
     return orElse();
   }
@@ -1043,9 +717,9 @@ class _$DataStateImpl implements _DataState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_ErrorState value) error,
-    required TResult Function(_DataState value) data,
+    required TResult Function(_SuccessState value) success,
   }) {
-    return data(this);
+    return success(this);
   }
 
   @override
@@ -1054,9 +728,9 @@ class _$DataStateImpl implements _DataState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_ErrorState value)? error,
-    TResult? Function(_DataState value)? data,
+    TResult? Function(_SuccessState value)? success,
   }) {
-    return data?.call(this);
+    return success?.call(this);
   }
 
   @override
@@ -1065,22 +739,22 @@ class _$DataStateImpl implements _DataState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_ErrorState value)? error,
-    TResult Function(_DataState value)? data,
+    TResult Function(_SuccessState value)? success,
     required TResult orElse(),
   }) {
-    if (data != null) {
-      return data(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }
 }
 
-abstract class _DataState implements NameState {
-  const factory _DataState({required final List<NameModel>? list}) =
-      _$DataStateImpl;
+abstract class _SuccessState implements WebState {
+  const factory _SuccessState({required final List<WebModel> list}) =
+      _$SuccessStateImpl;
 
-  List<NameModel>? get list;
+  List<WebModel> get list;
   @JsonKey(ignore: true)
-  _$$DataStateImplCopyWith<_$DataStateImpl> get copyWith =>
+  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

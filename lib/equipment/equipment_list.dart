@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ellipsis_overflow_text/ellipsis_overflow_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,13 +27,15 @@ class EquipmentListScreen extends StatelessWidget {
         Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
       }),
       bottomNavigationBar: const AppNavigationBar(Nav.equip),
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          SizedBox(
+          Container(
             width: double.infinity,
             height: 50,
+            color: Colors.white,
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,9 +46,7 @@ class EquipmentListScreen extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return selectTypeEq(context);
-                          }).then((value) {
-                        BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.setFilter(value!));
-                      });
+                          }).then((value) => BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.setFilter(value!)));
                     },
                     icon: SvgPicture.asset('assets/filter.svg')),
                 Row(
@@ -77,13 +78,21 @@ class EquipmentListScreen extends StatelessWidget {
                       color: AppColor.backgroundColor,
                       elevation: 0,
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(list[index].equipment!.view!).style16w700(),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(list[index].equipment!.view!).style16w700(),
+//                                SvgPicture.asset('icon.svg')
+//                                IconButton(onPressed: () {}, icon: SvgPicture.asset('arrow_down.svg'))
+                              ],
+                            ),
                             const SizedBox(height: 5),
 //-------------------------------------------------------------------------------------------------------------------------------
                             Row(
@@ -93,11 +102,24 @@ class EquipmentListScreen extends StatelessWidget {
                                   children: [
                                     list[index].equipment!.image!.isEmpty
                                         ? Image.asset('assets/Group 482.png')
-                                        : Image.file(File(list[index].equipment!.image!), width: 50, height: 50),
+                                        : ImageElement(imageUrl + list[index].equipment!.image!),
+                                    const SizedBox(width: 10),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(list[index].equipment!.name1!).style14w700(),
+                                        Text(list[index].equipment!.name1!, maxLines: 5).style14w700(),
+/*
+                                        TextBox(
+                                            width: 270,
+                                            height: 30,
+                                            color: Colors.white,
+                                            radius: 6,
+                                            padding: 6,
+                                            child: Text(list[index].equipment!.name1!).style14w700()),
+ */
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
                                         Text(list[index].equipment!.name2!).style12w400(),
                                       ],
                                     ),
@@ -125,6 +147,30 @@ class EquipmentListScreen extends StatelessWidget {
           ))
         ],
       )),
+    );
+  }
+}
+
+class ImageElement extends StatelessWidget {
+  const ImageElement(this.image, {Key? key}) : super(key: key);
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              image: DecorationImage(fit: BoxFit.cover, alignment: FractionalOffset.topCenter, image: NetworkImage(image))),
+        ),
+      ),
     );
   }
 }

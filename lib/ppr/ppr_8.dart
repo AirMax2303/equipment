@@ -88,8 +88,10 @@ class Ppr8Screen extends StatelessWidget {
                               builder: (BuildContext context) {
                                 return pprType == PprType.workTime ? dialog15(context, ppr) : dialog13(context, ppr);
                               }).then((value) {
-                            ppr = value!;
-                            formKey.currentState?.fields['timer']?.didChange(DateFormat('dd.MM.yyyy').format(ppr.begindate!));
+                            if (value != null) {
+                              ppr = value!;
+                              formKey.currentState?.fields['timer']?.didChange(DateFormat('dd.MM.yyyy').format(ppr.begindate!));
+                            }
                           });
                         },
                       ),
@@ -154,7 +156,13 @@ class Ppr8Screen extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return dialogConfirmDelete(context, 'Вы действительно хотите', 'удалить эту работу?');
-                          }).then((value) => BlocProvider.of<PprBloc>(context).add(PprEvent.deletePpr(pprType, ppr)));
+                          }).then((value) {
+                            if (value != null) {
+                              if (value) {
+                                BlocProvider.of<PprBloc>(context).add(PprEvent.deletePpr(pprType, ppr));
+                              }
+                            }
+                      });
                     })
                 : const SizedBox(),
             const SizedBox(height: 16)

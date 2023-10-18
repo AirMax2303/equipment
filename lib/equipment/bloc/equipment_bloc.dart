@@ -33,6 +33,7 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     _InitialEvent event,
     Emitter<EquipmentState> emit,
   ) async {
+    emit(const _LoadingState());
     await service.getEquipmentList().then((value) async {
       emit(_DataState(list: value));
     });
@@ -42,8 +43,10 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     _SetFilterEvent event,
     Emitter<EquipmentState> emit,
   ) async {
+    emit(const _LoadingState());
     service.setFilter(event.filter);
     await service.getEquipmentList().then((value) async {
+      emit(const EquipmentState.ok());
       emit(_DataState(list: value));
     });
   }
@@ -52,6 +55,7 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     _GetListEvent event,
     Emitter<EquipmentState> emit,
   ) async {
+    emit(const _LoadingState());
     await service.getEquipmentList().then((value) async {
       emit(_DataState(list: value));
     });
@@ -90,7 +94,10 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     Emitter<EquipmentState> emit,
   ) async {
     service.addEquipment(event.equipment);
-    emit(const _OkState());
+    await service.getEquipmentList().then((value) async {
+      emit(const EquipmentState.ok());
+      emit(_DataState(list: value));
+    });
   }
 
   void _onUpdateEquipmentEvent(
@@ -98,7 +105,10 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     Emitter<EquipmentState> emit,
   ) async {
     await service.updateEquipment(event.equipment);
-    emit(const _OkState());
+    await service.getEquipmentList().then((value) async {
+      emit(const EquipmentState.ok());
+      emit(_DataState(list: value));
+    });
   }
 
   void _onDeleteEquipmentEvent(
@@ -106,6 +116,9 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     Emitter<EquipmentState> emit,
   ) async {
     await service.deleteEquipment(event.equipment);
-    emit(const _OkDeleteState());
+    await service.getEquipmentList().then((value) async {
+      emit(const EquipmentState.ok());
+      emit(_DataState(list: value));
+    });
   }
 }

@@ -127,7 +127,7 @@ Dialog dialogWorkDay(BuildContext context, CalendarData calendar, int index) {
   );
 }
 
-Dialog
+
 dialogSaveWorkTime(BuildContext context, CalendarData calendar, int index) {
 //  double width = (MediaQuery.of(context).size.width / 13) * 8;
   final formKey = GlobalKey<FormBuilderState>();

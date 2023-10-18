@@ -20,4 +20,9 @@ class CalendarState with _$CalendarState {
     required List<CalendarData>? list
   }) = _DataState;
 
+  const factory CalendarState.equipmentData({
+    required EquipmentModel equipment,
+    required List<CalendarData>? list
+  }) = _EquipmentDataState;
+
 }  

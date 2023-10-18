@@ -1,3 +1,4 @@
+import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +13,7 @@ AppBar appBar(BuildContext context, String title, Set<AppBarButton> appBarButton
 //    StatelessWidget? tatelessWidget
     ) {
   return AppBar(
-    backgroundColor: Colors.black,
+    backgroundColor: AppColor.blackColor,
     title: Text(
       title,
       style: GoogleFonts.montserrat(textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white)),
