@@ -22,10 +22,11 @@ mixin _$EquipmentEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -44,9 +45,10 @@ mixin _$EquipmentEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -63,9 +65,10 @@ mixin _$EquipmentEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -86,6 +89,8 @@ mixin _$EquipmentEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -105,6 +110,7 @@ mixin _$EquipmentEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -124,6 +130,7 @@ mixin _$EquipmentEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -197,10 +204,11 @@ class _$InitialEventImpl implements _InitialEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -222,9 +230,10 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -244,9 +253,10 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -273,6 +283,8 @@ class _$InitialEventImpl implements _InitialEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -295,6 +307,7 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -317,6 +330,7 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -407,10 +421,11 @@ class _$SetFilterEventImpl implements _SetFilterEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -432,9 +447,10 @@ class _$SetFilterEventImpl implements _SetFilterEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -454,9 +470,10 @@ class _$SetFilterEventImpl implements _SetFilterEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -483,6 +500,8 @@ class _$SetFilterEventImpl implements _SetFilterEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -505,6 +524,7 @@ class _$SetFilterEventImpl implements _SetFilterEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -527,6 +547,7 @@ class _$SetFilterEventImpl implements _SetFilterEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -596,10 +617,11 @@ class _$GetListEventImpl implements _GetListEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -621,9 +643,10 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -643,9 +666,10 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -672,6 +696,8 @@ class _$GetListEventImpl implements _GetListEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -694,6 +720,7 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -716,6 +743,7 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -779,10 +807,11 @@ class _$GotoAddScreenEventImpl implements _GotoAddScreenEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -804,9 +833,10 @@ class _$GotoAddScreenEventImpl implements _GotoAddScreenEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -826,9 +856,10 @@ class _$GotoAddScreenEventImpl implements _GotoAddScreenEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -855,6 +886,8 @@ class _$GotoAddScreenEventImpl implements _GotoAddScreenEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -877,6 +910,7 @@ class _$GotoAddScreenEventImpl implements _GotoAddScreenEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -899,6 +933,7 @@ class _$GotoAddScreenEventImpl implements _GotoAddScreenEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -927,7 +962,7 @@ abstract class _$$GotoDetailScreenEventImplCopyWith<$Res> {
           $Res Function(_$GotoDetailScreenEventImpl) then) =
       __$$GotoDetailScreenEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Equipment equipment});
+  $Res call({String equipmentid});
 }
 
 /// @nodoc
@@ -941,13 +976,13 @@ class __$$GotoDetailScreenEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? equipment = null,
+    Object? equipmentid = null,
   }) {
     return _then(_$GotoDetailScreenEventImpl(
-      null == equipment
-          ? _value.equipment
-          : equipment // ignore: cast_nullable_to_non_nullable
-              as Equipment,
+      null == equipmentid
+          ? _value.equipmentid
+          : equipmentid // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -955,14 +990,14 @@ class __$$GotoDetailScreenEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
-  const _$GotoDetailScreenEventImpl(this.equipment);
+  const _$GotoDetailScreenEventImpl(this.equipmentid);
 
   @override
-  final Equipment equipment;
+  final String equipmentid;
 
   @override
   String toString() {
-    return 'EquipmentEvent.gotoDetailScreen(equipment: $equipment)';
+    return 'EquipmentEvent.gotoDetailScreen(equipmentid: $equipmentid)';
   }
 
   @override
@@ -970,12 +1005,12 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GotoDetailScreenEventImpl &&
-            (identical(other.equipment, equipment) ||
-                other.equipment == equipment));
+            (identical(other.equipmentid, equipmentid) ||
+                other.equipmentid == equipmentid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, equipment);
+  int get hashCode => Object.hash(runtimeType, equipmentid);
 
   @JsonKey(ignore: true)
   @override
@@ -991,10 +1026,11 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1006,7 +1042,7 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     required TResult Function(Equipment equipment) deleteEquipment,
     required TResult Function(InfoModel info) addInfo,
   }) {
-    return gotoDetailScreen(equipment);
+    return gotoDetailScreen(equipmentid);
   }
 
   @override
@@ -1016,9 +1052,10 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -1028,7 +1065,7 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     TResult? Function(Equipment equipment)? deleteEquipment,
     TResult? Function(InfoModel info)? addInfo,
   }) {
-    return gotoDetailScreen?.call(equipment);
+    return gotoDetailScreen?.call(equipmentid);
   }
 
   @override
@@ -1038,9 +1075,10 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -1052,7 +1090,7 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     required TResult orElse(),
   }) {
     if (gotoDetailScreen != null) {
-      return gotoDetailScreen(equipment);
+      return gotoDetailScreen(equipmentid);
     }
     return orElse();
   }
@@ -1067,6 +1105,8 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -1089,6 +1129,7 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -1111,6 +1152,7 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -1129,10 +1171,10 @@ class _$GotoDetailScreenEventImpl implements _GotoDetailScreenEvent {
 }
 
 abstract class _GotoDetailScreenEvent implements EquipmentEvent {
-  const factory _GotoDetailScreenEvent(final Equipment equipment) =
+  const factory _GotoDetailScreenEvent(final String equipmentid) =
       _$GotoDetailScreenEventImpl;
 
-  Equipment get equipment;
+  String get equipmentid;
   @JsonKey(ignore: true)
   _$$GotoDetailScreenEventImplCopyWith<_$GotoDetailScreenEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1208,10 +1250,11 @@ class _$GotoEditScreenEventImpl implements _GotoEditScreenEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1233,9 +1276,10 @@ class _$GotoEditScreenEventImpl implements _GotoEditScreenEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -1255,9 +1299,10 @@ class _$GotoEditScreenEventImpl implements _GotoEditScreenEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -1284,6 +1329,8 @@ class _$GotoEditScreenEventImpl implements _GotoEditScreenEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -1306,6 +1353,7 @@ class _$GotoEditScreenEventImpl implements _GotoEditScreenEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -1328,6 +1376,7 @@ class _$GotoEditScreenEventImpl implements _GotoEditScreenEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -1433,10 +1482,11 @@ class _$GotoPprScreenEventImpl implements _GotoPprScreenEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1458,9 +1508,10 @@ class _$GotoPprScreenEventImpl implements _GotoPprScreenEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -1480,9 +1531,10 @@ class _$GotoPprScreenEventImpl implements _GotoPprScreenEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -1509,6 +1561,8 @@ class _$GotoPprScreenEventImpl implements _GotoPprScreenEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -1531,6 +1585,7 @@ class _$GotoPprScreenEventImpl implements _GotoPprScreenEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -1553,6 +1608,7 @@ class _$GotoPprScreenEventImpl implements _GotoPprScreenEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -1580,6 +1636,232 @@ abstract class _GotoPprScreenEvent implements EquipmentEvent {
   @JsonKey(ignore: true)
   _$$GotoPprScreenEventImplCopyWith<_$GotoPprScreenEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GotoCalendarScreenEventImplCopyWith<$Res> {
+  factory _$$GotoCalendarScreenEventImplCopyWith(
+          _$GotoCalendarScreenEventImpl value,
+          $Res Function(_$GotoCalendarScreenEventImpl) then) =
+      __$$GotoCalendarScreenEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Equipment equipment});
+}
+
+/// @nodoc
+class __$$GotoCalendarScreenEventImplCopyWithImpl<$Res>
+    extends _$EquipmentEventCopyWithImpl<$Res, _$GotoCalendarScreenEventImpl>
+    implements _$$GotoCalendarScreenEventImplCopyWith<$Res> {
+  __$$GotoCalendarScreenEventImplCopyWithImpl(
+      _$GotoCalendarScreenEventImpl _value,
+      $Res Function(_$GotoCalendarScreenEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipment = null,
+  }) {
+    return _then(_$GotoCalendarScreenEventImpl(
+      null == equipment
+          ? _value.equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as Equipment,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GotoCalendarScreenEventImpl implements _GotoCalendarScreenEvent {
+  const _$GotoCalendarScreenEventImpl(this.equipment);
+
+  @override
+  final Equipment equipment;
+
+  @override
+  String toString() {
+    return 'EquipmentEvent.gotoCalendarScreen(equipment: $equipment)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GotoCalendarScreenEventImpl &&
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, equipment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GotoCalendarScreenEventImplCopyWith<_$GotoCalendarScreenEventImpl>
+      get copyWith => __$$GotoCalendarScreenEventImplCopyWithImpl<
+          _$GotoCalendarScreenEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(EquipmentFilter filter) setFilter,
+    required TResult Function() getList,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
+    required TResult Function(Equipment equipment) gotoEditScreen,
+    required TResult Function(PprType pprType, Equipment equipment)
+        gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
+    required TResult Function(String view) addView,
+    required TResult Function(EquipmentModel equipment, String view)
+        addViewInEdit,
+    required TResult Function(String plot) addPlot,
+    required TResult Function(EquipmentModel equipment, String plot)
+        addPlotInEdit,
+    required TResult Function(EquipmentModel equipment) addEquipment,
+    required TResult Function(Equipment equipment) updateEquipment,
+    required TResult Function(Equipment equipment) deleteEquipment,
+    required TResult Function(InfoModel info) addInfo,
+  }) {
+    return gotoCalendarScreen(equipment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(EquipmentFilter filter)? setFilter,
+    TResult? Function()? getList,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
+    TResult? Function(Equipment equipment)? gotoEditScreen,
+    TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
+    TResult? Function(String view)? addView,
+    TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
+    TResult? Function(String plot)? addPlot,
+    TResult? Function(EquipmentModel equipment, String plot)? addPlotInEdit,
+    TResult? Function(EquipmentModel equipment)? addEquipment,
+    TResult? Function(Equipment equipment)? updateEquipment,
+    TResult? Function(Equipment equipment)? deleteEquipment,
+    TResult? Function(InfoModel info)? addInfo,
+  }) {
+    return gotoCalendarScreen?.call(equipment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(EquipmentFilter filter)? setFilter,
+    TResult Function()? getList,
+    TResult Function()? gotoAddScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
+    TResult Function(Equipment equipment)? gotoEditScreen,
+    TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
+    TResult Function(String view)? addView,
+    TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
+    TResult Function(String plot)? addPlot,
+    TResult Function(EquipmentModel equipment, String plot)? addPlotInEdit,
+    TResult Function(EquipmentModel equipment)? addEquipment,
+    TResult Function(Equipment equipment)? updateEquipment,
+    TResult Function(Equipment equipment)? deleteEquipment,
+    TResult Function(InfoModel info)? addInfo,
+    required TResult orElse(),
+  }) {
+    if (gotoCalendarScreen != null) {
+      return gotoCalendarScreen(equipment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_SetFilterEvent value) setFilter,
+    required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_GotoAddScreenEvent value) gotoAddScreen,
+    required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
+    required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
+    required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
+    required TResult Function(_AddViewEvent value) addView,
+    required TResult Function(_AddViewInEditEvent value) addViewInEdit,
+    required TResult Function(_AddPlotEvent value) addPlot,
+    required TResult Function(_AddPlotInEditEvent value) addPlotInEdit,
+    required TResult Function(_AddEquipmentEvent value) addEquipment,
+    required TResult Function(_UpdateEquipmentEvent value) updateEquipment,
+    required TResult Function(_DeleteEquipmentEvent value) deleteEquipment,
+    required TResult Function(_AddInfoEvent value) addInfo,
+  }) {
+    return gotoCalendarScreen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_SetFilterEvent value)? setFilter,
+    TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_GotoAddScreenEvent value)? gotoAddScreen,
+    TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
+    TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
+    TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
+    TResult? Function(_AddViewEvent value)? addView,
+    TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
+    TResult? Function(_AddPlotEvent value)? addPlot,
+    TResult? Function(_AddPlotInEditEvent value)? addPlotInEdit,
+    TResult? Function(_AddEquipmentEvent value)? addEquipment,
+    TResult? Function(_UpdateEquipmentEvent value)? updateEquipment,
+    TResult? Function(_DeleteEquipmentEvent value)? deleteEquipment,
+    TResult? Function(_AddInfoEvent value)? addInfo,
+  }) {
+    return gotoCalendarScreen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_SetFilterEvent value)? setFilter,
+    TResult Function(_GetListEvent value)? getList,
+    TResult Function(_GotoAddScreenEvent value)? gotoAddScreen,
+    TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
+    TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
+    TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
+    TResult Function(_AddViewEvent value)? addView,
+    TResult Function(_AddViewInEditEvent value)? addViewInEdit,
+    TResult Function(_AddPlotEvent value)? addPlot,
+    TResult Function(_AddPlotInEditEvent value)? addPlotInEdit,
+    TResult Function(_AddEquipmentEvent value)? addEquipment,
+    TResult Function(_UpdateEquipmentEvent value)? updateEquipment,
+    TResult Function(_DeleteEquipmentEvent value)? deleteEquipment,
+    TResult Function(_AddInfoEvent value)? addInfo,
+    required TResult orElse(),
+  }) {
+    if (gotoCalendarScreen != null) {
+      return gotoCalendarScreen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GotoCalendarScreenEvent implements EquipmentEvent {
+  const factory _GotoCalendarScreenEvent(final Equipment equipment) =
+      _$GotoCalendarScreenEventImpl;
+
+  Equipment get equipment;
+  @JsonKey(ignore: true)
+  _$$GotoCalendarScreenEventImplCopyWith<_$GotoCalendarScreenEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1650,10 +1932,11 @@ class _$AddViewEventImpl implements _AddViewEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1675,9 +1958,10 @@ class _$AddViewEventImpl implements _AddViewEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -1697,9 +1981,10 @@ class _$AddViewEventImpl implements _AddViewEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -1726,6 +2011,8 @@ class _$AddViewEventImpl implements _AddViewEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -1748,6 +2035,7 @@ class _$AddViewEventImpl implements _AddViewEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -1770,6 +2058,7 @@ class _$AddViewEventImpl implements _AddViewEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -1884,10 +2173,11 @@ class _$AddViewInEditEventImpl implements _AddViewInEditEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -1909,9 +2199,10 @@ class _$AddViewInEditEventImpl implements _AddViewInEditEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -1931,9 +2222,10 @@ class _$AddViewInEditEventImpl implements _AddViewInEditEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -1960,6 +2252,8 @@ class _$AddViewInEditEventImpl implements _AddViewInEditEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -1982,6 +2276,7 @@ class _$AddViewInEditEventImpl implements _AddViewInEditEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -2004,6 +2299,7 @@ class _$AddViewInEditEventImpl implements _AddViewInEditEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -2101,10 +2397,11 @@ class _$AddPlotEventImpl implements _AddPlotEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2126,9 +2423,10 @@ class _$AddPlotEventImpl implements _AddPlotEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -2148,9 +2446,10 @@ class _$AddPlotEventImpl implements _AddPlotEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -2177,6 +2476,8 @@ class _$AddPlotEventImpl implements _AddPlotEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -2199,6 +2500,7 @@ class _$AddPlotEventImpl implements _AddPlotEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -2221,6 +2523,7 @@ class _$AddPlotEventImpl implements _AddPlotEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -2335,10 +2638,11 @@ class _$AddPlotInEditEventImpl implements _AddPlotInEditEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2360,9 +2664,10 @@ class _$AddPlotInEditEventImpl implements _AddPlotInEditEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -2382,9 +2687,10 @@ class _$AddPlotInEditEventImpl implements _AddPlotInEditEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -2411,6 +2717,8 @@ class _$AddPlotInEditEventImpl implements _AddPlotInEditEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -2433,6 +2741,7 @@ class _$AddPlotInEditEventImpl implements _AddPlotInEditEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -2455,6 +2764,7 @@ class _$AddPlotInEditEventImpl implements _AddPlotInEditEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -2564,10 +2874,11 @@ class _$AddEquipmentEventImpl implements _AddEquipmentEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2589,9 +2900,10 @@ class _$AddEquipmentEventImpl implements _AddEquipmentEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -2611,9 +2923,10 @@ class _$AddEquipmentEventImpl implements _AddEquipmentEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -2640,6 +2953,8 @@ class _$AddEquipmentEventImpl implements _AddEquipmentEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -2662,6 +2977,7 @@ class _$AddEquipmentEventImpl implements _AddEquipmentEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -2684,6 +3000,7 @@ class _$AddEquipmentEventImpl implements _AddEquipmentEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -2782,10 +3099,11 @@ class _$UpdateEquipmentEventImpl implements _UpdateEquipmentEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -2807,9 +3125,10 @@ class _$UpdateEquipmentEventImpl implements _UpdateEquipmentEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -2829,9 +3148,10 @@ class _$UpdateEquipmentEventImpl implements _UpdateEquipmentEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -2858,6 +3178,8 @@ class _$UpdateEquipmentEventImpl implements _UpdateEquipmentEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -2880,6 +3202,7 @@ class _$UpdateEquipmentEventImpl implements _UpdateEquipmentEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -2902,6 +3225,7 @@ class _$UpdateEquipmentEventImpl implements _UpdateEquipmentEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -3000,10 +3324,11 @@ class _$DeleteEquipmentEventImpl implements _DeleteEquipmentEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -3025,9 +3350,10 @@ class _$DeleteEquipmentEventImpl implements _DeleteEquipmentEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -3047,9 +3373,10 @@ class _$DeleteEquipmentEventImpl implements _DeleteEquipmentEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -3076,6 +3403,8 @@ class _$DeleteEquipmentEventImpl implements _DeleteEquipmentEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -3098,6 +3427,7 @@ class _$DeleteEquipmentEventImpl implements _DeleteEquipmentEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -3120,6 +3450,7 @@ class _$DeleteEquipmentEventImpl implements _DeleteEquipmentEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -3225,10 +3556,11 @@ class _$AddInfoEventImpl implements _AddInfoEvent {
     required TResult Function(EquipmentFilter filter) setFilter,
     required TResult Function() getList,
     required TResult Function() gotoAddScreen,
-    required TResult Function(Equipment equipment) gotoDetailScreen,
+    required TResult Function(String equipmentid) gotoDetailScreen,
     required TResult Function(Equipment equipment) gotoEditScreen,
     required TResult Function(PprType pprType, Equipment equipment)
         gotoPprScreen,
+    required TResult Function(Equipment equipment) gotoCalendarScreen,
     required TResult Function(String view) addView,
     required TResult Function(EquipmentModel equipment, String view)
         addViewInEdit,
@@ -3250,9 +3582,10 @@ class _$AddInfoEventImpl implements _AddInfoEvent {
     TResult? Function(EquipmentFilter filter)? setFilter,
     TResult? Function()? getList,
     TResult? Function()? gotoAddScreen,
-    TResult? Function(Equipment equipment)? gotoDetailScreen,
+    TResult? Function(String equipmentid)? gotoDetailScreen,
     TResult? Function(Equipment equipment)? gotoEditScreen,
     TResult? Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult? Function(Equipment equipment)? gotoCalendarScreen,
     TResult? Function(String view)? addView,
     TResult? Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult? Function(String plot)? addPlot,
@@ -3272,9 +3605,10 @@ class _$AddInfoEventImpl implements _AddInfoEvent {
     TResult Function(EquipmentFilter filter)? setFilter,
     TResult Function()? getList,
     TResult Function()? gotoAddScreen,
-    TResult Function(Equipment equipment)? gotoDetailScreen,
+    TResult Function(String equipmentid)? gotoDetailScreen,
     TResult Function(Equipment equipment)? gotoEditScreen,
     TResult Function(PprType pprType, Equipment equipment)? gotoPprScreen,
+    TResult Function(Equipment equipment)? gotoCalendarScreen,
     TResult Function(String view)? addView,
     TResult Function(EquipmentModel equipment, String view)? addViewInEdit,
     TResult Function(String plot)? addPlot,
@@ -3301,6 +3635,8 @@ class _$AddInfoEventImpl implements _AddInfoEvent {
     required TResult Function(_GotoDetailScreenEvent value) gotoDetailScreen,
     required TResult Function(_GotoEditScreenEvent value) gotoEditScreen,
     required TResult Function(_GotoPprScreenEvent value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenEvent value)
+        gotoCalendarScreen,
     required TResult Function(_AddViewEvent value) addView,
     required TResult Function(_AddViewInEditEvent value) addViewInEdit,
     required TResult Function(_AddPlotEvent value) addPlot,
@@ -3323,6 +3659,7 @@ class _$AddInfoEventImpl implements _AddInfoEvent {
     TResult? Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult? Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult? Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult? Function(_AddViewEvent value)? addView,
     TResult? Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult? Function(_AddPlotEvent value)? addPlot,
@@ -3345,6 +3682,7 @@ class _$AddInfoEventImpl implements _AddInfoEvent {
     TResult Function(_GotoDetailScreenEvent value)? gotoDetailScreen,
     TResult Function(_GotoEditScreenEvent value)? gotoEditScreen,
     TResult Function(_GotoPprScreenEvent value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenEvent value)? gotoCalendarScreen,
     TResult Function(_AddViewEvent value)? addView,
     TResult Function(_AddViewInEditEvent value)? addViewInEdit,
     TResult Function(_AddPlotEvent value)? addPlot,
@@ -3378,6 +3716,7 @@ mixin _$EquipmentState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -3386,6 +3725,7 @@ mixin _$EquipmentState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) =>
       throw _privateConstructorUsedError;
@@ -3394,6 +3734,7 @@ mixin _$EquipmentState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -3401,6 +3742,7 @@ mixin _$EquipmentState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) =>
       throw _privateConstructorUsedError;
@@ -3409,6 +3751,7 @@ mixin _$EquipmentState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -3416,6 +3759,7 @@ mixin _$EquipmentState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) =>
@@ -3425,6 +3769,7 @@ mixin _$EquipmentState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -3432,6 +3777,8 @@ mixin _$EquipmentState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) =>
       throw _privateConstructorUsedError;
@@ -3440,6 +3787,7 @@ mixin _$EquipmentState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -3447,6 +3795,7 @@ mixin _$EquipmentState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) =>
       throw _privateConstructorUsedError;
@@ -3455,6 +3804,7 @@ mixin _$EquipmentState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -3462,6 +3812,7 @@ mixin _$EquipmentState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) =>
@@ -3527,6 +3878,7 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -3535,6 +3887,7 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return initial();
@@ -3546,6 +3899,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -3553,6 +3907,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return initial?.call();
@@ -3564,6 +3919,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -3571,6 +3927,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -3586,6 +3943,7 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -3593,6 +3951,8 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return initial(this);
@@ -3604,6 +3964,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -3611,6 +3972,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return initial?.call(this);
@@ -3622,6 +3984,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -3629,6 +3992,7 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -3684,6 +4048,7 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -3692,6 +4057,7 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return loading();
@@ -3703,6 +4069,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -3710,6 +4077,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return loading?.call();
@@ -3721,6 +4089,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -3728,6 +4097,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -3743,6 +4113,7 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -3750,6 +4121,8 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return loading(this);
@@ -3761,6 +4134,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -3768,6 +4142,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return loading?.call(this);
@@ -3779,6 +4154,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -3786,6 +4162,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -3841,6 +4218,7 @@ class _$OkStateImpl implements _OkState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -3849,6 +4227,7 @@ class _$OkStateImpl implements _OkState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return ok();
@@ -3860,6 +4239,7 @@ class _$OkStateImpl implements _OkState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -3867,6 +4247,7 @@ class _$OkStateImpl implements _OkState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return ok?.call();
@@ -3878,6 +4259,7 @@ class _$OkStateImpl implements _OkState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -3885,6 +4267,7 @@ class _$OkStateImpl implements _OkState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -3900,6 +4283,7 @@ class _$OkStateImpl implements _OkState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -3907,6 +4291,8 @@ class _$OkStateImpl implements _OkState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return ok(this);
@@ -3918,6 +4304,7 @@ class _$OkStateImpl implements _OkState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -3925,6 +4312,7 @@ class _$OkStateImpl implements _OkState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return ok?.call(this);
@@ -3936,6 +4324,7 @@ class _$OkStateImpl implements _OkState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -3943,6 +4332,7 @@ class _$OkStateImpl implements _OkState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -3955,6 +4345,176 @@ class _$OkStateImpl implements _OkState {
 
 abstract class _OkState implements EquipmentState {
   const factory _OkState() = _$OkStateImpl;
+}
+
+/// @nodoc
+abstract class _$$OkAddStateImplCopyWith<$Res> {
+  factory _$$OkAddStateImplCopyWith(
+          _$OkAddStateImpl value, $Res Function(_$OkAddStateImpl) then) =
+      __$$OkAddStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OkAddStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$OkAddStateImpl>
+    implements _$$OkAddStateImplCopyWith<$Res> {
+  __$$OkAddStateImplCopyWithImpl(
+      _$OkAddStateImpl _value, $Res Function(_$OkAddStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OkAddStateImpl implements _OkAddState {
+  const _$OkAddStateImpl();
+
+  @override
+  String toString() {
+    return 'EquipmentState.okAdd()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OkAddStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() okAdd,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
+    required TResult Function(String error) error,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
+    required TResult Function(List<Equipment> list) data,
+  }) {
+    return okAdd();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? ok,
+    TResult? Function()? okAdd,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
+    TResult? Function(String error)? error,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
+    TResult? Function(List<Equipment> list)? data,
+  }) {
+    return okAdd?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? okAdd,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
+    TResult Function(String error)? error,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
+    TResult Function(List<Equipment> list)? data,
+    required TResult orElse(),
+  }) {
+    if (okAdd != null) {
+      return okAdd();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_GotoAddScreenState value) gotoAddScreen,
+    required TResult Function(_GotoEditScreenState value) gotoEditScreen,
+    required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
+    required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
+    required TResult Function(_DataState value) data,
+  }) {
+    return okAdd(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return okAdd?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (okAdd != null) {
+      return okAdd(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OkAddState implements EquipmentState {
+  const factory _OkAddState() = _$OkAddStateImpl;
 }
 
 /// @nodoc
@@ -3998,6 +4558,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -4006,6 +4567,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return okUpdate();
@@ -4017,6 +4579,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -4024,6 +4587,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return okUpdate?.call();
@@ -4035,6 +4599,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -4042,6 +4607,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -4057,6 +4623,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -4064,6 +4631,8 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return okUpdate(this);
@@ -4075,6 +4644,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -4082,6 +4652,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return okUpdate?.call(this);
@@ -4093,6 +4664,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -4100,6 +4672,7 @@ class _$OkUpdateStateImpl implements _OkUpdateState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -4155,6 +4728,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -4163,6 +4737,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return okDelete();
@@ -4174,6 +4749,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -4181,6 +4757,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return okDelete?.call();
@@ -4192,6 +4769,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -4199,6 +4777,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -4214,6 +4793,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -4221,6 +4801,8 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return okDelete(this);
@@ -4232,6 +4814,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -4239,6 +4822,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return okDelete?.call(this);
@@ -4250,6 +4834,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -4257,6 +4842,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -4338,6 +4924,7 @@ class _$ErrorStateImpl implements _ErrorState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -4346,6 +4933,7 @@ class _$ErrorStateImpl implements _ErrorState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return error(this.error);
@@ -4357,6 +4945,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -4364,6 +4953,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return error?.call(this.error);
@@ -4375,6 +4965,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -4382,6 +4973,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -4397,6 +4989,7 @@ class _$ErrorStateImpl implements _ErrorState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -4404,6 +4997,8 @@ class _$ErrorStateImpl implements _ErrorState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return error(this);
@@ -4415,6 +5010,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -4422,6 +5018,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return error?.call(this);
@@ -4433,6 +5030,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -4440,6 +5038,7 @@ class _$ErrorStateImpl implements _ErrorState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -4500,6 +5099,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -4508,6 +5108,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return gotoAddScreen();
@@ -4519,6 +5120,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -4526,6 +5128,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return gotoAddScreen?.call();
@@ -4537,6 +5140,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -4544,6 +5148,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -4559,6 +5164,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -4566,6 +5172,8 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return gotoAddScreen(this);
@@ -4577,6 +5185,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -4584,6 +5193,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return gotoAddScreen?.call(this);
@@ -4595,6 +5205,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -4602,6 +5213,7 @@ class _$GotoAddScreenStateImpl implements _GotoAddScreenState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -4685,6 +5297,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -4693,6 +5306,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return gotoEditScreen(equipmentData);
@@ -4704,6 +5318,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -4711,6 +5326,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return gotoEditScreen?.call(equipmentData);
@@ -4722,6 +5338,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -4729,6 +5346,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -4744,6 +5362,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -4751,6 +5370,8 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return gotoEditScreen(this);
@@ -4762,6 +5383,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -4769,6 +5391,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return gotoEditScreen?.call(this);
@@ -4780,6 +5403,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -4787,6 +5411,7 @@ class _$GotoEditScreenStateImpl implements _GotoEditScreenState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -4877,6 +5502,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -4885,6 +5511,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return gotoDetailScreen(equipmentData);
@@ -4896,6 +5523,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -4903,6 +5531,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return gotoDetailScreen?.call(equipmentData);
@@ -4914,6 +5543,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -4921,6 +5551,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -4936,6 +5567,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -4943,6 +5575,8 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return gotoDetailScreen(this);
@@ -4954,6 +5588,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -4961,6 +5596,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return gotoDetailScreen?.call(this);
@@ -4972,6 +5608,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -4979,6 +5616,7 @@ class _$GotoDetailScreenStateImpl implements _GotoDetailScreenState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -5077,6 +5715,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -5085,6 +5724,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return gotoPprScreen(pprType, equipmentData);
@@ -5096,6 +5736,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -5103,6 +5744,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return gotoPprScreen?.call(pprType, equipmentData);
@@ -5114,6 +5756,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -5121,6 +5764,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -5136,6 +5780,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -5143,6 +5788,8 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return gotoPprScreen(this);
@@ -5154,6 +5801,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -5161,6 +5809,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return gotoPprScreen?.call(this);
@@ -5172,6 +5821,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -5179,6 +5829,7 @@ class _$GotoPprScreenStateImpl implements _GotoPprScreenState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {
@@ -5199,6 +5850,212 @@ abstract class _GotoPprScreenState implements EquipmentState {
   @JsonKey(ignore: true)
   _$$GotoPprScreenStateImplCopyWith<_$GotoPprScreenStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GotoCalendarScreenStateImplCopyWith<$Res> {
+  factory _$$GotoCalendarScreenStateImplCopyWith(
+          _$GotoCalendarScreenStateImpl value,
+          $Res Function(_$GotoCalendarScreenStateImpl) then) =
+      __$$GotoCalendarScreenStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Equipment equipmentData});
+}
+
+/// @nodoc
+class __$$GotoCalendarScreenStateImplCopyWithImpl<$Res>
+    extends _$EquipmentStateCopyWithImpl<$Res, _$GotoCalendarScreenStateImpl>
+    implements _$$GotoCalendarScreenStateImplCopyWith<$Res> {
+  __$$GotoCalendarScreenStateImplCopyWithImpl(
+      _$GotoCalendarScreenStateImpl _value,
+      $Res Function(_$GotoCalendarScreenStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipmentData = null,
+  }) {
+    return _then(_$GotoCalendarScreenStateImpl(
+      equipmentData: null == equipmentData
+          ? _value.equipmentData
+          : equipmentData // ignore: cast_nullable_to_non_nullable
+              as Equipment,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GotoCalendarScreenStateImpl implements _GotoCalendarScreenState {
+  const _$GotoCalendarScreenStateImpl({required this.equipmentData});
+
+  @override
+  final Equipment equipmentData;
+
+  @override
+  String toString() {
+    return 'EquipmentState.gotoCalendarScreen(equipmentData: $equipmentData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GotoCalendarScreenStateImpl &&
+            (identical(other.equipmentData, equipmentData) ||
+                other.equipmentData == equipmentData));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, equipmentData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GotoCalendarScreenStateImplCopyWith<_$GotoCalendarScreenStateImpl>
+      get copyWith => __$$GotoCalendarScreenStateImplCopyWithImpl<
+          _$GotoCalendarScreenStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() okAdd,
+    required TResult Function() okUpdate,
+    required TResult Function() okDelete,
+    required TResult Function(String error) error,
+    required TResult Function() gotoAddScreen,
+    required TResult Function(Equipment equipmentData) gotoEditScreen,
+    required TResult Function(Equipment equipmentData) gotoDetailScreen,
+    required TResult Function(PprType pprType, Equipment equipmentData)
+        gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
+    required TResult Function(List<Equipment> list) data,
+  }) {
+    return gotoCalendarScreen(equipmentData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? ok,
+    TResult? Function()? okAdd,
+    TResult? Function()? okUpdate,
+    TResult? Function()? okDelete,
+    TResult? Function(String error)? error,
+    TResult? Function()? gotoAddScreen,
+    TResult? Function(Equipment equipmentData)? gotoEditScreen,
+    TResult? Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
+    TResult? Function(List<Equipment> list)? data,
+  }) {
+    return gotoCalendarScreen?.call(equipmentData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? okAdd,
+    TResult Function()? okUpdate,
+    TResult Function()? okDelete,
+    TResult Function(String error)? error,
+    TResult Function()? gotoAddScreen,
+    TResult Function(Equipment equipmentData)? gotoEditScreen,
+    TResult Function(Equipment equipmentData)? gotoDetailScreen,
+    TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
+    TResult Function(List<Equipment> list)? data,
+    required TResult orElse(),
+  }) {
+    if (gotoCalendarScreen != null) {
+      return gotoCalendarScreen(equipmentData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
+    required TResult Function(_OkUpdateState value) okUpdate,
+    required TResult Function(_OkDeleteState value) okDelete,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_GotoAddScreenState value) gotoAddScreen,
+    required TResult Function(_GotoEditScreenState value) gotoEditScreen,
+    required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
+    required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
+    required TResult Function(_DataState value) data,
+  }) {
+    return gotoCalendarScreen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
+    TResult? Function(_OkUpdateState value)? okUpdate,
+    TResult? Function(_OkDeleteState value)? okDelete,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return gotoCalendarScreen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
+    TResult Function(_OkUpdateState value)? okUpdate,
+    TResult Function(_OkDeleteState value)? okDelete,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_GotoAddScreenState value)? gotoAddScreen,
+    TResult Function(_GotoEditScreenState value)? gotoEditScreen,
+    TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
+    TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (gotoCalendarScreen != null) {
+      return gotoCalendarScreen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GotoCalendarScreenState implements EquipmentState {
+  const factory _GotoCalendarScreenState(
+      {required final Equipment equipmentData}) = _$GotoCalendarScreenStateImpl;
+
+  Equipment get equipmentData;
+  @JsonKey(ignore: true)
+  _$$GotoCalendarScreenStateImplCopyWith<_$GotoCalendarScreenStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -5274,6 +6131,7 @@ class _$DataStateImpl implements _DataState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() ok,
+    required TResult Function() okAdd,
     required TResult Function() okUpdate,
     required TResult Function() okDelete,
     required TResult Function(String error) error,
@@ -5282,6 +6140,7 @@ class _$DataStateImpl implements _DataState {
     required TResult Function(Equipment equipmentData) gotoDetailScreen,
     required TResult Function(PprType pprType, Equipment equipmentData)
         gotoPprScreen,
+    required TResult Function(Equipment equipmentData) gotoCalendarScreen,
     required TResult Function(List<Equipment> list) data,
   }) {
     return data(list);
@@ -5293,6 +6152,7 @@ class _$DataStateImpl implements _DataState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? ok,
+    TResult? Function()? okAdd,
     TResult? Function()? okUpdate,
     TResult? Function()? okDelete,
     TResult? Function(String error)? error,
@@ -5300,6 +6160,7 @@ class _$DataStateImpl implements _DataState {
     TResult? Function(Equipment equipmentData)? gotoEditScreen,
     TResult? Function(Equipment equipmentData)? gotoDetailScreen,
     TResult? Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult? Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult? Function(List<Equipment> list)? data,
   }) {
     return data?.call(list);
@@ -5311,6 +6172,7 @@ class _$DataStateImpl implements _DataState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? ok,
+    TResult Function()? okAdd,
     TResult Function()? okUpdate,
     TResult Function()? okDelete,
     TResult Function(String error)? error,
@@ -5318,6 +6180,7 @@ class _$DataStateImpl implements _DataState {
     TResult Function(Equipment equipmentData)? gotoEditScreen,
     TResult Function(Equipment equipmentData)? gotoDetailScreen,
     TResult Function(PprType pprType, Equipment equipmentData)? gotoPprScreen,
+    TResult Function(Equipment equipmentData)? gotoCalendarScreen,
     TResult Function(List<Equipment> list)? data,
     required TResult orElse(),
   }) {
@@ -5333,6 +6196,7 @@ class _$DataStateImpl implements _DataState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_OkState value) ok,
+    required TResult Function(_OkAddState value) okAdd,
     required TResult Function(_OkUpdateState value) okUpdate,
     required TResult Function(_OkDeleteState value) okDelete,
     required TResult Function(_ErrorState value) error,
@@ -5340,6 +6204,8 @@ class _$DataStateImpl implements _DataState {
     required TResult Function(_GotoEditScreenState value) gotoEditScreen,
     required TResult Function(_GotoDetailScreenState value) gotoDetailScreen,
     required TResult Function(_GotoPprScreenState value) gotoPprScreen,
+    required TResult Function(_GotoCalendarScreenState value)
+        gotoCalendarScreen,
     required TResult Function(_DataState value) data,
   }) {
     return data(this);
@@ -5351,6 +6217,7 @@ class _$DataStateImpl implements _DataState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkAddState value)? okAdd,
     TResult? Function(_OkUpdateState value)? okUpdate,
     TResult? Function(_OkDeleteState value)? okDelete,
     TResult? Function(_ErrorState value)? error,
@@ -5358,6 +6225,7 @@ class _$DataStateImpl implements _DataState {
     TResult? Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult? Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult? Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult? Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult? Function(_DataState value)? data,
   }) {
     return data?.call(this);
@@ -5369,6 +6237,7 @@ class _$DataStateImpl implements _DataState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_OkState value)? ok,
+    TResult Function(_OkAddState value)? okAdd,
     TResult Function(_OkUpdateState value)? okUpdate,
     TResult Function(_OkDeleteState value)? okDelete,
     TResult Function(_ErrorState value)? error,
@@ -5376,6 +6245,7 @@ class _$DataStateImpl implements _DataState {
     TResult Function(_GotoEditScreenState value)? gotoEditScreen,
     TResult Function(_GotoDetailScreenState value)? gotoDetailScreen,
     TResult Function(_GotoPprScreenState value)? gotoPprScreen,
+    TResult Function(_GotoCalendarScreenState value)? gotoCalendarScreen,
     TResult Function(_DataState value)? data,
     required TResult orElse(),
   }) {

@@ -813,7 +813,7 @@ class _$EquipmentModelImpl implements _EquipmentModel {
       this.plotid = '',
       this.plot = '',
       this.image = '',
-      @JsonKey(toJson: stringFromInt) this.status = 1,
+      @JsonKey(toJson: stringFromInt) this.status = 0,
       @JsonKey(fromJson: boolFromInt, toJson: boolToString)
       this.proftype = false,
       @JsonKey(toJson: stringFromInt) this.valuex = 0});

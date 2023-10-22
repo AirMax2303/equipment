@@ -29,16 +29,3 @@ class OrderModel with _$OrderModel {
   factory OrderModel.fromJson(Map<String, Object?> json) => _$OrderModelFromJson(json);
 }
 
-@freezed
-class ListOrder with _$ListOrder {
-  const factory ListOrder({
-    List<OrderModel>? list,
-  }) = _ListOrder;
-
-  factory ListOrder.fromJson(Map<String, dynamic> json) => _$ListOrderFromJson(json);
-}
-
-
-
-//    @DateTimeSerializer DateTime? dateorder,
-//@JsonKey(fromJson: getDateTimeFromTimestamp, toJson: timeStampToJson) @Default(dateTimeNow()) DateTime dateorder,

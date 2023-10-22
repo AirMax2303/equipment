@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:equipment/widgets/text_extension.dart';
 import '../other/other.dart';
 import '../widgets/widgets.dart';
 
 class StateEquipment extends StatelessWidget {
   StateEquipment({Key? key, required this.onPressed}) : super(key: key);
-  ItemCallback? onPressed;
+  final ItemCallback? onPressed;
   final ValueNotifier<int> stateEquipment = ValueNotifier<int>(0);
 
-  List<String> stateImage = ['assets/state_0.svg', 'assets/state_1.svg', 'assets/state_2.svg'];
-  List<String> stateImageSelected = ['assets/state_0_sel.svg', 'assets/state_1_sel.svg', 'assets/state_2_sel.svg'];
+  final List<String> stateImage = ['assets/state_0.svg', 'assets/state_1.svg', 'assets/state_2.svg'];
+  final List<String> stateImageSelected = ['assets/state_0_sel.svg', 'assets/state_1_sel.svg', 'assets/state_2_sel.svg'];
 
   @override
   Widget build(BuildContext context) {

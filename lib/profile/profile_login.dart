@@ -1,23 +1,20 @@
-import 'package:equipment/profile/profile_register.dart';
-import 'package:equipment/profile/service/profile_service.dart';
+import 'package:equipment/profile/repository/profile_repository.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:equipment/widgets/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:get_it/get_it.dart';
 
-import '../main_chapter/main_page.dart';
-import '../other/send_message.dart';
+import 'package:get_it/get_it.dart';
+import 'send_message.dart';
 import 'bloc/profile_bloc.dart';
 
 class ProfileLogin extends StatelessWidget {
   ProfileLogin({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormBuilderState>();
-  final service = GetIt.instance.get<ProfileService>();
+  final service = GetIt.instance.get<ProfileRepository>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,23 +30,25 @@ class ProfileLogin extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset('assets/logo.svg'),
-                  const SizedBox(width: 200,),
-                  AppIcons.iconButton(
-                      image: 'assets/message.svg',
-                      color: Colors.white,
-                      onPressed: () {
-                        if (formKey.currentState?.fields['email']?.validate() ?? false) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SendMessage(email: "formKey.currentState?.fields['name']?.value")));
-                        }
-                      }),
-                  const SizedBox(width: 5,)
+                  const SizedBox(
+                    width: 200,
+                  ),
+                  IconBox(
+                    'assets/message.svg',
+                    onPressed: () {
+                      if (formKey.currentState?.fields['email']?.validate() ?? false) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SendMessage(email: "formKey.currentState?.fields['name']?.value")));
+                      }
+                    },
+                  ),
+                  const SizedBox(width: 5)
                 ],
               ),
               const SizedBox(height: 300),
-              AppText.whiteText16('Войти'),
+              const Text('Войти').style16w700(color: Colors.white),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(18.0),
@@ -70,7 +69,8 @@ class ProfileLogin extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'password',
                           initialValue: service.profile.password,
-                          decoration: AppDecoration.input('Пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
+                          decoration:
+                              AppDecoration.input('Пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
                           obscureText: true,
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
@@ -78,7 +78,7 @@ class ProfileLogin extends StatelessWidget {
                           ]),
                         ),
                         const SizedBox(height: 25),
-                        AppButton.filledInputButton('Войти', onPressed: () {
+                        AppFilledButton('Войти', backgroundColor: AppColor.blueColor, onPressed: () {
                           if (formKey.currentState?.saveAndValidate() ?? false) {
                             if (service.profile.email != formKey.currentState?.fields['email']?.value) {
                               formKey.currentState?.fields['email']?.invalidate('Не верный адрес электронной почты');
@@ -88,14 +88,13 @@ class ProfileLogin extends StatelessWidget {
                               BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.gotoMainScreen());
                             }
                           }
-                          print(formKey.currentState?.value.toString());
                         }),
-//                        const SizedBox(height: 5),
                         TextButton(
-                            onPressed: () {
-                              BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.gotoProfileScreen());
-                            },
-                            child: Text('Регистрация', style: AppTextStyle.whiteTextStyle12)),
+                          onPressed: () {
+                            BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.gotoProfileScreen());
+                          },
+                          child: const Text('Регистрация').style12w300(color: Colors.white),
+                        )
                       ],
                     )),
               )

@@ -1,4 +1,4 @@
-import 'package:equipment/other/other.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 

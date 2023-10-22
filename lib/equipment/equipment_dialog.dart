@@ -1,3 +1,4 @@
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -19,15 +20,18 @@ Dialog dialogDeleteConfirm(BuildContext context) {
           children: [
             SvgPicture.asset('assets/delete_big.svg'),
             const SizedBox(height: 16),
-            AppText.blackText14('Вы действительно хотите'),
-            AppText.blackText14(' удалить данное оборудование ?'),
+            const Text('Вы действительно хотите').style14w700(),
+            const Text(' удалить данное оборудование ?').style14w700(),
             const SizedBox(height: 20),
-            AppButton.filledBlackButton('Удалить', onPressed: () {
+            AppFilledButton('Удалить', onPressed: () {
               Navigator.pop(context, true);
             }),
-            AppButton.textButton('Отмена', onPressed: () {
-              Navigator.pop(context, false);
-            }),
+            TextButton(
+              child: const Text('Отменить').style12w300(),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
           ],
         ),
       ),

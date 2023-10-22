@@ -5,7 +5,7 @@ import '../../models/models.dart';
 import '../../other/other.dart';
 import '../models/equipment.dart';
 import '../models/info.dart';
-import '../service/equipment_service.dart';
+import '../repository/equipment_repository.dart';
 
 part 'equipment_bloc.freezed.dart';
 
@@ -14,9 +14,9 @@ part 'equipment_event.dart';
 part 'equipment_state.dart';
 
 class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
-  EquipmentService service;
+  EquipmentRepository repo;
 
-  EquipmentBloc(this.service) : super(const EquipmentState.initial()) {
+  EquipmentBloc(this.repo) : super(const EquipmentState.initial()) {
     on<_InitialEvent>(_onInitialEvent);
     on<_SetFilterEvent>(_onSetFilterEvent);
     on<_GetListEvent>(_onGetListEvent);
@@ -24,6 +24,7 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     on<_GotoDetailScreenEvent>(_onGotoDetailScreenEvent);
     on<_GotoEditScreenEvent>(_onGotoEditScreenEvent);
     on<_GotoPprScreenEvent>(_onGotoPprScreenEvent);
+    on<_GotoCalendarScreenEvent>(_onGotoCalendarScreenEvent);
     on<_AddEquipmentEvent>(_onAddEquipmentEvent);
     on<_UpdateEquipmentEvent>(_onUpdateEquipmentEvent);
     on<_DeleteEquipmentEvent>(_onDeleteEquipmentEvent);
@@ -34,7 +35,7 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     Emitter<EquipmentState> emit,
   ) async {
     emit(const _LoadingState());
-    await service.getEquipmentList().then((value) async {
+    await repo.getEquipmentList().then((value) async {
       emit(_DataState(list: value));
     });
   }
@@ -44,8 +45,8 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     Emitter<EquipmentState> emit,
   ) async {
     emit(const _LoadingState());
-    service.setFilter(event.filter);
-    await service.getEquipmentList().then((value) async {
+    repo.setFilter(event.filter);
+    await repo.getEquipmentList().then((value) async {
       emit(const EquipmentState.ok());
       emit(_DataState(list: value));
     });
@@ -56,7 +57,7 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     Emitter<EquipmentState> emit,
   ) async {
     emit(const _LoadingState());
-    await service.getEquipmentList().then((value) async {
+    await repo.getEquipmentList().then((value) async {
       emit(_DataState(list: value));
     });
   }
@@ -72,7 +73,8 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     _GotoDetailScreenEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    emit(EquipmentState.gotoDetailScreen(equipmentData: event.equipment));
+    final equipment = await repo.getEquipment(event.equipmentid);
+    emit(EquipmentState.gotoDetailScreen(equipmentData: equipment));
   }
 
   void _onGotoEditScreenEvent(
@@ -89,36 +91,36 @@ class EquipmentBloc extends Bloc<EquipmentEvent, EquipmentState> {
     emit(EquipmentState.gotoPprScreen(pprType: event.pprType, equipmentData: event.equipment));
   }
 
+  void _onGotoCalendarScreenEvent(
+      _GotoCalendarScreenEvent event,
+      Emitter<EquipmentState> emit,
+      ) async {
+    emit(EquipmentState.gotoCalendarScreen(equipmentData: event.equipment));
+  }
+
   void _onAddEquipmentEvent(
     _AddEquipmentEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    service.addEquipment(event.equipment);
-    await service.getEquipmentList().then((value) async {
-      emit(const EquipmentState.ok());
-      emit(_DataState(list: value));
-    });
+    repo.addEquipment(event.equipment);
+    emit(const EquipmentState.okAdd());
   }
 
   void _onUpdateEquipmentEvent(
     _UpdateEquipmentEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    await service.updateEquipment(event.equipment);
-    await service.getEquipmentList().then((value) async {
-      emit(const EquipmentState.ok());
-      emit(_DataState(list: value));
-    });
+    emit(const _LoadingState());
+    await repo.updateEquipment(event.equipment);
+    emit(const EquipmentState.okUpdate());
   }
 
   void _onDeleteEquipmentEvent(
     _DeleteEquipmentEvent event,
     Emitter<EquipmentState> emit,
   ) async {
-    await service.deleteEquipment(event.equipment);
-    await service.getEquipmentList().then((value) async {
-      emit(const EquipmentState.ok());
-      emit(_DataState(list: value));
-    });
+    emit(const _LoadingState());
+    await repo.deleteEquipment(event.equipment);
+    emit(const EquipmentState.okDelete());
   }
 }

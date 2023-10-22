@@ -1,3 +1,5 @@
+import 'package:equipment/profile/repository/profile_repository.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 
-import '../profile/service/profile_service.dart';
-import 'other.dart';
+import '../other/other.dart';
 
 class SendMessage extends StatelessWidget {
   SendMessage({Key? key, required this.email}) : super(key: key);
@@ -36,7 +37,7 @@ class SendMessage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 200),
-              AppText.whiteText16('Какой у вас вопрос'),
+              const Text('Какой у вас вопрос').style16w700(color: Colors.white),
               const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -53,19 +54,18 @@ class SendMessage extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         FormBuilderTextField(
-                          name: 'messagge',
-                          decoration: AppDecoration.input('Текст сообщения', '', fillColor: AppColor.profileInputColor),
-                          keyboardType: TextInputType.multiline,
-                          minLines: 5,
-                          maxLines: 6,
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
-                          ])
-                        ),
+                            name: 'messagge',
+                            decoration: AppDecoration.input('Текст сообщения', '', fillColor: AppColor.profileInputColor),
+                            keyboardType: TextInputType.multiline,
+                            minLines: 5,
+                            maxLines: 6,
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
+                            ])),
                         const SizedBox(height: 25),
-                        AppButton.filledInputButton('Отправить', onPressed: () {
+                        AppFilledButton('Отправить', backgroundColor: AppColor.blueColor, onPressed: () {
                           if (formKey.currentState?.saveAndValidate() ?? false) {
-                            final service = GetIt.instance.get<ProfileService>();
+                            final service = GetIt.instance.get<ProfileRepository>();
                             service.sendMail(username, formKey.currentState?.fields['messagge']?.value,
                                 formKey.currentState?.fields['theme']?.value + ' ' + email);
                             Navigator.pop(context);

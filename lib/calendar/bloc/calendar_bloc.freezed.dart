@@ -486,7 +486,6 @@ mixin _$CalendarState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
@@ -499,7 +498,6 @@ mixin _$CalendarState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
@@ -511,7 +509,6 @@ mixin _$CalendarState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
@@ -524,7 +521,6 @@ mixin _$CalendarState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
@@ -535,7 +531,6 @@ mixin _$CalendarState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
@@ -546,7 +541,6 @@ mixin _$CalendarState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
@@ -614,7 +608,6 @@ class _$InitialStateImpl implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
@@ -630,7 +623,6 @@ class _$InitialStateImpl implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
@@ -645,7 +637,6 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
@@ -664,7 +655,6 @@ class _$InitialStateImpl implements _InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
@@ -678,7 +668,6 @@ class _$InitialStateImpl implements _InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
@@ -692,7 +681,6 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
@@ -750,7 +738,6 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
@@ -766,7 +753,6 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
@@ -781,7 +767,6 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
@@ -800,7 +785,6 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
@@ -814,7 +798,6 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
@@ -828,7 +811,6 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
@@ -844,142 +826,6 @@ class _$LoadingStateImpl implements _LoadingState {
 
 abstract class _LoadingState implements CalendarState {
   const factory _LoadingState() = _$LoadingStateImpl;
-}
-
-/// @nodoc
-abstract class _$$AdditionStateImplCopyWith<$Res> {
-  factory _$$AdditionStateImplCopyWith(
-          _$AdditionStateImpl value, $Res Function(_$AdditionStateImpl) then) =
-      __$$AdditionStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AdditionStateImplCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$AdditionStateImpl>
-    implements _$$AdditionStateImplCopyWith<$Res> {
-  __$$AdditionStateImplCopyWithImpl(
-      _$AdditionStateImpl _value, $Res Function(_$AdditionStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AdditionStateImpl implements _AdditionState {
-  const _$AdditionStateImpl();
-
-  @override
-  String toString() {
-    return 'CalendarState.addition()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AdditionStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() addition,
-    required TResult Function() ok,
-    required TResult Function(String error) error,
-    required TResult Function(DateTime date, List<CalendarData>? list) data,
-    required TResult Function(
-            EquipmentModel equipment, List<CalendarData>? list)
-        equipmentData,
-  }) {
-    return addition();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? addition,
-    TResult? Function()? ok,
-    TResult? Function(String error)? error,
-    TResult? Function(DateTime date, List<CalendarData>? list)? data,
-    TResult? Function(EquipmentModel equipment, List<CalendarData>? list)?
-        equipmentData,
-  }) {
-    return addition?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? addition,
-    TResult Function()? ok,
-    TResult Function(String error)? error,
-    TResult Function(DateTime date, List<CalendarData>? list)? data,
-    TResult Function(EquipmentModel equipment, List<CalendarData>? list)?
-        equipmentData,
-    required TResult orElse(),
-  }) {
-    if (addition != null) {
-      return addition();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initial,
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
-    required TResult Function(_OkState value) ok,
-    required TResult Function(_ErrorState value) error,
-    required TResult Function(_DataState value) data,
-    required TResult Function(_EquipmentDataState value) equipmentData,
-  }) {
-    return addition(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialState value)? initial,
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
-    TResult? Function(_OkState value)? ok,
-    TResult? Function(_ErrorState value)? error,
-    TResult? Function(_DataState value)? data,
-    TResult? Function(_EquipmentDataState value)? equipmentData,
-  }) {
-    return addition?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initial,
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
-    TResult Function(_OkState value)? ok,
-    TResult Function(_ErrorState value)? error,
-    TResult Function(_DataState value)? data,
-    TResult Function(_EquipmentDataState value)? equipmentData,
-    required TResult orElse(),
-  }) {
-    if (addition != null) {
-      return addition(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AdditionState implements CalendarState {
-  const factory _AdditionState() = _$AdditionStateImpl;
 }
 
 /// @nodoc
@@ -1022,7 +868,6 @@ class _$OkStateImpl implements _OkState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
@@ -1038,7 +883,6 @@ class _$OkStateImpl implements _OkState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
@@ -1053,7 +897,6 @@ class _$OkStateImpl implements _OkState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
@@ -1072,7 +915,6 @@ class _$OkStateImpl implements _OkState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
@@ -1086,7 +928,6 @@ class _$OkStateImpl implements _OkState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
@@ -1100,7 +941,6 @@ class _$OkStateImpl implements _OkState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
@@ -1184,7 +1024,6 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
@@ -1200,7 +1039,6 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
@@ -1215,7 +1053,6 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
@@ -1234,7 +1071,6 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
@@ -1248,7 +1084,6 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
@@ -1262,7 +1097,6 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
@@ -1369,7 +1203,6 @@ class _$DataStateImpl implements _DataState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
@@ -1385,7 +1218,6 @@ class _$DataStateImpl implements _DataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
@@ -1400,7 +1232,6 @@ class _$DataStateImpl implements _DataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
@@ -1419,7 +1250,6 @@ class _$DataStateImpl implements _DataState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
@@ -1433,7 +1263,6 @@ class _$DataStateImpl implements _DataState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
@@ -1447,7 +1276,6 @@ class _$DataStateImpl implements _DataState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,
@@ -1569,7 +1397,6 @@ class _$EquipmentDataStateImpl implements _EquipmentDataState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addition,
     required TResult Function() ok,
     required TResult Function(String error) error,
     required TResult Function(DateTime date, List<CalendarData>? list) data,
@@ -1585,7 +1412,6 @@ class _$EquipmentDataStateImpl implements _EquipmentDataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addition,
     TResult? Function()? ok,
     TResult? Function(String error)? error,
     TResult? Function(DateTime date, List<CalendarData>? list)? data,
@@ -1600,7 +1426,6 @@ class _$EquipmentDataStateImpl implements _EquipmentDataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addition,
     TResult Function()? ok,
     TResult Function(String error)? error,
     TResult Function(DateTime date, List<CalendarData>? list)? data,
@@ -1619,7 +1444,6 @@ class _$EquipmentDataStateImpl implements _EquipmentDataState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_AdditionState value) addition,
     required TResult Function(_OkState value) ok,
     required TResult Function(_ErrorState value) error,
     required TResult Function(_DataState value) data,
@@ -1633,7 +1457,6 @@ class _$EquipmentDataStateImpl implements _EquipmentDataState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_AdditionState value)? addition,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_ErrorState value)? error,
     TResult? Function(_DataState value)? data,
@@ -1647,7 +1470,6 @@ class _$EquipmentDataStateImpl implements _EquipmentDataState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_AdditionState value)? addition,
     TResult Function(_OkState value)? ok,
     TResult Function(_ErrorState value)? error,
     TResult Function(_DataState value)? data,

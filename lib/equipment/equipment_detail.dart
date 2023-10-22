@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,25 +42,26 @@ class EquipmentDetail extends StatelessWidget {
                             ? Image.asset('assets/eq.png')
                             : SizedBox(
                                 height: 170,
-                                child: Image.network(fit: BoxFit.contain, imageUrl + equipmentData.equipment!.image!)),
+                                child: Image.network(fit: BoxFit.contain, imageUrl + equipmentData.equipment!.image!,
+                                    errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                                  return SvgPicture.asset('assets/error.svg');
+                                })),
                         SvgPicture.asset(status(equipmentData.equipment!.status!)),
                       ],
                     ),
                   ),
                   const SizedBox(height: 16),
-                  AppTextBox.textBox(equipmentData.equipment!.name1!),
+                  TextBox(child: Text(equipmentData.equipment!.name1!).style13w500()),
                   const SizedBox(height: 16),
-                  AppTextBox.textBox(equipmentData.equipment!.name2!),
+                  TextBox(child: Text(equipmentData.equipment!.name2!).style13w500()),
                   const SizedBox(height: 16),
-                  AppText.text14('Вид оборудования'),
+                  const Text('Вид оборудования').style14w700(),
                   const SizedBox(height: 8),
-                  AppTextBox.textBox(equipmentData.equipment!.view!),
+                  TextBox(child: Text(equipmentData.equipment!.view!).style13w500()),
                   const SizedBox(height: 16),
-                  AppText.text14('Участок'),
+                  const Text('Участок').style14w700(),
                   const SizedBox(height: 16),
-                  AppTextBox.textBox(equipmentData.equipment!.plot!),
-                  const SizedBox(height: 8),
-                  AppText.text14('Работа/часы'),
+                  TextBox(child: Text(equipmentData.equipment!.plot!).style13w500()),
                   FormBuilderSwitch(
                     title: const Text('Работа/часы'),
                     name: 'proftype',
@@ -69,44 +70,35 @@ class EquipmentDetail extends StatelessWidget {
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                     ),
-                    onChanged: (value) {
-                      showProfType.value = value!;
-                    },
                   ),
-                  ValueListenableBuilder(
-                      valueListenable: showProfType,
-                      builder: (BuildContext context, bool value, Widget? child) {
-                        if (value) {
-//                        return AppTextBox.textBox('Текущее значение работа/часов');
-                          return AppTextBox.textBox(equipmentData.equipment!.valuex.toString());
-                        } else {
-                          return const SizedBox();
-                        }
-                      }),
+                  TextBox(child: Text(equipmentData.equipment!.valuex.toString()).style13w500()),
                   const SizedBox(height: 16),
-                  AppText.text14('Информация'),
+                  const Text('Информация').style16w700(),
                   const SizedBox(height: 16),
                   InfoBox(equipmentData.infoList!),
                   const SizedBox(height: 8),
                   equipmentData.equipment!.proftype!
-                      ? AppButton.filledLightBlueButton('ППР Работы по работа/часам', onPressed: () {
+                      ? AppFilledButton('ППР Работы по работа/часам',
+                          backgroundColor: AppColor.lightBlueColor, textColor: AppColor.blueColor, onPressed: () {
                           BlocProvider.of<EquipmentBloc>(context)
                               .add(EquipmentEvent.gotoPprScreen(PprType.workTime, equipmentData));
                         })
                       : const SizedBox(),
                   const SizedBox(height: 16),
-                  AppButton.filledLightBlueButton('ППР Работы по времени', onPressed: () {
+                  AppFilledButton('ППР Работы по времени',
+                      backgroundColor: AppColor.lightBlueColor, textColor: AppColor.blueColor, onPressed: () {
                     BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoPprScreen(PprType.time, equipmentData));
                   }),
                   const SizedBox(height: 16),
-                  AppButton.filledLightBlueButton('План работ', onPressed: () {}),
+                  AppFilledButton('План работ', backgroundColor: AppColor.lightBlueColor, textColor: AppColor.blueColor,
+                      onPressed: () {
+                    BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoCalendarScreen(equipmentData));
+                  }),
                   const SizedBox(height: 16),
-                  AppButton.filledButton('Редактировать', onPressed: () {
+                  AppFilledButton('Редактировать', onPressed: () {
                     BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoEditScreen(equipmentData));
                   }),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
@@ -118,8 +110,8 @@ class EquipmentDetail extends StatelessWidget {
 }
 
 class InfoBox extends StatelessWidget {
-  InfoBox(this.list, {Key? key}) : super(key: key);
-  List<InfoModel> list;
+  const InfoBox(this.list, {Key? key}) : super(key: key);
+  final List<InfoModel> list;
 
   @override
   Widget build(BuildContext context) {

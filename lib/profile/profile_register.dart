@@ -1,7 +1,7 @@
-import 'package:equipment/profile/service/profile_service.dart';
+import 'package:equipment/profile/repository/profile_repository.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equipment/widgets/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
@@ -15,7 +15,7 @@ import 'bloc/profile_bloc.dart';
 class ProfileRegister extends StatelessWidget {
   ProfileRegister({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormBuilderState>();
-  final service = GetIt.instance.get<ProfileService>();
+  final service = GetIt.instance.get<ProfileRepository>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +38,8 @@ class ProfileRegister extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 100),
-              AppText.whiteText16('Регистрация'),
-              const SizedBox(
-                height: 30,
-              ),
+              const Text('Регистрация').style16w700(color: Colors.white),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: FormBuilder(
@@ -51,7 +49,8 @@ class ProfileRegister extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'name',
                           initialValue: service.profile.name,
-                          decoration: AppDecoration.input('Название компании*', 'assets/company.svg', fillColor: AppColor.profileInputColor),
+                          decoration: AppDecoration.input('Название компании*', 'assets/company.svg',
+                              fillColor: AppColor.profileInputColor),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                           ]),
@@ -80,7 +79,8 @@ class ProfileRegister extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'password',
                           initialValue: service.profile.password,
-                          decoration: AppDecoration.input('Пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
+                          decoration:
+                              AppDecoration.input('Пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
                           obscureText: true,
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
@@ -91,13 +91,14 @@ class ProfileRegister extends StatelessWidget {
                         FormBuilderTextField(
                           name: 'confirm_password',
                           initialValue: service.profile.password,
-                          decoration: AppDecoration.input('Подвертдить пароль*', 'assets/password.svg', fillColor: AppColor.profileInputColor),
+                          decoration: AppDecoration.input('Подвертдить пароль*', 'assets/password.svg',
+                              fillColor: AppColor.profileInputColor),
                           obscureText: true,
                           validator: (value) =>
                               formKey.currentState?.fields['password']?.value != value ? 'Пароли не равны' : null,
                         ),
                         const SizedBox(height: 25),
-                        AppButton.filledInputButton('Регистрация', onPressed: () {
+                        AppFilledButton('Регистрация', backgroundColor: AppColor.blueColor, onPressed: () {
                           if (formKey.currentState?.saveAndValidate() ?? false) {
                             BlocProvider.of<ProfileBloc>(context).add(ProfileEvent.saveProfile(
                                 name: formKey.currentState?.fields['name']?.value,
@@ -111,7 +112,6 @@ class ProfileRegister extends StatelessWidget {
                                 });
                             BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.gotoLoginScreen());
                           }
-                          print(formKey.currentState?.value.toString());
                         }),
                         const SizedBox(height: 16),
                         RichText(

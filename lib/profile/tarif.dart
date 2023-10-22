@@ -1,3 +1,4 @@
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,21 +25,29 @@ class SelectTarif extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 290),
-                  AppText.blackText14('Тарифы'),
+                  const Text('Тарифы').style14w700(),
                   const SizedBox(height: 16),
                   ValueListenableBuilder(
                       valueListenable: radio,
                       builder: (BuildContext context, bool value, Widget? child) {
                         return Column(
                           children: [
-                            Element('Бесплатно', 'Начальный', radio.value, () {if (!radio.value) {radio.value = !radio.value;}}),
+                            Element('Бесплатно', 'Начальный', radio.value, () {
+                              if (!radio.value) {
+                                radio.value = !radio.value;
+                              }
+                            }),
                             const SizedBox(height: 16),
-                            Element('700р./мес.', 'Полный', !radio.value, () {if (radio.value) {radio.value = !radio.value;}}),
+                            Element('700р./мес.', 'Полный', !radio.value, () {
+                              if (radio.value) {
+                                radio.value = !radio.value;
+                              }
+                            }),
                           ],
                         );
                       }),
                   const SizedBox(height: 25),
-                  AppButton.filledBlackButton('Подключить', onPressed: () {
+                  AppFilledButton('Подключить', onPressed: () {
                     Navigator.pop(context, radio.value ? 'Начальный' : 'Полный');
                   }),
                   const SizedBox(height: 16),

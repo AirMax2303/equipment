@@ -8,6 +8,8 @@ class EquipmentState with _$EquipmentState {
 
   const factory EquipmentState.ok() = _OkState;
 
+  const factory EquipmentState.okAdd() = _OkAddState;
+
   const factory EquipmentState.okUpdate() = _OkUpdateState;
 
   const factory EquipmentState.okDelete() = _OkDeleteState;
@@ -30,6 +32,10 @@ class EquipmentState with _$EquipmentState {
     required PprType pprType,
     required Equipment equipmentData,
   }) = _GotoPprScreenState;
+
+  const factory EquipmentState.gotoCalendarScreen({
+    required Equipment equipmentData,
+  }) = _GotoCalendarScreenState;
 
   const factory EquipmentState.data({required List<Equipment> list}) = _DataState;
 }

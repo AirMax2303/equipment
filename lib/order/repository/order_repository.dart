@@ -1,20 +1,20 @@
 import 'package:equipment/models/models.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../profile/service/profile_service.dart';
-import '../../repository/repository.dart';
+import '../../profile/repository/profile_repository.dart';
+import '../../service/service.dart';
 import '../model/order.dart';
 
-class OrderService {
-  final AppRepository repo;
+class OrderRepository {
+  final AppService service;
 
-  OrderService(this.repo);
+  OrderRepository(this.service);
 
   Future<void> addOrder(OrderModel value) async {
-    var service = GetIt.instance.get<ProfileService>();
-    value = value.copyWith(clientid: service.profile.id);
-    await repo.addOrder(value);
-    await repo.addWork(WorkModel(
+    var profileService = GetIt.instance.get<ProfileRepository>();
+    value = value.copyWith(clientid: profileService.profile.id);
+    await service.addOrder(value);
+    await service.addWork(WorkModel(
         pprid: value.id,
         equipmentid: value.equipmentid,
         partsid: '',

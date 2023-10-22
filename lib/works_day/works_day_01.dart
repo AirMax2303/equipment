@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:equipment/works_day/service/work_day_service.dart';
+import 'package:equipment/other/other.dart';
+import 'package:equipment/works_day/repository/work_day_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -8,8 +9,8 @@ import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import 'package:equipment/widgets/text_extension.dart';
 import '../calendar/model/calendar_model.dart';
-import '../other/other.dart';
 import '../widgets/appbar.dart';
 import '../widgets/dialog.dart';
 import '../widgets/navigator.dart';
@@ -27,7 +28,7 @@ class WorkDayPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<WorkDayBloc>(
       create: (BuildContext context) =>
-          WorkDayBloc(GetIt.instance.get<WorkDayService>(), false)..add(WorkDayEvent.getList(date!)),
+          WorkDayBloc(GetIt.instance.get<WorkDayRepository>(), false)..add(WorkDayEvent.getList(date!)),
       child: BlocConsumer<WorkDayBloc, WorkDayState>(
         listener: (context, state) {
           state.mapOrNull(
@@ -51,7 +52,7 @@ class WorkDayPage extends StatelessWidget {
         builder: (context, state) {
           return state.maybeMap(
               loading: (_) => const CircularProgressIndicator(),
-              data: (data) => WorksDay01(data.list!),
+              data: (data) => WorksDay01(date, data.list!),
               orElse: () => const NoNotification());
         },
       ),
@@ -60,7 +61,8 @@ class WorkDayPage extends StatelessWidget {
 }
 
 class WorksDay01 extends StatelessWidget {
-  WorksDay01(this.list, {Key? key}) : super(key: key);
+  WorksDay01(this.date, this.list, {Key? key}) : super(key: key);
+  final DateTime? date;
   final List<CalendarData> list;
   final ItemScrollController scrollController = ItemScrollController();
   final ItemPositionsListener itemPositionsListener = ItemPositionsListener.create();
@@ -71,7 +73,7 @@ class WorksDay01 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const AppNavigationBar(Nav.works),
-      appBar: appBar(context, 'Работы', {}, null),
+      appBar: appBar(context, 'Работы на ${DateFormat('dd.MM.yyyy').format(date!)}', {}, null),
       body: SafeArea(
           child: Container(
         color: Colors.white,
@@ -101,7 +103,7 @@ class WorksDay01 extends StatelessWidget {
                               calendar: list[index],
                               selected: index == current.value,
                               index: index,
-                              arrow: (value) {
+                              onArrow: (value) {
                                 current.value = value;
                               }),
                           onTap: () {
@@ -116,12 +118,12 @@ class WorksDay01 extends StatelessWidget {
 }
 
 class WordDayCard extends StatelessWidget {
-  const WordDayCard({Key? key, required this.calendar, required this.selected, required this.index, required this.arrow})
+  const WordDayCard({Key? key, required this.calendar, required this.selected, required this.index, required this.onArrow})
       : super(key: key);
   final CalendarData calendar;
   final bool selected;
   final int index;
-  final ItemCallback arrow;
+  final ItemCallback onArrow;
 
   @override
   Widget build(BuildContext context) {
@@ -129,10 +131,6 @@ class WordDayCard extends StatelessWidget {
     return Card(
         elevation: 0,
         color: AppColor.backgroundColor,
-//        shape: RoundedRectangleBorder(
-//          side: BorderSide(color: selected ? Colors.black : AppColor.backgroundColor),
-//          borderRadius: const BorderRadius.all(Radius.circular(0)),
-//        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -145,7 +143,7 @@ class WordDayCard extends StatelessWidget {
                   calendar.list.length > 2
                       ? IconButton(
                           onPressed: () {
-                            arrow(index);
+                            onArrow(index);
                           },
                           icon: selected ? SvgPicture.asset('assets/arrow_up.svg') : SvgPicture.asset('assets/arrow_down.svg'),
                           color: Colors.white)
@@ -204,6 +202,21 @@ class WordDayCardWorks extends StatelessWidget {
                           (l) => context.read<WorkDayBloc>().add(WorkDayEvent.saveWorkTime(calendar.list[index], l)),
                           (r) => context.read<WorkDayBloc>().add(WorkDayEvent.changeDate(calendar.list[index], r)),
                         ));
+                  } else if (calendar.list[index].worktype == 2) {
+                    showDialog<Either<int, DateTime>>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return dialogSaveWorkTime(context, calendar, index);
+                        }).then((value) {
+                      if (value != null) {
+                        value.fold(
+                          (l) => context.read<WorkDayBloc>().add(WorkDayEvent.completeWorkTime(calendar.list[index], l)),
+                          (r) => context.read<WorkDayBloc>().add(WorkDayEvent.changeDate(calendar.list[index], r)),
+                        );
+                      } else {
+
+                      }
+                    });
                   } else {
                     showDialog<Either<bool, DateTime>>(
                         context: context,
@@ -240,6 +253,15 @@ class WordDayCardWorks extends StatelessWidget {
                         return dialogSaveWorkTime(context, calendar, index);
                       }).then((value) => value?.fold(
                         (l) => context.read<WorkDayBloc>().add(WorkDayEvent.saveWorkTime(calendar.list[index], l)),
+                        (r) => context.read<WorkDayBloc>().add(WorkDayEvent.changeDate(calendar.list[index], r)),
+                      ));
+                } else if (calendar.list[index].worktype == 2) {
+                  showDialog<Either<int, DateTime>>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return dialogSaveWorkTime(context, calendar, index);
+                      }).then((value) => value?.fold(
+                        (l) => context.read<WorkDayBloc>().add(WorkDayEvent.completeWorkTime(calendar.list[index], l)),
                         (r) => context.read<WorkDayBloc>().add(WorkDayEvent.changeDate(calendar.list[index], r)),
                       ));
                 } else {

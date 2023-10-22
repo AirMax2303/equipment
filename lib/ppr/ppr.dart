@@ -1,11 +1,10 @@
 import 'package:equipment/equipment/bloc/equipment_bloc.dart';
 import 'package:equipment/equipment/models/equipment.dart';
 import 'package:equipment/ppr/bloc/ppr_bloc.dart';
-import 'package:equipment/ppr/ppr_3.dart';
 import 'package:equipment/ppr/ppr_5.dart';
 import 'package:equipment/ppr/ppr_8.dart';
 import 'package:equipment/ppr/ppr_9.dart';
-import 'package:equipment/ppr/service/ppr_service.dart';
+import 'package:equipment/ppr/repository/ppr_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -13,7 +12,7 @@ import 'package:get_it/get_it.dart';
 import '../equipment/equipment_page.dart';
 import '../main_chapter/main_page.dart';
 import '../other/other.dart';
-import '../template/template01.dart';
+import '../template/screens.dart';
 import '../widgets/dialog.dart';
 
 //ignore: must_be_immutable
@@ -27,7 +26,7 @@ class PprPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<PprBloc>(
       create: (context) =>
-          PprBloc(GetIt.instance.get<PprService>())..add(PprEvent.initial(pprType, equipmentData!.equipment!.id!)),
+          PprBloc(GetIt.instance.get<PprRepository>())..add(PprEvent.initial(pprType, equipmentData!.equipment!.id!)),
       child: BlocConsumer<PprBloc, PprState>(listener: (context, state) {
         state.mapOrNull(
           ok: (data) => showDialog<bool>(
@@ -46,7 +45,7 @@ class PprPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => EquipmentPage(
-                            event: EquipmentEvent.gotoDetailScreen(equipmentData!),
+                            event: EquipmentEvent.gotoDetailScreen(equipmentData!.equipment!.id!),
                           )));
             } else {
               Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
@@ -55,13 +54,15 @@ class PprPage extends StatelessWidget {
         );
       }, builder: (context, state) {
         return state.maybeMap(
-          loading: (_) => const EmptyScreen(),
+          initial: (_)  => const LoadingScreen(),
+          loading: (_) => const LoadingScreen(),
           data: (data) =>
-              Ppr5Screen(pprType: data.pprType!, equipmentid: data.equipmentid!, list: data.list!, lastState: lastState),
+              Ppr5Screen(pprType: data.pprType!, equipment: equipmentData!.equipment, list: data.list!, lastState: lastState),
           addScreen: (data) => Ppr9Screen(equipment: equipmentData!.equipment, pprType: pprType),
           editScreen: (data) => Ppr8Screen(ppr: data.ppr),
-          ppr3Screen: (data) => Ppr3Screen(pprType: pprType, equipmentid: data.equipmentid),
-          orElse: () =>  const EmptyScreen(),
+//          ppr3Screen: (data) => Ppr3Screen(pprType: pprType, equipmentid: data.equipmentid),
+          error: (_) => const ErrorScreen(),
+          orElse: () => const ElseScreen(),
         );
       }),
     );

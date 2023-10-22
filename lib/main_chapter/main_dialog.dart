@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:equipment/widgets/text_extension.dart';
 import '../other/other.dart';
 import '../widgets/dialog.dart';
 import '../widgets/widgets.dart';
@@ -42,7 +43,7 @@ Dialog dialogPrioritet(BuildContext context, MainChapterData data) {
             ],
           ),
           const SizedBox(height: 16),
-          AppButton.filledBlackButton('Выполнить', onPressed: () {
+          AppFilledButton('Выполнить', onPressed: () {
             Navigator.pop(context, left<bool, DateTime>(true));
           }),
           const SizedBox(height: 16),
@@ -100,7 +101,7 @@ Dialog dialogOrder(BuildContext context, MainChapterData data) {
             ],
           ),
           const SizedBox(height: 16),
-          AppButton.filledBlackButton('Выполнить', onPressed: () {
+          AppFilledButton('Выполнить', onPressed: () {
             Navigator.pop(context, true);
           }),
         ]),
@@ -147,7 +148,7 @@ Dialog dialogNapominanie(BuildContext context, MainChapterData data) {
             ],
           ),
           const SizedBox(height: 16),
-          AppButton.filledBlackButton('Перейти к работе', onPressed: () {
+          AppFilledButton('Перейти к работе', onPressed: () {
             Navigator.pop(context, 'execute');
           }),
         ]),

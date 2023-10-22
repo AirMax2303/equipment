@@ -1,4 +1,4 @@
-import 'package:equipment/other/other.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,7 +34,7 @@ Dialog dialog13(BuildContext context, PprModel ppr) {
                   IconButton(
                       icon: SvgPicture.asset('assets/close.svg'),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context, null);
                       })
                 ],
               ),
@@ -121,13 +121,9 @@ Dialog dialog13(BuildContext context, PprModel ppr) {
                       },
                     ),
                     const SizedBox(height: 16),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: AppButton.filledBlackButton('Сохранить', onPressed: () {
-                        Navigator.pop(context, ppr);
-                      }),
-                    ),
+                    AppFilledButton('Сохранить', onPressed: () {
+                      Navigator.pop(context, ppr);
+                    }),
                   ],
                 ),
               ),
@@ -162,7 +158,7 @@ Dialog dialog15(BuildContext context, PprModel ppr) {
                   IconButton(
                       icon: SvgPicture.asset('assets/close.svg'),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context, null);
                       })
                 ],
               ),
@@ -209,13 +205,9 @@ Dialog dialog15(BuildContext context, PprModel ppr) {
                       },
                     ),
                     const SizedBox(height: 16),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: AppButton.filledBlackButton('Сохранить', onPressed: () {
-                        Navigator.pop(context, ppr);
-                      }),
-                    ),
+                    AppFilledButton('Сохранить', onPressed: () {
+                      Navigator.pop(context, ppr);
+                    }),
                   ],
                 ),
               ),
@@ -250,7 +242,7 @@ Dialog selectTimer(BuildContext context, PprModel ppr) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SvgPicture.asset('assets/timer.svg'),
-                  AppText.blackText14('Настройка таймера'),
+                  const Text('Настройка таймера').style14w700(),
                   IconButton(
                       icon: SvgPicture.asset('assets/close.svg'),
                       onPressed: () {
@@ -276,7 +268,7 @@ Dialog selectTimer(BuildContext context, PprModel ppr) {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 16),
-                          AppText.blackText16('Повторять каждый'),
+                          const Text('Повторять каждый').style16w500(),
                           const SizedBox(height: 16),
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -313,7 +305,7 @@ Dialog selectTimer(BuildContext context, PprModel ppr) {
                     }),
               ),
               const SizedBox(height: 16),
-              ppr.proftype! ? AppText.blackText16('Интервал/часы') : AppText.blackText16('Интервал'),
+              ppr.proftype! ? const Text('Интервал/часы').style16w500() : const Text('Интервал').style16w500(),
               const SizedBox(height: 16),
               FormBuilder(
                 key: formKey,
@@ -341,7 +333,7 @@ Dialog selectTimer(BuildContext context, PprModel ppr) {
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AppText.blackText16('Начиная с/часы'),
+                              const Text('Начиная с/часы').style16w500(),
                               FormBuilderTextField(
                                 name: 'begin',
                                 initialValue: ppr.beginint.toString(),
@@ -392,7 +384,7 @@ Dialog selectTimer(BuildContext context, PprModel ppr) {
                 ),
               ),
               const SizedBox(height: 16),
-              AppButton.filledBlackButton('Сохранить', onPressed: () {
+              AppFilledButton('Сохранить', onPressed: () {
                 if (formKey.currentState?.saveAndValidate() ?? false) {
                   Navigator.pop(context, ppr);
                 }
@@ -406,12 +398,11 @@ Dialog selectTimer(BuildContext context, PprModel ppr) {
   );
 }
 
-//ignore: must_be_immutable
 class TimerButton extends StatelessWidget {
-  TimerButton({Key? key, required this.text, required this.fill, required this.onPressed}) : super(key: key);
+  const TimerButton({Key? key, required this.text, required this.fill, required this.onPressed}) : super(key: key);
   final String text;
   final bool fill;
-  VoidCallback? onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -420,7 +411,12 @@ class TimerButton extends StatelessWidget {
       height: 40,
       child: FilledButton(
         onPressed: onPressed,
-        style: AppButtonStyle.stdButtonStyle(color: fill ? AppColor.blueColor : AppColor.lightBlueColor),
+        style: TextButton.styleFrom(
+          elevation: 0,
+          backgroundColor: fill ? AppColor.blueColor : AppColor.lightBlueColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) // <-- Radius
+              ),
+        ),
         child: Text(
           text,
           style: fill
@@ -434,20 +430,21 @@ class TimerButton extends StatelessWidget {
 
 //ignore: must_be_immutable
 class WorkTimeButton extends StatelessWidget {
-  WorkTimeButton({
-    Key? key,
-    required this.text,
-    required this.type,
-  }) : super(key: key);
-  String text;
-  bool type;
+  const WorkTimeButton({Key? key, required this.text, required this.type}) : super(key: key);
+  final String text;
+  final bool type;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: (MediaQuery.of(context).size.width - 80) / 2 + 2,
       child: FilledButton(
-        style: AppButtonStyle.stdButtonStyle(color: type ? AppColor.blueColor : AppColor.lightBlueColor),
+        style: TextButton.styleFrom(
+          elevation: 0,
+          backgroundColor: type ? AppColor.blueColor : AppColor.lightBlueColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) // <-- Radius
+              ),
+        ),
         onPressed: () {},
         child: Text(
           text,

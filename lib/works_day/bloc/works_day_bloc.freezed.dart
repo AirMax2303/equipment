@@ -21,6 +21,7 @@ mixin _$WorkDayEvent {
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
     required TResult Function(WorkModel work) completeWork,
+    required TResult Function(WorkModel work, int value) completeWorkTime,
     required TResult Function(WorkModel work, int value) saveWorkTime,
     required TResult Function(WorkModel work, DateTime newDate) changeDate,
   }) =>
@@ -30,6 +31,7 @@ mixin _$WorkDayEvent {
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
     TResult? Function(WorkModel work)? completeWork,
+    TResult? Function(WorkModel work, int value)? completeWorkTime,
     TResult? Function(WorkModel work, int value)? saveWorkTime,
     TResult? Function(WorkModel work, DateTime newDate)? changeDate,
   }) =>
@@ -39,6 +41,7 @@ mixin _$WorkDayEvent {
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
     TResult Function(WorkModel work)? completeWork,
+    TResult Function(WorkModel work, int value)? completeWorkTime,
     TResult Function(WorkModel work, int value)? saveWorkTime,
     TResult Function(WorkModel work, DateTime newDate)? changeDate,
     required TResult orElse(),
@@ -49,6 +52,7 @@ mixin _$WorkDayEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
     required TResult Function(_CompleteWorkEvent value) completeWork,
+    required TResult Function(_CompleteWorkTimeEvent value) completeWorkTime,
     required TResult Function(_SaveWorkTimeEvent value) saveWorkTime,
     required TResult Function(_ChangeDateEvent value) changeDate,
   }) =>
@@ -58,6 +62,7 @@ mixin _$WorkDayEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
     TResult? Function(_CompleteWorkEvent value)? completeWork,
+    TResult? Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult? Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult? Function(_ChangeDateEvent value)? changeDate,
   }) =>
@@ -67,6 +72,7 @@ mixin _$WorkDayEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
     TResult Function(_CompleteWorkEvent value)? completeWork,
+    TResult Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult Function(_ChangeDateEvent value)? changeDate,
     required TResult orElse(),
@@ -133,6 +139,7 @@ class _$InitialEventImpl implements _InitialEvent {
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
     required TResult Function(WorkModel work) completeWork,
+    required TResult Function(WorkModel work, int value) completeWorkTime,
     required TResult Function(WorkModel work, int value) saveWorkTime,
     required TResult Function(WorkModel work, DateTime newDate) changeDate,
   }) {
@@ -145,6 +152,7 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
     TResult? Function(WorkModel work)? completeWork,
+    TResult? Function(WorkModel work, int value)? completeWorkTime,
     TResult? Function(WorkModel work, int value)? saveWorkTime,
     TResult? Function(WorkModel work, DateTime newDate)? changeDate,
   }) {
@@ -157,6 +165,7 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
     TResult Function(WorkModel work)? completeWork,
+    TResult Function(WorkModel work, int value)? completeWorkTime,
     TResult Function(WorkModel work, int value)? saveWorkTime,
     TResult Function(WorkModel work, DateTime newDate)? changeDate,
     required TResult orElse(),
@@ -173,6 +182,7 @@ class _$InitialEventImpl implements _InitialEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
     required TResult Function(_CompleteWorkEvent value) completeWork,
+    required TResult Function(_CompleteWorkTimeEvent value) completeWorkTime,
     required TResult Function(_SaveWorkTimeEvent value) saveWorkTime,
     required TResult Function(_ChangeDateEvent value) changeDate,
   }) {
@@ -185,6 +195,7 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
     TResult? Function(_CompleteWorkEvent value)? completeWork,
+    TResult? Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult? Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult? Function(_ChangeDateEvent value)? changeDate,
   }) {
@@ -197,6 +208,7 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
     TResult Function(_CompleteWorkEvent value)? completeWork,
+    TResult Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult Function(_ChangeDateEvent value)? changeDate,
     required TResult orElse(),
@@ -279,6 +291,7 @@ class _$GetListEventImpl implements _GetListEvent {
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
     required TResult Function(WorkModel work) completeWork,
+    required TResult Function(WorkModel work, int value) completeWorkTime,
     required TResult Function(WorkModel work, int value) saveWorkTime,
     required TResult Function(WorkModel work, DateTime newDate) changeDate,
   }) {
@@ -291,6 +304,7 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
     TResult? Function(WorkModel work)? completeWork,
+    TResult? Function(WorkModel work, int value)? completeWorkTime,
     TResult? Function(WorkModel work, int value)? saveWorkTime,
     TResult? Function(WorkModel work, DateTime newDate)? changeDate,
   }) {
@@ -303,6 +317,7 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
     TResult Function(WorkModel work)? completeWork,
+    TResult Function(WorkModel work, int value)? completeWorkTime,
     TResult Function(WorkModel work, int value)? saveWorkTime,
     TResult Function(WorkModel work, DateTime newDate)? changeDate,
     required TResult orElse(),
@@ -319,6 +334,7 @@ class _$GetListEventImpl implements _GetListEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
     required TResult Function(_CompleteWorkEvent value) completeWork,
+    required TResult Function(_CompleteWorkTimeEvent value) completeWorkTime,
     required TResult Function(_SaveWorkTimeEvent value) saveWorkTime,
     required TResult Function(_ChangeDateEvent value) changeDate,
   }) {
@@ -331,6 +347,7 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
     TResult? Function(_CompleteWorkEvent value)? completeWork,
+    TResult? Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult? Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult? Function(_ChangeDateEvent value)? changeDate,
   }) {
@@ -343,6 +360,7 @@ class _$GetListEventImpl implements _GetListEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
     TResult Function(_CompleteWorkEvent value)? completeWork,
+    TResult Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult Function(_ChangeDateEvent value)? changeDate,
     required TResult orElse(),
@@ -441,6 +459,7 @@ class _$CompleteWorkEventImpl implements _CompleteWorkEvent {
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
     required TResult Function(WorkModel work) completeWork,
+    required TResult Function(WorkModel work, int value) completeWorkTime,
     required TResult Function(WorkModel work, int value) saveWorkTime,
     required TResult Function(WorkModel work, DateTime newDate) changeDate,
   }) {
@@ -453,6 +472,7 @@ class _$CompleteWorkEventImpl implements _CompleteWorkEvent {
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
     TResult? Function(WorkModel work)? completeWork,
+    TResult? Function(WorkModel work, int value)? completeWorkTime,
     TResult? Function(WorkModel work, int value)? saveWorkTime,
     TResult? Function(WorkModel work, DateTime newDate)? changeDate,
   }) {
@@ -465,6 +485,7 @@ class _$CompleteWorkEventImpl implements _CompleteWorkEvent {
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
     TResult Function(WorkModel work)? completeWork,
+    TResult Function(WorkModel work, int value)? completeWorkTime,
     TResult Function(WorkModel work, int value)? saveWorkTime,
     TResult Function(WorkModel work, DateTime newDate)? changeDate,
     required TResult orElse(),
@@ -481,6 +502,7 @@ class _$CompleteWorkEventImpl implements _CompleteWorkEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
     required TResult Function(_CompleteWorkEvent value) completeWork,
+    required TResult Function(_CompleteWorkTimeEvent value) completeWorkTime,
     required TResult Function(_SaveWorkTimeEvent value) saveWorkTime,
     required TResult Function(_ChangeDateEvent value) changeDate,
   }) {
@@ -493,6 +515,7 @@ class _$CompleteWorkEventImpl implements _CompleteWorkEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
     TResult? Function(_CompleteWorkEvent value)? completeWork,
+    TResult? Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult? Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult? Function(_ChangeDateEvent value)? changeDate,
   }) {
@@ -505,6 +528,7 @@ class _$CompleteWorkEventImpl implements _CompleteWorkEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
     TResult Function(_CompleteWorkEvent value)? completeWork,
+    TResult Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult Function(_ChangeDateEvent value)? changeDate,
     required TResult orElse(),
@@ -524,6 +548,185 @@ abstract class _CompleteWorkEvent implements WorkDayEvent {
   @JsonKey(ignore: true)
   _$$CompleteWorkEventImplCopyWith<_$CompleteWorkEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CompleteWorkTimeEventImplCopyWith<$Res> {
+  factory _$$CompleteWorkTimeEventImplCopyWith(
+          _$CompleteWorkTimeEventImpl value,
+          $Res Function(_$CompleteWorkTimeEventImpl) then) =
+      __$$CompleteWorkTimeEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WorkModel work, int value});
+
+  $WorkModelCopyWith<$Res> get work;
+}
+
+/// @nodoc
+class __$$CompleteWorkTimeEventImplCopyWithImpl<$Res>
+    extends _$WorkDayEventCopyWithImpl<$Res, _$CompleteWorkTimeEventImpl>
+    implements _$$CompleteWorkTimeEventImplCopyWith<$Res> {
+  __$$CompleteWorkTimeEventImplCopyWithImpl(_$CompleteWorkTimeEventImpl _value,
+      $Res Function(_$CompleteWorkTimeEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? work = null,
+    Object? value = null,
+  }) {
+    return _then(_$CompleteWorkTimeEventImpl(
+      null == work
+          ? _value.work
+          : work // ignore: cast_nullable_to_non_nullable
+              as WorkModel,
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WorkModelCopyWith<$Res> get work {
+    return $WorkModelCopyWith<$Res>(_value.work, (value) {
+      return _then(_value.copyWith(work: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CompleteWorkTimeEventImpl implements _CompleteWorkTimeEvent {
+  const _$CompleteWorkTimeEventImpl(this.work, this.value);
+
+  @override
+  final WorkModel work;
+  @override
+  final int value;
+
+  @override
+  String toString() {
+    return 'WorkDayEvent.completeWorkTime(work: $work, value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CompleteWorkTimeEventImpl &&
+            (identical(other.work, work) || other.work == work) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, work, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CompleteWorkTimeEventImplCopyWith<_$CompleteWorkTimeEventImpl>
+      get copyWith => __$$CompleteWorkTimeEventImplCopyWithImpl<
+          _$CompleteWorkTimeEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(DateTime date) getList,
+    required TResult Function(WorkModel work) completeWork,
+    required TResult Function(WorkModel work, int value) completeWorkTime,
+    required TResult Function(WorkModel work, int value) saveWorkTime,
+    required TResult Function(WorkModel work, DateTime newDate) changeDate,
+  }) {
+    return completeWorkTime(work, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(DateTime date)? getList,
+    TResult? Function(WorkModel work)? completeWork,
+    TResult? Function(WorkModel work, int value)? completeWorkTime,
+    TResult? Function(WorkModel work, int value)? saveWorkTime,
+    TResult? Function(WorkModel work, DateTime newDate)? changeDate,
+  }) {
+    return completeWorkTime?.call(work, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(DateTime date)? getList,
+    TResult Function(WorkModel work)? completeWork,
+    TResult Function(WorkModel work, int value)? completeWorkTime,
+    TResult Function(WorkModel work, int value)? saveWorkTime,
+    TResult Function(WorkModel work, DateTime newDate)? changeDate,
+    required TResult orElse(),
+  }) {
+    if (completeWorkTime != null) {
+      return completeWorkTime(work, value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_GetListEvent value) getList,
+    required TResult Function(_CompleteWorkEvent value) completeWork,
+    required TResult Function(_CompleteWorkTimeEvent value) completeWorkTime,
+    required TResult Function(_SaveWorkTimeEvent value) saveWorkTime,
+    required TResult Function(_ChangeDateEvent value) changeDate,
+  }) {
+    return completeWorkTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_GetListEvent value)? getList,
+    TResult? Function(_CompleteWorkEvent value)? completeWork,
+    TResult? Function(_CompleteWorkTimeEvent value)? completeWorkTime,
+    TResult? Function(_SaveWorkTimeEvent value)? saveWorkTime,
+    TResult? Function(_ChangeDateEvent value)? changeDate,
+  }) {
+    return completeWorkTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_GetListEvent value)? getList,
+    TResult Function(_CompleteWorkEvent value)? completeWork,
+    TResult Function(_CompleteWorkTimeEvent value)? completeWorkTime,
+    TResult Function(_SaveWorkTimeEvent value)? saveWorkTime,
+    TResult Function(_ChangeDateEvent value)? changeDate,
+    required TResult orElse(),
+  }) {
+    if (completeWorkTime != null) {
+      return completeWorkTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CompleteWorkTimeEvent implements WorkDayEvent {
+  const factory _CompleteWorkTimeEvent(final WorkModel work, final int value) =
+      _$CompleteWorkTimeEventImpl;
+
+  WorkModel get work;
+  int get value;
+  @JsonKey(ignore: true)
+  _$$CompleteWorkTimeEventImplCopyWith<_$CompleteWorkTimeEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -612,6 +815,7 @@ class _$SaveWorkTimeEventImpl implements _SaveWorkTimeEvent {
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
     required TResult Function(WorkModel work) completeWork,
+    required TResult Function(WorkModel work, int value) completeWorkTime,
     required TResult Function(WorkModel work, int value) saveWorkTime,
     required TResult Function(WorkModel work, DateTime newDate) changeDate,
   }) {
@@ -624,6 +828,7 @@ class _$SaveWorkTimeEventImpl implements _SaveWorkTimeEvent {
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
     TResult? Function(WorkModel work)? completeWork,
+    TResult? Function(WorkModel work, int value)? completeWorkTime,
     TResult? Function(WorkModel work, int value)? saveWorkTime,
     TResult? Function(WorkModel work, DateTime newDate)? changeDate,
   }) {
@@ -636,6 +841,7 @@ class _$SaveWorkTimeEventImpl implements _SaveWorkTimeEvent {
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
     TResult Function(WorkModel work)? completeWork,
+    TResult Function(WorkModel work, int value)? completeWorkTime,
     TResult Function(WorkModel work, int value)? saveWorkTime,
     TResult Function(WorkModel work, DateTime newDate)? changeDate,
     required TResult orElse(),
@@ -652,6 +858,7 @@ class _$SaveWorkTimeEventImpl implements _SaveWorkTimeEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
     required TResult Function(_CompleteWorkEvent value) completeWork,
+    required TResult Function(_CompleteWorkTimeEvent value) completeWorkTime,
     required TResult Function(_SaveWorkTimeEvent value) saveWorkTime,
     required TResult Function(_ChangeDateEvent value) changeDate,
   }) {
@@ -664,6 +871,7 @@ class _$SaveWorkTimeEventImpl implements _SaveWorkTimeEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
     TResult? Function(_CompleteWorkEvent value)? completeWork,
+    TResult? Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult? Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult? Function(_ChangeDateEvent value)? changeDate,
   }) {
@@ -676,6 +884,7 @@ class _$SaveWorkTimeEventImpl implements _SaveWorkTimeEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
     TResult Function(_CompleteWorkEvent value)? completeWork,
+    TResult Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult Function(_ChangeDateEvent value)? changeDate,
     required TResult orElse(),
@@ -784,6 +993,7 @@ class _$ChangeDateEventImpl implements _ChangeDateEvent {
     required TResult Function() initial,
     required TResult Function(DateTime date) getList,
     required TResult Function(WorkModel work) completeWork,
+    required TResult Function(WorkModel work, int value) completeWorkTime,
     required TResult Function(WorkModel work, int value) saveWorkTime,
     required TResult Function(WorkModel work, DateTime newDate) changeDate,
   }) {
@@ -796,6 +1006,7 @@ class _$ChangeDateEventImpl implements _ChangeDateEvent {
     TResult? Function()? initial,
     TResult? Function(DateTime date)? getList,
     TResult? Function(WorkModel work)? completeWork,
+    TResult? Function(WorkModel work, int value)? completeWorkTime,
     TResult? Function(WorkModel work, int value)? saveWorkTime,
     TResult? Function(WorkModel work, DateTime newDate)? changeDate,
   }) {
@@ -808,6 +1019,7 @@ class _$ChangeDateEventImpl implements _ChangeDateEvent {
     TResult Function()? initial,
     TResult Function(DateTime date)? getList,
     TResult Function(WorkModel work)? completeWork,
+    TResult Function(WorkModel work, int value)? completeWorkTime,
     TResult Function(WorkModel work, int value)? saveWorkTime,
     TResult Function(WorkModel work, DateTime newDate)? changeDate,
     required TResult orElse(),
@@ -824,6 +1036,7 @@ class _$ChangeDateEventImpl implements _ChangeDateEvent {
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_GetListEvent value) getList,
     required TResult Function(_CompleteWorkEvent value) completeWork,
+    required TResult Function(_CompleteWorkTimeEvent value) completeWorkTime,
     required TResult Function(_SaveWorkTimeEvent value) saveWorkTime,
     required TResult Function(_ChangeDateEvent value) changeDate,
   }) {
@@ -836,6 +1049,7 @@ class _$ChangeDateEventImpl implements _ChangeDateEvent {
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_GetListEvent value)? getList,
     TResult? Function(_CompleteWorkEvent value)? completeWork,
+    TResult? Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult? Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult? Function(_ChangeDateEvent value)? changeDate,
   }) {
@@ -848,6 +1062,7 @@ class _$ChangeDateEventImpl implements _ChangeDateEvent {
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_GetListEvent value)? getList,
     TResult Function(_CompleteWorkEvent value)? completeWork,
+    TResult Function(_CompleteWorkTimeEvent value)? completeWorkTime,
     TResult Function(_SaveWorkTimeEvent value)? saveWorkTime,
     TResult Function(_ChangeDateEvent value)? changeDate,
     required TResult orElse(),

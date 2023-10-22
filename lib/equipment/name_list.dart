@@ -1,12 +1,12 @@
 import 'package:equipment/equipment/name/bloc/name_bloc.dart';
-import 'package:equipment/equipment/service/equipment_service.dart';
+import 'package:equipment/equipment/repository/equipment_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 
-import '../other/other.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import '../widgets/widgets.dart';
 import 'models/name.dart';
 
@@ -75,11 +75,13 @@ class NameList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<NameBloc>(
       create: (BuildContext context) =>
-          NameBloc(GetIt.instance.get<EquipmentService>(), typeName)..add(NameEvent.getList(typeName)),
+          NameBloc(GetIt.instance.get<EquipmentRepository>(), typeName)..add(NameEvent.getList(typeName)),
       child: BlocConsumer<NameBloc, NameState>(
         listener: (context, state) => state.mapOrNull(),
         builder: (BuildContext context, NameState state) => state.maybeMap(
-          orElse: () => Container(color: Colors.white,),
+          orElse: () => Container(
+            color: Colors.white,
+          ),
           loading: (_) => const CircularProgressIndicator(),
           data: (data) => Column(
             children: [
@@ -138,7 +140,7 @@ Dialog newName(BuildContext context, String title) {
                     FormBuilderValidators.required(errorText: 'Обязательно для заполнения'),
                   ])),
               const SizedBox(height: 16),
-              AppButton.filledBlackButton('Добавить', onPressed: () {
+              AppFilledButton('Добавить', onPressed: () {
                 if (formKey.currentState?.saveAndValidate() ?? false) {
                   Navigator.pop(context, formKey.currentState?.fields['name']?.value);
                 }

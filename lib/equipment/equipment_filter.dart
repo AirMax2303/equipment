@@ -1,13 +1,12 @@
-import 'package:equipment/other/other.dart';
+import 'package:equipment/equipment/repository/equipment_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 
-import '../template/template01.dart';
-import 'name/bloc/name_bloc.dart';
+import 'package:equipment/widgets/text_extension.dart';
+import '../template/screens.dart';
 import 'name_filter/bloc/name_filter_bloc.dart';
-import 'service/equipment_service.dart';
 import '../widgets/widgets.dart';
 
 Dialog selectTypeEq(BuildContext context) {
@@ -20,7 +19,7 @@ Dialog selectTypeEq(BuildContext context) {
     insetPadding: const EdgeInsets.only(left: 20, right: 20),
     child: BlocProvider<NameFilterBloc>(
       create: (BuildContext context) =>
-          NameFilterBloc(GetIt.instance.get<EquipmentService>())..add(const NameFilterEvent.getFilterList(true)),
+          NameFilterBloc(GetIt.instance.get<EquipmentRepository>())..add(const NameFilterEvent.getFilterList(true)),
       child: BlocConsumer<NameFilterBloc, NameFilterState>(
         listener: (context, state) => state.mapOrNull(),
         builder: (BuildContext context, NameFilterState state) => state.maybeMap(
@@ -38,7 +37,7 @@ Dialog selectTypeEq(BuildContext context) {
                     children: [
                       SvgPicture.asset('assets/filter_blue.svg'),
                       const SizedBox(width: 10),
-                      AppText.blackText14('Фильтр'),
+                      const Text('Фильтр').style14w700(),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -54,7 +53,8 @@ Dialog selectTypeEq(BuildContext context) {
                             filter.filterType = FilterType.view;
                             BlocProvider.of<NameFilterBloc>(context).add(const NameFilterEvent.getFilterList(true));
                           },
-                          style: AppButtonStyle.stdButtonStyle(radius: filter.filterType == FilterType.view ? 10 : 0,
+                          style: AppButtonStyle.stdButtonStyle(
+                              radius: filter.filterType == FilterType.view ? 10 : 0,
                               color: filter.filterType == FilterType.view ? AppColor.blueColor : AppColor.lightBlueColor),
                           child: Text(
                             'Вид оборудования',
@@ -71,7 +71,8 @@ Dialog selectTypeEq(BuildContext context) {
                             filter.filterType = FilterType.plot;
                             BlocProvider.of<NameFilterBloc>(context).add(const NameFilterEvent.getFilterList(false));
                           },
-                          style: AppButtonStyle.stdButtonStyle(radius: filter.filterType == FilterType.view ? 0 : 10,
+                          style: AppButtonStyle.stdButtonStyle(
+                              radius: filter.filterType == FilterType.view ? 0 : 10,
                               color: filter.filterType == FilterType.view ? AppColor.lightBlueColor : AppColor.blueColor),
                           child: Text(
                             'Участок',
@@ -92,12 +93,11 @@ Dialog selectTypeEq(BuildContext context) {
                           children: List<Widget>.generate(data.list!.length, (index) {
                             return Column(
                               children: [
-                                InkWell(
-                                  child: AppTextBox.buttonTextBox(data.list![index].name!, selected.value == index),
-                                  onTap: () {
-                                    selected.value = index;
-                                  },
-                                ),
+                                TextBox(
+                                    child: Text(data.list![index].name!).style13w500(),
+                                    onTap: () {
+                                      selected.value = index;
+                                    }),
                                 const SizedBox(height: 16),
                               ],
                             );
@@ -105,7 +105,7 @@ Dialog selectTypeEq(BuildContext context) {
                         );
                       }),
 //-----------------------------------------------------------------------------------------------------------------------------
-                  AppButton.filledBlackButton('Сохранить', onPressed: () {
+                  AppFilledButton('Сохранить', onPressed: () {
                     filter.value = data.list![selected.value].id!;
                     Navigator.pop(context, filter);
                   }),

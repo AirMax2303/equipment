@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:ellipsis_overflow_text/ellipsis_overflow_text.dart';
+import 'package:equipment/equipment/repository/equipment_repository.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,7 +10,6 @@ import 'package:flutter_svg/svg.dart';
 import '../main_chapter/main_page.dart';
 import 'bloc/equipment_bloc.dart';
 import 'models/equipment.dart';
-import 'service/equipment_service.dart';
 import '../other/other.dart';
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
@@ -72,7 +73,7 @@ class EquipmentListScreen extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
                     onTap: () {
-                      BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoDetailScreen(list[index]));
+                      BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoDetailScreen(list[index].equipment!.id!));
                     },
                     child: Card(
                       color: AppColor.backgroundColor,
@@ -121,6 +122,7 @@ class EquipmentListScreen extends StatelessWidget {
                                           height: 10,
                                         ),
                                         Text(list[index].equipment!.name2!).style12w400(),
+                                        Text(list[index].equipment!.id!).style12w400(),
                                       ],
                                     ),
                                   ],

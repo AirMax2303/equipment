@@ -1,9 +1,9 @@
 import '../../models/models.dart';
-import '../../repository/repository.dart';
+import '../../service/service.dart';
 import '../model/web_model.dart';
 
 class WebService {
-  final AppRepository repo;
+  final AppService repo;
   List<WebModel> list = [];
 
   WebService(this.repo);

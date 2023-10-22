@@ -1,4 +1,4 @@
-import 'package:equipment/repository/repository.dart';
+import 'package:equipment/service/service.dart';
 import 'package:equipment/web/pages/home_page.dart';
 import 'package:equipment/web/service/web_service.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  GetIt.instance.registerSingleton<AppRepository>(AppRepository());
-  GetIt.instance.registerSingleton<WebService>(WebService(GetIt.instance.get<AppRepository>()));
+  GetIt.instance.registerSingleton<AppService>(AppService());
+  GetIt.instance.registerSingleton<WebService>(WebService(GetIt.instance.get<AppService>()));
   runApp(const MyApp());
 }
 

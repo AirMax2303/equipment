@@ -6,6 +6,8 @@ class MainChapterState with _$MainChapterState {
 
   const factory MainChapterState.loading() = _LoadingState;
 
+  const factory MainChapterState.error({required String error}) = _ErrorState;
+
   const factory MainChapterState.noData() = _noDataState;
 
   const factory MainChapterState.dateChanged({required DateTime date}) = _DateChangedState;

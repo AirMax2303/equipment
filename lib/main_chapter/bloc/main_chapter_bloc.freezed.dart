@@ -525,6 +525,7 @@ mixin _$MainChapterState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() noData,
     required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
@@ -535,6 +536,7 @@ mixin _$MainChapterState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? noData,
     TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
@@ -545,6 +547,7 @@ mixin _$MainChapterState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? noData,
     TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
@@ -556,6 +559,7 @@ mixin _$MainChapterState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
@@ -566,6 +570,7 @@ mixin _$MainChapterState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -576,6 +581,7 @@ mixin _$MainChapterState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_noDataState value)? noData,
     TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -643,6 +649,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() noData,
     required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
@@ -656,6 +663,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? noData,
     TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
@@ -669,6 +677,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? noData,
     TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
@@ -686,6 +695,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
@@ -699,6 +709,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -712,6 +723,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_noDataState value)? noData,
     TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -769,6 +781,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() noData,
     required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
@@ -782,6 +795,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? noData,
     TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
@@ -795,6 +809,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? noData,
     TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
@@ -812,6 +827,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
@@ -825,6 +841,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -838,6 +855,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_noDataState value)? noData,
     TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -853,6 +871,169 @@ class _$LoadingStateImpl implements _LoadingState {
 
 abstract class _LoadingState implements MainChapterState {
   const factory _LoadingState() = _$LoadingStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$MainChapterStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ErrorStateImpl(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'MainChapterState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorStateImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function() noData,
+    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime date) gotoWorkDay,
+    required TResult Function(DateTime date, List<MainChapterData> list) data,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function()? noData,
+    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime date)? gotoWorkDay,
+    TResult? Function(DateTime date, List<MainChapterData> list)? data,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function()? noData,
+    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime date)? gotoWorkDay,
+    TResult Function(DateTime date, List<MainChapterData> list)? data,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_noDataState value) noData,
+    required TResult Function(_DateChangedState value) dateChanged,
+    required TResult Function(_gotoWorkDayState value) gotoWorkDay,
+    required TResult Function(_DataState value) data,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_noDataState value)? noData,
+    TResult? Function(_DateChangedState value)? dateChanged,
+    TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_noDataState value)? noData,
+    TResult Function(_DateChangedState value)? dateChanged,
+    TResult Function(_gotoWorkDayState value)? gotoWorkDay,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ErrorState implements MainChapterState {
+  const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -895,6 +1076,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() noData,
     required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
@@ -908,6 +1090,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? noData,
     TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
@@ -921,6 +1104,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? noData,
     TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
@@ -938,6 +1122,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
@@ -951,6 +1136,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -964,6 +1150,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_noDataState value)? noData,
     TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -1048,6 +1235,7 @@ class _$DateChangedStateImpl implements _DateChangedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() noData,
     required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
@@ -1061,6 +1249,7 @@ class _$DateChangedStateImpl implements _DateChangedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? noData,
     TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
@@ -1074,6 +1263,7 @@ class _$DateChangedStateImpl implements _DateChangedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? noData,
     TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
@@ -1091,6 +1281,7 @@ class _$DateChangedStateImpl implements _DateChangedState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
@@ -1104,6 +1295,7 @@ class _$DateChangedStateImpl implements _DateChangedState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -1117,6 +1309,7 @@ class _$DateChangedStateImpl implements _DateChangedState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_noDataState value)? noData,
     TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -1207,6 +1400,7 @@ class _$gotoWorkDayStateImpl implements _gotoWorkDayState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() noData,
     required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
@@ -1220,6 +1414,7 @@ class _$gotoWorkDayStateImpl implements _gotoWorkDayState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? noData,
     TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
@@ -1233,6 +1428,7 @@ class _$gotoWorkDayStateImpl implements _gotoWorkDayState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? noData,
     TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
@@ -1250,6 +1446,7 @@ class _$gotoWorkDayStateImpl implements _gotoWorkDayState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
@@ -1263,6 +1460,7 @@ class _$gotoWorkDayStateImpl implements _gotoWorkDayState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -1276,6 +1474,7 @@ class _$gotoWorkDayStateImpl implements _gotoWorkDayState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_noDataState value)? noData,
     TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -1381,6 +1580,7 @@ class _$DataStateImpl implements _DataState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() noData,
     required TResult Function(DateTime date) dateChanged,
     required TResult Function(DateTime date) gotoWorkDay,
@@ -1394,6 +1594,7 @@ class _$DataStateImpl implements _DataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? noData,
     TResult? Function(DateTime date)? dateChanged,
     TResult? Function(DateTime date)? gotoWorkDay,
@@ -1407,6 +1608,7 @@ class _$DataStateImpl implements _DataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? noData,
     TResult Function(DateTime date)? dateChanged,
     TResult Function(DateTime date)? gotoWorkDay,
@@ -1424,6 +1626,7 @@ class _$DataStateImpl implements _DataState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_DateChangedState value) dateChanged,
     required TResult Function(_gotoWorkDayState value) gotoWorkDay,
@@ -1437,6 +1640,7 @@ class _$DataStateImpl implements _DataState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_DateChangedState value)? dateChanged,
     TResult? Function(_gotoWorkDayState value)? gotoWorkDay,
@@ -1450,6 +1654,7 @@ class _$DataStateImpl implements _DataState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_noDataState value)? noData,
     TResult Function(_DateChangedState value)? dateChanged,
     TResult Function(_gotoWorkDayState value)? gotoWorkDay,

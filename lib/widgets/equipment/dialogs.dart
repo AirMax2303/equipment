@@ -1,15 +1,14 @@
-import 'package:equipment/other/other.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../equipment/bloc/equipment_bloc.dart';
-import '../../equipment/name/bloc/name_bloc.dart';
 import '../../equipment/name_filter/bloc/name_filter_bloc.dart';
-import '../../equipment/service/equipment_service.dart';
+import '../../equipment/repository/equipment_repository.dart';
 import '../../models/models.dart';
-import '../../template/template01.dart';
+import '../../template/screens.dart';
 import '../widgets.dart';
 
 Dialog selectEquipment(BuildContext context) {
@@ -45,9 +44,7 @@ Dialog selectEquipment(BuildContext context) {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                AppText.blackText14(
-                                  'Оборудование',
-                                ),
+                                const Text('Оборудование').style14w700(),
                                 IconButton(
                                   onPressed: () {
                                     showDialog<EquipmentFilter>(
@@ -119,7 +116,7 @@ Dialog selectEquipment(BuildContext context) {
                     child: Column(
                       children: [
                         const SizedBox(height: 10),
-                        AppButton.filledBlackButton('Сохранить', onPressed: () {
+                        AppFilledButton('Сохранить', onPressed: () {
                           Navigator.pop(context, equipmentModel!);
                         }),
                         TextButton(
@@ -150,7 +147,7 @@ Dialog filterEquipment(BuildContext context) {
       insetPadding: const EdgeInsets.all(20),
       child: BlocProvider<NameFilterBloc>(
         create: (BuildContext context) =>
-            NameFilterBloc(GetIt.instance.get<EquipmentService>())..add(const NameFilterEvent.getFilterList(true)),
+            NameFilterBloc(GetIt.instance.get<EquipmentRepository>())..add(const NameFilterEvent.getFilterList(true)),
         child: BlocConsumer<NameFilterBloc, NameFilterState>(
           listener: (context, state) => state.mapOrNull(),
           builder: (BuildContext context, NameFilterState state) => state.maybeMap(
@@ -168,7 +165,7 @@ Dialog filterEquipment(BuildContext context) {
                       children: [
                         SvgPicture.asset('assets/filter_blue.svg'),
                         const SizedBox(width: 10),
-                        AppText.blackText14('Фильтр'),
+                        const Text('Фильтр').style14w700(),
                       ],
                     ),
                     const SizedBox(height: 10),
@@ -185,7 +182,8 @@ Dialog filterEquipment(BuildContext context) {
                               BlocProvider.of<NameFilterBloc>(context).add(const NameFilterEvent.getFilterList(true));
                               selected.value = 0;
                             },
-                            style: AppButtonStyle.stdButtonStyle(radius: filter.filterType == FilterType.view ? 10 : 0,
+                            style: AppButtonStyle.stdButtonStyle(
+                                radius: filter.filterType == FilterType.view ? 10 : 0,
                                 color: filter.filterType == FilterType.view ? AppColor.blueColor : AppColor.lightBlueColor),
                             child: Text(
                               'Вид оборудования',
@@ -203,7 +201,8 @@ Dialog filterEquipment(BuildContext context) {
                               BlocProvider.of<NameFilterBloc>(context).add(const NameFilterEvent.getFilterList(false));
                               selected.value = 0;
                             },
-                            style: AppButtonStyle.stdButtonStyle(radius: filter.filterType == FilterType.view ? 0 : 10,
+                            style: AppButtonStyle.stdButtonStyle(
+                                radius: filter.filterType == FilterType.view ? 0 : 10,
                                 color: filter.filterType == FilterType.view ? AppColor.lightBlueColor : AppColor.blueColor),
                             child: Text(
                               'Участок',
@@ -247,7 +246,7 @@ Dialog filterEquipment(BuildContext context) {
                         }),
 //-----------------------------------------------------------------------------------------------------------------------------
                     const SizedBox(height: 10),
-                    AppButton.filledBlackButton('Сохранить', onPressed: () {
+                    AppFilledButton('Сохранить', onPressed: () {
                       filter.value = data.list![selected.value].id!;
                       Navigator.pop(context, filter);
                     }),

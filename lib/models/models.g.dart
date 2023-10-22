@@ -63,7 +63,7 @@ _$EquipmentModelImpl _$$EquipmentModelImplFromJson(Map<String, dynamic> json) =>
       plotid: json['plotid'] as String? ?? '',
       plot: json['plot'] as String? ?? '',
       image: json['image'] as String? ?? '',
-      status: json['status'] as int? ?? 1,
+      status: json['status'] as int? ?? 0,
       proftype: json['proftype'] == null
           ? false
           : boolFromInt(json['proftype'] as int),

@@ -11,7 +11,7 @@ class PprEvent with _$PprEvent {
 
   const factory PprEvent.gotoEditPprScreen(PprModel ppr) = _GotoEditPprScreenEvent;
 
-  const factory PprEvent.addPpr(PprType pprType, PprModel ppr) = _AddPprEvent;
+  const factory PprEvent.addPpr(PprType pprType, PprModel ppr, EquipmentModel equipment) = _AddPprEvent;
 
   const factory PprEvent.deletePpr(PprType pprType, PprModel ppr) = _DeletePprEvent;
 

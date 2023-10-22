@@ -1,3 +1,4 @@
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,11 +19,11 @@ Dialog dialogOkRegister(BuildContext context, String info, String error) {
           const SizedBox(height: 20),
           SvgPicture.asset('assets/logo.svg'),
           const SizedBox(height: 20),
-          AppText.whiteText16(info),
+          Text(info).style16w700(color: Colors.white),
           const SizedBox(height: 20),
-          AppText.whiteText16(error),
+          Text(error).style16w700(color: Colors.white),
           const SizedBox(height: 20),
-          AppButton.filledInputButton('Продолжить', onPressed: () {
+          AppFilledButton('Продолжить', backgroundColor: AppColor.blueColor, onPressed: () {
             Navigator.pop(context, 'Ok');
           }),
           const SizedBox(height: 20),

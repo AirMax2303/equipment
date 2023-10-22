@@ -2,8 +2,9 @@ part of 'ppr_bloc.dart';
 
 @freezed
 class PprState with _$PprState {
-
   const factory PprState.initial(String equipmentid) = _InitialState;
+
+  const factory PprState.error({required String error}) = _ErrorState;
 
   const factory PprState.addScreen(String equipmentid) = _AddScreenState;
 
@@ -19,9 +20,6 @@ class PprState with _$PprState {
 
   const factory PprState.okDelete({required PprType pprType, required PprModel ppr}) = _OkDeleteState;
 
-  const factory PprState.data({
-    required PprType? pprType,
-    required String? equipmentid,
-    required List<PprModel>? list
-  }) = _DataState;
+  const factory PprState.data({required PprType? pprType, required String? equipmentid, required List<PprModel>? list}) =
+      _DataState;
 }

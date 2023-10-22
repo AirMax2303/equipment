@@ -1,4 +1,4 @@
-import 'package:equipment/other/other.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,7 +28,7 @@ Dialog dialogCalendar(BuildContext context) {
                 },
               ),
               const SizedBox(height: 16),
-              AppButton.filledBlackButton('Сохранить', onPressed: () {
+              AppFilledButton('Сохранить', onPressed: () {
                 Navigator.pop(context, date);
               }),
               TextButton(
@@ -61,9 +61,9 @@ Dialog dialogDateChanged(BuildContext context, String date) {
             SvgPicture.asset('assets/Frame 520.svg'),
             const SizedBox(height: 16),
             const Text('Работа перенесена на').style14w700(),
-            AppText.blackText16(date),
+            Text(date).style14w700(),
             const SizedBox(height: 16),
-            AppButton.filledBlackButton('OK', onPressed: () {
+            AppFilledButton('OK', onPressed: () {
               Navigator.pop(context);
             }),
             const SizedBox(height: 16),
@@ -94,7 +94,7 @@ Dialog dialogInDeveloping(BuildContext context) {
             const Text('Находится').style18w700(),
             const Text('в разработке').style18w700(),
             const SizedBox(height: 16),
-            AppButton.filledBlackButton('OK', onPressed: () {
+            AppFilledButton('OK', onPressed: () {
               Navigator.pop(context);
             }),
             const SizedBox(height: 16)
@@ -119,12 +119,20 @@ Dialog dialogWorkIsDone(BuildContext context, bool deleted, String text1, String
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            deleted ? SvgPicture.asset('assets/deleted.svg') : SvgPicture.asset('assets/done.svg'),
+            deleted
+                ? SvgPicture.asset(
+                    'assets/deleted.svg',
+                    width: 100,
+                  )
+                : SvgPicture.asset(
+                    'assets/done.svg',
+                    width: 100,
+                  ),
             const SizedBox(height: 16),
             Text(text1).style14w700(),
             Text(text2).style14w700(),
             const SizedBox(height: 16),
-            AppButton.filledBlackButton('OK', onPressed: () {
+            AppFilledButton('OK', onPressed: () {
               Navigator.pop(context, true);
             }),
             const SizedBox(height: 16)
@@ -154,12 +162,15 @@ Dialog dialogConfirmDelete(BuildContext context, String text1, String text2) {
             Text(text1).style14w700(),
             Text(text2).style14w700(),
             const SizedBox(height: 16),
-            AppButton.filledBlackButton('OK', onPressed: () {
+            AppFilledButton('OK', onPressed: () {
               Navigator.pop(context, true);
             }),
-            AppButton.textButton('Отмена', onPressed: () {
-              Navigator.pop(context);
-            }),
+            TextButton(
+              child: const Text('Отмена').style12w300(),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
           ],
         ),
       ),

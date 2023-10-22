@@ -1,5 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:equipment/other/other.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,273 +10,101 @@ abstract final class AppColor {
   static const Color stdColor = Color(0xFF7067F2);
   static const Color backgroundColor = Color(0xFFF8F8F8);
   static const Color profileInputColor = Color(0xFFF8F8F8);
+
 //  static const Color backgroundColor = Color(0x1ABAF1C4);
   static const Color greenColor = Color(0x1A3F60EE);
   static Color lightBlueColor = const Color(0x1A3F60EE);
   static const Color blueColor = Color(0xFF3F60EE);
   static const Color blackColor = Color(0xFF2F2E41);
 }
-abstract final class AppTextStyle {
-  static TextStyle blackTextStyle8Label = const TextStyle(
-    color: Color(0xFF8897A8),
-    fontSize: 8,
-    fontWeight: FontWeight.w400,
-    height: 10 / 8,
-  );
-  static TextStyle blackTextStyle12 = const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400);
-  static TextStyle blackTextStyle13 = const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500);
-  static TextStyle blackTextStyle13_800 = const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w800);
-  static TextStyle blackTextStyle13Label = const TextStyle(
-    color: Colors.black,
-    fontSize: 13,
-    fontWeight: FontWeight.w500,
-    height: 24 / 13,
-  );
-  static TextStyle blackTextStyle14_500 = const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500);
-  static TextStyle blackTextStyle14 = const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w700);
-  static TextStyle blackTextStyle16 = const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700);
-  static TextStyle blackTextStyle18 = const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w700);
-  static TextStyle blackTextStyle20 = const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700);
-  static TextStyle blackTextStyle25 = const TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w700);
-  static TextStyle blackTextStyle29 = const TextStyle(color: Colors.black, fontSize: 29, fontWeight: FontWeight.w700);
-  static TextStyle whiteTextStyle10 = const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w200);
-  static TextStyle whiteTextStyle12 = const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400);
-  static TextStyle whiteTextStyle13 = const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w300);
-  static TextStyle whiteTextStyle14 = const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700);
-  static TextStyle whiteTextStyle16 = const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700);
-  static TextStyle whiteTextStyle18 = const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600);
-}
 
-abstract final class AppText {
-  static Text text(String? data) {
-    return Text(data!, style: GoogleFonts.poppins());
-  }
+class AppFilledButton extends StatelessWidget {
+  const AppFilledButton(this.data, {Key? key, this.backgroundColor, this.textColor, required this.onPressed}) : super(key: key);
+  final String data;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final VoidCallback? onPressed;
 
-  static blackText13(String data) {
-    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle13));
-  }
-
-  static blackText13_800(String data) {
-    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle13_800));
-  }
-
-  static blackText14(String data) {
-    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle14));
-  }
-
-  static blackText16(String data) {
-    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle16));
-  }
-
-  static blackText18(String data) {
-    return Text(data, style: GoogleFonts.poppins(textStyle: AppTextStyle.blackTextStyle18));
-  }
-
-  static text14(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.blackTextStyle14,
-        ));
-  }
-
-  static whiteText13(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.whiteTextStyle13,
-        ));
-  }
-
-  static whiteText14(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.whiteTextStyle14,
-        ));
-  }
-
-  static whiteText16(String data) {
-    return Text(data,
-        style: GoogleFonts.poppins(
-          textStyle: AppTextStyle.whiteTextStyle16,
-        ));
-  }
-}
-
-abstract final class AppIcons {
-  static Widget icon({required String image, required Color color, double? size}) {
-    return Container(
-      width: size ?? 30,
-      height: size ?? 30,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(10),
-        ),
-      ),
-      child: Image.asset(image),
-    );
-  }
-
-  static Widget iconButton({required String image, required Color color, required VoidCallback? onPressed}) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-        child: SvgPicture.asset(
-          image,
-          fit: BoxFit.scaleDown,
-        ),
-      ),
-    );
-  }
-
-  static Widget icon35({required String image}) {
-    return Container(
-      width: 28,
-      height: 35,
-      decoration: const BoxDecoration(
-        color: Color(0xCC3F60EE),
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
-        ),
-      ),
-      child: SvgPicture.asset(
-        image,
-        fit: BoxFit.scaleDown,
-      ),
-    );
-  }
-
-  static Widget iconButton35({required String image, required VoidCallback? onPressed}) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        width: 35,
-        height: 35,
-        decoration: const BoxDecoration(
-          color: Color(0xCC3F60EE),
-          borderRadius: BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-        child: SvgPicture.asset(
-          image,
-          fit: BoxFit.scaleDown,
-        ),
-      ),
-    );
-  }
-}
-
-abstract final class AppButton {
-  static double defHeight = 50;
-
-  static Widget filledButton(String data, {Key? key, required VoidCallback? onPressed}) {
-    return SizedBox(
-      width: double.infinity,
-      height: defHeight,
-      child: FilledButton(
-        style: AppButtonStyle.stdButtonStyle(),
-        onPressed: onPressed,
-        child: Text(data,
-            style: GoogleFonts.poppins(
-              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-            )),
-      ),
-    );
-  }
-
-  static Widget filledBlackButton(String data, {Key? key, required VoidCallback? onPressed}) {
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: 50,
       child: FilledButton(
-        style: AppButtonStyle.stdButtonStyle(color: AppColor.blackColor),
+        style: TextButton.styleFrom(
+          elevation: 0,
+          backgroundColor: backgroundColor ?? AppColor.blackColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) // <-- Radius
+              ),
+        ),
         onPressed: onPressed,
         child: Text(data,
             style: GoogleFonts.poppins(
-              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+              textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: textColor ?? Colors.white),
             )),
       ),
     );
   }
+}
 
-  static Widget filledLightBlueButton(String data, {Key? key, required VoidCallback? onPressed}) {
-    return SizedBox(
-      width: double.infinity,
-      height: defHeight,
-      child: FilledButton(
-        style: AppButtonStyle.stdButtonStyle(color: AppColor.lightBlueColor),
-        onPressed: onPressed,
-        child: Text(
-          data,
-          style: const TextStyle(
-            fontFamily: "Poppins",
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            color: Color(0xff3f60ee),
-            height: 21 / 14,
-          ),
-        ),
-      ),
-    );
-  }
+class IconBox extends StatelessWidget {
+  const IconBox(this.assetName, {Key? key, this.width, this.height, this.backgroundColor, this.radius, this.onPressed})
+      : super(key: key);
+  final String assetName;
+  final double? width;
+  final double? height;
+  final Color? backgroundColor;
+  final double? radius;
+  final VoidCallback? onPressed;
 
-  static Widget filledInputButton(String data, {Key? key, required VoidCallback? onPressed}) {
-    return SizedBox(
-      width: double.infinity,
-      height: defHeight,
-      child: FilledButton(
-        style: AppButtonStyle.stdButtonStyle(color: const Color(0xff3f60ee)),
-        onPressed: onPressed,
-        child: Text(
-          data,
-          style: const TextStyle(
-            fontFamily: "Poppins",
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            height: 21 / 14,
-          ),
-        ),
-      ),
-    );
-  }
-
-  static Widget addImageButten({Key? key}) {
-    return DottedBorder(
-      color: Colors.blue,
-      borderType: BorderType.RRect,
-      radius: const Radius.circular(20),
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPressed,
       child: Container(
-        height: 100,
-        width: double.infinity,
+        width: width ?? 40,
+        height: height ?? 40,
         decoration: BoxDecoration(
-          color: AppColor.lightBlueColor,
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-        ),
-        child: Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center, children: [
-          Image.asset('assets/addimage.png'),
-          const SizedBox(height: 5),
-          Text(
-            'Добавить фото',
-            style: GoogleFonts.poppins(
-              textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Color(0xFF8F9BB3)),
-            ),
+          color: backgroundColor ?? Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(radius ?? 10),
           ),
-        ]),
+        ),
+        child: SvgPicture.asset(assetName, fit: BoxFit.scaleDown),
       ),
     );
   }
+}
 
-  static Widget textButton(String data, {Key? key, required VoidCallback? onPressed}) {
-    return TextButton(onPressed: onPressed, child: Text(data, style: AppTextStyle.blackTextStyle12));
+class SelectImageButton extends StatelessWidget {
+  const SelectImageButton({Key? key, required this.onTap}) : super(key: key);
+  final GestureTapCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: DottedBorder(
+        color: Colors.blue,
+        borderType: BorderType.RRect,
+        radius: const Radius.circular(20),
+        child: Container(
+          height: 100,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColor.lightBlueColor,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+          ),
+          child: Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center, children: [
+            Image.asset('assets/addimage.png'),
+            const SizedBox(height: 5),
+            Text('Добавить фото',
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Color(0xFF8F9BB3)))),
+          ]),
+        ),
+      ),
+    );
   }
 }
 
@@ -292,12 +120,12 @@ abstract final class AppButtonStyle {
 }
 
 class Box extends StatelessWidget {
-  Box({Key? key, this.child, this.height, this.color, this.radius, this.padding}) : super(key: key);
-  Widget? child;
-  double? height;
-  Color? color;
-  double? radius;
-  double? padding;
+  const Box({Key? key, this.child, this.height, this.color, this.radius, this.padding}) : super(key: key);
+  final Widget? child;
+  final double? height;
+  final Color? color;
+  final double? radius;
+  final double? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -316,75 +144,32 @@ class Box extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
 
 class TextBox extends StatelessWidget {
-  const TextBox({Key? key, this.width, this.height, this.color, this.radius, this.padding, this.child}) : super(key: key);
+  const TextBox({Key? key, this.width, this.height, this.color, this.radius, this.padding, this.onTap, required this.child})
+      : super(key: key);
   final double? width;
   final double? height;
   final Color? color;
   final double? radius;
   final double? padding;
+  final GestureTapCallback? onTap;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height ?? 46,
-      width: width ?? double.infinity,
-      decoration: BoxDecoration(
-        color: color ?? AppColor.backgroundColor,
-        borderRadius: BorderRadius.all(Radius.circular(radius ?? 10)),
-      ),
-      child: Padding(padding: EdgeInsets.all(padding ?? 13.0), child: child),
-    );
-  }
-}
-
-abstract final class AppTextBox {
-  static Widget textBox(String data,
-      {Widget? child, double? width, double? height, Color? color, double? radius, double? padding}) {
-    return Container(
-      height: height ?? 46,
-      width: width ?? double.infinity,
-      decoration: BoxDecoration(
-        color: color ?? AppColor.backgroundColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(radius ?? 10),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: height ?? 46,
+        width: width ?? double.infinity,
+        decoration: BoxDecoration(
+          color: color ?? AppColor.backgroundColor,
+          borderRadius: BorderRadius.all(Radius.circular(radius ?? 10)),
         ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(padding ?? 13.0),
-        child: AppText.blackText13(data),
-      ),
-    );
-  }
-
-  static Widget buttonTextBox(String data, bool selected) {
-    return Container(
-      height: 46,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        color: AppColor.backgroundColor,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(13.0),
-        child: Text(data).style13w500(),
-      ),
-    );
-  }
-
-  static Widget textBoxIconButton(String data) {
-    return Container(
-      height: 46,
-      width: double.infinity,
-      decoration: const BoxDecoration(color: AppColor.backgroundColor, borderRadius: BorderRadius.all(Radius.circular(10))),
-      child: Padding(
-        padding: const EdgeInsets.all(13.0),
-        child: AppText.blackText13(data),
+        child: Padding(padding: EdgeInsets.all(padding ?? 13.0), child: child),
       ),
     );
   }
@@ -395,9 +180,9 @@ abstract final class AppDecoration {
     return InputDecoration(
         filled: true,
         fillColor: fillColor ?? AppColor.backgroundColor,
-        labelStyle: AppTextStyle.blackTextStyle13,
+        labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        errorStyle: AppTextStyle.blackTextStyle13,
+        errorStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         errorBorder: OutlineInputBorder(
@@ -425,10 +210,10 @@ abstract final class AppDecoration {
     return InputDecoration(
         filled: true,
         fillColor: fillColor ?? AppColor.backgroundColor,
-        labelStyle: AppTextStyle.blackTextStyle13Label,
+        labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500, height: 24 / 13),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         floatingLabelAlignment: FloatingLabelAlignment.start,
-        errorStyle: AppTextStyle.whiteTextStyle12,
+        errorStyle: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400),
         prefixIcon: SvgPicture.asset(prefixIcon, fit: BoxFit.scaleDown),
         suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
         errorBorder: OutlineInputBorder(
@@ -457,9 +242,9 @@ abstract final class AppDecoration {
       isCollapsed: true,
       filled: true,
       fillColor: fillColor ?? AppColor.backgroundColor,
-      labelStyle: AppTextStyle.blackTextStyle13Label,
+      labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500, height: 24 / 13),
       floatingLabelBehavior: FloatingLabelBehavior.never,
-      errorStyle: AppTextStyle.blackTextStyle12,
+      errorStyle: const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
       prefixIcon: SvgPicture.asset(prefixIcon, fit: BoxFit.scaleDown),
       suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
       errorBorder: OutlineInputBorder(
@@ -490,7 +275,7 @@ abstract final class AppDecoration {
         fillColor: AppColor.backgroundColor,
         labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        errorStyle: AppTextStyle.blackTextStyle12,
+        errorStyle: const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
         suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(width: 3, color: Colors.transparent),
@@ -519,7 +304,7 @@ abstract final class AppDecoration {
         fillColor: AppColor.backgroundColor,
         labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        errorStyle: AppTextStyle.blackTextStyle12,
+        errorStyle: const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
         suffixIcon: Icon(
           up ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
           color: const Color(0xFF8B97A8),
@@ -551,7 +336,7 @@ abstract final class AppDecoration {
       fillColor: AppColor.backgroundColor,
       labelStyle: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
       floatingLabelBehavior: FloatingLabelBehavior.never,
-      errorStyle: AppTextStyle.blackTextStyle12,
+      errorStyle: const TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
 //      suffixIcon: SvgPicture.asset('assets/icon.svg', fit: BoxFit.scaleDown),
       errorBorder: OutlineInputBorder(
         borderSide: const BorderSide(width: 3, color: Colors.transparent),

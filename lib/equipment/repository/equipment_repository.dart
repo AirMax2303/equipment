@@ -1,5 +1,7 @@
+import 'package:uuid/uuid.dart';
+
 import '../../models/models.dart';
-import '../../repository/repository.dart';
+import '../../service/service.dart';
 import '../models/equipment.dart';
 import '../models/info.dart';
 import '../models/name.dart';
@@ -13,12 +15,13 @@ class EquipmentFilter {
   String? value = '';
 }
 
-class EquipmentService {
-  final AppRepository repo;
+class EquipmentRepository {
+  final AppService service;
   EquipmentFilter filter = EquipmentFilter(filterType: FilterType.none);
   List<Equipment> list = [];
+  var uuid = const Uuid();
 
-  EquipmentService(this.repo);
+  EquipmentRepository(this.service);
 
   void setFilter(EquipmentFilter value) {
     filter = value;
@@ -29,36 +32,45 @@ class EquipmentService {
     final List<EquipmentModel> equipmentList;
     switch (filter.filterType) {
       case FilterType.none:
-        equipmentList = await repo.getEquipmentList();
+        equipmentList = await service.getEquipmentList();
       case FilterType.view:
-        equipmentList = await repo.getEquipmentViewList(filter.value!);
+        equipmentList = await service.getEquipmentViewList(filter.value!);
       case FilterType.plot:
-        equipmentList = await repo.getEquipmentPlotList(filter.value!);
-    };
+        equipmentList = await service.getEquipmentPlotList(filter.value!);
+    }
     for (var i = 0; i < equipmentList.length; ++i) {
-      final infoList = await repo.getInfoList(equipmentList[i].id!);
+      final infoList = await service.getInfoList(equipmentList[i].id!);
       list.add(Equipment(equipment: equipmentList[i], infoList: infoList));
     }
     return list;
   }
 
+  Future<Equipment> getEquipment(String equipmentid) async {
+    final equipmentList = await service.getEquipment(equipmentid);
+    final infoList = await service.getInfoList(equipmentid);
+    return Equipment(equipment: equipmentList[0], infoList: infoList);
+  }
+
   Future addEquipment(EquipmentModel value) async {
-    repo.addEquipment(value);
+    service.addEquipment(value);
   }
 
   Future deleteEquipment(Equipment value) async {
-    await repo.deleteInfos(value.equipment!.id!);
-    await repo.deleteEquipment(value.equipment!);
+    await service.deleteInfos(value.equipment!.id!);
+    await service.deleteEquipment(value.equipment!);
   }
 
   Future updateEquipment(Equipment value) async {
-    final EquipmentModel equipment;
-    final equipments = await repo.getEquipment(value.equipment!.id!);
-    await repo.updateEquipment(value.equipment!);
+    final equipments = await service.getEquipment(value.equipment!.id!);
+    await service.updateEquipment(value.equipment!);
+    if (value.equipment!.image != equipments[0].image) {
+      service.updateEquipmentImage(value.equipment!.image!, value.equipment!.id!);
+    }
     if (equipments.isNotEmpty) {
       if (equipments[0].proftype != value.equipment!.proftype!) {
         if (value.equipment!.proftype!) {
-          var result = await repo.addPPR(PprModel(
+          var result = await service.addPPR(PprModel(
+              id: uuid.v1(),
               equipmentid: value.equipment!.id,
               partsid: '',
               pprtype: 2,
@@ -71,7 +83,7 @@ class EquipmentService {
               beginint: 0,
               image: ''));
           result.fold(
-              (l) async => await repo.addWork(WorkModel(
+              (l) async => await service.addWork(WorkModel(
                   pprid: l.id,
                   equipmentid: l.equipmentid,
                   partsid: '',
@@ -83,26 +95,26 @@ class EquipmentService {
                   workisdone: false)),
               (r) => null);
         } else {
-          await repo.deletePPR3(value.equipment!.id!);
-          await repo.deleteWork3(value.equipment!.id!);
+          await service.deletePPR3(value.equipment!.id!);
+          await service.deleteWork3(value.equipment!.id!);
         }
       }
     }
-    await repo.deleteInfos(value.equipment!.id!);
+    await service.deleteInfos(value.equipment!.id!);
     for (var i = 0; i < value.infoList!.length; ++i) {
-      await repo.addInfo(value.infoList![i]);
+      await service.addInfo(value.infoList![i]);
     }
   }
 
   Future<List<InfoModel>> getInfoList(String id) async {
-    return repo.getInfoList(id);
+    return service.getInfoList(id);
   }
 
   Future<List<NameModel>> getNameList(String path) async {
-    return await repo.getNameList(path);
+    return await service.getNameList(path);
   }
 
   Future addName(NameModel value, String path) async {
-    repo.addName(value, path);
+    service.addName(value, path);
   }
 }

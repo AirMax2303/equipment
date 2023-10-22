@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../models/name.dart';
-import '../../service/equipment_service.dart';
+import '../../repository/equipment_repository.dart';
 
 part 'name_bloc.freezed.dart';
 
@@ -10,7 +10,7 @@ part 'name_event.dart';
 part 'name_state.dart';
 
 class NameBloc extends Bloc<NameEvent, NameState> {
-  EquipmentService service;
+  EquipmentRepository service;
   bool typeName;
 
   NameBloc(this.service, this.typeName) : super(const NameState.initial()) {

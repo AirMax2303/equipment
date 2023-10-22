@@ -1,6 +1,7 @@
+import 'package:equipment/profile/repository/profile_repository.dart';
 import 'package:equipment/widgets/appbar.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equipment/profile/service/profile_service.dart';
 import 'package:equipment/profile/tarif.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 
-import '../other/send_message.dart';
+import 'send_message.dart';
 import '../widgets/navigator.dart';
 import '../widgets/widgets.dart';
 import 'bloc/profile_bloc.dart';
@@ -18,13 +19,13 @@ import 'change_password.dart';
 class UserDataScreen extends StatelessWidget {
   UserDataScreen({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormBuilderState>();
-  final service = GetIt.instance.get<ProfileService>();
+  final service = GetIt.instance.get<ProfileRepository>();
   final ValueNotifier<bool> change = ValueNotifier<bool>(false);
   final ValueNotifier<String> tarif = ValueNotifier<String>('Начальный');
 
   @override
   Widget build(BuildContext context) {
-    final ProfileService service = GetIt.instance.get<ProfileService>();
+    final ProfileRepository service = GetIt.instance.get<ProfileRepository>();
     return Scaffold(
       bottomNavigationBar: const AppNavigationBar(Nav.none),
       appBar: appBar(context, 'Данные пользователя', {AppBarButton.profile}, () {
@@ -44,13 +45,17 @@ class UserDataScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      AppText.blackText14(service.profile.name!),
-                      AppIcons.iconButton35(
-                          image: 'assets/message_white.svg',
-                          onPressed: () {
-                            Navigator.push(
-                                context, MaterialPageRoute(builder: (context) => SendMessage(email: service.profile.email!)));
-                          }),
+                      Text(service.profile.name!).style14w700(),
+                      IconBox(
+                        'assets/message_white.svg',
+                        width: 35,
+                        height: 35,
+                        backgroundColor: const Color(0xCC3F60EE),
+                        onPressed: () {
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => SendMessage(email: service.profile.email!)));
+                        },
+                      ),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -92,7 +97,7 @@ class UserDataScreen extends StatelessWidget {
                       valueListenable: change,
                       builder: (BuildContext context, value, Widget? child) {
                         if (value) {
-                          return AppButton.filledInputButton('Сохранить', onPressed: () {
+                          return AppFilledButton('Сохранить', backgroundColor: AppColor.blueColor, onPressed: () {
                             BlocProvider.of<ProfileBloc>(context).add(ProfileEvent.saveUserData(
                               email: formKey.currentState?.fields['email']?.value,
                               phone: formKey.currentState?.fields['phone']?.value,
@@ -128,10 +133,8 @@ class UserDataScreen extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     const SizedBox(height: 40),
-                                    AppText.whiteText16('Ваш тариф $value'),
-                                    AppText.whiteText13(
-                                      'Действует до 01.01.2023',
-                                    )
+                                    Text('Ваш тариф $value').style16w700(color: Colors.white),
+                                    const Text('Действует до 01.01.2023').style12w300()
                                   ],
                                 ),
                               ),
@@ -160,7 +163,7 @@ class UserDataScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              AppText.blackText14('Тарифы и условия'),
+                              const Text('Тарифы и условия').style14w700(),
                               SvgPicture.asset('assets/arrow.svg'),
                             ],
                           ),
@@ -189,9 +192,10 @@ class UserDataScreen extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  AppIcons.icon35(image: 'assets/userpassword.svg'),
+                                  const IconBox('assets/userpassword.svg',
+                                      width: 26, height: 26, backgroundColor: Color(0xCC3F60EE)),
                                   const SizedBox(width: 5),
-                                  AppText.blackText14('Сменить пороль'),
+                                  const Text('Сменить пороль').style14w700(),
                                 ],
                               ),
                               SvgPicture.asset('assets/arrow.svg'),
@@ -216,9 +220,10 @@ class UserDataScreen extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  AppIcons.icon35(image: 'assets/log-out.svg'),
+                                  const IconBox('assets/log-out.svg',
+                                      width: 26, height: 26, backgroundColor: Color(0xCC3F60EE)),
                                   const SizedBox(width: 5),
-                                  AppText.blackText14('Выйти'),
+                                  const Text('Выйти').style14w700(),
                                 ],
                               ),
                               SvgPicture.asset('assets/arrow.svg'),

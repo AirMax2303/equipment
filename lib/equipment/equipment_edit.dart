@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:equipment/equipment/models/info.dart';
 import 'package:equipment/other/other.dart';
+import 'package:equipment/widgets/text_extension.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -21,7 +22,7 @@ import 'name_list.dart';
 //ignore: must_be_immutable
 class EquipmentEdit extends StatelessWidget {
   EquipmentEdit({Key? key, required this.equipmentData}) : super(key: key);
-  Equipment equipmentData;
+  final Equipment equipmentData;
   String image = '';
   File? file;
   final ValueNotifier<bool> refresh = ValueNotifier<bool>(false);
@@ -37,7 +38,7 @@ class EquipmentEdit extends StatelessWidget {
     showProfType.value = equipmentData.equipment!.proftype!;
     return Scaffold(
       appBar: appBar(context, 'Карточка оборудования', {}, () {
-        BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoDetailScreen(equipmentData));
+        BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.gotoDetailScreen(equipmentData.equipment!.id!));
       }),
       backgroundColor: Colors.white,
       bottomNavigationBar: const AppNavigationBar(Nav.equip),
@@ -56,24 +57,34 @@ class EquipmentEdit extends StatelessWidget {
                       key: formKey,
                       child: Column(
                         children: [
-                          Stack(alignment: Alignment.bottomRight, children: [
-                            equipmentData.equipment!.image!.isEmpty
-                                ? Image.asset('assets/eq.png')
-                                : SizedBox(
-                                    height: 170,
-                                    child: Image.network(fit: BoxFit.contain, imageUrl + equipmentData.equipment!.image!)),
-                            IconButton(
-                              icon: SvgPicture.asset('assets/plus.svg'),
-                              onPressed: () async {
-                                FilePickerResult? result = await FilePicker.platform.pickFiles();
-                                if ((result != null) && (result.files.isNotEmpty)) {
-                                  file = File(result.files.single.path!);
-                                  equipmentData.equipment = equipmentData.equipment!.copyWith(image: result.files[0].path);
-                                  refresh.value = !refresh.value;
-                                }
-                              },
-                            ),
-                          ]),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                file != null
+                                    ? Image.file(File(file!.path), height: 200, width: 300, fit: BoxFit.cover)
+                                    : equipmentData.equipment!.image!.isEmpty
+                                        ? Image.asset('assets/eq.png', height: 200, width: 300, fit: BoxFit.cover)
+                                        : Image.network(
+                                            height: 200,
+                                            width: 300,
+                                            fit: BoxFit.cover,
+                                            imageUrl + equipmentData.equipment!.image!,
+                                            errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                                            return SvgPicture.asset('assets/error.svg');
+                                          }),
+                                IconButton(
+                                  icon: SvgPicture.asset('assets/plus.svg'),
+                                  onPressed: () async {
+                                    FilePickerResult? result = await FilePicker.platform.pickFiles();
+                                    if ((result != null) && (result.files.isNotEmpty)) {
+                                      file = File(result.files.single.path!);
+                                      equipmentData.equipment = equipmentData.equipment!.copyWith(image: result.files[0].path);
+                                      refresh.value = !refresh.value;
+                                    }
+                                  },
+                                ),
+                              ]),
                           const SizedBox(height: 16),
                           FormBuilderTextField(
                             name: 'name1',
@@ -263,22 +274,25 @@ class EquipmentEdit extends StatelessWidget {
                                 );
                               }),
 //-------------------------------------------------------------------------------------------------------------------------------
-                          AppButton.filledButton('Сохранить', onPressed: () {
+                          AppFilledButton('Сохранить', onPressed: () {
                             if (formKey.currentState?.saveAndValidate() ?? false) {
                               BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.updateEquipment(equipmentData));
                             }
                           }),
-                          AppButton.textButton('Удалить', onPressed: () {
-                            showDialog<bool>(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return dialogDeleteConfirm(context);
-                                }).then((value) {
-                              if (value!) {
-                                BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.deleteEquipment(equipmentData));
-                              }
-                            });
-                          }),
+                          TextButton(
+                            child: const Text('Удалить').style12w300(),
+                            onPressed: () {
+                              showDialog<bool>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return dialogDeleteConfirm(context);
+                                  }).then((value) {
+                                if (value!) {
+                                  BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.deleteEquipment(equipmentData));
+                                }
+                              });
+                            },
+                          )
                         ],
                       ),
                     ),

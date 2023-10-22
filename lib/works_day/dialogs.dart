@@ -1,12 +1,10 @@
-import 'dart:io';
 import 'package:dartz/dartz.dart';
-import 'package:equipment/models/models.dart';
-import 'package:equipment/other/other.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+import 'package:equipment/widgets/text_extension.dart';
 import '../calendar/model/calendar_model.dart';
 import '../widgets/dialog.dart';
 import '../widgets/widgets.dart';
@@ -63,8 +61,8 @@ Dialog dialogWorkDay(BuildContext context, CalendarData calendar, int index) {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(calendar.equipment!.name1!).style14w700(),
-                    Text(calendar.equipment!.name2!).style12w400(),
+                    Text(calendar.equipment.name1!).style14w700(),
+                    Text(calendar.equipment.name2!).style12w400(),
                   ],
                 ),
               ],
@@ -106,7 +104,7 @@ Dialog dialogWorkDay(BuildContext context, CalendarData calendar, int index) {
             ),
 //-------------------------------------------------------------------------------------------------------------------------------
             const SizedBox(height: 16),
-            AppButton.filledBlackButton('Выполнить', onPressed: () {
+            AppFilledButton('Выполнить', onPressed: () {
               Navigator.pop(context, left<bool, DateTime>(true));
             }),
             TextButton(
@@ -126,7 +124,6 @@ Dialog dialogWorkDay(BuildContext context, CalendarData calendar, int index) {
     ),
   );
 }
-
 
 dialogSaveWorkTime(BuildContext context, CalendarData calendar, int index) {
 //  double width = (MediaQuery.of(context).size.width / 13) * 8;
@@ -163,14 +160,14 @@ dialogSaveWorkTime(BuildContext context, CalendarData calendar, int index) {
                 IconButton(
                     icon: SvgPicture.asset('assets/close.svg'),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pop(context, null);
                     }),
               ],
             ),
             const SizedBox(height: 16),
 //-------------------------------------------------------------------------------------------------------------------------------
-            Text(calendar.equipment!.name1!).style14w700(),
-            Text(calendar.equipment!.name2!).style12w400(),
+            Text(calendar.equipment.name1!).style14w700(),
+            Text(calendar.equipment.name2!).style12w400(),
             const SizedBox(height: 16),
 //-------------------------------------------------------------------------------------------------------------------------------
             Row(
@@ -200,7 +197,7 @@ dialogSaveWorkTime(BuildContext context, CalendarData calendar, int index) {
                   },
                 )),
             const SizedBox(height: 16),
-            AppButton.filledBlackButton('Записать', onPressed: () {
+            AppFilledButton('Записать', onPressed: () {
               if (formKey.currentState?.saveAndValidate() ?? false) {
                 Navigator.pop(context, left<int, DateTime>(int.parse(valuex)));
               }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../template/template01.dart';
+import '../../template/screens.dart';
 import '../bloc/web_bloc.dart';
 import '../model/web_model.dart';
 import '../service/web_service.dart';

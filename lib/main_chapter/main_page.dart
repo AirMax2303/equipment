@@ -1,17 +1,17 @@
 import 'package:dartz/dartz.dart';
+import 'package:equipment/main_chapter/repository/main_chapter_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equipment/main_chapter/service/main_chapter_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 
+import 'package:equipment/widgets/text_extension.dart';
 import '../profile/bloc/profile_bloc.dart';
 import '../profile/profile_page.dart';
-import '../template/template01.dart';
+import '../template/screens.dart';
 import '../widgets/dialog.dart';
 import '../widgets/navigator.dart';
-import '../widgets/no_notification.dart';
 import '../widgets/widgets.dart';
 import '../works_day/works_day_01.dart';
 import 'bloc/main_chapter_bloc.dart';
@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     date = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     return BlocProvider<MainChapterBloc>(
-      create: (context) => MainChapterBloc(GetIt.instance.get<MainChapterService>(), false)..add(MainChapterEvent.initial(date!)),
+      create: (context) => MainChapterBloc(GetIt.instance.get<MainChapterRepository>(), false)..add(MainChapterEvent.initial(date!)),
       child: BlocConsumer<MainChapterBloc, MainChapterState>(listener: (context, state) {
         state.mapOrNull(
             dateChanged: (data) => showDialog(
@@ -42,10 +42,12 @@ class MainPage extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => WorkDayPage(date: data.date))));
       }, builder: (context, state) {
         return state.maybeMap(
-            loading: (_) => const NoNotification(),
-//          const CircularProgressIndicator(),
-            data: (data) => MainScreen(currentday: data.date, list: data.list),
-            orElse: () => const EmptyScreen());
+          initial: (_) => const LoadingScreen(),
+          loading: (_) => const LoadingScreen(),
+          data: (data) => MainScreen(currentday: data.date, list: data.list),
+          error: (_) => const ErrorScreen(),
+          orElse: () => const ElseScreen(),
+        );
       }),
     );
   }
@@ -181,23 +183,13 @@ class BarScreen extends StatelessWidget {
         SvgPicture.asset('assets/logo.svg'),
         Row(
           children: [
-            AppIcons.iconButton(
-                image: 'assets/home.svg',
-                color: Colors.white,
-                onPressed: () {
-//                            Navigator.push(context, MaterialPageRoute(builder: (context) => SedMessage()));
-                }),
+            const IconBox('assets/home.svg'),
             const SizedBox(width: 10),
-            AppIcons.iconButton(
-                image: 'assets/profile.svg',
-                color: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => ProfilePage(const ProfileEvent.gotoUserDataScreen())));
-                }),
-            const SizedBox(
-              width: 10,
-            ),
+            IconBox('assets/profile.svg', onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ProfilePage(const ProfileEvent.gotoUserDataScreen())));
+            }),
+            const SizedBox(width: 10),
           ],
         )
       ],
@@ -234,14 +226,8 @@ class Calendar extends StatelessWidget {
         },
         child: Column(
           children: [
-            Text(
-              date.day.toString(),
-              style: AppTextStyle.whiteTextStyle18,
-            ),
-            Text(
-              dayweek[date.weekday - 1],
-              style: AppTextStyle.whiteTextStyle12,
-            ),
+            Text(date.day.toString()).style18w700(color: Colors.white),
+            Text(dayweek[date.weekday - 1]).style12w300(color: Colors.white),
           ],
         ),
       );

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:equipment/order/model/order.dart';
-import 'package:equipment/order/service/order_service.dart';
+import 'package:equipment/order/repository/order_repository.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,6 @@ import 'package:intl/intl.dart';
 
 import '../main_chapter/main_page.dart';
 import '../models/models.dart';
-import '../ppr/ppr_10.dart';
 import '../widgets/appbar.dart';
 import '../widgets/dialog.dart';
 import '../widgets/equipment/dialogs.dart';
@@ -28,7 +27,7 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<OrderBloc>(
-      create: (BuildContext context) => OrderBloc(GetIt.instance.get<OrderService>()),
+      create: (BuildContext context) => OrderBloc(GetIt.instance.get<OrderRepository>()),
       child: BlocConsumer<OrderBloc, OrderState>(listener: (context, state) {
         state.mapOrNull(
           ok: (_) => showDialog<bool>(
@@ -94,7 +93,7 @@ class OrderScreen extends StatelessWidget {
                               }).then((value) {
                             if (value != null) {
                               equipment = value;
-                              order = order.copyWith(equipmentid: value!.id!);
+                              order = order.copyWith(equipmentid: value.id!);
                               formKey.currentState?.fields['equipment']?.didChange(equipment!.name1!);
                             }
                           });
@@ -184,8 +183,7 @@ class OrderScreen extends StatelessWidget {
                             return file != null ? Image.file(File(file!.path), width: 250, height: 250) : const SizedBox();
                           }),
                       const SizedBox(height: 16),
-                      InkWell(
-                        child: AppButton.addImageButten(),
+                      SelectImageButton(
                         onTap: () async {
                           FilePickerResult? result = await FilePicker.platform.pickFiles();
                           if ((result != null) && (result.files.isNotEmpty)) {
@@ -206,7 +204,7 @@ class OrderScreen extends StatelessWidget {
               width: double.infinity,
               height: 55,
               color: Colors.white,
-              child: AppButton.filledBlackButton('Добавить', onPressed: () {
+              child: AppFilledButton('Добавить', onPressed: () {
                 if (formKey.currentState?.saveAndValidate() ?? false) {
                   context.read<OrderBloc>().add(OrderEvent.addOrder(order));
                 }

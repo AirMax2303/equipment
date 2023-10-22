@@ -49,15 +49,3 @@ Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
       'workisdone': boolToString(instance.workisdone),
       'datework': instance.datework?.toIso8601String(),
     };
-
-_$ListOrderImpl _$$ListOrderImplFromJson(Map<String, dynamic> json) =>
-    _$ListOrderImpl(
-      list: (json['list'] as List<dynamic>?)
-          ?.map((e) => OrderModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$ListOrderImplToJson(_$ListOrderImpl instance) =>
-    <String, dynamic>{
-      'list': instance.list,
-    };

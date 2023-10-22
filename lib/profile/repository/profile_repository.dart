@@ -7,8 +7,9 @@ import 'package:uuid/uuid.dart';
 import '../../other/other.dart';
 import '../model/profile.dart';
 
-class ProfileService {
+class ProfileRepository {
   ProfileModel profile = const ProfileModel();
+  bool userLogin = false;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   String errorMail = '';
 
@@ -17,6 +18,7 @@ class ProfileService {
     final String? _profile = prefs.getString(key);
     if (_profile != null) {
       profile = ProfileModel.fromJson(jsonDecode(_profile));
+      userLogin = true;
     }
     return profile;
   }

@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../models/models.dart';
-import '../profile/service/profile_service.dart';
+import '../profile/repository/profile_repository.dart';
 import 'models/name.dart';
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
@@ -94,7 +94,9 @@ class EquipmentAdd extends StatelessWidget {
                               valueListenable: showView,
                               builder: (BuildContext context, value, Widget? child) {
                                 if (value) {
-                                  return NameList(typeName: true, onNameCallback: (NameModel value) {
+                                  return NameList(
+                                      typeName: true,
+                                      onNameCallback: (NameModel value) {
                                         formKey.currentState?.fields['view']?.didChange(value.name);
                                         equipmentModel = equipmentModel.copyWith(viewid: value.id, view: value.name);
                                         showView.value = false;
@@ -124,7 +126,9 @@ class EquipmentAdd extends StatelessWidget {
                               valueListenable: showPlot,
                               builder: (BuildContext context, value, Widget? child) {
                                 if (value) {
-                                  return NameList(typeName: false, onNameCallback: (NameModel value) {
+                                  return NameList(
+                                      typeName: false,
+                                      onNameCallback: (NameModel value) {
                                         formKey.currentState?.fields['plot']?.didChange(value.name);
                                         equipmentModel = equipmentModel.copyWith(plotid: value.id, plot: value.name);
                                         showPlot.value = false;
@@ -142,8 +146,7 @@ class EquipmentAdd extends StatelessWidget {
                                 )
                               : const SizedBox(height: 5),
                           const SizedBox(height: 10),
-                          InkWell(
-                            child: AppButton.addImageButten(),
+                          SelectImageButton(
                             onTap: () async {
                               FilePickerResult? result = await FilePicker.platform.pickFiles();
                               if ((result != null) && (result.files.isNotEmpty)) {
@@ -154,12 +157,11 @@ class EquipmentAdd extends StatelessWidget {
                             },
                           ),
                           const SizedBox(height: 20),
-                          AppButton.filledButton('Добавить', onPressed: () {
-                            if (formKey.currentState?.saveAndValidate() ?? false) {
-                              final ProfileService profileService = GetIt.instance.get<ProfileService>();
-                              equipmentModel = equipmentModel.copyWith(clientid: profileService.profile.id);
-                              BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.addEquipment(equipmentModel));
-                            }
+                          AppFilledButton('Добавить', onPressed: () {
+//                            if (formKey.currentState?.saveAndValidate() ?? false) {
+                            final ProfileRepository profileService = GetIt.instance.get<ProfileRepository>();
+                            equipmentModel = equipmentModel.copyWith(clientid: profileService.profile.id);
+                            BlocProvider.of<EquipmentBloc>(context).add(EquipmentEvent.addEquipment(equipmentModel));
                           }),
                         ],
                       ),

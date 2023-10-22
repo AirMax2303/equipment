@@ -1,32 +1,37 @@
-import 'package:equipment/calendar/service/calendar_service.dart';
+import 'package:equipment/calendar/repository/calendar_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 
+import 'package:equipment/widgets/text_extension.dart';
+import '../equipment/bloc/equipment_bloc.dart';
+import '../equipment/equipment_page.dart';
+import '../main_chapter/main_page.dart';
 import '../models/models.dart';
 import '../other/other.dart';
+import '../template/screens.dart';
 import '../widgets/appbar.dart';
 import '../widgets/dialog.dart';
 import '../widgets/equipment/dialogs.dart';
 import '../widgets/navigator.dart';
-import '../widgets/no_notification.dart';
 import '../widgets/widgets.dart';
 import 'bloc/calendar_bloc.dart';
 import 'model/calendar_model.dart';
 
 class CalendarPage extends StatelessWidget {
-  CalendarPage({Key? key, required this.histiry, required this.date, required this.nav}) : super(key: key);
+  CalendarPage({Key? key, required this.histiry, required this.date, required this.nav, this.event}) : super(key: key);
   bool? histiry;
   final DateTime date;
   final Nav nav;
+  final CalendarEvent? event;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CalendarBloc>(
       create: (BuildContext context) =>
-          CalendarBloc(GetIt.instance.get<CalendarService>(), histiry)..add(CalendarEvent.getList(date)),
+          CalendarBloc(GetIt.instance.get<CalendarRepository>(), histiry)..add(event ?? CalendarEvent.getList(date)),
       child: BlocConsumer<CalendarBloc, CalendarState>(
         listener: (context, state) {
           state.mapOrNull(
@@ -37,20 +42,28 @@ class CalendarPage extends StatelessWidget {
         },
         builder: (context, state) {
           return state.maybeMap(
-              loading: (_) => const CircularProgressIndicator(),
-              data: (data) => CalendarScreen(
-                    list: data.list!,
-                    nav: nav,
-                    currentDay: data.date,
-                    equipment: const EquipmentModel(name1: 'Выберите оборудование', name2: ''),
-                  ),
-              equipmentData: (data) => CalendarScreen(
-                    list: data.list!,
-                    nav: nav,
-                    currentDay: DateTime.now(),
-                    equipment: data.equipment,
-                  ),
-              orElse: () => const NoNotification());
+            initial: (_) => const Center(child: CircularProgressIndicator(backgroundColor: AppColor.blueColor,)),
+            loading: (_) => const Center(child: CircularProgressIndicator(backgroundColor: AppColor.blueColor,)),
+            data: (data) => CalendarScreen(
+              list: data.list!,
+              nav: nav,
+              currentDay: data.date,
+              equipment: const EquipmentModel(
+                name1: 'Выберите оборудование',
+                name2: '',
+              ),
+              lastPage: event == null,
+            ),
+            equipmentData: (data) => CalendarScreen(
+              list: data.list!,
+              nav: nav,
+              currentDay: DateTime.now(),
+              equipment: data.equipment,
+              lastPage: event == null,
+            ),
+            error: (_) => const ErrorScreen(),
+            orElse: () => Container()//const ElseScreen(),
+          );
         },
       ),
     );
@@ -58,14 +71,22 @@ class CalendarPage extends StatelessWidget {
 }
 
 class CalendarScreen extends StatelessWidget {
-  CalendarScreen({Key? key, required this.list, required this.nav, required this.currentDay, required this.equipment})
+  CalendarScreen(
+      {Key? key,
+      required this.list,
+      required this.nav,
+      required this.currentDay,
+      required this.equipment,
+      required this.lastPage})
       : super(key: key);
   final List<CalendarData> list;
   final Nav nav;
-  final ValueNotifier<bool> changed = ValueNotifier<bool>(false);
   DateTime currentDay;
-  String dateText = '';
   EquipmentModel equipment;
+  final bool lastPage;
+  String dateText = '';
+
+  final ValueNotifier<bool> changed = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +95,14 @@ class CalendarScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: AppNavigationBar(nav),
-      appBar: appBar(context, 'Календарь', {}, null),
+      appBar: appBar(context,  nav == Nav.calendar ? 'Календарь' : 'История', {}, () {
+        if (lastPage) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+        } else {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => EquipmentPage(event: EquipmentEvent.gotoDetailScreen(equipment.id!))));
+        }
+      }),
       body: SafeArea(
           child: ValueListenableBuilder(
               valueListenable: changed,

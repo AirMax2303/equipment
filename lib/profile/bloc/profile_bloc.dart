@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../model/profile.dart';
-import '../service/profile_service.dart';
+import '../repository/profile_repository.dart';
 
 part 'profile_bloc.freezed.dart';
 
@@ -11,9 +11,9 @@ part 'profile_event.dart';
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  final ProfileService service;
+  final ProfileRepository repo;
 
-  ProfileBloc(this.service) : super(const ProfileState.initial()) {
+  ProfileBloc(this.repo) : super(const ProfileState.initial()) {
     on<_InitialEvent>(_onInitialEvent);
     on<_SaveProfileEvent>(_onSaveEvent);
     on<_GotoProfileScreenEvent>(_onGotoProfileScreenEvent);
@@ -57,29 +57,29 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     _SaveUserDatalEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    service.saveUserData(event.email, event.phone);
+    repo.saveUserData(event.email, event.phone);
   }
 
   void _onSavePasswordEvent(
     _SavePasswordEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    service.savePassword(event.password);
+    repo.savePassword(event.password);
   }
 
   void _onSaveTarifEvent(
       _SaveTarifEvent event,
       Emitter<ProfileState> emit,
       ) async {
-    service.saveTarif(event.tarif);
+    repo.saveTarif(event.tarif);
   }
 
   void _onSaveEvent(
     _SaveProfileEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    service.saveProfile(event.name, event.email, event.phone, event.password);
-    service.sendMail(event.email, 'Вы успешно зарегистрировались', 'TechNote');
+    repo.saveProfile(event.name, event.email, event.phone, event.password);
+    repo.sendMail(event.email, 'Вы успешно зарегистрировались', 'TechNote');
 //    emit(const _LoginScreen());
     emit(const _OkState());
   }
@@ -89,7 +89,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     emit(const _LoadingState());
-    await service.getProfile(event.key).then(
+    await repo.getProfile(event.key).then(
       (value) async {
         if (value?.id == '') {
           emit(const _noDataState());

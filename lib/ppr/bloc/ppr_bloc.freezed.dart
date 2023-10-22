@@ -22,7 +22,9 @@ mixin _$PprEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
@@ -33,7 +35,8 @@ mixin _$PprEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
@@ -44,7 +47,8 @@ mixin _$PprEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
@@ -181,7 +185,9 @@ class _$InitialEventImpl implements _InitialEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
@@ -195,7 +201,8 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
@@ -209,7 +216,8 @@ class _$InitialEventImpl implements _InitialEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
@@ -358,7 +366,9 @@ class _$GotoAddPprScreenEventImpl implements _GotoAddPprScreenEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
@@ -372,7 +382,8 @@ class _$GotoAddPprScreenEventImpl implements _GotoAddPprScreenEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
@@ -386,7 +397,8 @@ class _$GotoAddPprScreenEventImpl implements _GotoAddPprScreenEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
@@ -538,7 +550,9 @@ class _$GotoEditPprScreenEventImpl implements _GotoEditPprScreenEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
@@ -552,7 +566,8 @@ class _$GotoEditPprScreenEventImpl implements _GotoEditPprScreenEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
@@ -566,7 +581,8 @@ class _$GotoEditPprScreenEventImpl implements _GotoEditPprScreenEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
@@ -641,9 +657,10 @@ abstract class _$$AddPprEventImplCopyWith<$Res> {
           _$AddPprEventImpl value, $Res Function(_$AddPprEventImpl) then) =
       __$$AddPprEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PprType pprType, PprModel ppr});
+  $Res call({PprType pprType, PprModel ppr, EquipmentModel equipment});
 
   $PprModelCopyWith<$Res> get ppr;
+  $EquipmentModelCopyWith<$Res> get equipment;
 }
 
 /// @nodoc
@@ -659,6 +676,7 @@ class __$$AddPprEventImplCopyWithImpl<$Res>
   $Res call({
     Object? pprType = null,
     Object? ppr = null,
+    Object? equipment = null,
   }) {
     return _then(_$AddPprEventImpl(
       null == pprType
@@ -669,6 +687,10 @@ class __$$AddPprEventImplCopyWithImpl<$Res>
           ? _value.ppr
           : ppr // ignore: cast_nullable_to_non_nullable
               as PprModel,
+      null == equipment
+          ? _value.equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as EquipmentModel,
     ));
   }
 
@@ -679,21 +701,31 @@ class __$$AddPprEventImplCopyWithImpl<$Res>
       return _then(_value.copyWith(ppr: value));
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EquipmentModelCopyWith<$Res> get equipment {
+    return $EquipmentModelCopyWith<$Res>(_value.equipment, (value) {
+      return _then(_value.copyWith(equipment: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$AddPprEventImpl implements _AddPprEvent {
-  const _$AddPprEventImpl(this.pprType, this.ppr);
+  const _$AddPprEventImpl(this.pprType, this.ppr, this.equipment);
 
   @override
   final PprType pprType;
   @override
   final PprModel ppr;
+  @override
+  final EquipmentModel equipment;
 
   @override
   String toString() {
-    return 'PprEvent.addPpr(pprType: $pprType, ppr: $ppr)';
+    return 'PprEvent.addPpr(pprType: $pprType, ppr: $ppr, equipment: $equipment)';
   }
 
   @override
@@ -702,11 +734,13 @@ class _$AddPprEventImpl implements _AddPprEvent {
         (other.runtimeType == runtimeType &&
             other is _$AddPprEventImpl &&
             (identical(other.pprType, pprType) || other.pprType == pprType) &&
-            (identical(other.ppr, ppr) || other.ppr == ppr));
+            (identical(other.ppr, ppr) || other.ppr == ppr) &&
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pprType, ppr);
+  int get hashCode => Object.hash(runtimeType, pprType, ppr, equipment);
 
   @JsonKey(ignore: true)
   @override
@@ -721,12 +755,14 @@ class _$AddPprEventImpl implements _AddPprEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
   }) {
-    return addPpr(pprType, ppr);
+    return addPpr(pprType, ppr, equipment);
   }
 
   @override
@@ -735,12 +771,13 @@ class _$AddPprEventImpl implements _AddPprEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
   }) {
-    return addPpr?.call(pprType, ppr);
+    return addPpr?.call(pprType, ppr, equipment);
   }
 
   @override
@@ -749,14 +786,15 @@ class _$AddPprEventImpl implements _AddPprEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
     required TResult orElse(),
   }) {
     if (addPpr != null) {
-      return addPpr(pprType, ppr);
+      return addPpr(pprType, ppr, equipment);
     }
     return orElse();
   }
@@ -809,11 +847,12 @@ class _$AddPprEventImpl implements _AddPprEvent {
 }
 
 abstract class _AddPprEvent implements PprEvent {
-  const factory _AddPprEvent(final PprType pprType, final PprModel ppr) =
-      _$AddPprEventImpl;
+  const factory _AddPprEvent(final PprType pprType, final PprModel ppr,
+      final EquipmentModel equipment) = _$AddPprEventImpl;
 
   PprType get pprType;
   PprModel get ppr;
+  EquipmentModel get equipment;
   @JsonKey(ignore: true)
   _$$AddPprEventImplCopyWith<_$AddPprEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -906,7 +945,9 @@ class _$DeletePprEventImpl implements _DeletePprEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
@@ -920,7 +961,8 @@ class _$DeletePprEventImpl implements _DeletePprEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
@@ -934,7 +976,8 @@ class _$DeletePprEventImpl implements _DeletePprEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
@@ -1091,7 +1134,9 @@ class _$UpdatePprEventImpl implements _UpdatePprEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
@@ -1105,7 +1150,8 @@ class _$UpdatePprEventImpl implements _UpdatePprEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
@@ -1119,7 +1165,8 @@ class _$UpdatePprEventImpl implements _UpdatePprEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
@@ -1258,7 +1305,9 @@ class _$BackEventImpl implements _BackEvent {
     required TResult Function(PprType pprType, String equipmentid)
         gotoAddPprScreen,
     required TResult Function(PprModel ppr) gotoEditPprScreen,
-    required TResult Function(PprType pprType, PprModel ppr) addPpr,
+    required TResult Function(
+            PprType pprType, PprModel ppr, EquipmentModel equipment)
+        addPpr,
     required TResult Function(PprType pprType, PprModel ppr) deletePpr,
     required TResult Function(PprType pprType, PprModel ppr) updatePpr,
     required TResult Function(LastState lastState) back,
@@ -1272,7 +1321,8 @@ class _$BackEventImpl implements _BackEvent {
     TResult? Function(PprType pprType, String equipmentid)? initial,
     TResult? Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult? Function(PprModel ppr)? gotoEditPprScreen,
-    TResult? Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult? Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult? Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult? Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult? Function(LastState lastState)? back,
@@ -1286,7 +1336,8 @@ class _$BackEventImpl implements _BackEvent {
     TResult Function(PprType pprType, String equipmentid)? initial,
     TResult Function(PprType pprType, String equipmentid)? gotoAddPprScreen,
     TResult Function(PprModel ppr)? gotoEditPprScreen,
-    TResult Function(PprType pprType, PprModel ppr)? addPpr,
+    TResult Function(PprType pprType, PprModel ppr, EquipmentModel equipment)?
+        addPpr,
     TResult Function(PprType pprType, PprModel ppr)? deletePpr,
     TResult Function(PprType pprType, PprModel ppr)? updatePpr,
     TResult Function(LastState lastState)? back,
@@ -1359,6 +1410,7 @@ mixin _$PprState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -1374,6 +1426,7 @@ mixin _$PprState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -1389,6 +1442,7 @@ mixin _$PprState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -1405,6 +1459,7 @@ mixin _$PprState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -1418,6 +1473,7 @@ mixin _$PprState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -1431,6 +1487,7 @@ mixin _$PprState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -1527,6 +1584,7 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -1545,6 +1603,7 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -1563,6 +1622,7 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -1585,6 +1645,7 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -1601,6 +1662,7 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -1617,6 +1679,7 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -1640,6 +1703,193 @@ abstract class _InitialState implements PprState {
   String get equipmentid;
   @JsonKey(ignore: true)
   _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$PprStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ErrorStateImpl(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'PprState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorStateImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
+    required TResult Function(String equipmentid) addScreen,
+    required TResult Function(PprModel ppr) editScreen,
+    required TResult Function(String equipmentid) ppr3Screen,
+    required TResult Function() back,
+    required TResult Function() loading,
+    required TResult Function(PprType pprType, PprModel ppr) ok,
+    required TResult Function(PprType pprType, PprModel ppr) okDelete,
+    required TResult Function(
+            PprType? pprType, String? equipmentid, List<PprModel>? list)
+        data,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
+    TResult? Function(String equipmentid)? addScreen,
+    TResult? Function(PprModel ppr)? editScreen,
+    TResult? Function(String equipmentid)? ppr3Screen,
+    TResult? Function()? back,
+    TResult? Function()? loading,
+    TResult? Function(PprType pprType, PprModel ppr)? ok,
+    TResult? Function(PprType pprType, PprModel ppr)? okDelete,
+    TResult? Function(
+            PprType? pprType, String? equipmentid, List<PprModel>? list)?
+        data,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
+    TResult Function(String equipmentid)? addScreen,
+    TResult Function(PprModel ppr)? editScreen,
+    TResult Function(String equipmentid)? ppr3Screen,
+    TResult Function()? back,
+    TResult Function()? loading,
+    TResult Function(PprType pprType, PprModel ppr)? ok,
+    TResult Function(PprType pprType, PprModel ppr)? okDelete,
+    TResult Function(
+            PprType? pprType, String? equipmentid, List<PprModel>? list)?
+        data,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_AddScreenState value) addScreen,
+    required TResult Function(_EditScreenState value) editScreen,
+    required TResult Function(_Ppr3ScreenState value) ppr3Screen,
+    required TResult Function(_BackState value) back,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_OkState value) ok,
+    required TResult Function(_OkDeleteState value) okDelete,
+    required TResult Function(_DataState value) data,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_AddScreenState value)? addScreen,
+    TResult? Function(_EditScreenState value)? editScreen,
+    TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult? Function(_BackState value)? back,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_OkState value)? ok,
+    TResult? Function(_OkDeleteState value)? okDelete,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_AddScreenState value)? addScreen,
+    TResult Function(_EditScreenState value)? editScreen,
+    TResult Function(_Ppr3ScreenState value)? ppr3Screen,
+    TResult Function(_BackState value)? back,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_OkState value)? ok,
+    TResult Function(_OkDeleteState value)? okDelete,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ErrorState implements PprState {
+  const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1710,6 +1960,7 @@ class _$AddScreenStateImpl implements _AddScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -1728,6 +1979,7 @@ class _$AddScreenStateImpl implements _AddScreenState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -1746,6 +1998,7 @@ class _$AddScreenStateImpl implements _AddScreenState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -1768,6 +2021,7 @@ class _$AddScreenStateImpl implements _AddScreenState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -1784,6 +2038,7 @@ class _$AddScreenStateImpl implements _AddScreenState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -1800,6 +2055,7 @@ class _$AddScreenStateImpl implements _AddScreenState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -1903,6 +2159,7 @@ class _$EditScreenStateImpl implements _EditScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -1921,6 +2178,7 @@ class _$EditScreenStateImpl implements _EditScreenState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -1939,6 +2197,7 @@ class _$EditScreenStateImpl implements _EditScreenState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -1961,6 +2220,7 @@ class _$EditScreenStateImpl implements _EditScreenState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -1977,6 +2237,7 @@ class _$EditScreenStateImpl implements _EditScreenState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -1993,6 +2254,7 @@ class _$EditScreenStateImpl implements _EditScreenState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2086,6 +2348,7 @@ class _$Ppr3ScreenStateImpl implements _Ppr3ScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -2104,6 +2367,7 @@ class _$Ppr3ScreenStateImpl implements _Ppr3ScreenState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -2122,6 +2386,7 @@ class _$Ppr3ScreenStateImpl implements _Ppr3ScreenState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -2144,6 +2409,7 @@ class _$Ppr3ScreenStateImpl implements _Ppr3ScreenState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -2160,6 +2426,7 @@ class _$Ppr3ScreenStateImpl implements _Ppr3ScreenState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2176,6 +2443,7 @@ class _$Ppr3ScreenStateImpl implements _Ppr3ScreenState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2242,6 +2510,7 @@ class _$BackStateImpl implements _BackState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -2260,6 +2529,7 @@ class _$BackStateImpl implements _BackState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -2278,6 +2548,7 @@ class _$BackStateImpl implements _BackState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -2300,6 +2571,7 @@ class _$BackStateImpl implements _BackState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -2316,6 +2588,7 @@ class _$BackStateImpl implements _BackState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2332,6 +2605,7 @@ class _$BackStateImpl implements _BackState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2392,6 +2666,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -2410,6 +2685,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -2428,6 +2704,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -2450,6 +2727,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -2466,6 +2744,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2482,6 +2761,7 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2586,6 +2866,7 @@ class _$OkStateImpl implements _OkState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -2604,6 +2885,7 @@ class _$OkStateImpl implements _OkState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -2622,6 +2904,7 @@ class _$OkStateImpl implements _OkState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -2644,6 +2927,7 @@ class _$OkStateImpl implements _OkState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -2660,6 +2944,7 @@ class _$OkStateImpl implements _OkState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2676,6 +2961,7 @@ class _$OkStateImpl implements _OkState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2788,6 +3074,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -2806,6 +3093,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -2824,6 +3112,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -2846,6 +3135,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -2862,6 +3152,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -2878,6 +3169,7 @@ class _$OkDeleteStateImpl implements _OkDeleteState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -3001,6 +3293,7 @@ class _$DataStateImpl implements _DataState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String equipmentid) initial,
+    required TResult Function(String error) error,
     required TResult Function(String equipmentid) addScreen,
     required TResult Function(PprModel ppr) editScreen,
     required TResult Function(String equipmentid) ppr3Screen,
@@ -3019,6 +3312,7 @@ class _$DataStateImpl implements _DataState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String equipmentid)? initial,
+    TResult? Function(String error)? error,
     TResult? Function(String equipmentid)? addScreen,
     TResult? Function(PprModel ppr)? editScreen,
     TResult? Function(String equipmentid)? ppr3Screen,
@@ -3037,6 +3331,7 @@ class _$DataStateImpl implements _DataState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String equipmentid)? initial,
+    TResult Function(String error)? error,
     TResult Function(String equipmentid)? addScreen,
     TResult Function(PprModel ppr)? editScreen,
     TResult Function(String equipmentid)? ppr3Screen,
@@ -3059,6 +3354,7 @@ class _$DataStateImpl implements _DataState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_AddScreenState value) addScreen,
     required TResult Function(_EditScreenState value) editScreen,
     required TResult Function(_Ppr3ScreenState value) ppr3Screen,
@@ -3075,6 +3371,7 @@ class _$DataStateImpl implements _DataState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_AddScreenState value)? addScreen,
     TResult? Function(_EditScreenState value)? editScreen,
     TResult? Function(_Ppr3ScreenState value)? ppr3Screen,
@@ -3091,6 +3388,7 @@ class _$DataStateImpl implements _DataState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_AddScreenState value)? addScreen,
     TResult Function(_EditScreenState value)? editScreen,
     TResult Function(_Ppr3ScreenState value)? ppr3Screen,
