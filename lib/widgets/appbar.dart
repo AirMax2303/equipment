@@ -1,6 +1,5 @@
 import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,9 +8,13 @@ import '../profile/userdata.dart';
 
 enum AppBarButton { home, profile }
 
-AppBar appBar(BuildContext context, String title, Set<AppBarButton> appBarButtons, VoidCallback? onPressed,
+AppBar appBar(
+  BuildContext context,
+  String title,
+  Set<AppBarButton> appBarButtons,
+  VoidCallback? onPressed,
 //    StatelessWidget? tatelessWidget
-    ) {
+) {
   return AppBar(
     backgroundColor: AppColor.blackColor,
     title: Text(
@@ -31,7 +34,10 @@ AppBar appBar(BuildContext context, String title, Set<AppBarButton> appBarButton
         onPressed: appBarButtons.contains(AppBarButton.home)
             ? null
             : () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MainPage(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))));
               },
       ),
       IconButton(

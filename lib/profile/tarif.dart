@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../life_pay/dialogs.dart';
 import '../widgets/appbar.dart';
 import '../widgets/navigator.dart';
 
@@ -47,7 +48,14 @@ class SelectTarif extends StatelessWidget {
                         );
                       }),
                   const SizedBox(height: 25),
-                  AppFilledButton('Подключить', onPressed: () {
+                  AppFilledButton('Подключить', onPressed: () async {
+                    if (!radio.value) {
+                      await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return lifePayDialog(context);
+                          }).then((value) => null);
+                    }
                     Navigator.pop(context, radio.value ? 'Начальный' : 'Полный');
                   }),
                   const SizedBox(height: 16),

@@ -174,12 +174,17 @@ class UserDataScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return changePassword(context);
-                          }).then(
-                        (value) => BlocProvider.of<ProfileBloc>(context).add(ProfileEvent.savePassword(password: value!)),
-                      );
+                        context: context,
+                        builder: (BuildContext context) {
+                          return changePassword(context);
+                        },
+                      ).then((value) {
+                        if (value != null) {
+                          BlocProvider.of<ProfileBloc>(context).add(
+                            ProfileEvent.savePassword(password: value),
+                          );
+                        }
+                      });
                     },
                     child: Container(
                         height: 60,
@@ -220,8 +225,7 @@ class UserDataScreen extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  const IconBox('assets/log-out.svg',
-                                      width: 26, height: 26, backgroundColor: Color(0xCC3F60EE)),
+                                  const IconBox('assets/log-out.svg', width: 26, height: 26, backgroundColor: Color(0xCC3F60EE)),
                                   const SizedBox(width: 5),
                                   const Text('Выйти').style14w700(),
                                 ],

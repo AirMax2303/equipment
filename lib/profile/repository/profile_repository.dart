@@ -1,13 +1,19 @@
 import 'dart:convert';
+import 'package:equipment/models/models.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../other/other.dart';
+import '../../service/service.dart';
 import '../model/profile.dart';
 
 class ProfileRepository {
+  final AppService service;
+
+  ProfileRepository(this.service);
+
   ProfileModel profile = const ProfileModel();
   bool userLogin = false;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -52,8 +58,8 @@ class ProfileRepository {
   }
 
   Future<void> savePassword(
-      String password,
-      ) async {
+    String password,
+  ) async {
     final SharedPreferences prefs = await _prefs;
     profile = profile.copyWith(password: password);
     prefs.remove(spKey);
@@ -61,8 +67,8 @@ class ProfileRepository {
   }
 
   Future<void> saveTarif(
-      String tarif,
-      ) async {
+    String tarif,
+  ) async {
     final SharedPreferences prefs = await _prefs;
     profile = profile.copyWith(tarif: tarif);
     prefs.remove(spKey);

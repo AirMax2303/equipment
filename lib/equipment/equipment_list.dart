@@ -25,7 +25,10 @@ class EquipmentListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context, 'Оборудование', {}, () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => MainPage(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))));
       }),
       bottomNavigationBar: const AppNavigationBar(Nav.equip),
       backgroundColor: Colors.white,
@@ -127,7 +130,7 @@ class EquipmentListScreen extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SvgPicture.asset(status(list[index].equipment!.status!)),
+                                SvgPicture.asset('assets/status${list[index].equipment!.status!}.svg'),
                               ],
                             ),
 //------------------------------------------------------------------------------------------------------------------------------

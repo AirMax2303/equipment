@@ -17,21 +17,41 @@ class MainChapterBloc extends Bloc<MainChapterEvent, MainChapterState> {
 
   MainChapterBloc(this.repo, this.histiry) : super(const MainChapterState.initial()) {
     on<_InitialEvent>(_onInitialEvent);
+    on<_GetListEvent>(_onGetListEvent);
     on<_GotoWorkDayEvent>(_onGotoWorkDayEvent);
+    on<_GotoUserDataEvent>(_onGotoUserDataEvent);
     on<_ChangeDateEvent>(_onChangeDateEvent);
   }
 
   void _onInitialEvent(_InitialEvent event, Emitter<MainChapterState> emit) async {
     emit(const MainChapterState.loading());
-    await repo.getMainChapterList(histiry!, event.date).then((value) {
-      emit(_DataState(date: event.date, list: value));
-    });
+    final result = await repo.initial(histiry!, event.date);
+    result.fold(
+      (l) => emit(_ErrorState(error: l.message)),
+      (r) => emit(_DataState(date: event.date, list: r)),
+    );
+  }
+
+  void _onGetListEvent(_GetListEvent event, Emitter<MainChapterState> emit) async {
+    emit(const MainChapterState.loading());
+    final result = await repo.getMainChapterList(histiry!, event.date);
+    result.fold(
+          (l) => emit(_ErrorState(error: l.message)),
+          (r) => emit(_DataState(date: event.date, list: r)),
+    );
   }
 
   void _onChangeDateEvent(_ChangeDateEvent event, Emitter<MainChapterState> emit) async {
     emit(const MainChapterState.loading());
-    await repo.changeWorkDate(event.work, event.newDate);
-    emit(_DateChangedState(date: event.newDate));
+    final result = await repo.changeWorkDate(event.work, event.newDate);
+    result.fold(
+      (l) => emit(_ErrorState(error: l.message)),
+      (r) => emit(_DateChangedState(date: event.newDate)),
+    );
+  }
+
+  void _onGotoUserDataEvent(_GotoUserDataEvent event, Emitter<MainChapterState> emit) async {
+    emit(const _gotoUserDataState());
   }
 
   void _onGotoWorkDayEvent(_GotoWorkDayEvent event, Emitter<MainChapterState> emit) async {

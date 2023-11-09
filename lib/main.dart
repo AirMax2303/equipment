@@ -28,28 +28,14 @@ void main() {
 //  Bloc.observer = AppBlocObserver();
   GetIt.instance.registerSingleton<AppService>(AppService());
   GetIt.instance.registerSingleton<EquipmentRepository>(EquipmentRepository(GetIt.instance.get<AppService>()));
-  GetIt.instance.registerSingleton<ProfileRepository>(ProfileRepository());
+  GetIt.instance.registerSingleton<ProfileRepository>(ProfileRepository(GetIt.instance.get<AppService>()));
   GetIt.instance.registerSingleton<MainChapterRepository>(MainChapterRepository(GetIt.instance.get<AppService>()));
   GetIt.instance.registerSingleton<PprRepository>(PprRepository(GetIt.instance.get<AppService>()));
   GetIt.instance.registerSingleton<OrderRepository>(OrderRepository(GetIt.instance.get<AppService>()));
   GetIt.instance.registerSingleton<WorkDayRepository>(WorkDayRepository(GetIt.instance.get<AppService>()));
-  GetIt.instance.registerSingleton<EquipmentBloc>(EquipmentBloc(GetIt.instance.get<EquipmentRepository>()));
   GetIt.instance.registerSingleton<CalendarRepository>(CalendarRepository(GetIt.instance.get<AppService>()));
-//  GetIt.instance.registerSingleton<OrderBloc>(OrderBloc(GetIt.instance.get<OrderService>()));
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider<ProfileBloc>(
-      create: (BuildContext context) => ProfileBloc(GetIt.instance.get<ProfileRepository>()),
-    ),
-//    BlocProvider<NameFilterBloc>(
-//      create: (BuildContext context) => NameFilterBloc(GetIt.instance.get<EquipmentService>()),
-//    ),
-//    BlocProvider<EquipmentBloc>(
-//      create: (BuildContext context) => GetIt.instance.get<EquipmentBloc>(),
-//    ),
-//    BlocProvider<PprBloc>(
-//      create: (BuildContext context) => PprBloc(GetIt.instance.get<PprService>()),
-//    ),
-  ], child: const MyApp()));
+  GetIt.instance.registerSingleton<SeriesRepository>(SeriesRepository(GetIt.instance.get<AppService>()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

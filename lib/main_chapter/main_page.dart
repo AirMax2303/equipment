@@ -23,29 +23,35 @@ typedef ChangeDayCallback = void Function(DateTime date);
 
 //ignore: must_be_immutable
 class MainPage extends StatelessWidget {
-  MainPage({Key? key}) : super(key: key);
+  MainPage(this.date, {Key? key}) : super(key: key);
   DateTime? date;
 
   @override
   Widget build(BuildContext context) {
-    date = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     return BlocProvider<MainChapterBloc>(
-      create: (context) => MainChapterBloc(GetIt.instance.get<MainChapterRepository>(), false)..add(MainChapterEvent.initial(date!)),
+      create: (context) =>
+          MainChapterBloc(GetIt.instance.get<MainChapterRepository>(), false)..add(MainChapterEvent.initial(date!)),
       child: BlocConsumer<MainChapterBloc, MainChapterState>(listener: (context, state) {
         state.mapOrNull(
+            error: (data) => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return dialogError(context, data.error);
+                }),
             dateChanged: (data) => showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return dialogDateChanged(context, DateFormat('dd.MM.yyyy').format(data.date));
-                }).whenComplete(() => BlocProvider.of<MainChapterBloc>(context).add(MainChapterEvent.initial(date!))),
-            gotoWorkDay: (data) =>
-                Navigator.push(context, MaterialPageRoute(builder: (context) => WorkDayPage(date: data.date))));
+                }).whenComplete(() => BlocProvider.of<MainChapterBloc>(context).add(MainChapterEvent.getList(date!))),
+            gotoWorkDay: (data) => Navigator.push(context, MaterialPageRoute(builder: (context) => WorkDayPage(date: data.date))),
+            gotoUserData: (_) => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ProfilePage(const ProfileEvent.gotoUserDataScreen()))));
       }, builder: (context, state) {
         return state.maybeMap(
           initial: (_) => const LoadingScreen(),
           loading: (_) => const LoadingScreen(),
           data: (data) => MainScreen(currentday: data.date, list: data.list),
-          error: (_) => const ErrorScreen(),
+          error: (_) => MainScreen(currentday: DateTime.now(), list: []),
           orElse: () => const ElseScreen(),
         );
       }),
@@ -78,7 +84,7 @@ class MainScreen extends StatelessWidget {
                       currentday: currentday,
                       onTap: (value) {
                         currentday = value;
-                        context.read<MainChapterBloc>().add(MainChapterEvent.initial(value));
+                        context.read<MainChapterBloc>().add(MainChapterEvent.getList(value));
                       }),
                 ],
               ),
@@ -186,8 +192,7 @@ class BarScreen extends StatelessWidget {
             const IconBox('assets/home.svg'),
             const SizedBox(width: 10),
             IconBox('assets/profile.svg', onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ProfilePage(const ProfileEvent.gotoUserDataScreen())));
+              context.read<MainChapterBloc>().add(const MainChapterEvent.gotoUserData());
             }),
             const SizedBox(width: 10),
           ],

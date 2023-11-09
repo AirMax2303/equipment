@@ -12,12 +12,25 @@ part 'calendar_event.dart';
 part 'calendar_state.dart';
 
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
-  CalendarRepository repo;
+  CalendarRepositoryAbstract repo;
   bool? histiry;
 
   CalendarBloc(this.repo, this.histiry) : super(const CalendarState.initial()) {
+    on<_InitialEvent>(_onInitialEvent);
     on<_GetListEvent>(_onGetListEvent);
     on<_GetEquipmentListEvent>(_onGetEquipmentListEvent);
+  }
+
+  void _onInitialEvent(
+    _InitialEvent event,
+    Emitter<CalendarState> emit,
+  ) async {
+    emit(const _LoadingState());
+    final result = await repo.initial(histiry!, DateTime.now());
+    result.fold(
+      (l) => emit(_ErrorState(error: l.message)),
+      (r) => emit(_DataState(date: DateTime.now(), list: r)),
+    );
   }
 
   void _onGetListEvent(
@@ -25,24 +38,22 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     Emitter<CalendarState> emit,
   ) async {
     emit(const _LoadingState());
-    await repo.getCalendarList(histiry!, event.date).then((value) async {
-      emit(_DataState(
-        date: event.date,
-        list: value,
-      ));
-    });
+    final result = await repo.getCalendarList(histiry!, event.date);
+    result.fold(
+      (l) => emit(_ErrorState(error: l.message)),
+      (r) => emit(_DataState(date: DateTime.now(), list: r)),
+    );
   }
 
   void _onGetEquipmentListEvent(
-      _GetEquipmentListEvent event,
-      Emitter<CalendarState> emit,
-      ) async {
+    _GetEquipmentListEvent event,
+    Emitter<CalendarState> emit,
+  ) async {
     emit(const _LoadingState());
-    await repo.getCalendarEquipmentList(histiry!, event.equipment.id!).then((value) async {
-      emit(_EquipmentDataState(
-        equipment: event.equipment,
-        list: value,
-      ));
-    });
+    final result = await repo.getCalendarEquipmentList(histiry!, event.equipment.id!);
+    result.fold(
+      (l) => emit(_ErrorState(error: l.message)),
+      (r) => emit(_DataState(date: DateTime.now(), list: r)),
+    );
   }
 }

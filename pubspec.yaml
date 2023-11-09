@@ -63,6 +63,8 @@ dependencies:
   jiffy: ^6.2.1
   http_parser: ^4.0.2
   ellipsis_overflow_text: ^1.0.1+1
+  webview_flutter_android: ^3.12.0
+  webview_flutter: ^4.4.1
 
 
 dev_dependencies:

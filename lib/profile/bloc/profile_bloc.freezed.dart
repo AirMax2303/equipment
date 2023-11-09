@@ -1685,6 +1685,7 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -1698,6 +1699,7 @@ mixin _$ProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -1711,6 +1713,7 @@ mixin _$ProfileState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -1725,6 +1728,7 @@ mixin _$ProfileState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -1738,6 +1742,7 @@ mixin _$ProfileState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -1751,6 +1756,7 @@ mixin _$ProfileState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -1821,6 +1827,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -1837,6 +1844,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -1853,6 +1861,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -1873,6 +1882,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -1889,6 +1899,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -1905,6 +1916,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -1965,6 +1977,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -1981,6 +1994,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -1997,6 +2011,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -2017,6 +2032,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -2033,6 +2049,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -2049,6 +2066,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -2067,6 +2085,187 @@ class _$LoadingStateImpl implements _LoadingState {
 
 abstract class _LoadingState implements ProfileState {
   const factory _LoadingState() = _$LoadingStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ErrorStateImpl(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'ProfileState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorStateImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function() ok,
+    required TResult Function() noData,
+    required TResult Function() profileScreen,
+    required TResult Function() loginScreen,
+    required TResult Function() mainScreen,
+    required TResult Function() userDataScreen,
+    required TResult Function(ProfileModel? profile) data,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function()? ok,
+    TResult? Function()? noData,
+    TResult? Function()? profileScreen,
+    TResult? Function()? loginScreen,
+    TResult? Function()? mainScreen,
+    TResult? Function()? userDataScreen,
+    TResult? Function(ProfileModel? profile)? data,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function()? ok,
+    TResult Function()? noData,
+    TResult Function()? profileScreen,
+    TResult Function()? loginScreen,
+    TResult Function()? mainScreen,
+    TResult Function()? userDataScreen,
+    TResult Function(ProfileModel? profile)? data,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
+    required TResult Function(_OkState value) ok,
+    required TResult Function(_noDataState value) noData,
+    required TResult Function(_ProfileScreen value) profileScreen,
+    required TResult Function(_LoginScreen value) loginScreen,
+    required TResult Function(_MainScreen value) mainScreen,
+    required TResult Function(_UserDataScreen value) userDataScreen,
+    required TResult Function(_DataState value) data,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
+    TResult? Function(_OkState value)? ok,
+    TResult? Function(_noDataState value)? noData,
+    TResult? Function(_ProfileScreen value)? profileScreen,
+    TResult? Function(_LoginScreen value)? loginScreen,
+    TResult? Function(_MainScreen value)? mainScreen,
+    TResult? Function(_UserDataScreen value)? userDataScreen,
+    TResult? Function(_DataState value)? data,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
+    TResult Function(_OkState value)? ok,
+    TResult Function(_noDataState value)? noData,
+    TResult Function(_ProfileScreen value)? profileScreen,
+    TResult Function(_LoginScreen value)? loginScreen,
+    TResult Function(_MainScreen value)? mainScreen,
+    TResult Function(_UserDataScreen value)? userDataScreen,
+    TResult Function(_DataState value)? data,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ErrorState implements ProfileState {
+  const factory _ErrorState({required final String error}) = _$ErrorStateImpl;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2109,6 +2308,7 @@ class _$OkStateImpl implements _OkState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -2125,6 +2325,7 @@ class _$OkStateImpl implements _OkState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -2141,6 +2342,7 @@ class _$OkStateImpl implements _OkState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -2161,6 +2363,7 @@ class _$OkStateImpl implements _OkState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -2177,6 +2380,7 @@ class _$OkStateImpl implements _OkState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -2193,6 +2397,7 @@ class _$OkStateImpl implements _OkState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -2253,6 +2458,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -2269,6 +2475,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -2285,6 +2492,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -2305,6 +2513,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -2321,6 +2530,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -2337,6 +2547,7 @@ class _$noDataStateImpl implements _noDataState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -2397,6 +2608,7 @@ class _$ProfileScreenImpl implements _ProfileScreen {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -2413,6 +2625,7 @@ class _$ProfileScreenImpl implements _ProfileScreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -2429,6 +2642,7 @@ class _$ProfileScreenImpl implements _ProfileScreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -2449,6 +2663,7 @@ class _$ProfileScreenImpl implements _ProfileScreen {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -2465,6 +2680,7 @@ class _$ProfileScreenImpl implements _ProfileScreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -2481,6 +2697,7 @@ class _$ProfileScreenImpl implements _ProfileScreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -2541,6 +2758,7 @@ class _$LoginScreenImpl implements _LoginScreen {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -2557,6 +2775,7 @@ class _$LoginScreenImpl implements _LoginScreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -2573,6 +2792,7 @@ class _$LoginScreenImpl implements _LoginScreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -2593,6 +2813,7 @@ class _$LoginScreenImpl implements _LoginScreen {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -2609,6 +2830,7 @@ class _$LoginScreenImpl implements _LoginScreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -2625,6 +2847,7 @@ class _$LoginScreenImpl implements _LoginScreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -2685,6 +2908,7 @@ class _$MainScreenImpl implements _MainScreen {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -2701,6 +2925,7 @@ class _$MainScreenImpl implements _MainScreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -2717,6 +2942,7 @@ class _$MainScreenImpl implements _MainScreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -2737,6 +2963,7 @@ class _$MainScreenImpl implements _MainScreen {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -2753,6 +2980,7 @@ class _$MainScreenImpl implements _MainScreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -2769,6 +2997,7 @@ class _$MainScreenImpl implements _MainScreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -2829,6 +3058,7 @@ class _$UserDataScreenImpl implements _UserDataScreen {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -2845,6 +3075,7 @@ class _$UserDataScreenImpl implements _UserDataScreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -2861,6 +3092,7 @@ class _$UserDataScreenImpl implements _UserDataScreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -2881,6 +3113,7 @@ class _$UserDataScreenImpl implements _UserDataScreen {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -2897,6 +3130,7 @@ class _$UserDataScreenImpl implements _UserDataScreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -2913,6 +3147,7 @@ class _$UserDataScreenImpl implements _UserDataScreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,
@@ -3013,6 +3248,7 @@ class _$DataStateImpl implements _DataState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String error) error,
     required TResult Function() ok,
     required TResult Function() noData,
     required TResult Function() profileScreen,
@@ -3029,6 +3265,7 @@ class _$DataStateImpl implements _DataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String error)? error,
     TResult? Function()? ok,
     TResult? Function()? noData,
     TResult? Function()? profileScreen,
@@ -3045,6 +3282,7 @@ class _$DataStateImpl implements _DataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String error)? error,
     TResult Function()? ok,
     TResult Function()? noData,
     TResult Function()? profileScreen,
@@ -3065,6 +3303,7 @@ class _$DataStateImpl implements _DataState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_ErrorState value) error,
     required TResult Function(_OkState value) ok,
     required TResult Function(_noDataState value) noData,
     required TResult Function(_ProfileScreen value) profileScreen,
@@ -3081,6 +3320,7 @@ class _$DataStateImpl implements _DataState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_ErrorState value)? error,
     TResult? Function(_OkState value)? ok,
     TResult? Function(_noDataState value)? noData,
     TResult? Function(_ProfileScreen value)? profileScreen,
@@ -3097,6 +3337,7 @@ class _$DataStateImpl implements _DataState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_ErrorState value)? error,
     TResult Function(_OkState value)? ok,
     TResult Function(_noDataState value)? noData,
     TResult Function(_ProfileScreen value)? profileScreen,

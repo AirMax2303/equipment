@@ -2,13 +2,15 @@ import 'package:equipment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:equipment/other/other.dart';
 
 typedef ChangeDateCallback = void Function(DateTime date);
 
 class CalendarApp extends StatelessWidget {
-  CalendarApp({Key? key, required this.onChangeDate}) : super(key: key);
-  ChangeDateCallback? onChangeDate;
+  CalendarApp({Key? key, this.date, required this.onChangeDate}) : super(key: key);
+  DateTime? date;
+  final ChangeDateCallback? onChangeDate;
   final List<String> dayweek = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
   final List<String> months = [
     'Январь',
@@ -25,8 +27,8 @@ class CalendarApp extends StatelessWidget {
     'Декбрь'
   ];
   ValueNotifier<DateTime> selectedDate =
-      ValueNotifier<DateTime>(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
-  ValueNotifier<DateTime> workDate = ValueNotifier<DateTime>(DateTime.now().nextDay());
+      ValueNotifier<DateTime>(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day));
+  ValueNotifier<DateTime> workDate = ValueNotifier<DateTime>(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +37,10 @@ class CalendarApp extends StatelessWidget {
     void make(DateTime date) {
       DateTime newDate;
       list = List<List<DateTime>>.empty(growable: true);
-      newDate = DateTime(date.year, date.month, date.day - (date.weekday - 1));
-      for (int j = 0; j < 6; j++) {
+      newDate = DateTime(date.year, date.month, 1);
+      print(newDate.weekday);
+      newDate = Jiffy.parseFromDateTime(newDate).subtract(days: newDate.weekday - 1).dateTime;
+      for (int j = 0; j < 7; j++) {
         list.add(List<DateTime>.empty(growable: true));
         for (int i = 0; i < 7; i++) {
           list[j].add(newDate);
@@ -83,15 +87,15 @@ class CalendarApp extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List<Widget>.generate(7, (index) {
+                children: [const SizedBox()] + List.generate(7, (index) {
                   return SizedBox(
-                      width: MediaQuery.of(context).size.width/10,
+                      width: MediaQuery.of(context).size.width / 12,
                       height: 40,
                       child: Text(
                         dayweek[index],
                         style: index < 5
-                            ? GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400))
-                            : GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                            ? const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)
+                            : const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
                       ));
                 }),
               ),
@@ -99,7 +103,7 @@ class CalendarApp extends StatelessWidget {
                 valueListenable: selectedDate,
                 builder: (BuildContext context, DateTime value, Widget? child) {
                   return Column(
-                      children: List<Widget>.generate(5, (indexCol) {
+                      children: List<Widget>.generate(6, (indexCol) {
                     return Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,12 +116,12 @@ class CalendarApp extends StatelessWidget {
                             customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
                             onTap: () {
 //                              if (list[indexCol][index].compareTo(DateTime.now()) > 0) {
-                                selectedDate.value = list[indexCol][index];
-                                onChangeDate!(list[indexCol][index]);
+                              selectedDate.value = list[indexCol][index];
+                              onChangeDate!(list[indexCol][index]);
 //                              }
                             },
                             child: Container(
-                              width: MediaQuery.of(context).size.width/10,
+                              width: MediaQuery.of(context).size.width / 10,
                               height: 40,
                               decoration: BoxDecoration(
                                 color: color,
@@ -129,10 +133,12 @@ class CalendarApp extends StatelessWidget {
                                 child: Text(
                                   list[indexCol][index].day.toString(),
                                   style: list[indexCol][index].weekday < 6
-                                      ? GoogleFonts.poppins(
-                                          textStyle: TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w400))
-                                      : GoogleFonts.poppins(
-                                          textStyle: TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w700)),
+                                      ? list[indexCol][index].month == DateTime.now().month
+                                          ? TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w400)
+                                          : const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.w400)
+                                      : list[indexCol][index].month == DateTime.now().month
+                                          ? TextStyle(color: textcolor, fontSize: 15, fontWeight: FontWeight.w800)
+                                          : const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.w800),
                                 ),
                               ),
                             ),

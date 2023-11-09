@@ -30,14 +30,29 @@ class OrderPage extends StatelessWidget {
       create: (BuildContext context) => OrderBloc(GetIt.instance.get<OrderRepository>()),
       child: BlocConsumer<OrderBloc, OrderState>(listener: (context, state) {
         state.mapOrNull(
-          ok: (_) => showDialog<bool>(
+          error: (data) => showDialog(
               context: context,
               builder: (BuildContext context) {
-                return dialogWorkIsDone(context, false, 'Заявка', 'добавлена');
-              }).whenComplete(() => Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()))),
+                return dialogError(context, data.error);
+              }),
+          ok: (_) => showDialog<bool>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return dialogWorkIsDone(context, false, 'Заявка', 'добавлена');
+                  })
+              .whenComplete(() => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MainPage(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))))),
         );
       }, builder: (context, state) {
-        return OrderScreen();
+        return state.maybeMap(
+          initial: (_) => OrderScreen(),
+          error: (data) => OrderScreen(),
+          orElse: () => Container(
+            color: Colors.white,
+          ),
+        );
       }),
     );
   }

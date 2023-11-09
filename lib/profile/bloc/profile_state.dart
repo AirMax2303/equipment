@@ -6,6 +6,8 @@ class ProfileState with _$ProfileState {
 
   const factory ProfileState.loading() = _LoadingState;
 
+  const factory ProfileState.error({required String error}) = _ErrorState;
+
   const factory ProfileState.ok() = _OkState;
 
   const factory ProfileState.noData() = _noDataState;

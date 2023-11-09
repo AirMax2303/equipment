@@ -89,6 +89,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     emit(const _LoadingState());
+//    await repo.changeNotWorked();
     await repo.getProfile(event.key).then(
       (value) async {
         if (value?.id == '') {

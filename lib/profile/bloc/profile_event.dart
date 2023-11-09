@@ -16,10 +16,15 @@ class ProfileEvent with _$ProfileEvent {
   }) = _SaveUserDatalEvent;
 
   const factory ProfileEvent.savePassword({required String password}) = _SavePasswordEvent;
+
   const factory ProfileEvent.saveTarif({required String tarif}) = _SaveTarifEvent;
 
   const factory ProfileEvent.gotoMainScreen() = _GotoMainScreenlEvent;
 
-  const factory ProfileEvent.saveProfile(
-      {required String name, required String email, required String phone, required String password}) = _SaveProfileEvent;
+  const factory ProfileEvent.saveProfile({
+    required String name,
+    required String email,
+    required String phone,
+    required String password,
+  }) = _SaveProfileEvent;
 }

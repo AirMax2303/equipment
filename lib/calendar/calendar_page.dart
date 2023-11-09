@@ -21,20 +21,30 @@ import 'bloc/calendar_bloc.dart';
 import 'model/calendar_model.dart';
 
 class CalendarPage extends StatelessWidget {
-  CalendarPage({Key? key, required this.histiry, required this.date, required this.nav, this.event}) : super(key: key);
-  bool? histiry;
+  const CalendarPage({Key? key, required this.histiry, required this.date, required this.nav, this.event}) : super(key: key);
+  final bool? histiry;
   final DateTime date;
   final Nav nav;
   final CalendarEvent? event;
 
   @override
   Widget build(BuildContext context) {
+    CalendarRepositoryAbstract service;
+    if (histiry!) {
+      service = GetIt.instance.get<CalendarRepository>();
+    } else {
+      service = GetIt.instance.get<SeriesRepository>();
+    }
     return BlocProvider<CalendarBloc>(
-      create: (BuildContext context) =>
-          CalendarBloc(GetIt.instance.get<CalendarRepository>(), histiry)..add(event ?? CalendarEvent.getList(date)),
+      create: (BuildContext context) => CalendarBloc(service, histiry)..add(event ?? const CalendarEvent.initial()),
       child: BlocConsumer<CalendarBloc, CalendarState>(
         listener: (context, state) {
           state.mapOrNull(
+            error: (data) => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return dialogError(context, data.error);
+                }),
             ok: (_) {
 //            Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
             },
@@ -42,28 +52,45 @@ class CalendarPage extends StatelessWidget {
         },
         builder: (context, state) {
           return state.maybeMap(
-            initial: (_) => const Center(child: CircularProgressIndicator(backgroundColor: AppColor.blueColor,)),
-            loading: (_) => const Center(child: CircularProgressIndicator(backgroundColor: AppColor.blueColor,)),
-            data: (data) => CalendarScreen(
-              list: data.list!,
-              nav: nav,
-              currentDay: data.date,
-              equipment: const EquipmentModel(
-                name1: 'Выберите оборудование',
-                name2: '',
-              ),
-              lastPage: event == null,
-            ),
-            equipmentData: (data) => CalendarScreen(
-              list: data.list!,
-              nav: nav,
-              currentDay: DateTime.now(),
-              equipment: data.equipment,
-              lastPage: event == null,
-            ),
-            error: (_) => const ErrorScreen(),
-            orElse: () => Container()//const ElseScreen(),
-          );
+              initial: (_) => const Center(
+                      child: CircularProgressIndicator(
+                    backgroundColor: AppColor.blueColor,
+                  )),
+              loading: (_) => const Scaffold(
+                    backgroundColor: Colors.white,
+                    body: Center(
+                        child: CircularProgressIndicator(
+                      backgroundColor: AppColor.blueColor,
+                    )),
+                  ),
+              error: (_) => CalendarScreen(
+                    list: const [],
+                    nav: nav,
+                    currentDay: DateTime.now(),
+                    equipment: const EquipmentModel(
+                      name1: 'Выберите оборудование',
+                      name2: '',
+                    ),
+                    lastPage: event == null,
+                  ),
+              data: (data) => CalendarScreen(
+                    list: data.list!,
+                    nav: nav,
+                    currentDay: data.date,
+                    equipment: const EquipmentModel(
+                      name1: 'Выберите оборудование',
+                      name2: '',
+                    ),
+                    lastPage: event == null,
+                  ),
+              equipmentData: (data) => CalendarScreen(
+                    list: data.list!,
+                    nav: nav,
+                    currentDay: DateTime.now(),
+                    equipment: data.equipment,
+                    lastPage: event == null,
+                  ),
+              orElse: () => const ElseScreen());
         },
       ),
     );
@@ -95,9 +122,12 @@ class CalendarScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: AppNavigationBar(nav),
-      appBar: appBar(context,  nav == Nav.calendar ? 'Календарь' : 'История', {}, () {
+      appBar: appBar(context, nav == Nav.calendar ? 'Календарь' : 'История', {}, () {
         if (lastPage) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MainPage(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))));
         } else {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => EquipmentPage(event: EquipmentEvent.gotoDetailScreen(equipment.id!))));

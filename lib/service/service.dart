@@ -28,9 +28,27 @@ abstract class IEquipment {
 
   Future<List<WorkModel>> calendarGetWorkModelList(bool histiry, DateTime date);
 
+// Series
+// -------------------------------------------------------------------------------------------------------------------------------
+  Future<SqlResult> addSeriesWork(WorkModel value);
+
+  Future<SqlResult> deleteAllSeriesWork();
+
+  Future<SqlResult> insertAllSeriesWork();
+
+  Future<List<WorkModel>> getAllSeriesWork();
+
+  Future<List<IdModel>> seriesGetDateModelList(bool histiry, DateTime date);
+
+  Future<List<DateModel>> seriesGetEquipmentModelList(bool histiry, String equipmentid);
+
+  Future<List<WorkModel>> seriesGetWorkModelEquipmentList(bool histiry, DateTime date, String equipmentid);
+
+  Future<List<WorkModel>> seriesGetWorkModelList(bool histiry, DateTime date);
+
 // Order
 // -------------------------------------------------------------------------------------------------------------------------------
-  Future addOrder(OrderModel order);
+  Future<SqlResult> addOrder(OrderModel order);
 
 //  Equipment
 //  ------------------------------------------------------------------------------------------------------------------------------
@@ -53,6 +71,8 @@ abstract class IEquipment {
   Future updateEquipment(EquipmentModel value);
 
   Future updateEquipmentImage(String image, String equipmentid);
+
+  Future updateEquipmentStatus(int status, String equipmentid);
 
   Future addName(NameModel value, String path);
 
@@ -96,6 +116,8 @@ abstract class IEquipment {
 
   Future completeWork(WorkModel work);
 
+  Future<List<WorkModel>> getNotWorked(DateTime date);
+
 //  ProfType
 // ------------------------------------------------------------------------------------------------------------------------------
 
@@ -105,7 +127,6 @@ abstract class IEquipment {
 //@LazySingleton(as: IEquipment)
 
 class AppService extends IEquipment {
-
   ErrorResponse checkResponseError(DioException error) {
     if (error.type == DioExceptionType.badResponse) {
       var errorData = error.response!.data;
@@ -188,7 +209,107 @@ class AppService extends IEquipment {
       data: {'date': DateFormat('yyyy-MM-dd').format(date), 'workisdone': (histiry ? 0 : 1).toString()},
     );
     List<dynamic> list = jsonDecode(response.data);
-    var result  = list.map((e) => WorkModel.fromJson(e)).toList();
+    var result = list.map((e) => WorkModel.fromJson(e)).toList();
+    return result;
+  }
+
+// Series
+// -------------------------------------------------------------------------------------------------------------------------------
+
+  @override
+  Future<SqlResult> addSeriesWork(WorkModel value) async {
+    final response = await dio.post(
+      '/series/add',
+      data: value.toJson(),
+    );
+    final result = SqlResult.fromJson(jsonDecode(response.data));
+    return result;
+  }
+
+  @override
+  Future<SqlResult> deleteAllSeriesWork() async {
+    final response = await dio.post('/series/delete');
+    final result = SqlResult.fromJson(jsonDecode(response.data));
+    return result;
+  }
+
+  @override
+  Future<SqlResult> insertAllSeriesWork() async {
+    final response = await dio.post('/series/insertall');
+    final result = SqlResult.fromJson(jsonDecode(response.data));
+    return result;
+  }
+
+  @override
+  Future<List<WorkModel>> getAllSeriesWork() async {
+    Response response = await dio.get('/series/listall');
+    List<dynamic> list = jsonDecode(response.data);
+    var result = list.map((e) => WorkModel.fromJson(e)).toList();
+    return result;
+  }
+
+  @override
+  Future<List<IdModel>> seriesGetDateModelList(bool histiry, DateTime date) async {
+    try {
+      Response response = await dio.get(
+        '/series/equipment',
+        data: {
+          'date': DateFormat('yyyy-MM-dd').format(date),
+          'workisdone': (histiry ? 0 : 1).toString(),
+        },
+      );
+      List<dynamic> list = jsonDecode(response.data);
+      var result = list.map((e) => IdModel.fromJson(e)).toList();
+      return result;
+    } on DioException catch (e) {
+      return [];
+    }
+  }
+
+  @override
+  Future<List<DateModel>> seriesGetEquipmentModelList(bool histiry, String equipmentid) async {
+    try {
+      Response response = await dio.get(
+        '/series/date',
+        data: {
+          'equipmentid': equipmentid,
+        },
+      );
+      List<dynamic> list = jsonDecode(response.data);
+      var result = list.map((e) => DateModel.fromJson(e)).toList();
+      return result;
+    } on DioException catch (e) {
+      return [];
+    }
+  }
+
+  @override
+  Future<List<WorkModel>> seriesGetWorkModelEquipmentList(bool histiry, DateTime date, String equipmentid) async {
+    try {
+      final response = await dio.get(
+        '/series/equipment/work',
+        data: {
+          'date': DateFormat('yyyy-MM-dd').format(date),
+          'equipmentid': equipmentid,
+          'workisdone': (histiry ? 0 : 1).toString()
+        },
+      );
+      List<dynamic> list = jsonDecode(response.data);
+      var result = list.map((e) => WorkModel.fromJson(e)).toList();
+      return result;
+    } on DioException catch (e) {
+      return [];
+    }
+  }
+
+  @override
+  Future<List<WorkModel>> seriesGetWorkModelList(bool histiry, DateTime date) async {
+    Response response = await dio.get(
+      '/series/list',
+      data: {'date': DateFormat('yyyy-MM-dd').format(date), 'workisdone': (histiry ? 0 : 1).toString()},
+    );
+    List<dynamic> list = jsonDecode(response.data);
+    var result = list.map((e) => WorkModel.fromJson(e)).toList();
     return result;
   }
 
@@ -196,22 +317,19 @@ class AppService extends IEquipment {
 // -------------------------------------------------------------------------------------------------------------------------------
 
   @override
-  Future addOrder(OrderModel order) async {
-    try {
-      final String oldFileName = order.image!;
-      final String fileName = order.image!.split('/').last;
-      order = order.copyWith(id: uuid.v1(), image: fileName);
-      final response = await dio.post(
-        '/orders/add',
-        data: order.toJson(),
-      );
-      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
-      if (order.image!.isNotEmpty) {
-        await postImage(path: oldFileName);
-      }
-    } on DioException catch (e) {
-      print(e);
+  Future<SqlResult> addOrder(OrderModel order) async {
+    final String oldFileName = order.image!;
+    final String fileName = order.image!.split('/').last;
+    order = order.copyWith(id: uuid.v1(), image: fileName);
+    final response = await dio.post(
+      '/orders/add',
+      data: order.toJson(),
+    );
+    final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+    if (order.image!.isNotEmpty) {
+      await postImage(path: oldFileName);
     }
+    return result;
   }
 
 //  Equipment
@@ -373,6 +491,22 @@ class AppService extends IEquipment {
   }
 
   @override
+  Future updateEquipmentStatus(int status, String equipmentid) async {
+    try {
+      final response = await dio.put(
+        '/equipment/update/status',
+        data: {
+          'status': status,
+          'id': equipmentid,
+        },
+      );
+      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+    } on DioException catch (e) {
+      print(e);
+    }
+  }
+
+  @override
   Future addName(NameModel value, String path) async {
     try {
       value = value.copyWith(id: uuid.v1());
@@ -515,7 +649,7 @@ class AppService extends IEquipment {
             'proftype': value.proftype! ? '0' : '1',
             'repeatcount': value.repeatcount,
             'intervalcount': value.intervalcount,
-            'begindate': DateFormat('yyyy.MM.dd').format(value.begindate!),
+            'begindate': DateFormat('yyyy-MM-dd').format(value.begindate!),
             'id': value.id,
           },
         );
@@ -581,16 +715,12 @@ class AppService extends IEquipment {
 
   @override
   Future addWork(WorkModel value) async {
-    try {
-      value = value.copyWith(id: uuid.v1());
-      final response = await dio.post(
-        '/work/add',
-        data: value.toJson(),
-      );
-      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
-    } on DioException catch (e) {
-      print(e);
-    }
+    value = value.copyWith(id: uuid.v1());
+    final response = await dio.post(
+      '/work/add',
+      data: value.toJson(),
+    );
+    final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
   }
 
   @override
@@ -619,19 +749,16 @@ class AppService extends IEquipment {
   }
 
   @override
-  Future changeWorkDate(WorkModel value, DateTime newDate) async {
-    try {
-      Response response = await dio.put(
-        '/work/update/date',
-        data: {
-          'workdate': DateFormat('yyyy.MM.dd').format(newDate),
-          'id': value.id,
-        },
-      );
-      final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
-    } on DioException catch (e) {
-      print(e);
-    }
+  Future<SqlResult> changeWorkDate(WorkModel value, DateTime newDate) async {
+    Response response = await dio.put(
+      '/work/update/date',
+      data: {
+        'workdate': DateFormat('yyyy-MM-dd').format(newDate),
+        'id': value.id,
+      },
+    );
+    final SqlResult result = SqlResult.fromJson(jsonDecode(response.data));
+    return result;
   }
 
   @override
@@ -660,6 +787,17 @@ class AppService extends IEquipment {
     } on DioException catch (e) {
       print(e);
     }
+  }
+
+  @override
+  Future<List<WorkModel>> getNotWorked(DateTime date) async {
+    Response response = await dio.get(
+      '/work/get/notworked',
+      data: {'workdate': DateFormat('yyyy-MM-dd').format(date)},
+    );
+    List list = jsonDecode(response.data);
+    var result = list.map((e) => WorkModel.fromJson(e)).toList();
+    return result;
   }
 
   @override

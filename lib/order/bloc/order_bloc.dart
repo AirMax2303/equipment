@@ -18,7 +18,10 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   }
 
   void _onAddOrderEvent(_AddOrderEvent event, Emitter<OrderState> emit) async {
-    await repo.addOrder(event.order);
-    emit(const _OkState());
+    final result = await repo.addOrder(event.order);
+    result.fold(
+      (l) => emit(_ErrorState(error: l.message)),
+      (r) => emit(const _OkState()),
+    );
   }
 }

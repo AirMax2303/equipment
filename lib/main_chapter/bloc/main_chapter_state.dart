@@ -14,6 +14,8 @@ class MainChapterState with _$MainChapterState {
 
   const factory MainChapterState.gotoWorkDay({required DateTime date,}) = _gotoWorkDayState;
 
+  const factory MainChapterState.gotoUserData() = _gotoUserDataState;
+
   const factory MainChapterState.data({
     required DateTime date,
     required List<MainChapterData> list

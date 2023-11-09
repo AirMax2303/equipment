@@ -48,13 +48,16 @@ class PprPage extends StatelessWidget {
                             event: EquipmentEvent.gotoDetailScreen(equipmentData!.equipment!.id!),
                           )));
             } else {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MainPage(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))));
             }
           },
         );
       }, builder: (context, state) {
         return state.maybeMap(
-          initial: (_)  => const LoadingScreen(),
+          initial: (_) => const LoadingScreen(),
           loading: (_) => const LoadingScreen(),
           data: (data) =>
               Ppr5Screen(pprType: data.pprType!, equipment: equipmentData!.equipment, list: data.list!, lastState: lastState),

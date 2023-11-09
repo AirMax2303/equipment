@@ -105,6 +105,37 @@ Dialog dialogInDeveloping(BuildContext context) {
   );
 }
 
+Dialog dialogError(BuildContext context, String error) {
+  return Dialog(
+    backgroundColor: Colors.white,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+    ),
+    insetPadding: const EdgeInsets.all(20),
+    child: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 16),
+            SvgPicture.asset('assets/error.svg'),
+            const SizedBox(height: 16),
+            const Text('Ошибка').style18w700(),
+            Text(error).style18w700(),
+            const SizedBox(height: 16),
+            AppFilledButton('OK', onPressed: () {
+              Navigator.pop(context);
+            }),
+            const SizedBox(height: 16)
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
 Dialog dialogWorkIsDone(BuildContext context, bool deleted, String text1, String text2) {
   return Dialog(
     backgroundColor: Colors.white,
